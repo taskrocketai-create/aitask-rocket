@@ -119,19 +119,16 @@ export default function HomePage() {
           clip-path: polygon(0 0, 100% 0, 95% 50%, 100% 100%, 0 100%);
         }
       `}</style>
-
       {/* Global Scroll Progress */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-1 bg-rocket-orange z-50 origin-left"
         style={{ scaleX }}
       />
-
       <Header />
-
       {/* --------------------------------------------------------------------------
           HERO SECTION: THE LAUNCHPAD
           -------------------------------------------------------------------------- */}
-      <section ref={heroRef} className="relative w-full min-h-[100vh] flex items-center justify-center overflow-hidden bg-deep-navy text-white">
+      <section ref={heroRef} className="relative w-full min-h-[100vh] flex items-center justify-center overflow-hidden text-white bg-color-16">
         <GridBackground />
         
         {/* Animated Background Elements */}
@@ -264,17 +261,21 @@ export default function HomePage() {
                className="absolute inset-0 flex items-center justify-center"
              >
                 <div className="relative w-full h-full max-h-[600px] flex items-center justify-center">
-                   {/* Using a placeholder image that represents the 'Rocket' concept abstractly or literally if available */}
-                   <div className="relative w-64 h-64 md:w-96 md:h-96">
+                   {/* Task Rocket Logo */}
+                   <div className="relative w-80 h-80 md:w-[500px] md:h-[500px]">
                       <div className="absolute inset-0 bg-rocket-orange/20 blur-3xl rounded-full" />
-                      <Rocket className="w-full h-full text-white drop-shadow-[0_0_50px_rgba(249,115,22,0.5)]" strokeWidth={0.5} />
+                      <Image 
+                        src="https://static.wixstatic.com/media/18d7f4_969ddd51b0c947d9945080d5a3f23f1a~mv2.png" 
+                        alt="Task Rocket Logo"
+                        width={500}
+                        className="w-full h-full object-contain drop-shadow-[0_0_50px_rgba(249,115,22,0.5)]"
+                      />
                    </div>
                 </div>
              </motion.div>
           </motion.div>
         </div>
       </section>
-
       {/* --------------------------------------------------------------------------
           HOW IT WORKS: THE ASSEMBLY LINE (Sticky Scroll)
           -------------------------------------------------------------------------- */}
@@ -307,7 +308,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
       {/* --------------------------------------------------------------------------
           PRICING: MISSION COSTS (Industrial Cards)
           -------------------------------------------------------------------------- */}
@@ -352,7 +352,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
       {/* --------------------------------------------------------------------------
           BENEFITS: THE PAYLOAD (Grid Reveal)
           -------------------------------------------------------------------------- */}
@@ -389,7 +388,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
       {/* --------------------------------------------------------------------------
           PORTAL TEASER: THE COCKPIT (3D Perspective)
           -------------------------------------------------------------------------- */}
@@ -501,7 +499,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
       {/* --------------------------------------------------------------------------
           TESTIMONIALS: FLIGHT LOGS
           -------------------------------------------------------------------------- */}
@@ -572,7 +569,6 @@ export default function HomePage() {
           </div>
         </section>
       )}
-
       <Footer />
     </div>
   );

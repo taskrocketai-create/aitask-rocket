@@ -27,7 +27,7 @@ export default function Header() {
             <div className="relative">
               <Rocket className="w-8 h-8 text-rocket-orange group-hover:scale-110 transition-transform" />
             </div>
-            <span className="font-heading text-2xl font-bold text-deep-navy">
+            <span className="font-heading text-2xl font-bold text-color-16">
               Task Rocket
             </span>
           </Link>
