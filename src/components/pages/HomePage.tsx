@@ -265,7 +265,7 @@ export default function HomePage() {
                    <div className="relative w-80 h-80 md:w-[500px] md:h-[500px]">
                       <div className="absolute inset-0 bg-rocket-orange/20 blur-3xl rounded-full" />
                       <Image 
-                        src="https://static.wixstatic.com/media/18d7f4_969ddd51b0c947d9945080d5a3f23f1a~mv2.png" 
+                        src="https://static.wixstatic.com/media/18d7f4_dff2299c625a489aa1eb4de84420491c~mv2.png" 
                         alt="Task Rocket Logo"
                         width={500}
                         className="w-full h-full object-contain drop-shadow-[0_0_50px_rgba(249,115,22,0.5)]"
