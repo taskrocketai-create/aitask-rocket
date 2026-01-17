@@ -1,0 +1,1142 @@
+{
+  "id": "16026e2e-1dd0-4701-9c52-839582d6f04e",
+  "siteName": "Task Rocket",
+  "domainUrl": "tasksprocket.com",
+  "brandingPresets": [
+    {
+      "presetId": "00000000-ad59-446b-8a27-76562783a547",
+      "brandIdentity": {
+        "designSummary": "**The Propulsion Grid: A Fusion of Techy Futurism and Industrial Precision**\n\nThe Vision: We are crafting a digital experience that embodies the cutting edge of AI-driven efficiency for the construction and tech industries. The design will be a dynamic interplay of sleek, futuristic interfaces and the grounded reliability of industrial design. It's about conveying speed, intelligence, and a clear path to success, visualized through a controlled, energetic aesthetic.\n\n**Execution Blueprint:**\n1. The Grid as a Launchpad: A flexible 12-column grid will serve as the structural backbone, but elements will intentionally break free, utilizing calculated asymmetry and layering to create a sense of depth and forward momentum, akin to a rocket breaking atmosphere.\n2. Typography as Data Streams: Headings will be bold and commanding, using a geometric sans-serif to convey authority. Body text will be highly readable, employing a clean sans-serif. Monospaced fonts will be reserved for specific data points or technical details, reinforcing the 'techy' feel.\n3. Spatial Rhythm: A base unit of 8px will govern all spacing, ensuring a harmonious, clean, and modern feel. Generous white space will be used strategically to highlight key information and create a sense of calm efficiency.\n4. Dynamic Layering and Subtle Glows: Elements will overlap and interact, employing subtle gradients and soft glow effects (rather than harsh drop shadows) to suggest depth and advanced technology. This creates a visual narrative of propulsion and progress.",
+        "toneOfVoice": "Confident, innovative, efficient, reliable, and forward-thinking.",
+        "tones": [
+          "Authoritative",
+          "Sleek",
+          "Energetic",
+          "Precise",
+          "Futuristic"
+        ],
+        "designStyle": {
+          "primaryStyle": [
+            "Techy Design Personality"
+          ],
+          "supportingStyles": [
+            "Modern Minimalist",
+            "Industrial Edge"
+          ]
+        },
+        "palette": {
+          "colors": {
+            "primary": "#1E3A8A",
+            "primaryForeground": "#FFFFFF",
+            "secondary": "#F97316",
+            "secondaryForeground": "#FFFFFF",
+            "background": "#FFFFFF",
+            "foreground": "#1F2937",
+            "customColors": [
+              {
+                "name": "deepNavy",
+                "value": "#1E3A8A"
+              },
+              {
+                "name": "rocketOrange",
+                "value": "#F97316"
+              },
+              {
+                "name": "coolGray900",
+                "value": "#111827"
+              },
+              {
+                "name": "coolGray700",
+                "value": "#374151"
+              },
+              {
+                "name": "coolGray300",
+                "value": "#D1D5DB"
+              },
+              {
+                "name": "coolGray100",
+                "value": "#F3F4F6"
+              },
+              {
+                "name": "white",
+                "value": "#FFFFFF"
+              },
+              {
+                "name": "blueGrayGradientStart",
+                "value": "#1E3A8A"
+              },
+              {
+                "name": "blueGrayGradientEnd",
+                "value": "#4B5563"
+              }
+            ]
+          },
+          "paletteUsageGuide": "Primary deep navy (#1E3A8A) for trust and professionalism, especially in backgrounds and large containers. Rocket orange (#F97316) is the energetic accent, used sparingly for CTAs, icons, and key interactive elements. Cool grays (#4B5563 to #F3F4F6) and white are used for text, backgrounds, and UI elements to ensure readability and a modern feel. Subtle blue-to-gray gradients can be used in hero sections for a sense of propulsion.",
+          "paletteAccessibilityNotes": "Ensure sufficient contrast between text and background colors. Primary and secondary foregrounds are set to white for high contrast against navy and orange. Gray tones should be checked for WCAG AA compliance when used for text."
+        },
+        "typography": {
+          "headings": {
+            "font": {
+              "role": "Headings",
+              "fontFamily": "montserrat",
+              "fontJustification": ""
+            },
+            "headingsSimilarFonts": [],
+            "headingsUsageGuide": "Use Montserrat for all major headings (H1, H2, H3) to provide a bold, modern, and authoritative voice. Ensure consistent sizing and weight hierarchy.",
+            "headingsAccessibilityNotes": "Ensure sufficient contrast between heading text and its background. Use appropriate font weights for readability."
+          },
+          "paragraphs": {
+            "font": {
+              "role": "Body Text",
+              "fontFamily": "roboto",
+              "fontJustification": ""
+            },
+            "paragraphsSimilarFonts": [],
+            "paragraphsUsageGuide": "Roboto is the primary font for all body text, descriptions, and UI labels. Maintain consistent line height and letter spacing for optimal readability. Use monospaced fonts like 'azeret-mono' for specific technical details or code snippets.",
+            "paragraphsAccessibilityNotes": "Ensure body text is legible at smaller sizes and has adequate line height. Maintain WCAG AA contrast ratios with background colors."
+          },
+          "welcomeSectionTypography": {
+            "placement": "Centered within the hero section, above the main CTA.",
+            "implementation": "H1 for the main headline 'Task Rocket: Your AI Boost' using Montserrat Bold. Paragraph for the sub-headline using Roboto Regular."
+          },
+          "fontSizes": [
+            {
+              "name": "xs",
+              "size": "0.75rem",
+              "lineHeight": "1.25",
+              "letterSpacing": "0.02em",
+              "fontWeight": "400"
+            },
+            {
+              "name": "sm",
+              "size": "0.875rem",
+              "lineHeight": "1.375",
+              "letterSpacing": "0.02em",
+              "fontWeight": "400"
+            },
+            {
+              "name": "base",
+              "size": "1rem",
+              "lineHeight": "1.5",
+              "letterSpacing": "0.01em",
+              "fontWeight": "400"
+            },
+            {
+              "name": "lg",
+              "size": "1.125rem",
+              "lineHeight": "1.5",
+              "letterSpacing": "0.01em",
+              "fontWeight": "500"
+            },
+            {
+              "name": "xl",
+              "size": "1.25rem",
+              "lineHeight": "1.625",
+              "letterSpacing": "0.01em",
+              "fontWeight": "500"
+            },
+            {
+              "name": "2xl",
+              "size": "1.5rem",
+              "lineHeight": "1.75",
+              "letterSpacing": "0.01em",
+              "fontWeight": "600"
+            },
+            {
+              "name": "3xl",
+              "size": "1.875rem",
+              "lineHeight": "1.875",
+              "letterSpacing": "0.01em",
+              "fontWeight": "600"
+            },
+            {
+              "name": "4xl",
+              "size": "2.25rem",
+              "lineHeight": "2",
+              "letterSpacing": "0.01em",
+              "fontWeight": "700"
+            },
+            {
+              "name": "5xl",
+              "size": "3rem",
+              "lineHeight": "1",
+              "letterSpacing": "0.01em",
+              "fontWeight": "700"
+            },
+            {
+              "name": "6xl",
+              "size": "3.75rem",
+              "lineHeight": "1",
+              "letterSpacing": "0.01em",
+              "fontWeight": "700"
+            },
+            {
+              "name": "7xl",
+              "size": "4.5rem",
+              "lineHeight": "1",
+              "letterSpacing": "0.01em",
+              "fontWeight": "700"
+            },
+            {
+              "name": "8xl",
+              "size": "6rem",
+              "lineHeight": "1",
+              "letterSpacing": "0.01em",
+              "fontWeight": "700"
+            },
+            {
+              "name": "9xl",
+              "size": "8rem",
+              "lineHeight": "1",
+              "letterSpacing": "0.01em",
+              "fontWeight": "700"
+            }
+          ]
+        },
+        "layout": {
+          "layoutDna": {
+            "densitySpectrum": "Controlled density with ample white space, transitioning to denser information displays in tables and dashboards.",
+            "contrastSpectrum": "High contrast between primary navy/white and accent orange, with moderate contrast for gray text on white/light gray backgrounds.",
+            "gridAlignmentSpectrum": "Intentionally broken grid with asymmetrical elements and overlapping sections, balanced by strict alignment within components and data tables.",
+            "negativeSpaceUsage": "Generous use of white space to create a clean, modern, and spacious feel, emphasizing key information and CTAs.",
+            "textVsImageEmphasis": "Balanced emphasis. Hero images are impactful but secondary to the headline and CTAs. Content sections rely on clear typography and icons.",
+            "complexitySpectrum": "Starts simple and direct (hero), progresses to structured information (cards, tables), and culminates in a functional, interactive dashboard UI."
+          },
+          "grid": {
+            "compositionApproach": "Flexible 12-column grid with intentional breaking of lines and overlapping elements to create depth and dynamism.",
+            "spacing": {
+              "columns": "12-column grid system",
+              "rows": "Flexible, based on content and section height",
+              "gaps": "Base unit: 8px. All grid gaps are multiples of 8px (e.g., 16px, 24px, 32px)."
+            },
+            "margins": "Generous vertical margins between sections (e.g., 80px-120px) to ensure breathing room.",
+            "padding": "Consistent internal padding for containers and components (e.g., 24px-40px) to frame content."
+          },
+          "heroSectionLayout": "**The Propulsion Grid: A Fusion of Techy Futurism and Industrial Precision**\nComposition (Tailwind Spec): Full-width container (h-screen grid place-items-center p-8). Main headline 'Task Rocket: Your AI Boost' (motion.h1, text-7xl lg:text-9xl font-bold text-center). Sub-headline paragraph (text-xl lg:text-2xl font-normal text-center max-w-4xl mx-auto mt-4).\nSignature Hook (Framer Motion Spec): Parent `motion.h1` uses `variants` with `transition: { staggerChildren: 0.04 }`. Each `motion.span` (for individual letters) has a variant with `initial={{ opacity: 0, y: 20 }}` and `animate={{ opacity: 1, y: 0 }}`. A rocket icon element positioned dynamically (e.g., absolute positioning) with a subtle upward motion and a faint trailing effect on scroll or hover."
+        },
+        "components": {
+          "containers": "Method: Whitespace and subtle gradients. Style: Sections separated by generous vertical margins (80px-120px). Hero section may use a subtle blue-to-gray gradient. Content containers within sections will have clean lines and ample internal padding.",
+          "images": "Layout Role: Full-bleed backgrounds or asymmetrical elements that break the grid. | Gallery Type: Dynamic mosaic of abstract rocket trails merging into blueprints/tools, or AI-generated contractor images. Images should feel integrated, not just placed.",
+          "buttons": "Primary: Solid rocket orange background (#F97316) with white text, subtle glow on hover, sharp corners. Secondary: Outline style with navy border and text, or transparent with navy text and orange hover effect. CTAs are large and prominent."
+        },
+        "graphicElements": {
+          "icons": "Clean, line-based icons with a modern, geometric feel. Rocket icons should have a dynamic, upward trajectory. Accent color (rocket orange) used for key action icons. Icons for services (blueprint, document, social, chart, logo) should be consistent in style.",
+          "illustrations": "Abstract, geometric illustrations that complement the techy and industrial aesthetic. Can incorporate subtle gradients and glowing effects. Avoid overly organic or hand-drawn styles.",
+          "stickers": ""
+        }
+      },
+      "originImagesUrls": []
+    },
+    {
+      "presetId": "fa7f3807-7f5a-4312-9372-d6d46e79a440",
+      "brandIdentity": {
+        "designSummary": "The design features a sleek, dark-themed aesthetic dominated by deep blues and blacks that evoke a sense of security and sophistication. Bright blue accent colors highlight key interactive elements such as buttons and navigation links, no other colors for buttons, providing clear visual cues for user actions. Typography is modern and geometric, using a bold sans-serif font for headings and a lighter sans-serif for body text, ensuring readability and a contemporary feel. The layout is spacious and modular, with generous padding and margins that create a clean, uncluttered interface. UI components like buttons and icons are minimalistic with rounded corners and consistent styling, reinforcing the modern and professional tone. Imagery includes 3D rendered graphics and product mockups that emphasize innovation and technology. Overall, the design balances a futuristic tech vibe with user-friendly clarity, making it suitable for fintech and crypto platforms.",
+        "toneOfVoice": "Professional, trustworthy, modern, and approachable with a focus on security and innovation.",
+        "tones": [
+          "secure",
+          "trustworthy",
+          "modern",
+          "innovative",
+          "professional",
+          "clean",
+          "futuristic",
+          "approachable",
+          "minimalistic",
+          "calm"
+        ],
+        "designStyle": {
+          "primaryStyle": [
+            "Modern",
+            "Minimalism",
+            "Tech-Focused"
+          ],
+          "supportingStyles": [
+            "Futuristic",
+            "Geometric",
+            "3D Illustration"
+          ]
+        },
+        "palette": {
+          "colors": {
+            "primary": "#3567fd",
+            "primaryForeground": "#FFFFFF",
+            "secondary": "#1E293B",
+            "secondaryForeground": "#E0E7FF",
+            "background": "#0F172A",
+            "customColors": [
+              {
+                "name": "contentblockbackground",
+                "value": "#CBD5E1"
+              },
+              {
+                "name": "buttonoutline",
+                "value": "#3567fd"
+              },
+              {
+                "name": "iconcolor",
+                "value": "#94A3B8"
+              },
+              {
+                "name": "foreground",
+                "value": "#f0f3ff"
+              },
+              {
+                "name": "destructive",
+                "value": "#DF3131"
+              },
+              {
+                "name": "destructiveforeground",
+                "value": "#ffffff"
+              }
+            ]
+          },
+          "paletteUsageGuide": "Use the 'background' color as the primary canvas for the website, providing a dark and secure atmosphere. The 'primary' color should be reserved for key interactive elements such as primary buttons, call-to-action highlights, and active navigation links, paired with 'primaryForeground' for text to ensure high contrast. The 'secondary' color serves as a background for content blocks or secondary UI areas, with 'secondaryForeground' used for text and icons in these areas to maintain readability. The 'contentBlockBackground' custom color is ideal for subtle section backgrounds that need to stand out gently against the main background without overwhelming the design. Use 'buttonOutline' for secondary or outlined buttons to maintain brand consistency. The 'iconColor' is suited for icons and minor graphic elements, providing a muted contrast that complements the overall palette. This palette ensures accessibility and visual hierarchy while maintaining a modern, tech-savvy aesthetic.",
+          "paletteAccessibilityNotes": "The combination of 'primaryForeground' on 'primary' and 'secondaryForeground' on 'secondary' meets WCAG AA standards for text contrast, ensuring readability for users with visual impairments. The 'background' and 'primaryForeground' pairing also provides sufficient contrast for large text and UI elements. The 'contentBlockBackground' against 'background' offers a gentle contrast suitable for non-textual UI elements and backgrounds. Overall, the palette supports accessibility best practices for both normal and large text sizes."
+        },
+        "typography": {
+          "headings": {
+            "font": {
+              "role": "Primary Heading Font",
+              "fontFamily": "syne",
+              "fontJustification": ""
+            },
+            "headingsSimilarFonts": [
+              "rubik-v2",
+              "work-sans-v2",
+              "open sans"
+            ],
+            "headingsUsageGuide": "Use the heading font for all major titles and section headers to establish hierarchy and clarity. Pair with the paragraph font to create a balanced typographic system. Maintain sufficient spacing above and below headings to enhance readability and visual separation. Headings should be bold and sized larger than body text to draw attention, using the 'primary' color or white on dark backgrounds for maximum contrast.",
+            "headingsAccessibilityNotes": "Headings in 'primaryForeground' on 'background' or 'primary' on 'primaryForeground' meet WCAG AA contrast requirements, ensuring legibility for all users."
+          },
+          "paragraphs": {
+            "font": {
+              "role": "Main Body Text Font",
+              "fontFamily": "barlow-extralight",
+              "fontJustification": ""
+            },
+            "paragraphsSimilarFonts": [
+              "nunito sans",
+              "raleway",
+              "work-sans-v2"
+            ],
+            "paragraphsUsageGuide": "Use the paragraph font for all body copy, descriptions, and secondary text. Maintain comfortable line spacing and letter spacing to enhance readability on screen. Paragraph text should generally be in 'primaryForeground' or 'secondaryForeground' depending on background color to ensure sufficient contrast. Avoid using paragraph fonts in overly small sizes to maintain accessibility.",
+            "paragraphsAccessibilityNotes": "Paragraph text colors against their backgrounds meet WCAG AA standards for normal and large text, supporting accessibility compliance."
+          },
+          "welcomeSectionTypography": {
+            "placement": "Centered",
+            "implementation": "The welcome section uses a large, bold heading centered horizontally and vertically over a dark gradient background with subtle 3D imagery. This placement draws immediate attention to the core message. The heading is paired with a smaller call-to-action button below, also centered, creating a balanced vertical flow. The typography contrasts sharply with the dark background using the 'primaryForeground' color, ensuring readability and focus. This centered approach emphasizes clarity and user engagement right at entry."
+          },
+          "fontSizes": [
+            {
+              "name": "xs",
+              "size": "0.75rem",
+              "lineHeight": "1.25",
+              "letterSpacing": "0.02em",
+              "fontWeight": "400"
+            },
+            {
+              "name": "sm",
+              "size": "0.875rem",
+              "lineHeight": "1.35",
+              "letterSpacing": "0.02em",
+              "fontWeight": "400"
+            },
+            {
+              "name": "base",
+              "size": "1rem",
+              "lineHeight": "1.5",
+              "letterSpacing": "0.025em",
+              "fontWeight": "400"
+            },
+            {
+              "name": "lg",
+              "size": "1.125rem",
+              "lineHeight": "1.5",
+              "letterSpacing": "0.025em",
+              "fontWeight": "500"
+            },
+            {
+              "name": "xl",
+              "size": "1.25rem",
+              "lineHeight": "1.5",
+              "letterSpacing": "0.03em",
+              "fontWeight": "600"
+            },
+            {
+              "name": "2xl",
+              "size": "1.5rem",
+              "lineHeight": "1.4",
+              "letterSpacing": "0.03em",
+              "fontWeight": "600"
+            },
+            {
+              "name": "3xl",
+              "size": "1.875rem",
+              "lineHeight": "1.3",
+              "letterSpacing": "0.03em",
+              "fontWeight": "700"
+            },
+            {
+              "name": "4xl",
+              "size": "2.25rem",
+              "lineHeight": "1.2",
+              "letterSpacing": "0.035em",
+              "fontWeight": "700"
+            },
+            {
+              "name": "5xl",
+              "size": "3rem",
+              "lineHeight": "1.1",
+              "letterSpacing": "0.04em",
+              "fontWeight": "800"
+            },
+            {
+              "name": "6xl",
+              "size": "3.75rem",
+              "lineHeight": "1.1",
+              "letterSpacing": "0.04em",
+              "fontWeight": "800"
+            },
+            {
+              "name": "7xl",
+              "size": "4.5rem",
+              "lineHeight": "1",
+              "letterSpacing": "0.045em",
+              "fontWeight": "900"
+            },
+            {
+              "name": "8xl",
+              "size": "6rem",
+              "lineHeight": "1",
+              "letterSpacing": "0.05em",
+              "fontWeight": "900"
+            },
+            {
+              "name": "9xl",
+              "size": "8rem",
+              "lineHeight": "1",
+              "letterSpacing": "0.05em",
+              "fontWeight": "900"
+            }
+          ]
+        },
+        "layout": {
+          "layoutDna": {
+            "densitySpectrum": "Balanced",
+            "contrastSpectrum": "High-Contrast",
+            "gridAlignmentSpectrum": "Strict Grid",
+            "negativeSpaceUsage": "Generous",
+            "textVsImageEmphasis": "Balanced",
+            "complexitySpectrum": "Simple & Clean"
+          },
+          "grid": {
+            "compositionApproach": "Column-based",
+            "spacing": {
+              "columns": "12-column grid",
+              "rows": "Defined content rows",
+              "gaps": "Consistent medium gaps"
+            },
+            "margins": "Generous page margins",
+            "padding": "Consistent padding within containers"
+          }
+        },
+        "components": {
+          "containers": "Containers have rounded corners with subtle background color shifts using 'secondary' or 'contentBlockBackground' to differentiate sections. Padding is consistent to maintain content clarity and separation. Borders are minimal or absent, relying on color contrast for definition.",
+          "images": "Images and product mockups are prominently displayed with generous spacing. They often have subtle shadows or glow effects to enhance depth against the dark background. Rounded corners are used to maintain visual softness consistent with container styling.",
+          "buttons": "Primary buttons use a solid 'primary' fill with 'primaryForeground' text, featuring rounded corners and a slight shadow for prominence. Secondary buttons are outlined with 'buttonOutline' color and transparent backgrounds, maintaining brand consistency. Buttons have clear hover states with slight color or brightness changes."
+        },
+        "graphicElements": {
+          "icons": "If there are icons then they are minimalistic, line-based, and use the 'iconColor' for subtlety. They complement text without overpowering the layout and maintain consistent stroke widths and rounded corners - no emojis.",
+          "illustrations": "Only 3D rendered illustrations and product mockups are used to convey technology and innovation. They have smooth gradients and soft shadows, integrating seamlessly with the dark background and overall design - no emojis.",
+          "stickers": "No explicit stickers or badges are present; if used, they would likely follow the minimalistic style with solid fills in 'primary' or 'secondary' colors and simple typography - no emojis."
+        }
+      },
+      "originImagesUrls": [
+        "https://wixmp-fe53c9ff592a4da924211f23.wixmp.com/uploads/1750170621412-Screenshot%202025-05-15%20at%2013.57.44%201.png"
+      ]
+    },
+    {
+      "presetId": "141e1109-fca5-4bfe-8363-47c061d1003b",
+      "brandIdentity": {
+        "designSummary": "This brand design features a minimalistic and modern aesthetic with a strong emphasis on clarity and spaciousness. The color palette is dominated by a deep navy blue as the primary color, complemented by white backgrounds and subtle lighter blue gradients in abstract shapes. Typography is clean, geometric sans-serif, balancing professionalism with approachability. The layout is modular and column-based, with generous whitespace and clear visual hierarchy. Rounded corners and soft edges on images and containers add a smooth, contemporary feel. Buttons are distinctly styled with solid and outlined navy blue variants, supporting clear call-to-actions. Overall, the design conveys a forward-thinking, reliable, and user-friendly technology or IT solutions brand identity.",
+        "toneOfVoice": "Professional, trustworthy, innovative, and approachable with a modern and clean personality.",
+        "tones": [
+          "calm",
+          "professional",
+          "trustworthy",
+          "innovative",
+          "clean",
+          "modern",
+          "minimal",
+          "approachable",
+          "spacious",
+          "focused"
+        ],
+        "designStyle": {
+          "primaryStyle": [
+            "Minimalism",
+            "Corporate",
+            "Modern"
+          ],
+          "supportingStyles": [
+            "Tech-Inspired",
+            "Geometric",
+            "Soft-Edge"
+          ]
+        },
+        "palette": {
+          "colors": {
+            "primary": "#1e2e69",
+            "primaryForeground": "#FFFFFF",
+            "secondary": "#FFFFFF",
+            "secondaryForeground": "#1e2e69",
+            "background": "#FFFFFF",
+            "customColors": [
+              {
+                "name": "gradientlightblue",
+                "value": "#F0F4FF"
+              },
+              {
+                "name": "gradientmediumblue",
+                "value": "#A3A9FF"
+              },
+              {
+                "name": "buttonoutline",
+                "value": "#1e2e69"
+              },
+              {
+                "name": "foreground",
+                "value": "#1e2e69"
+              },
+              {
+                "name": "destructive",
+                "value": "#DF3131"
+              },
+              {
+                "name": "destructiveforeground",
+                "value": "#FFFFFF"
+              }
+            ]
+          },
+          "paletteUsageGuide": "Use the 'primary' color for main interactive elements such as primary buttons, icons, and key text to establish brand recognition and trust. The 'primaryForeground' color is reserved for text and icons placed on 'primary' backgrounds to ensure readability. The 'secondary' color, which is white, serves as the base background to maintain a clean and spacious feel, with 'secondaryForeground' used for text and icons on white backgrounds to maintain strong contrast. The 'gradientLightBlue' and 'gradientMediumBlue' custom colors are used in abstract background shapes and imagery to add depth and a futuristic touch without overwhelming the interface. The 'buttonOutline' color is used for secondary buttons and borders, providing subtle emphasis while maintaining a minimal look. This palette ensures accessibility and a cohesive visual experience across the website.",
+          "paletteAccessibilityNotes": "The 'primaryForeground' on 'primary' color combination meets WCAG AA standards for text and icon contrast, ensuring readability. The 'secondaryForeground' on 'secondary' background also meets WCAG AA contrast ratios for body text and headings. The use of white as the 'secondary' background maximizes contrast and clarity. Gradient colors are used decoratively and do not contain critical text, maintaining accessibility compliance."
+        },
+        "typography": {
+          "headings": {
+            "font": {
+              "role": "Primary Heading Font",
+              "fontFamily": "sora-light",
+              "fontJustification": ""
+            },
+            "headingsSimilarFonts": [
+              "rubik-v2",
+              "poppins-v2",
+              "open sans"
+            ],
+            "headingsUsageGuide": "Use the heading font for all major titles and section headers to establish hierarchy and clarity. Headings should be bold or semi-bold with ample spacing to maintain readability and visual balance with paragraph text. Pair headings with the paragraph font to create a harmonious typographic system. Use the 'primary' color for headings to emphasize importance and maintain brand consistency.",
+            "headingsAccessibilityNotes": "Headings in 'primary' color on 'secondary' background meet WCAG AA contrast requirements, ensuring clear legibility for users with visual impairments."
+          },
+          "paragraphs": {
+            "font": {
+              "role": "Main Body Text Font",
+              "fontFamily": "sora",
+              "fontJustification": ""
+            },
+            "paragraphsSimilarFonts": [
+              "open sans",
+              "rubik-v2",
+              "poppins-v2"
+            ],
+            "paragraphsUsageGuide": "Use the paragraph font for all body text, descriptions, and smaller informational text. Maintain consistent line height and letter spacing for optimal readability. Paragraph text should primarily use the 'secondaryForeground' color to ensure contrast against the 'secondary' background. Combine with headings to create a clear typographic hierarchy and a cohesive reading experience.",
+            "paragraphsAccessibilityNotes": "Paragraph text in 'secondaryForeground' on 'secondary' background meets WCAG AA contrast standards for body copy, supporting accessibility."
+          },
+          "welcomeSectionTypography": {
+            "placement": "Bottom-Third Anchor",
+            "implementation": "The welcome section places the main headline and call-to-action in the lower third of the hero image area, aligned left with ample whitespace around. This placement draws the eye naturally from the top left, balancing the large abstract image on the right. The text uses the 'primary' color for contrast against the light gradient background, ensuring readability. The call-to-action button is positioned below the text, clearly visible and inviting interaction. This layout creates a calm, focused introduction to the brand."
+          },
+          "fontSizes": [
+            {
+              "name": "xs",
+              "size": "0.75rem",
+              "lineHeight": "1.2",
+              "letterSpacing": "0.02em",
+              "fontWeight": "400"
+            },
+            {
+              "name": "sm",
+              "size": "0.875rem",
+              "lineHeight": "1.3",
+              "letterSpacing": "0.02em",
+              "fontWeight": "400"
+            },
+            {
+              "name": "base",
+              "size": "1rem",
+              "lineHeight": "1.5",
+              "letterSpacing": "0.02em",
+              "fontWeight": "400"
+            },
+            {
+              "name": "lg",
+              "size": "1.125rem",
+              "lineHeight": "1.5",
+              "letterSpacing": "0.01em",
+              "fontWeight": "500"
+            },
+            {
+              "name": "xl",
+              "size": "1.25rem",
+              "lineHeight": "1.4",
+              "letterSpacing": "0em",
+              "fontWeight": "600"
+            },
+            {
+              "name": "2xl",
+              "size": "1.5rem",
+              "lineHeight": "1.3",
+              "letterSpacing": "0em",
+              "fontWeight": "600"
+            },
+            {
+              "name": "3xl",
+              "size": "1.875rem",
+              "lineHeight": "1.2",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "700"
+            },
+            {
+              "name": "4xl",
+              "size": "2.25rem",
+              "lineHeight": "1.1",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "700"
+            },
+            {
+              "name": "5xl",
+              "size": "3rem",
+              "lineHeight": "1.1",
+              "letterSpacing": "-0.03em",
+              "fontWeight": "800"
+            },
+            {
+              "name": "6xl",
+              "size": "3.75rem",
+              "lineHeight": "1.1",
+              "letterSpacing": "-0.04em",
+              "fontWeight": "800"
+            },
+            {
+              "name": "7xl",
+              "size": "4.5rem",
+              "lineHeight": "1",
+              "letterSpacing": "-0.05em",
+              "fontWeight": "900"
+            },
+            {
+              "name": "8xl",
+              "size": "6rem",
+              "lineHeight": "1",
+              "letterSpacing": "-0.06em",
+              "fontWeight": "900"
+            },
+            {
+              "name": "9xl",
+              "size": "8rem",
+              "lineHeight": "1",
+              "letterSpacing": "-0.07em",
+              "fontWeight": "900"
+            }
+          ]
+        },
+        "layout": {
+          "layoutDna": {
+            "densitySpectrum": "Balanced",
+            "contrastSpectrum": "High-Contrast",
+            "gridAlignmentSpectrum": "Strict Grid",
+            "negativeSpaceUsage": "Generous",
+            "textVsImageEmphasis": "Balanced",
+            "complexitySpectrum": "Simple & Clean"
+          },
+          "grid": {
+            "compositionApproach": "Column-based",
+            "spacing": {
+              "columns": "12-column grid",
+              "rows": "Defined content rows",
+              "gaps": "Consistent medium gaps"
+            },
+            "margins": "Generous page margins",
+            "padding": "Consistent padding within containers"
+          }
+        },
+        "components": {
+          "containers": "Containers have a clean white background with subtle rounded corners and consistent padding, creating distinct content blocks without heavy borders. This approach maintains a light and open feel while organizing content clearly. The use of white backgrounds supports the 'secondary' color role, ensuring content stands out.",
+          "images": "Images are abstract, softly blurred, and use gradient blue tones with rounded corners that echo container shapes. This treatment integrates images seamlessly into the design, reinforcing the futuristic and tech-oriented brand identity without distraction.",
+          "buttons": "Primary buttons use a solid 'primary' navy blue background with white text for strong call-to-action emphasis. Secondary buttons have a white background with a 'buttonOutline' navy border and text, providing a subtle alternative action style. Buttons have rounded corners consistent with container and image shapes, maintaining visual harmony."
+        },
+        "graphicElements": {
+          "icons": "Icons are minimal, line-based, and use the 'primary' navy blue color. They are simple and consistent, supporting clarity and user guidance without visual clutter.",
+          "illustrations": "No traditional illustrations are used; instead, abstract gradient shapes and softly blurred images serve as visual interest elements, reinforcing the modern and innovative brand tone.",
+          "stickers": "No stickers or badges are present, maintaining the clean and minimal aesthetic."
+        }
+      },
+      "originImagesUrls": [
+        "https://wixmp-fe53c9ff592a4da924211f23.wixmp.com/uploads/1750170516965-Screenshot%202025-06-05%20at%2015.44.45.jpg"
+      ]
+    },
+    {
+      "presetId": "732f99d8-433f-4288-a5ed-4d4fab83a0dd",
+      "brandIdentity": {
+        "designSummary": "This brand design embraces a minimalist and modern aesthetic characterized by spacious layouts, clean typography, and a restrained pastel color palette. The primary background colors are soft off-whites and pale blues, creating a calm and inviting canvas. Text and interactive elements predominantly use a deep navy blue, ensuring strong contrast and readability. Accent colors in subtle pastel purple and yellow appear in small UI elements, adding gentle vibrancy without overwhelming the design. Typography is geometric sans-serif, with large, bold headings paired with lighter, well-spaced body text to enhance clarity and hierarchy. The layout employs modular grids with generous negative space, balancing text and iconography in a harmonious, user-friendly manner. Buttons are solid, rounded rectangles with dark backgrounds and white text, emphasizing clear calls to action. Overall, the design conveys professionalism, approachability, and efficiency, making it highly adaptable for educational platforms, professional services, and technology brands seeking a clean and trustworthy online presence.",
+        "toneOfVoice": "Professional, approachable, clear, and trustworthy with a calm and efficient personality.",
+        "tones": [
+          "calm",
+          "trustworthy",
+          "professional",
+          "clean",
+          "modern",
+          "approachable",
+          "efficient",
+          "minimal",
+          "friendly",
+          "balanced"
+        ],
+        "designStyle": {
+          "primaryStyle": [
+            "Minimalism",
+            "Modernism"
+          ],
+          "supportingStyles": [
+            "Flat Design",
+            "Geometric"
+          ]
+        },
+        "palette": {
+          "colors": {
+            "primary": "#1E254E",
+            "primaryForeground": "#F7F9FF",
+            "secondary": "#A59FE6",
+            "secondaryForeground": "#1E254E",
+            "background": "#F7F9FF",
+            "customColors": [
+              {
+                "name": "softyellowaccent",
+                "value": "#FFF9B1"
+              },
+              {
+                "name": "foreground",
+                "value": "#1E254E"
+              },
+              {
+                "name": "destructive",
+                "value": "#DF3131"
+              },
+              {
+                "name": "destructiveforeground",
+                "value": "#FFFFFF"
+              }
+            ]
+          },
+          "paletteUsageGuide": "Use the 'background' color as the primary canvas for all pages to maintain a clean and calm atmosphere. The 'primary' color should be reserved for main text, headings, and key interactive elements such as buttons and links, paired with 'primaryForeground' for text on these elements to ensure readability. The 'secondary' color and its 'secondaryForeground' are ideal for subtle UI accents, secondary buttons, and category tags, providing gentle contrast without overpowering the primary content. Custom colors like 'softYellowAccent' and 'lightPurpleAccent' are best used sparingly for highlighting informational badges, icons, or subtle background gradients to add visual interest while preserving the minimalist tone. This palette ensures accessibility and visual harmony, supporting a professional and approachable brand presence.",
+          "paletteAccessibilityNotes": "The 'primary' color (#1E254E) on 'background' (#F7F9FF) achieves excellent contrast exceeding WCAG AA standards for both normal and large text. Buttons using 'primary' with 'primaryForeground' (#FFFFFF) also meet AAA contrast requirements. The 'secondary' color (#A59FE6) on 'background' provides sufficient contrast for UI accents and secondary text, meeting WCAG AA for large text. Custom colors 'softYellowAccent' and 'lightPurpleAccent' are used in small UI elements and backgrounds where contrast requirements are less stringent but should be paired with 'primary' or 'primaryForeground' text to maintain readability and accessibility compliance."
+        },
+        "typography": {
+          "headings": {
+            "font": {
+              "role": "Primary Heading Font",
+              "fontFamily": "helvetica-w01-bold",
+              "fontJustification": ""
+            },
+            "headingsSimilarFonts": [
+              "rubik-v2",
+              "poppins-v2",
+              "open sans"
+            ],
+            "headingsUsageGuide": "Use the heading font for all major titles and section headers to establish clear content hierarchy. Headings should be large and bold with ample spacing to enhance readability and visual impact. Pair headings with the paragraph font to create a balanced typographic rhythm. Ensure headings use the 'primary' color for maximum contrast against the 'background'. Maintain consistent letter spacing and line height to preserve clarity across devices and screen sizes.",
+            "headingsAccessibilityNotes": "Headings in 'primary' color on 'background' meet WCAG AAA contrast standards, ensuring excellent readability for all users."
+          },
+          "paragraphs": {
+            "font": {
+              "role": "Main Body Text Font",
+              "fontFamily": "helvetica-w01-roman",
+              "fontJustification": ""
+            },
+            "paragraphsSimilarFonts": [
+              "rubik-v2",
+              "open sans",
+              "poppins-v2"
+            ],
+            "paragraphsUsageGuide": "Use the paragraph font for all body copy, descriptions, and supporting text. Maintain a lighter font weight and moderate size to ensure comfortable reading. Paragraph text should use the 'primary' color or a slightly lighter shade if needed for secondary information, always ensuring sufficient contrast with the 'background'. Combine with headings to create a clear typographic hierarchy and consistent user experience. Line height and letter spacing should be optimized for legibility on all screen sizes.",
+            "paragraphsAccessibilityNotes": "Paragraph text in 'primary' color on 'background' meets WCAG AA contrast requirements for normal text, supporting accessibility and readability."
+          },
+          "welcomeSectionTypography": {
+            "placement": "Bottom-Third Anchor",
+            "implementation": "The welcome section typography is anchored in the bottom third of the layout, creating a grounded and approachable introduction. Large, bold headings occupy the lower left quadrant, balanced by supporting text and call-to-action buttons placed nearby with ample negative space. This placement draws the eye naturally from the headline to the action, leveraging the spacious layout and clean typography to create a welcoming and clear entry point for users."
+          },
+          "fontSizes": [
+            {
+              "name": "xs",
+              "size": "0.75rem",
+              "lineHeight": "1.25",
+              "letterSpacing": "0.02em",
+              "fontWeight": "400"
+            },
+            {
+              "name": "sm",
+              "size": "0.875rem",
+              "lineHeight": "1.35",
+              "letterSpacing": "0.015em",
+              "fontWeight": "400"
+            },
+            {
+              "name": "base",
+              "size": "1rem",
+              "lineHeight": "1.5",
+              "letterSpacing": "0.01em",
+              "fontWeight": "400"
+            },
+            {
+              "name": "lg",
+              "size": "1.125rem",
+              "lineHeight": "1.5",
+              "letterSpacing": "0.005em",
+              "fontWeight": "500"
+            },
+            {
+              "name": "xl",
+              "size": "1.25rem",
+              "lineHeight": "1.5",
+              "letterSpacing": "0em",
+              "fontWeight": "600"
+            },
+            {
+              "name": "2xl",
+              "size": "1.5rem",
+              "lineHeight": "1.4",
+              "letterSpacing": "-0.005em",
+              "fontWeight": "700"
+            },
+            {
+              "name": "3xl",
+              "size": "1.875rem",
+              "lineHeight": "1.3",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "700"
+            },
+            {
+              "name": "4xl",
+              "size": "2.25rem",
+              "lineHeight": "1.2",
+              "letterSpacing": "-0.015em",
+              "fontWeight": "800"
+            },
+            {
+              "name": "5xl",
+              "size": "3rem",
+              "lineHeight": "1.1",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "800"
+            },
+            {
+              "name": "6xl",
+              "size": "3.75rem",
+              "lineHeight": "1.1",
+              "letterSpacing": "-0.025em",
+              "fontWeight": "900"
+            },
+            {
+              "name": "7xl",
+              "size": "4.5rem",
+              "lineHeight": "1",
+              "letterSpacing": "-0.03em",
+              "fontWeight": "900"
+            },
+            {
+              "name": "8xl",
+              "size": "6rem",
+              "lineHeight": "1",
+              "letterSpacing": "-0.035em",
+              "fontWeight": "900"
+            },
+            {
+              "name": "9xl",
+              "size": "8rem",
+              "lineHeight": "1",
+              "letterSpacing": "-0.04em",
+              "fontWeight": "900"
+            }
+          ]
+        },
+        "layout": {
+          "layoutDna": {
+            "densitySpectrum": "Balanced",
+            "contrastSpectrum": "High-Contrast",
+            "gridAlignmentSpectrum": "Modular",
+            "negativeSpaceUsage": "Generous",
+            "textVsImageEmphasis": "Balanced",
+            "complexitySpectrum": "Simple & Clean"
+          },
+          "grid": {
+            "compositionApproach": "Column-based",
+            "spacing": {
+              "columns": "12-column grid",
+              "rows": "Defined content rows",
+              "gaps": "Consistent medium gaps"
+            },
+            "margins": "Generous page margins",
+            "padding": "Consistent padding within containers"
+          }
+        },
+        "components": {
+          "containers": "Containers use subtle rounded corners and light backgrounds with gentle shadows or borders to separate content blocks. They maintain consistent padding and spacing to preserve the clean and spacious feel. Background colors often use 'background' or custom pastel accents to differentiate sections without overwhelming the user.",
+          "images": "Images are used sparingly and are well-integrated with text content, often aligned to the right or left of text blocks. They maintain natural proportions and are framed with generous white space to avoid clutter. Image treatments are minimal, focusing on clarity and relevance.",
+          "buttons": "Buttons are solid with rounded corners, primarily using the 'primary' color for backgrounds and 'primaryForeground' for text. Secondary buttons use lighter backgrounds with 'secondary' color text and borders. Buttons have clear hover states and sufficient padding for easy interaction."
+        },
+        "graphicElements": {
+          "icons": "Icons are minimalistic, line-based, and use the 'primary' or 'secondary' colors depending on context. They are small, simple, and consistent in style, supporting content without distraction.",
+          "illustrations": "Illustrations are minimal or absent in the UI, with the design favoring photographic or video content where applicable. When present, they use the custom pastel colors to maintain harmony.",
+          "stickers": "Stickers or badges are small, color-coded UI elements using 'softYellowAccent' or 'lightPurpleAccent' to categorize or highlight content. They have rounded corners and subtle shadows to stand out gently."
+        }
+      },
+      "originImagesUrls": [
+        "https://wixmp-fe53c9ff592a4da924211f23.wixmp.com/uploads/1752409506686-Screenshot%202025-07-13%20at%2015.24.32.png"
+      ]
+    }
+  ],
+  "brandBook": {
+    "tones": [
+      "Authoritative",
+      "Sleek",
+      "Energetic",
+      "Precise",
+      "Futuristic"
+    ],
+    "designStyle": {
+      "primaryStyle": [
+        "Techy Design Personality"
+      ],
+      "supportingStyles": [
+        "Modern Minimalist",
+        "Industrial Edge"
+      ]
+    },
+    "toneOfVoice": "Confident, innovative, efficient, reliable, and forward-thinking.",
+    "components": {
+      "images": "Layout Role: Full-bleed backgrounds or asymmetrical elements that break the grid. | Gallery Type: Dynamic mosaic of abstract rocket trails merging into blueprints/tools, or AI-generated contractor images. Images should feel integrated, not just placed.",
+      "buttons": "Primary: Solid rocket orange background (#F97316) with white text, subtle glow on hover, sharp corners. Secondary: Outline style with navy border and text, or transparent with navy text and orange hover effect. CTAs are large and prominent.",
+      "containers": "Method: Whitespace and subtle gradients. Style: Sections separated by generous vertical margins (80px-120px). Hero section may use a subtle blue-to-gray gradient. Content containers within sections will have clean lines and ample internal padding."
+    },
+    "typography": {
+      "headings": {
+        "font": {
+          "role": "Headings",
+          "fontFamily": "montserrat",
+          "fontJustification": ""
+        },
+        "headingsUsageGuide": "Use Montserrat for all major headings (H1, H2, H3) to provide a bold, modern, and authoritative voice. Ensure consistent sizing and weight hierarchy.",
+        "headingsSimilarFonts": [],
+        "headingsAccessibilityNotes": "Ensure sufficient contrast between heading text and its background. Use appropriate font weights for readability."
+      },
+      "fontSizes": [
+        {
+          "name": "xs",
+          "size": "0.75rem",
+          "letterSpacing": "0.02em",
+          "lineHeight": "1.25",
+          "fontWeight": "400"
+        },
+        {
+          "name": "sm",
+          "size": "0.875rem",
+          "letterSpacing": "0.02em",
+          "lineHeight": "1.375",
+          "fontWeight": "400"
+        },
+        {
+          "name": "base",
+          "size": "1rem",
+          "letterSpacing": "0.01em",
+          "lineHeight": "1.5",
+          "fontWeight": "400"
+        },
+        {
+          "name": "lg",
+          "size": "1.125rem",
+          "letterSpacing": "0.01em",
+          "lineHeight": "1.5",
+          "fontWeight": "500"
+        },
+        {
+          "name": "xl",
+          "size": "1.25rem",
+          "letterSpacing": "0.01em",
+          "lineHeight": "1.625",
+          "fontWeight": "500"
+        },
+        {
+          "name": "2xl",
+          "size": "1.5rem",
+          "letterSpacing": "0.01em",
+          "lineHeight": "1.75",
+          "fontWeight": "600"
+        },
+        {
+          "name": "3xl",
+          "size": "1.875rem",
+          "letterSpacing": "0.01em",
+          "lineHeight": "1.875",
+          "fontWeight": "600"
+        },
+        {
+          "name": "4xl",
+          "size": "2.25rem",
+          "letterSpacing": "0.01em",
+          "lineHeight": "2",
+          "fontWeight": "700"
+        },
+        {
+          "name": "5xl",
+          "size": "3rem",
+          "letterSpacing": "0.01em",
+          "lineHeight": "1",
+          "fontWeight": "700"
+        },
+        {
+          "name": "6xl",
+          "size": "3.75rem",
+          "letterSpacing": "0.01em",
+          "lineHeight": "1",
+          "fontWeight": "700"
+        },
+        {
+          "name": "7xl",
+          "size": "4.5rem",
+          "letterSpacing": "0.01em",
+          "lineHeight": "1",
+          "fontWeight": "700"
+        },
+        {
+          "name": "8xl",
+          "size": "6rem",
+          "letterSpacing": "0.01em",
+          "lineHeight": "1",
+          "fontWeight": "700"
+        },
+        {
+          "name": "9xl",
+          "size": "8rem",
+          "letterSpacing": "0.01em",
+          "lineHeight": "1",
+          "fontWeight": "700"
+        }
+      ],
+      "paragraphs": {
+        "font": {
+          "role": "Body Text",
+          "fontFamily": "roboto",
+          "fontJustification": ""
+        },
+        "paragraphsUsageGuide": "Roboto is the primary font for all body text, descriptions, and UI labels. Maintain consistent line height and letter spacing for optimal readability. Use monospaced fonts like 'azeret-mono' for specific technical details or code snippets.",
+        "paragraphsSimilarFonts": [],
+        "paragraphsAccessibilityNotes": "Ensure body text is legible at smaller sizes and has adequate line height. Maintain WCAG AA contrast ratios with background colors."
+      },
+      "welcomeSectionTypography": {
+        "placement": "Centered within the hero section, above the main CTA.",
+        "implementation": "H1 for the main headline 'Task Rocket: Your AI Boost' using Montserrat Bold. Paragraph for the sub-headline using Roboto Regular."
+      }
+    },
+    "originImagesUrls": [],
+    "layout": {
+      "grid": {
+        "margins": "Generous vertical margins between sections (e.g., 80px-120px) to ensure breathing room.",
+        "padding": "Consistent internal padding for containers and components (e.g., 24px-40px) to frame content.",
+        "spacing": {
+          "gaps": "Base unit: 8px. All grid gaps are multiples of 8px (e.g., 16px, 24px, 32px).",
+          "rows": "Flexible, based on content and section height",
+          "columns": "12-column grid system"
+        },
+        "compositionApproach": "Flexible 12-column grid with intentional breaking of lines and overlapping elements to create depth and dynamism."
+      },
+      "layoutDna": {
+        "contrastSpectrum": "High contrast between primary navy/white and accent orange, with moderate contrast for gray text on white/light gray backgrounds.",
+        "densitySpectrum": "Controlled density with ample white space, transitioning to denser information displays in tables and dashboards.",
+        "textVsImageEmphasis": "Balanced emphasis. Hero images are impactful but secondary to the headline and CTAs. Content sections rely on clear typography and icons.",
+        "complexitySpectrum": "Starts simple and direct (hero), progresses to structured information (cards, tables), and culminates in a functional, interactive dashboard UI.",
+        "gridAlignmentSpectrum": "Intentionally broken grid with asymmetrical elements and overlapping sections, balanced by strict alignment within components and data tables.",
+        "negativeSpaceUsage": "Generous use of white space to create a clean, modern, and spacious feel, emphasizing key information and CTAs."
+      },
+      "heroSectionLayout": "**The Propulsion Grid: A Fusion of Techy Futurism and Industrial Precision**\nComposition (Tailwind Spec): Full-width container (h-screen grid place-items-center p-8). Main headline 'Task Rocket: Your AI Boost' (motion.h1, text-7xl lg:text-9xl font-bold text-center). Sub-headline paragraph (text-xl lg:text-2xl font-normal text-center max-w-4xl mx-auto mt-4).\nSignature Hook (Framer Motion Spec): Parent `motion.h1` uses `variants` with `transition: { staggerChildren: 0.04 }`. Each `motion.span` (for individual letters) has a variant with `initial={{ opacity: 0, y: 20 }}` and `animate={{ opacity: 1, y: 0 }}`. A rocket icon element positioned dynamically (e.g., absolute positioning) with a subtle upward motion and a faint trailing effect on scroll or hover."
+    },
+    "graphicElements": {
+      "icons": "Clean, line-based icons with a modern, geometric feel. Rocket icons should have a dynamic, upward trajectory. Accent color (rocket orange) used for key action icons. Icons for services (blueprint, document, social, chart, logo) should be consistent in style.",
+      "stickers": "",
+      "illustrations": "Abstract, geometric illustrations that complement the techy and industrial aesthetic. Can incorporate subtle gradients and glowing effects. Avoid overly organic or hand-drawn styles."
+    },
+    "designSummary": "**The Propulsion Grid: A Fusion of Techy Futurism and Industrial Precision**\n\nThe Vision: We are crafting a digital experience that embodies the cutting edge of AI-driven efficiency for the construction and tech industries. The design will be a dynamic interplay of sleek, futuristic interfaces and the grounded reliability of industrial design. It's about conveying speed, intelligence, and a clear path to success, visualized through a controlled, energetic aesthetic.\n\n**Execution Blueprint:**\n1. The Grid as a Launchpad: A flexible 12-column grid will serve as the structural backbone, but elements will intentionally break free, utilizing calculated asymmetry and layering to create a sense of depth and forward momentum, akin to a rocket breaking atmosphere.\n2. Typography as Data Streams: Headings will be bold and commanding, using a geometric sans-serif to convey authority. Body text will be highly readable, employing a clean sans-serif. Monospaced fonts will be reserved for specific data points or technical details, reinforcing the 'techy' feel.\n3. Spatial Rhythm: A base unit of 8px will govern all spacing, ensuring a harmonious, clean, and modern feel. Generous white space will be used strategically to highlight key information and create a sense of calm efficiency.\n4. Dynamic Layering and Subtle Glows: Elements will overlap and interact, employing subtle gradients and soft glow effects (rather than harsh drop shadows) to suggest depth and advanced technology. This creates a visual narrative of propulsion and progress.",
+    "palette": {
+      "colors": {
+        "background": "#FFFFFF",
+        "secondary": "#F97316",
+        "customColors": [
+          {
+            "name": "deepNavy",
+            "value": "#1E3A8A"
+          },
+          {
+            "name": "rocketOrange",
+            "value": "#F97316"
+          },
+          {
+            "name": "coolGray900",
+            "value": "#111827"
+          },
+          {
+            "name": "coolGray700",
+            "value": "#374151"
+          },
+          {
+            "name": "coolGray300",
+            "value": "#D1D5DB"
+          },
+          {
+            "name": "coolGray100",
+            "value": "#F3F4F6"
+          },
+          {
+            "name": "white",
+            "value": "#FFFFFF"
+          },
+          {
+            "name": "blueGrayGradientStart",
+            "value": "#1E3A8A"
+          },
+          {
+            "name": "blueGrayGradientEnd",
+            "value": "#4B5563"
+          }
+        ],
+        "foreground": "#1F2937",
+        "secondaryForeground": "#FFFFFF",
+        "primaryForeground": "#FFFFFF",
+        "primary": "#1E3A8A"
+      },
+      "paletteUsageGuide": "Primary deep navy (#1E3A8A) for trust and professionalism, especially in backgrounds and large containers. Rocket orange (#F97316) is the energetic accent, used sparingly for CTAs, icons, and key interactive elements. Cool grays (#4B5563 to #F3F4F6) and white are used for text, backgrounds, and UI elements to ensure readability and a modern feel. Subtle blue-to-gray gradients can be used in hero sections for a sense of propulsion.",
+      "paletteAccessibilityNotes": "Ensure sufficient contrast between text and background colors. Primary and secondary foregrounds are set to white for high contrast against navy and orange. Gray tones should be checked for WCAG AA compliance when used for text."
+    }
+  },
+  "initialPrompt": "Make sure the prompt shows this. Color Scheme Primary: Deep navy blue or steel blue (#1E3A8A or similar) for trust and professionalism (common in construction/tech sites). Accent: Bright rocket orange/red (#F97316) for energy and \"launch\" feel—used sparingly on CTAs, rocket icons, highlights. Neutrals: Cool grays (#4B5563 to #F3F4F6) and whites for clean, modern readability. Subtle gradients (blue to gray) on hero sections to give that \"propulsion\" motion without overdoing it.\nOverall Style\nModern minimalist with a touch of industrial edge—clean lines, plenty of white space, sans-serif fonts (something like Inter or Roboto for body, maybe a bolder one like Montserrat for headings).\nMobile-first (everything stacks nice on phones—most contractors check this stuff on job sites).\nFast-loading, no heavy animations—just subtle micro-interactions like a rocket trail on scroll or button hover glow.\nHero images: Mix of abstract rocket trails merging into blueprints/tools, or real-world shots of a contractor on-site looking relieved (AI-generated or stock to start).\nHomepage / Landing Page Layout (the money-maker)\nHero Section (full-width, punchy)\n   * Big headline: \"Task Rocket: Your AI Boost\"\n   * Sub: \"Tasks Done, Time Saved – AI handles proposals, takeoffs, social posts, market analysis, branding & more so you win more jobs.\"\n   * Rocket icon launching upward with a subtle trail.\n   * Two big CTAs: \"Get Started – $500/mo Core\" and \"See Pricing\" (or \"Sign Up Free Trial\" if you add one).\n   * Trust badges below: \"Powered by Leading AI Tools\" + \"Secure Client Portal\" + \"North Carolina Built\".\nHow It Works / Services Section\n   * 3-4 cards or timeline steps: \"Submit Task → AI + Human Review → Delivered in 48-72 hrs\".\n   * Icons for each service: blueprint for takeoffs, document for proposals, social icons, chart for market analysis, logo shapes for branding.\n   * Short copy: \"No coding, no hassle—just results that help you bid smarter and market stronger.\"\nPricing Tiers (clear comparison table)\n   * Side-by-side: Core ($500/mo – 10 tasks) vs Growth ($900/mo – 20 tasks).\n   * Checkmarks for features: Unlimited revisions (reasonable), priority turnaround on Growth, overages $75/task on Core.\n   * \"Use it or lose it\" note small but visible.\n   * Big \"Sign Up\" buttons that lead to the portal signup flow.\nWhy Task Rocket / Benefits\n   * Icons + short bullets: \"Save 10-20 hours/month\", \"Land more bids with polished proposals\", \"Consistent social without the grind\", \"Your data stays secure\".\n   * Placeholder testimonials: \"Helped me win a $40k remodel job with killer AI proposal – NC contractor.\"\nClient Portal Teaser\n   * Screenshot/mockup of dashboard: Login area with \"Welcome back, Alan's Remodeling\" → Task submission form button → Recent deliveries list → Subscription status.\n   * Copy: \"Secure portal – submit tasks, upload files, download finished work anytime.\"\nFooter\n   * Quick links, contact (Wilson, NC address), privacy/terms, socials.\n   * Tagline repeat + small rocket.\nClient Portal (Logged-In Area)\nClean dashboard UI: Sidebar navigation (Dashboard, Submit Task, My Tasks, Billing, Profile).\nMain view: Cards for active/pending tasks (status badges: Pending, In Progress, Ready), recent uploads/downloads section.\nSubmit Task page: Simple form – dropdown for task type (takeoff, proposal, social batch, etc.), description box, file upload (plans/PDFs/images), submit button.\nDeliverables: Secure download links, preview thumbnails, revision request button.\nLooks like modern SaaS portals—cards, tables, progress bars, blue/gray tones with orange accents for actions. Mobile-friendly so guys can check on the job.",
+  "status": "READY",
+  "revision": "10",
+  "createdDate": "2026-01-17T06:04:06.471Z",
+  "updatedDate": "2026-01-17T06:04:37.338Z",
+  "attachments": {
+    "contentImagesUrls": [],
+    "inspirationImagesUrls": []
+  },
+  "selectedBrandingPresetId": "00000000-ad59-446b-8a27-76562783a547",
+  "plan": "\n\n```json\n{\n  \"sections\": [\n    {\n      \"id\": \"overview\",\n      \"title\": \"## Overview\",\n      \"content\": \"A professional website for Task Rocket, an AI-powered service helping contractors with proposals, takeoffs, social media, and branding. The site showcases services, pricing tiers, and includes a secure client portal for task management.\"\n    },\n    {\n      \"id\": \"key-features\",\n      \"title\": \"## Key features\",\n      \"content\": \"- **View Service Information**: Browse available AI-powered services including proposals, takeoffs, social media management, market analysis, and branding.\\n- **View Pricing Tiers**: Compare Core ($500/mo) and Growth ($900/mo) subscription plans with detailed feature breakdowns.\\n- **View Benefits & Testimonials**: Read about time savings, business impact, and client success stories.\\n- **Submit Contact Inquiry**: Send questions or requests through a contact form.\\n- **Client Login Access**: Secure portal entry point for existing clients to manage their accounts.\\n- **View Task Dashboard**: See active, pending, and completed tasks with status tracking.\\n- **Submit New Task**: Create task requests with type selection, descriptions, and file uploads.\\n- **Download Deliverables**: Access and download completed work with revision request options.\\n- **Manage Subscription**: View billing status and subscription details.\",\n      \"metadata\": [\n        { \"id\": \"view-service-information\", \"name\": \"View Service Information\" },\n        { \"id\": \"view-pricing-tiers\", \"name\": \"View Pricing Tiers\" },\n        { \"id\": \"view-benefits-testimonials\", \"name\": \"View Benefits & Testimonials\" },\n        { \"id\": \"submit-contact-inquiry\", \"name\": \"Submit Contact Inquiry\" },\n        { \"id\": \"client-login-access\", \"name\": \"Client Login Access\" },\n        { \"id\": \"view-task-dashboard\", \"name\": \"View Task Dashboard\" },\n        { \"id\": \"submit-new-task\", \"name\": \"Submit New Task\" },\n        { \"id\": \"download-deliverables\", \"name\": \"Download Deliverables\" },\n        { \"id\": \"manage-subscription\", \"name\": \"Manage Subscription\" }\n      ]\n    },\n    {\n      \"id\": \"structure\",\n      \"title\": \"## Structure\",\n      \"content\": \"- **Header (Reusable)**: Site logo, navigation menu with links to Services, Pricing, Portal Login, and Contact.\\n- **Footer (Reusable)**: Quick links, Wilson NC address, privacy/terms links, social media icons, and tagline.\\n- **Homepage**: Hero section with headline, CTAs, trust badges; How It Works section with service cards; Pricing comparison table; Benefits section with testimonials; Portal teaser with dashboard preview.\\n- **Services Page**: Detailed breakdown of each AI service offering with icons and descriptions.\\n- **Pricing Page**: Expanded pricing tier comparison with feature details and signup CTAs.\\n- **Contact Page**: Contact form for inquiries and business information.\\n- **Client Portal Dashboard**: Secure logged-in area showing task overview, recent activity, and quick actions.\\n- **Submit Task Page**: Form interface for creating new task requests with file upload capability.\\n- **My Tasks Page**: List view of all client tasks with status filters and deliverable downloads.\\n- **Billing Page**: Subscription status, payment history, and plan management.\"\n    }\n  ],\n  \"apps\": [\n    {\n      \"id\": \"wix-cms\",\n      \"keyFeatures\": [\n        { \"id\": \"view-service-information\", \"name\": \"View Service Information\" },\n        { \"id\": \"view-pricing-tiers\", \"name\": \"View Pricing Tiers\" },\n        { \"id\": \"view-benefits-testimonials\", \"name\": \"View Benefits & Testimonials\" },\n        { \"id\": \"submit-contact-inquiry\", \"name\": \"Submit Contact Inquiry\" },\n        { \"id\": \"client-login-access\", \"name\": \"Client Login Access\" },\n        { \"id\": \"view-task-dashboard\", \"name\": \"View Task Dashboard\" },\n        { \"id\": \"submit-new-task\", \"name\": \"Submit New Task\" },\n        { \"id\": \"download-deliverables\", \"name\": \"Download Deliverables\" },\n        { \"id\": \"manage-subscription\", \"name\": \"Manage Subscription\" }\n      ]\n    }\n  ],\n  \"version\": \"4.0.0\"\n}\n```",
+  "designerData": {
+    "designerId": "59076a1d-61da-4711-8035-592d26c5d5fe",
+    "designerName": "Linus",
+    "selectionMethod": "UNSELECTED"
+  }
+}
