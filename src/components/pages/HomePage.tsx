@@ -104,7 +104,7 @@ export default function HomePage() {
       {/* --------------------------------------------------------------------------
           HERO SECTION: THE LAUNCHPAD
           -------------------------------------------------------------------------- */}
-      <section ref={heroRef} className="relative w-full min-h-[100vh] flex items-center justify-center overflow-hidden text-white bg-gradient-to-br from-deep-navy via-blue-gray-gradient-start to-blue-gray-gradient-end">
+      <section ref={heroRef} className="relative w-full min-h-[100vh] flex items-center justify-center overflow-hidden text-white from-deep-navy via-blue-gray-gradient-start to-blue-gray-gradient-end bg-primary">
         
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -237,14 +237,12 @@ export default function HomePage() {
              >
                 <div className="relative w-full h-full max-h-[600px] flex items-center justify-center">
                    {/* Task Rocket Logo */}
-                   <div className="relative w-80 h-80 md:w-[500px] md:h-[500px]">
-                      <div className="absolute inset-0 bg-rocket-orange/20 blur-3xl rounded-full" />
-                      <Image 
-                        src="https://static.wixstatic.com/media/18d7f4_dff2299c625a489aa1eb4de84420491c~mv2.png" 
-                        alt="Task Rocket Logo"
-                        width={500}
-                        className="w-full h-full object-contain drop-shadow-[0_0_50px_rgba(249,115,22,0.5)]"
-                      />
+                   <div className="relative w-80 h-80 md:w-[500px] md:h-[500px] border-0 border-solid border-[#1e3a8aff]">
+                     <Image 
+                       src="https://static.wixstatic.com/media/18d7f4_c44b879576eb43ddb0dcdf4b9f69f99b~mv2.jpg" 
+                       alt="Task Rocket Logo" 
+                       className="w-full h-full object-contain"
+                     />
                    </div>
                 </div>
              </motion.div>
