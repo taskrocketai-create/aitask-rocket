@@ -311,191 +311,85 @@ export default function HomePage() {
       {/* --------------------------------------------------------------------------
           PRICING: MISSION COSTS (Industrial Cards)
           -------------------------------------------------------------------------- */}
-      <section className="w-full py-32 bg-white relative overflow-hidden">
-        {/* Background Texture */}
-        <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'radial-gradient(#1E3A8A 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
-
-        <div className="max-w-[120rem] mx-auto px-6 md:px-12 relative z-10">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
-            <div>
-              <h2 className="font-heading text-4xl md:text-6xl font-bold text-deep-navy mb-4">
-                Mission Costs
-              </h2>
-              <p className="font-paragraph text-xl text-cool-gray700 max-w-xl">
-                Simple, transparent pricing. Choose the plan that fits your trajectory.
-              </p>
-            </div>
-            <div className="hidden md:block">
-               <div className="flex items-center gap-2 text-rocket-orange font-mono text-sm">
-                  <div className="w-2 h-2 bg-rocket-orange rounded-full animate-pulse" />
-                  LIVE PRICING DATA
-               </div>
-            </div>
+      <section className="w-full py-32 bg-cool-gray100">
+        <div className="max-w-[120rem] mx-auto px-6 md:px-12">
+          <div className="mb-16 max-w-3xl">
+            <h2 className="font-heading text-4xl md:text-5xl font-bold text-deep-navy mb-4">
+              Pricing
+            </h2>
+            <p className="font-paragraph text-lg text-cool-gray700">
+              Simple, transparent pricing.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {isLoading ? (
-               <div className="col-span-2 h-96 bg-cool-gray100 animate-pulse rounded-lg" />
-            ) : pricingTiers.length > 0 ? (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl">
+            {isLoading ? null : pricingTiers.length > 0 ? (
               pricingTiers.map((tier, index) => (
                 <PricingCard key={tier._id} tier={tier} index={index} />
               ))
-            ) : (
-              <div className="col-span-2 text-center py-12 text-cool-gray700">Pricing data unavailable.</div>
-            )}
-          </div>
-          
-          <div className="mt-12 text-center">
-             <p className="font-mono text-sm text-cool-gray700 bg-cool-gray100 inline-block px-4 py-2 rounded">
-                * NOTE: Use it or lose it - tasks don't roll over to the next month
-             </p>
+            ) : null}
           </div>
         </div>
       </section>
       {/* --------------------------------------------------------------------------
           BENEFITS: THE PAYLOAD (Grid Reveal)
           -------------------------------------------------------------------------- */}
-      <section className="w-full py-32 bg-deep-navy text-white relative">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-rocket-orange to-transparent opacity-50" />
-        
+      <section className="w-full py-32 bg-white border-t border-cool-gray200">
         <div className="max-w-[120rem] mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-            <div className="lg:col-span-4 sticky top-32 self-start">
-              <h2 className="font-heading text-4xl md:text-6xl font-bold mb-6 leading-tight">
-                Why Launch <br /> With Us?
-              </h2>
-              <p className="font-paragraph text-xl text-cool-gray300 mb-8">
-                Accelerate your business with AI-powered efficiency. We handle the grind so you can focus on the build.
-              </p>
-              <Button asChild variant="outline" className="border-white text-white hover:bg-white hover:text-deep-navy">
-                <Link to="/pricing">Start Your Mission</Link>
-              </Button>
-            </div>
+          <div className="mb-16 max-w-3xl">
+            <h2 className="font-heading text-4xl md:text-5xl font-bold text-deep-navy mb-4">
+              Why Choose Us
+            </h2>
+            <p className="font-paragraph text-lg text-cool-gray700">
+              AI-powered efficiency for your business.
+            </p>
+          </div>
 
-            <div className="lg:col-span-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {isLoading ? (
-                   [1,2,3,4].map(i => <div key={i} className="h-64 bg-white/5 animate-pulse rounded-lg" />)
-                ) : benefits.length > 0 ? (
-                  benefits.map((benefit, index) => (
-                    <BenefitCard key={benefit._id} benefit={benefit} index={index} />
-                  ))
-                ) : (
-                  <div className="col-span-2 text-center py-12 text-cool-gray300">Benefits data unavailable.</div>
-                )}
-              </div>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {isLoading ? null : benefits.length > 0 ? (
+              benefits.map((benefit, index) => (
+                <BenefitCard key={benefit._id} benefit={benefit} index={index} />
+              ))
+            ) : null}
           </div>
         </div>
       </section>
       {/* --------------------------------------------------------------------------
           PORTAL TEASER: THE COCKPIT (3D Perspective)
           -------------------------------------------------------------------------- */}
-      <section className="w-full py-32 bg-cool-gray100 overflow-hidden">
+      <section className="w-full py-32 bg-cool-gray100">
         <div className="max-w-[120rem] mx-auto px-6 md:px-12">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
-            <div className="lg:w-1/2 z-10">
-              <h2 className="font-heading text-4xl md:text-6xl font-bold text-deep-navy mb-6">
-                Command Center
-              </h2>
-              <p className="font-paragraph text-xl text-cool-gray700 mb-8">
-                Secure Client Portal. Submit tasks, upload files, download finished work anytime. Your data stays secure.
-              </p>
-              
-              <ul className="space-y-4 mb-10">
-                {[
-                  "Easy task submission with file uploads",
-                  "Real-time status tracking",
-                  "Instant deliverable downloads",
-                  "Subscription management"
-                ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3">
-                    <div className="w-6 h-6 rounded-full bg-rocket-orange/10 flex items-center justify-center">
-                      <CheckCircle className="w-4 h-4 text-rocket-orange" />
-                    </div>
-                    <span className="text-cool-gray900 font-medium">{item}</span>
-                  </li>
-                ))}
-              </ul>
+          <div className="max-w-3xl">
+            <h2 className="font-heading text-4xl md:text-5xl font-bold text-deep-navy mb-4">
+              Client Portal
+            </h2>
+            <p className="font-paragraph text-lg text-cool-gray700 mb-8">
+              Submit tasks, track progress, download deliverables.
+            </p>
+            
+            <ul className="space-y-3 mb-10">
+              {[
+                "Easy task submission",
+                "Real-time tracking",
+                "Instant downloads",
+                "Subscription management"
+              ].map((item, i) => (
+                <li key={i} className="flex items-center gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full bg-rocket-orange" />
+                  <span className="text-cool-gray900">{item}</span>
+                </li>
+              ))}
+            </ul>
 
-              <Button
-                asChild
-                size="lg"
-                className="bg-deep-navy hover:bg-deep-navy/90 text-white font-heading text-lg px-10 py-6 h-auto shadow-xl"
-              >
-                <Link to="/portal">
-                  Access Portal <ArrowRight className="ml-2 w-5 h-5" />
-                </Link>
-              </Button>
-            </div>
-
-            <div className="lg:w-1/2 relative perspective-1000">
-              {/* Abstract Dashboard UI Representation */}
-              <motion.div 
-                initial={{ rotateY: -15, rotateX: 5, opacity: 0 }}
-                whileInView={{ rotateY: 0, rotateX: 0, opacity: 1 }}
-                transition={{ duration: 1, type: "spring" }}
-                className="relative bg-white rounded-xl shadow-2xl border border-cool-gray300 overflow-hidden"
-              >
-                {/* Fake Browser Header */}
-                <div className="bg-cool-gray900 px-4 py-3 flex items-center gap-2">
-                  <div className="flex gap-1.5">
-                    <div className="w-3 h-3 rounded-full bg-red-500" />
-                    <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                    <div className="w-3 h-3 rounded-full bg-green-500" />
-                  </div>
-                  <div className="ml-4 bg-cool-gray700 rounded px-3 py-1 text-xs text-cool-gray300 font-mono flex-1 text-center">
-                    portal.taskrocket.ai/dashboard
-                  </div>
-                </div>
-
-                {/* Dashboard Content */}
-                <div className="p-6 bg-cool-gray100 min-h-[400px]">
-                  <div className="flex justify-between items-center mb-8">
-                    <div>
-                      <h3 className="text-xl font-bold text-deep-navy">Welcome, Alan's Remodeling</h3>
-                      <p className="text-sm text-cool-gray700">Plan: Growth Tier</p>
-                    </div>
-                    <div className="bg-white px-4 py-2 rounded shadow-sm border border-cool-gray200">
-                      <span className="text-sm font-bold text-rocket-orange">8 Tasks Remaining</span>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-3 gap-4 mb-8">
-                    {[
-                      { label: "Active Tasks", val: "3", color: "text-blue-600" },
-                      { label: "Completed", val: "12", color: "text-green-600" },
-                      { label: "Pending Review", val: "1", color: "text-orange-600" }
-                    ].map((stat, i) => (
-                      <div key={i} className="bg-white p-4 rounded-lg shadow-sm border border-cool-gray200">
-                        <p className="text-xs text-cool-gray500 uppercase tracking-wider">{stat.label}</p>
-                        <p className={`text-2xl font-bold ${stat.color}`}>{stat.val}</p>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="space-y-3">
-                    <p className="text-sm font-bold text-cool-gray700 mb-2">Recent Activity</p>
-                    {[
-                      { title: "Proposal - Kitchen Remodel", status: "In Progress", color: "bg-blue-500" },
-                      { title: "Social Media Batch #4", status: "Ready for Review", color: "bg-green-500" },
-                      { title: "Takeoff - Commercial Build", status: "Pending", color: "bg-gray-400" }
-                    ].map((task, i) => (
-                      <div key={i} className="bg-white p-4 rounded-lg shadow-sm border border-cool-gray200 flex justify-between items-center">
-                        <div className="flex items-center gap-3">
-                          <div className={`w-2 h-2 rounded-full ${task.color}`} />
-                          <span className="font-medium text-deep-navy text-sm">{task.title}</span>
-                        </div>
-                        <span className="text-xs bg-cool-gray100 px-2 py-1 rounded text-cool-gray700">{task.status}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-              
-              {/* Decorative Elements behind */}
-              <div className="absolute -z-10 top-10 -right-10 w-full h-full bg-rocket-orange/10 rounded-xl transform rotate-3" />
-            </div>
+            <Button
+              asChild
+              size="lg"
+              className="bg-rocket-orange hover:bg-rocket-orange/90 text-white font-heading text-base px-8 py-6 h-auto"
+            >
+              <Link to="/portal">
+                Access Portal
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -505,12 +399,12 @@ export default function HomePage() {
       {testimonials.length > 0 && (
         <section className="w-full py-32 bg-white border-t border-cool-gray200">
           <div className="max-w-[120rem] mx-auto px-6 md:px-12">
-            <div className="text-center mb-16">
-              <h2 className="font-heading text-4xl md:text-6xl font-bold text-deep-navy mb-4">
-                Flight Logs
+            <div className="mb-16 max-w-3xl">
+              <h2 className="font-heading text-4xl md:text-5xl font-bold text-deep-navy mb-4">
+                Testimonials
               </h2>
-              <p className="font-paragraph text-xl text-cool-gray700">
-                What our partners are saying about their mission success.
+              <p className="font-paragraph text-lg text-cool-gray700">
+                What our clients say.
               </p>
             </div>
 
@@ -523,43 +417,39 @@ export default function HomePage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <Card className="h-full p-8 bg-cool-gray100 border-none rounded-none relative group hover:bg-deep-navy hover:text-white transition-colors duration-300">
-                    <div className="absolute top-0 left-0 w-full h-1 bg-rocket-orange transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-                    
+                  <Card className="h-full p-8 bg-white border border-cool-gray200">
                     <div className="flex items-center gap-4 mb-6">
                       {testimonial.clientImage ? (
                         <Image
                           src={testimonial.clientImage}
                           alt={testimonial.clientName || 'Client'}
                           width={60}
-                          className="w-14 h-14 rounded-full object-cover border-2 border-white"
+                          className="w-14 h-14 rounded-full object-cover"
                         />
                       ) : (
-                        <div className="w-14 h-14 rounded-full bg-cool-gray300 flex items-center justify-center text-xl font-bold text-cool-gray700">
+                        <div className="w-14 h-14 rounded-full bg-cool-gray200 flex items-center justify-center text-xl font-bold text-cool-gray700">
                           {testimonial.clientName?.charAt(0)}
                         </div>
                       )}
                       <div>
-                        <h4 className="font-heading text-lg font-bold group-hover:text-white text-deep-navy">
+                        <h4 className="font-heading text-base font-bold text-deep-navy">
                           {testimonial.clientName}
                         </h4>
-                        <p className="font-paragraph text-sm text-cool-gray500 group-hover:text-cool-gray300">
+                        <p className="font-paragraph text-sm text-cool-gray500">
                           {testimonial.clientCompanyRole}
                         </p>
                       </div>
                     </div>
                     
-                    <div className="mb-4">
-                      {testimonial.rating && (
-                        <div className="flex gap-1">
-                          {Array.from({ length: 5 }).map((_, i) => (
-                            <span key={i} className={`text-sm ${i < testimonial.rating! ? 'text-rocket-orange' : 'text-cool-gray300'}`}>★</span>
-                          ))}
-                        </div>
-                      )}
-                    </div>
+                    {testimonial.rating && (
+                      <div className="flex gap-1 mb-4">
+                        {Array.from({ length: 5 }).map((_, i) => (
+                          <span key={i} className={`text-sm ${i < testimonial.rating! ? 'text-rocket-orange' : 'text-cool-gray300'}`}>★</span>
+                        ))}
+                      </div>
+                    )}
 
-                    <p className="font-paragraph text-base italic leading-relaxed opacity-90">
+                    <p className="font-paragraph text-base text-cool-gray700 leading-relaxed">
                       "{testimonial.quote}"
                     </p>
                   </Card>
@@ -583,113 +473,76 @@ function StepCard({ step, index }: { step: HowItWorks; index: number }) {
   const isInView = useInView(ref, { margin: "-20% 0px -20% 0px", once: true });
 
   return (
-    <div ref={ref} className={`flex flex-col md:flex-row items-center gap-12 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
-      {/* Text Side */}
+    <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
       <motion.div 
-        className="flex-1 text-center md:text-left"
-        initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-        animate={isInView ? { opacity: 1, x: 0 } : {}}
-        transition={{ duration: 0.8 }}
+        className="space-y-4"
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6 }}
       >
-        <div className="inline-block mb-4">
-          <span className="font-mono text-6xl font-bold text-cool-gray300/50 block leading-none">0{index + 1}</span>
-        </div>
-        <h3 className="font-heading text-3xl font-bold text-deep-navy mb-4">{step.title}</h3>
-        <p className="font-paragraph text-lg text-cool-gray700 mb-6">{step.description}</p>
-        {step.ctaText && step.ctaUrl && (
-          <Button asChild variant="link" className="text-rocket-orange p-0 h-auto font-bold hover:no-underline group">
-            <Link to={step.ctaUrl} className="flex items-center gap-2">
-              {step.ctaText} <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </Button>
-        )}
+        <div className="text-rocket-orange font-mono text-sm">Step {index + 1}</div>
+        <h3 className="font-heading text-2xl font-bold text-deep-navy">{step.title}</h3>
+        <p className="font-paragraph text-base text-cool-gray700 leading-relaxed">{step.description}</p>
       </motion.div>
 
-      {/* Visual Side */}
-      <motion.div 
-        className="flex-1 relative"
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={isInView ? { opacity: 1, scale: 1 } : {}}
-        transition={{ duration: 0.8, delay: 0.2 }}
-      >
-        <div className="relative aspect-square max-w-md mx-auto bg-white rounded-2xl shadow-2xl p-8 border border-cool-gray200 flex items-center justify-center overflow-hidden group">
-          <div className="absolute inset-0 bg-gradient-to-br from-cool-gray100 to-white opacity-50" />
-          
-          {/* Decorative Grid inside card */}
-          <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: 'linear-gradient(#1E3A8A 1px, transparent 1px), linear-gradient(90deg, #1E3A8A 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
-
-          {step.stepImage ? (
-            <div className="relative z-10 w-full h-full flex items-center justify-center">
-               <Image
-                 src={step.stepImage}
-                 alt={step.title || 'Step'}
-                 width={400}
-                 className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500"
-               />
-            </div>
-          ) : (
-            <div className="relative z-10 w-32 h-32 bg-rocket-orange/10 rounded-full flex items-center justify-center">
-               <Layers className="w-16 h-16 text-rocket-orange" />
-            </div>
-          )}
-          
-          {/* Corner Accents */}
-          <div className="absolute top-4 left-4 w-2 h-2 border-t-2 border-l-2 border-deep-navy" />
-          <div className="absolute top-4 right-4 w-2 h-2 border-t-2 border-r-2 border-deep-navy" />
-          <div className="absolute bottom-4 left-4 w-2 h-2 border-b-2 border-l-2 border-deep-navy" />
-          <div className="absolute bottom-4 right-4 w-2 h-2 border-b-2 border-r-2 border-deep-navy" />
-        </div>
-      </motion.div>
+      {step.stepImage && (
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          <Image
+            src={step.stepImage}
+            alt={step.title || 'Step'}
+            width={400}
+            className="w-full h-auto"
+          />
+        </motion.div>
+      )}
     </div>
   );
 }
 
 function PricingCard({ tier, index }: { tier: PricingTiers; index: number }) {
-  const isFeatured = index === 1; // Assuming 2nd item is 'Growth' or featured
+  const isFeatured = index === 1;
   
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.2 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
       className="h-full"
     >
-      <div className={`relative h-full flex flex-col p-8 md:p-12 bg-white border transition-all duration-300 ${isFeatured ? 'border-rocket-orange shadow-2xl scale-105 z-10' : 'border-cool-gray300 hover:border-deep-navy/50'}`}>
+      <div className={`relative h-full flex flex-col p-8 bg-white border-2 ${isFeatured ? 'border-rocket-orange' : 'border-cool-gray200'}`}>
         {isFeatured && (
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-rocket-orange text-white px-4 py-1 text-sm font-bold uppercase tracking-wider rounded-full shadow-lg">
-            Most Popular
+          <div className="absolute top-0 left-8 -translate-y-1/2 bg-rocket-orange text-white px-3 py-1 text-xs font-bold uppercase">
+            Popular
           </div>
         )}
 
         <div className="mb-8">
-          <h3 className="font-heading text-2xl font-bold text-deep-navy mb-2">{tier.planName}</h3>
-          <div className="flex items-baseline gap-1">
-            <span className="text-5xl font-bold text-deep-navy">${tier.monthlyPrice}</span>
+          <h3 className="font-heading text-xl font-bold text-deep-navy mb-4">{tier.planName}</h3>
+          <div className="flex items-baseline gap-1 mb-4">
+            <span className="text-4xl font-bold text-deep-navy">${tier.monthlyPrice}</span>
             <span className="text-cool-gray500">/mo</span>
           </div>
-          <p className="mt-4 text-cool-gray700 leading-relaxed">{tier.description}</p>
+          <p className="text-cool-gray700 text-sm leading-relaxed">{tier.description}</p>
         </div>
 
-        <div className="flex-grow space-y-4 mb-10">
-          <div className="flex items-start gap-3">
-            <CheckCircle className="w-5 h-5 text-rocket-orange flex-shrink-0 mt-0.5" />
-            <span className="text-cool-gray700 font-medium">{tier.maxTasks} tasks per month</span>
+        <div className="flex-grow space-y-3 mb-8">
+          <div className="flex items-start gap-2">
+            <CheckCircle className="w-4 h-4 text-rocket-orange flex-shrink-0 mt-0.5" />
+            <span className="text-cool-gray700 text-sm">{tier.maxTasks} tasks/month</span>
           </div>
-          <div className="flex items-start gap-3">
-            <CheckCircle className="w-5 h-5 text-rocket-orange flex-shrink-0 mt-0.5" />
-            <span className="text-cool-gray700">{tier.unlimitedRevisions ? 'Unlimited revisions' : 'Standard revisions'}</span>
+          <div className="flex items-start gap-2">
+            <CheckCircle className="w-4 h-4 text-rocket-orange flex-shrink-0 mt-0.5" />
+            <span className="text-cool-gray700 text-sm">{tier.unlimitedRevisions ? 'Unlimited revisions' : 'Standard revisions'}</span>
           </div>
           {tier.priorityTurnaround && (
-            <div className="flex items-start gap-3">
-              <Zap className="w-5 h-5 text-rocket-orange flex-shrink-0 mt-0.5" />
-              <span className="text-cool-gray700">Priority turnaround</span>
-            </div>
-          )}
-          {tier.overageCostPerTask && tier.overageCostPerTask > 0 && (
-            <div className="flex items-start gap-3 pt-4 border-t border-dashed border-cool-gray200">
-              <Clock className="w-5 h-5 text-cool-gray400 flex-shrink-0 mt-0.5" />
-              <span className="text-cool-gray500 text-sm">Overages: ${tier.overageCostPerTask}/task</span>
+            <div className="flex items-start gap-2">
+              <CheckCircle className="w-4 h-4 text-rocket-orange flex-shrink-0 mt-0.5" />
+              <span className="text-cool-gray700 text-sm">Priority turnaround</span>
             </div>
           )}
         </div>
@@ -697,7 +550,7 @@ function PricingCard({ tier, index }: { tier: PricingTiers; index: number }) {
         <Button
           asChild
           size="lg"
-          className={`w-full py-6 text-lg font-heading h-auto ${isFeatured ? 'bg-rocket-orange hover:bg-rocket-orange/90 text-white' : 'bg-deep-navy hover:bg-deep-navy/90 text-white'}`}
+          className={`w-full py-6 text-base font-heading h-auto ${isFeatured ? 'bg-rocket-orange hover:bg-rocket-orange/90 text-white' : 'bg-white hover:bg-cool-gray100 text-deep-navy border-2 border-deep-navy'}`}
         >
           <Link to={tier.ctaButtonLink || '/portal'}>
             {tier.ctaButtonText || 'Get Started'}
@@ -715,17 +568,15 @@ function BenefitCard({ benefit, index }: { benefit: Benefits; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group p-6 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors duration-300"
+      className="p-6 border border-cool-gray200 bg-white"
     >
-      <div className="mb-4 w-12 h-12 rounded-lg bg-rocket-orange/20 flex items-center justify-center text-rocket-orange group-hover:scale-110 transition-transform duration-300">
-        {benefit.visualAsset ? (
-           <Image src={benefit.visualAsset} alt="" width={32} className="w-8 h-8 object-contain" />
-        ) : (
-           <BarChart3 className="w-6 h-6" />
-        )}
-      </div>
-      <h3 className="font-heading text-xl font-bold text-white mb-2">{benefit.title}</h3>
-      <p className="font-paragraph text-cool-gray300 text-sm leading-relaxed">
+      {benefit.visualAsset && (
+        <div className="mb-4">
+          <Image src={benefit.visualAsset} alt="" width={40} className="w-10 h-10 object-contain" />
+        </div>
+      )}
+      <h3 className="font-heading text-lg font-bold text-deep-navy mb-2">{benefit.title}</h3>
+      <p className="font-paragraph text-cool-gray700 text-sm leading-relaxed">
         {benefit.description}
       </p>
     </motion.div>
