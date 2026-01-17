@@ -2,20 +2,10 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion';
 import { 
-  Rocket, 
-  FileText, 
-  Ruler, 
-  Share2, 
-  TrendingUp, 
-  Palette, 
-  CheckCircle, 
-  Clock, 
-  Shield, 
-  ArrowRight, 
-  ChevronRight, 
-  Zap, 
-  BarChart3, 
-  Layers,
+  CheckCircle,
+  Rocket,
+  Shield,
+  Zap,
   Terminal
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -91,20 +81,6 @@ export default function HomePage() {
   // --------------------------------------------------------------------------
   // 3. RENDER HELPERS & STYLES
   // --------------------------------------------------------------------------
-  
-  // Custom Grid Background
-  const GridBackground = () => (
-    <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-      <div 
-        className="absolute inset-0 opacity-[0.03]" 
-        style={{
-          backgroundImage: `linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)`,
-          backgroundSize: '4rem 4rem'
-        }} 
-      />
-      <div className="absolute inset-0 bg-gradient-to-b from-deep-navy via-transparent to-deep-navy opacity-80" />
-    </div>
-  );
 
   return (
     <div ref={containerRef} className="min-h-screen bg-cool-gray100 font-paragraph selection:bg-rocket-orange selection:text-white overflow-clip">
@@ -128,8 +104,7 @@ export default function HomePage() {
       {/* --------------------------------------------------------------------------
           HERO SECTION: THE LAUNCHPAD
           -------------------------------------------------------------------------- */}
-      <section ref={heroRef} className="relative w-full min-h-[100vh] flex items-center justify-center overflow-hidden text-white bg-color-16">
-        <GridBackground />
+      <section ref={heroRef} className="relative w-full min-h-[100vh] flex items-center justify-center overflow-hidden text-white bg-gradient-to-br from-deep-navy via-blue-gray-gradient-start to-blue-gray-gradient-end">
         
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
