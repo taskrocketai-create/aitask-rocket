@@ -107,6 +107,10 @@ export interface PricingTiers {
   _updatedDate?: Date;
   /** @wixFieldType text */
   planName?: string;
+  /** @wixFieldType boolean */
+  isMostPopular?: boolean;
+  /** @wixFieldType number */
+  pricePerTask?: number;
   /** @wixFieldType number */
   monthlyPrice?: number;
   /** @wixFieldType text */
