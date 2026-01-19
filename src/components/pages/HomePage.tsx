@@ -238,11 +238,11 @@ export default function HomePage() {
                 <div className="relative w-full h-full max-h-[600px] flex items-center justify-center">
                    {/* Task Rocket Logo */}
                    <div className="relative w-80 h-80 md:w-[500px] md:h-[500px] border-0 border-solid border-[#1e3a8aff]">
-                     <Image 
-                       src="https://static.wixstatic.com/media/18d7f4_c44b879576eb43ddb0dcdf4b9f69f99b~mv2.jpg" 
-                       alt="Task Rocket Logo" 
+                     <Image
+                       src="https://static.wixstatic.com/media/18d7f4_2d8fb811e3594060ac39e9c0f56deb6d~mv2.jpg"
                        className="w-full h-full object-contain"
-                     />
+                       originWidth={1024}
+                       originHeight={1024} />
                    </div>
                 </div>
              </motion.div>
