@@ -67,7 +67,7 @@ export default function PricingPage() {
         <div className="max-w-[100rem] mx-auto px-8">
           <div className="min-h-[600px]">
             {isLoading ? null : pricingTiers.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto items-stretch">
                 {pricingTiers.map((tier, index) => {
                   const isPayPerTask = tier.pricePerTask && tier.pricePerTask > 0;
                   const isMostPopular = tier.isMostPopular;
