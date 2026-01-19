@@ -21,7 +21,14 @@ export default function PricingPage() {
     setIsLoading(true);
     try {
       const { items } = await BaseCrudService.getAll<PricingTiers>('pricingtiers');
-      setPricingTiers(items.sort((a, b) => (a.monthlyPrice || 0) - (b.monthlyPrice || 0)));
+      // Sort: Basic (pay-per-task) first, then by monthly price
+      setPricingTiers(items.sort((a, b) => {
+        // If one has pricePerTask and the other doesn't, pricePerTask comes first
+        if (a.pricePerTask && !b.pricePerTask) return -1;
+        if (!a.pricePerTask && b.pricePerTask) return 1;
+        // Otherwise sort by monthly price
+        return (a.monthlyPrice || 0) - (b.monthlyPrice || 0);
+      }));
     } catch (error) {
       console.error('Error loading pricing:', error);
     } finally {
@@ -60,110 +67,128 @@ export default function PricingPage() {
         <div className="max-w-[100rem] mx-auto px-8">
           <div className="min-h-[600px]">
             {isLoading ? null : pricingTiers.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                {pricingTiers.map((tier, index) => (
-                  <motion.div
-                    key={tier._id}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: index * 0.2 }}
-                  >
-                    <Card
-                      className={`p-10 h-full ${
-                        index === 1
-                          ? 'border-2 border-rocket-orange shadow-2xl relative'
-                          : 'border border-cool-gray300'
-                      } bg-white`}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                {pricingTiers.map((tier, index) => {
+                  const isPayPerTask = tier.pricePerTask && tier.pricePerTask > 0;
+                  const isMostPopular = tier.isMostPopular;
+                  
+                  return (
+                    <motion.div
+                      key={tier._id}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: index * 0.2 }}
                     >
-                      {index === 1 && (
-                        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-rocket-orange text-white px-6 py-2 rounded-full font-heading text-sm font-bold">
-                          MOST POPULAR
-                        </div>
-                      )}
-                      <div className="flex flex-col h-full">
-                        <div className="flex items-center gap-3 mb-4">
-                          <Zap className="w-8 h-8 text-rocket-orange" />
-                          <h3 className="font-heading text-3xl font-bold text-deep-navy">
-                            {tier.planName}
-                          </h3>
-                        </div>
-                        <div className="mb-6">
-                          <span className="font-heading text-6xl font-bold text-deep-navy">
-                            ${tier.monthlyPrice}
-                          </span>
-                          <span className="font-paragraph text-xl text-cool-gray700">/month</span>
-                        </div>
-                        <p className="font-paragraph text-lg text-cool-gray700 mb-8">
-                          {tier.description}
-                        </p>
-                        <div className="space-y-4 mb-8 flex-grow">
-                          <div className="flex items-start gap-3">
-                            <CheckCircle className="w-6 h-6 text-rocket-orange flex-shrink-0 mt-1" />
-                            <span className="font-paragraph text-base text-cool-gray700">
-                              <strong>{tier.maxTasks} tasks per month</strong> – Use them for any service
-                            </span>
+                      <Card
+                        className={`p-10 h-full ${
+                          isMostPopular
+                            ? 'border-2 border-rocket-orange shadow-2xl relative'
+                            : 'border border-cool-gray300'
+                        } bg-white`}
+                      >
+                        {isMostPopular && (
+                          <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-rocket-orange text-white px-6 py-2 rounded-full font-heading text-sm font-bold">
+                            MOST POPULAR
                           </div>
-                          <div className="flex items-start gap-3">
-                            <CheckCircle className="w-6 h-6 text-rocket-orange flex-shrink-0 mt-1" />
-                            <span className="font-paragraph text-base text-cool-gray700">
-                              {tier.unlimitedRevisions
-                                ? 'Unlimited revisions (reasonable)'
-                                : 'Standard revisions included'}
-                            </span>
+                        )}
+                        <div className="flex flex-col h-full">
+                          <div className="flex items-center gap-3 mb-4">
+                            <Zap className="w-8 h-8 text-rocket-orange" />
+                            <h3 className="font-heading text-3xl font-bold text-deep-navy">
+                              {tier.planName}
+                            </h3>
                           </div>
-                          <div className="flex items-start gap-3">
-                            <CheckCircle className="w-6 h-6 text-rocket-orange flex-shrink-0 mt-1" />
-                            <span className="font-paragraph text-base text-cool-gray700">
-                              48-72 hour turnaround
-                            </span>
+                          <div className="mb-6">
+                            {isPayPerTask ? (
+                              <>
+                                <span className="font-heading text-6xl font-bold text-deep-navy">
+                                  ${tier.pricePerTask}
+                                </span>
+                                <span className="font-paragraph text-xl text-cool-gray700">/task</span>
+                              </>
+                            ) : (
+                              <>
+                                <span className="font-heading text-6xl font-bold text-deep-navy">
+                                  ${tier.monthlyPrice}
+                                </span>
+                                <span className="font-paragraph text-xl text-cool-gray700">/month</span>
+                              </>
+                            )}
                           </div>
-                          {tier.priorityTurnaround && (
+                          <p className="font-paragraph text-lg text-cool-gray700 mb-8">
+                            {tier.description}
+                          </p>
+                          <div className="space-y-4 mb-8 flex-grow">
+                            {!isPayPerTask && tier.maxTasks && (
+                              <div className="flex items-start gap-3">
+                                <CheckCircle className="w-6 h-6 text-rocket-orange flex-shrink-0 mt-1" />
+                                <span className="font-paragraph text-base text-cool-gray700">
+                                  <strong>{tier.maxTasks} tasks per month</strong> – Use them for any service
+                                </span>
+                              </div>
+                            )}
+                            {isPayPerTask && (
+                              <div className="flex items-start gap-3">
+                                <CheckCircle className="w-6 h-6 text-rocket-orange flex-shrink-0 mt-1" />
+                                <span className="font-paragraph text-base text-cool-gray700">
+                                  <strong>Pay only for what you need</strong> – No subscription required
+                                </span>
+                              </div>
+                            )}
                             <div className="flex items-start gap-3">
                               <CheckCircle className="w-6 h-6 text-rocket-orange flex-shrink-0 mt-1" />
                               <span className="font-paragraph text-base text-cool-gray700">
-                                <strong>Priority turnaround</strong> – Faster delivery
+                                {tier.unlimitedRevisions
+                                  ? 'Unlimited revisions (reasonable)'
+                                  : 'Standard revisions included'}
                               </span>
                             </div>
-                          )}
-                          <div className="flex items-start gap-3">
-                            <CheckCircle className="w-6 h-6 text-rocket-orange flex-shrink-0 mt-1" />
-                            <span className="font-paragraph text-base text-cool-gray700">
-                              Secure client portal access
-                            </span>
-                          </div>
-                          <div className="flex items-start gap-3">
-                            <CheckCircle className="w-6 h-6 text-rocket-orange flex-shrink-0 mt-1" />
-                            <span className="font-paragraph text-base text-cool-gray700">
-                              File upload & deliverable downloads
-                            </span>
-                          </div>
-                          {tier.overageCostPerTask && tier.overageCostPerTask > 0 && (
-                            <div className="flex items-start gap-3 pt-4 border-t border-cool-gray300">
-                              <Clock className="w-6 h-6 text-cool-gray700 flex-shrink-0 mt-1" />
+                            <div className="flex items-start gap-3">
+                              <CheckCircle className="w-6 h-6 text-rocket-orange flex-shrink-0 mt-1" />
                               <span className="font-paragraph text-base text-cool-gray700">
-                                Additional tasks: <strong>${tier.overageCostPerTask}/task</strong>
+                                {tier.priorityTurnaround ? 'Priority 24-48 hour turnaround' : '48-72 hour turnaround'}
                               </span>
                             </div>
-                          )}
+                            <div className="flex items-start gap-3">
+                              <CheckCircle className="w-6 h-6 text-rocket-orange flex-shrink-0 mt-1" />
+                              <span className="font-paragraph text-base text-cool-gray700">
+                                Secure client portal access
+                              </span>
+                            </div>
+                            <div className="flex items-start gap-3">
+                              <CheckCircle className="w-6 h-6 text-rocket-orange flex-shrink-0 mt-1" />
+                              <span className="font-paragraph text-base text-cool-gray700">
+                                File upload & deliverable downloads
+                              </span>
+                            </div>
+                            {!isPayPerTask && tier.overageCostPerTask && tier.overageCostPerTask > 0 && (
+                              <div className="flex items-start gap-3 pt-4 border-t border-cool-gray300">
+                                <Clock className="w-6 h-6 text-cool-gray700 flex-shrink-0 mt-1" />
+                                <span className="font-paragraph text-base text-cool-gray700">
+                                  Additional tasks: <strong>${tier.overageCostPerTask}/task</strong>
+                                </span>
+                              </div>
+                            )}
+                          </div>
+                          <Button
+                            asChild
+                            size="lg"
+                            className={`w-full font-heading text-lg py-7 h-auto ${
+                              isMostPopular
+                                ? 'bg-rocket-orange hover:bg-rocket-orange/90 text-white shadow-lg hover:shadow-rocket-orange/50'
+                                : 'bg-deep-navy hover:bg-deep-navy/90 text-white'
+                            }`}
+                          >
+                            <Link to={tier.ctaButtonLink || '/portal'}>
+                              {tier.ctaButtonText || 'Get Started'}
+                            </Link>
+                          </Button>
                         </div>
-                        <Button
-                          asChild
-                          size="lg"
-                          className={`w-full font-heading text-lg py-7 h-auto ${
-                            index === 1
-                              ? 'bg-rocket-orange hover:bg-rocket-orange/90 text-white shadow-lg hover:shadow-rocket-orange/50'
-                              : 'bg-deep-navy hover:bg-deep-navy/90 text-white'
-                          }`}
-                        >
-                          <Link to={tier.ctaButtonLink || '/portal'}>
-                            {tier.ctaButtonText || 'Get Started'}
-                          </Link>
-                        </Button>
-                      </div>
-                    </Card>
-                  </motion.div>
-                ))}
+                      </Card>
+                    </motion.div>
+                  );
+                })}
               </div>
             ) : (
               <div className="text-center py-16">
@@ -180,7 +205,7 @@ export default function PricingPage() {
             className="text-center mt-12"
           >
             <p className="font-paragraph text-sm text-cool-gray700 mb-2">
-              * Tasks don't roll over – use it or lose it each month
+              * Subscription tasks don't roll over – use it or lose it each month
             </p>
             <p className="font-paragraph text-sm text-cool-gray700">
               * All plans include secure portal access and unlimited reasonable revisions
