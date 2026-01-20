@@ -478,6 +478,9 @@ function StepCard({ step, index }: { step: HowItWorks; index: number }) {
 
 function PricingCard({ tier, index }: { tier: PricingTiers; index: number }) {
   const isFeatured = index === 1;
+  const isPayPerTask = tier.pricePerTask && tier.pricePerTask > 0;
+  const displayPrice = isPayPerTask ? tier.pricePerTask : tier.monthlyPrice;
+  const priceLabel = isPayPerTask ? '/task' : '/mo';
   
   return (
     <motion.div
@@ -497,17 +500,25 @@ function PricingCard({ tier, index }: { tier: PricingTiers; index: number }) {
         <div className="mb-8 text-center">
           <h3 className="font-heading text-3xl font-bold text-deep-navy mb-3 group-hover:text-rocket-orange transition-colors duration-300">{tier.planName}</h3>
           <div className="flex items-baseline justify-center gap-2 mb-4">
-            <span className="text-6xl font-bold text-deep-navy group-hover:text-rocket-orange transition-colors duration-300">${tier.monthlyPrice}</span>
-            <span className="text-cool-gray500 text-lg">/mo</span>
+            <span className="text-6xl font-bold text-deep-navy group-hover:text-rocket-orange transition-colors duration-300">${displayPrice}</span>
+            <span className="text-cool-gray500 text-lg">{priceLabel}</span>
           </div>
           <p className="font-paragraph text-base text-cool-gray700 leading-relaxed max-w-xs mx-auto">{tier.description}</p>
         </div>
 
         <div className="flex-grow space-y-4 mb-10 border-t border-b border-cool-gray200 py-6 px-4 -mx-4">
-          <div className="flex items-center gap-3">
-            <CheckCircle className="w-5 h-5 text-rocket-orange flex-shrink-0" />
-            <span className="font-paragraph text-base text-cool-gray700">{tier.maxTasks} tasks/month</span>
-          </div>
+          {!isPayPerTask && tier.maxTasks && (
+            <div className="flex items-center gap-3">
+              <CheckCircle className="w-5 h-5 text-rocket-orange flex-shrink-0" />
+              <span className="font-paragraph text-base text-cool-gray700">{tier.maxTasks} tasks/month</span>
+            </div>
+          )}
+          {isPayPerTask && (
+            <div className="flex items-center gap-3">
+              <CheckCircle className="w-5 h-5 text-rocket-orange flex-shrink-0" />
+              <span className="font-paragraph text-base text-cool-gray700">Pay only for what you need</span>
+            </div>
+          )}
           <div className="flex items-center gap-3">
             <CheckCircle className="w-5 h-5 text-rocket-orange flex-shrink-0" />
             <span className="font-paragraph text-base text-cool-gray700">{tier.unlimitedRevisions ? 'Unlimited revisions' : 'Standard revisions'}</span>
