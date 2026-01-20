@@ -226,7 +226,7 @@ export default function HomePage() {
             transition={{ duration: 1, delay: 0.4 }}
           >
              {/* Abstract Tech Circle */}
-             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-white/5 rounded-full animate-[spin_60s_linear_infinite] bg-primary" />
+             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-white/5 rounded-full animate-[spin_60s_linear_infinite]" />
              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-dashed border-white/10 rounded-full animate-[spin_40s_linear_infinite_reverse]" />
              
              {/* Floating Rocket Concept */}
@@ -235,12 +235,12 @@ export default function HomePage() {
                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                className="absolute inset-0 flex items-center justify-center"
              >
-                <div className="relative w-full h-full max-h-[600px] flex items-center justify-center opacity-[1] border-gray-200 border border-none rounded-[41px] bg-[#F97316FF] shadow-[inset_0px_0px_4px_0px_primary]">
+                <div className="relative w-full h-full max-h-[600px] flex items-center justify-center">
                    {/* Task Rocket Logo */}
                    <div className="relative w-80 h-80 md:w-[500px] md:h-[500px] border-0 border-solid border-[#1e3a8aff]">
                      <Image
-                       src="https://static.wixstatic.com/media/18d7f4_f31a9d32a2b74cb0847bfe3ec189ebe9~mv2.png"
-                       className="w-full h-full object-contain border-gray-200 border border-none opacity-[1] mix-blend-normal rounded-[30px] shadow-[inset_0px_0px_4px_0px_#617ac2]"
+                       src="https://static.wixstatic.com/media/18d7f4_2d8fb811e3594060ac39e9c0f56deb6d~mv2.jpg"
+                       className="w-full h-full object-contain"
                        originWidth={1024}
                        originHeight={1024} />
                    </div>
@@ -253,7 +253,7 @@ export default function HomePage() {
           HOW IT WORKS: THE ASSEMBLY LINE (Sticky Scroll)
           -------------------------------------------------------------------------- */}
       <section className="relative w-full bg-cool-gray100 py-32">
-        <div className="max-w-[120rem] mx-auto px-6 md:px-12 bg-background">
+        <div className="max-w-[120rem] mx-auto px-6 md:px-12">
           <div className="mb-24 text-center max-w-4xl mx-auto">
             <h2 className="font-heading text-4xl md:text-6xl font-bold text-deep-navy mb-6">
               Operational Blueprint
@@ -487,7 +487,49 @@ function PricingCard({ tier, index }: { tier: PricingTiers; index: number }) {
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className="h-full"
     >
+      <div className={`relative h-full flex flex-col p-8 bg-white border-2 ${isFeatured ? 'border-rocket-orange' : 'border-cool-gray200'}`}>
+        {isFeatured && (
+          <div className="absolute top-0 left-8 -translate-y-1/2 bg-rocket-orange text-white px-3 py-1 text-xs font-bold uppercase">
+            Popular
+          </div>
+        )}
 
+        <div className="mb-8">
+          <h3 className="font-heading text-xl font-bold text-deep-navy mb-4">{tier.planName}</h3>
+          <div className="flex items-baseline gap-1 mb-4">
+            <span className="text-4xl font-bold text-deep-navy">${tier.monthlyPrice}</span>
+            <span className="text-cool-gray500">/mo</span>
+          </div>
+          <p className="text-cool-gray700 text-sm leading-relaxed">{tier.description}</p>
+        </div>
+
+        <div className="flex-grow space-y-3 mb-8">
+          <div className="flex items-start gap-2">
+            <CheckCircle className="w-4 h-4 text-rocket-orange flex-shrink-0 mt-0.5" />
+            <span className="text-cool-gray700 text-sm">{tier.maxTasks} tasks/month</span>
+          </div>
+          <div className="flex items-start gap-2">
+            <CheckCircle className="w-4 h-4 text-rocket-orange flex-shrink-0 mt-0.5" />
+            <span className="text-cool-gray700 text-sm">{tier.unlimitedRevisions ? 'Unlimited revisions' : 'Standard revisions'}</span>
+          </div>
+          {tier.priorityTurnaround && (
+            <div className="flex items-start gap-2">
+              <CheckCircle className="w-4 h-4 text-rocket-orange flex-shrink-0 mt-0.5" />
+              <span className="text-cool-gray700 text-sm">Priority turnaround</span>
+            </div>
+          )}
+        </div>
+
+        <Button
+          asChild
+          size="lg"
+          className={`w-full py-6 text-base font-heading h-auto ${isFeatured ? 'bg-rocket-orange hover:bg-rocket-orange/90 text-white' : 'bg-white hover:bg-cool-gray100 text-deep-navy border-2 border-deep-navy'}`}
+        >
+          <Link to={tier.ctaButtonLink || '/portal'}>
+            {tier.ctaButtonText || 'Get Started'}
+          </Link>
+        </Button>
+      </div>
     </motion.div>
   );
 }
