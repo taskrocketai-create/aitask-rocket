@@ -226,7 +226,7 @@ export default function HomePage() {
             transition={{ duration: 1, delay: 0.4 }}
           >
              {/* Abstract Tech Circle */}
-             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-white/5 rounded-full animate-[spin_60s_linear_infinite]" />
+             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-white/5 rounded-full animate-[spin_60s_linear_infinite] bg-primary" />
              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-dashed border-white/10 rounded-full animate-[spin_40s_linear_infinite_reverse]" />
              
              {/* Floating Rocket Concept */}
@@ -235,12 +235,12 @@ export default function HomePage() {
                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                className="absolute inset-0 flex items-center justify-center"
              >
-                <div className="relative w-full h-full max-h-[600px] flex items-center justify-center shadow-[inset_0px_0px_4px_0px_#bfbfbf] opacity-[1] border-gray-200 border border-none rounded-[41px] bg-[#F97316FF]">
+                <div className="relative w-full h-full max-h-[600px] flex items-center justify-center opacity-[1] border-gray-200 border border-none rounded-[41px] bg-[#F97316FF] shadow-[inset_0px_0px_4px_0px_primary]">
                    {/* Task Rocket Logo */}
                    <div className="relative w-80 h-80 md:w-[500px] md:h-[500px] border-0 border-solid border-[#1e3a8aff]">
                      <Image
                        src="https://static.wixstatic.com/media/18d7f4_f31a9d32a2b74cb0847bfe3ec189ebe9~mv2.png"
-                       className="w-full h-full object-contain border-gray-200 border border-none opacity-[1] mix-blend-normal rounded-[30px] shadow-[inset_0px_0px_4px_0px_primary]"
+                       className="w-full h-full object-contain border-gray-200 border border-none opacity-[1] mix-blend-normal rounded-[30px] shadow-[inset_0px_0px_4px_0px_#617ac2]"
                        originWidth={1024}
                        originHeight={1024} />
                    </div>
@@ -487,50 +487,7 @@ function PricingCard({ tier, index }: { tier: PricingTiers; index: number }) {
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className="h-full"
     >
-      <div className={`relative h-full flex flex-col p-10 bg-white border-2 shadow-xl transition-all duration-300 ease-in-out hover:shadow-2xl ${isFeatured ? 'border-rocket-orange ring-4 ring-rocket-orange/50 scale-[1.02]' : 'border-cool-gray200'} rounded-2xl overflow-hidden group`}>
-        {isFeatured && (
-          <div className="absolute top-0 right-0 bg-rocket-orange text-white px-6 py-2 text-sm font-bold uppercase rounded-bl-xl z-10 transform translate-y-0 group-hover:-translate-y-1 transition-transform duration-300">
-            Popular
-          </div>
-        )}
 
-        <div className="mb-8 text-center">
-          <h3 className="font-heading text-3xl font-bold text-deep-navy mb-3 group-hover:text-rocket-orange transition-colors duration-300">{tier.planName}</h3>
-          <div className="flex items-baseline justify-center gap-2 mb-4">
-            <span className="text-6xl font-bold text-deep-navy group-hover:text-rocket-orange transition-colors duration-300">${tier.monthlyPrice}</span>
-            <span className="text-cool-gray500 text-lg">{"/per Month"}</span>
-          </div>
-          <p className="font-paragraph text-base text-cool-gray700 leading-relaxed max-w-xs mx-auto">{tier.description}</p>
-        </div>
-
-        <div className="flex-grow space-y-4 mb-10 border-t border-b border-cool-gray200 py-6 px-4 -mx-4">
-          <div className="flex items-center gap-3">
-            <CheckCircle className="w-5 h-5 text-rocket-orange flex-shrink-0" />
-            <span className="font-paragraph text-base text-cool-gray700">{tier.maxTasks} tasks/month</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <CheckCircle className="w-5 h-5 text-rocket-orange flex-shrink-0" />
-            <span className="font-paragraph text-base text-cool-gray700">{tier.unlimitedRevisions ? 'Unlimited revisions' : 'Standard revisions'}</span>
-          </div>
-          {tier.priorityTurnaround && (
-            <div className="flex items-center gap-3">
-              <CheckCircle className="w-5 h-5 text-rocket-orange flex-shrink-0" />
-              <span className="font-paragraph text-base text-cool-gray700">Priority turnaround</span>
-            </div>
-          )}
-        </div>
-
-        <Button
-          asChild
-          size="lg"
-          className={`w-full py-7 text-lg font-heading h-auto relative overflow-hidden transition-all duration-300 ease-in-out ${isFeatured ? 'bg-rocket-orange hover:bg-deep-navy text-white' : 'bg-white hover:bg-cool-gray100 text-deep-navy border-2 border-deep-navy hover:border-rocket-orange'}`}
-        >
-          <Link to={tier.ctaButtonLink || '/portal'}>
-            <span className="relative z-10">{tier.ctaButtonText || 'Get Started'}</span>
-            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-          </Link>
-        </Button>
-      </div>
     </motion.div>
   );
 }
