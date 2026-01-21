@@ -7,12 +7,15 @@ export default function Footer() {
       <div className="max-w-[100rem] mx-auto px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <Image 
-              src="https://static.wixstatic.com/media/18d7f4_d354b14c0c60408d82a5330e108d4583~mv2.jpg" 
-              alt="Task Rocket Logo" 
-              width={160}
-              className="h-10 w-auto mb-4"
-            />
+            <div className="flex items-center gap-3 mb-4">
+              <Image 
+                src="https://static.wixstatic.com/media/18d7f4_d354b14c0c60408d82a5330e108d4583~mv2.jpg" 
+                alt="Task Rocket Logo" 
+                width={160}
+                className="h-10 w-auto"
+              />
+              <span className="font-heading text-xl font-bold text-white">Task Rocket</span>
+            </div>
             <p className="font-paragraph text-sm text-cool-gray300">
               Send notes. Get finished paperwork and content back.
             </p>

@@ -20,13 +20,14 @@ export default function Header() {
       <div className="max-w-[100rem] mx-auto px-8 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
+          <Link to="/" className="flex items-center gap-3">
             <Image 
               src="https://static.wixstatic.com/media/18d7f4_d354b14c0c60408d82a5330e108d4583~mv2.jpg" 
               alt="Task Rocket Logo" 
               width={180}
               className="h-12 w-auto"
             />
+            <span className="font-heading text-2xl font-bold text-deep-navy">Task Rocket</span>
           </Link>
 
           {/* Desktop Navigation */}
