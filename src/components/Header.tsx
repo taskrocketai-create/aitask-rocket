@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import { Image } from '@/components/ui/image';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -19,8 +20,13 @@ export default function Header() {
       <div className="max-w-[100rem] mx-auto px-8 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="font-heading text-xl font-bold text-deep-navy">
-            Office Work, Done Faster
+          <Link to="/" className="flex items-center">
+            <Image 
+              src="https://static.wixstatic.com/media/18d7f4_d354b14c0c60408d82a5330e108d4583~mv2.jpg" 
+              alt="Task Rocket Logo" 
+              width={180}
+              className="h-12 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}
