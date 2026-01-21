@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { Image } from '@/components/ui/image';
 
 export default function Footer() {
   return (
@@ -7,15 +6,7 @@ export default function Footer() {
       <div className="max-w-[100rem] mx-auto px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <div className="flex items-center gap-3 mb-4">
-              <Image 
-                src="https://static.wixstatic.com/media/18d7f4_d354b14c0c60408d82a5330e108d4583~mv2.jpg" 
-                alt="Task Rocket Logo" 
-                width={160}
-                className="h-10 w-auto"
-              />
-              <span className="font-heading text-xl font-bold text-white">Task Rocket</span>
-            </div>
+            <h3 className="font-heading text-lg font-bold mb-4">Office Work, Done Faster</h3>
             <p className="font-paragraph text-sm text-cool-gray300">
               Send notes. Get finished paperwork and content back.
             </p>
@@ -60,7 +51,7 @@ export default function Footer() {
 
         <div className="border-t border-cool-gray700 mt-8 pt-8 text-center">
           <p className="font-paragraph text-sm text-cool-gray300">
-            © {new Date().getFullYear()} Task Rocket. All rights reserved.
+            © {new Date().getFullYear()} Office Work, Done Faster. All rights reserved.
           </p>
         </div>
       </div>

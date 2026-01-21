@@ -4,7 +4,6 @@ import { ArrowRight, CheckCircle } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
-import { Image } from '@/components/ui/image';
 
 export default function HomePage() {
   const industries = [
@@ -61,42 +60,26 @@ export default function HomePage() {
         {/* Hero Section */}
         <section className="w-full bg-gradient-to-br from-deep-navy to-primary py-24 md:py-32">
           <div className="max-w-[100rem] mx-auto px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-center lg:text-left"
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-center max-w-4xl mx-auto"
+            >
+              <h1 className="font-heading text-5xl md:text-7xl font-bold text-white mb-6">
+                Office Work, Done Faster
+              </h1>
+              <p className="font-paragraph text-xl md:text-2xl text-white/90 mb-8">
+                Send notes. Get finished paperwork and content back.
+              </p>
+              <Button
+                asChild
+                size="lg"
+                className="bg-secondary hover:bg-secondary/90 text-white text-lg px-8 py-6 h-auto"
               >
-                <h1 className="font-heading text-5xl md:text-7xl font-bold text-white mb-6">
-                  Office Work, Done Faster
-                </h1>
-                <p className="font-paragraph text-xl md:text-2xl text-white/90 mb-8">
-                  Send notes. Get finished paperwork and content back.
-                </p>
-                <Button
-                  asChild
-                  size="lg"
-                  className="bg-secondary hover:bg-secondary/90 text-white text-lg px-8 py-6 h-auto"
-                >
-                  <Link to="/pricing">Get Started</Link>
-                </Button>
-              </motion.div>
-              
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="flex justify-center lg:justify-end"
-              >
-                <Image 
-                  src="https://static.wixstatic.com/media/18d7f4_1218cbaee33546058e12caec11b31c0c~mv2.png" 
-                  alt="Task Rocket - Launch Your Productivity" 
-                  width={400}
-                  className="w-full max-w-md h-auto"
-                />
-              </motion.div>
-            </div>
+                <Link to="/pricing">Get Started</Link>
+              </Button>
+            </motion.div>
           </div>
         </section>
 
