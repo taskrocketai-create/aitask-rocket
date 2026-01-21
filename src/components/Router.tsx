@@ -1,17 +1,16 @@
 import { MemberProvider } from '@/integrations';
 import { createBrowserRouter, RouterProvider, Navigate, Outlet } from 'react-router-dom';
 import { ScrollToTop } from '@/lib/scroll-to-top';
-import { MemberProtectedRoute } from '@/components/ui/member-protected-route';
 import ErrorPage from '@/integrations/errorHandlers/ErrorPage';
 import HomePage from '@/components/pages/HomePage';
-import ServicesPage from '@/components/pages/ServicesPage';
 import PricingPage from '@/components/pages/PricingPage';
-import ContactPage from '@/components/pages/ContactPage';
-import PortalDashboard from '@/components/pages/PortalDashboard';
-import SubmitTaskPage from '@/components/pages/SubmitTaskPage';
-import MyTasksPage from '@/components/pages/MyTasksPage';
-import BillingPage from '@/components/pages/BillingPage';
-import ProfilePage from '@/components/pages/ProfilePage';
+import HelpPage from '@/components/pages/HelpPage';
+import WhatIsATaskPage from '@/components/pages/WhatIsATaskPage';
+import ContractorPage from '@/components/pages/ContractorPage';
+import RealtorPage from '@/components/pages/RealtorPage';
+import RestaurantPage from '@/components/pages/RestaurantPage';
+import RetailPage from '@/components/pages/RetailPage';
+import BarPage from '@/components/pages/BarPage';
 
 // Layout component that includes ScrollToTop
 function Layout() {
@@ -37,13 +36,6 @@ const router = createBrowserRouter([
         },
       },
       {
-        path: "services",
-        element: <ServicesPage />,
-        routeMetadata: {
-          pageIdentifier: 'services',
-        },
-      },
-      {
         path: "pricing",
         element: <PricingPage />,
         routeMetadata: {
@@ -51,74 +43,53 @@ const router = createBrowserRouter([
         },
       },
       {
-        path: "contact",
-        element: <ContactPage />,
+        path: "help",
+        element: <HelpPage />,
         routeMetadata: {
-          pageIdentifier: 'contact',
+          pageIdentifier: 'help',
         },
       },
       {
-        path: "portal",
-        element: (
-          <MemberProtectedRoute messageToSignIn="Sign in to access your portal">
-            <PortalDashboard />
-          </MemberProtectedRoute>
-        ),
+        path: "what-is-a-task",
+        element: <WhatIsATaskPage />,
         routeMetadata: {
-          pageIdentifier: 'portal',
+          pageIdentifier: 'what-is-a-task',
         },
       },
       {
-        path: "portal/submit",
-        element: (
-          <MemberProtectedRoute messageToSignIn="Sign in to submit tasks">
-            <SubmitTaskPage />
-          </MemberProtectedRoute>
-        ),
+        path: "contractor",
+        element: <ContractorPage />,
         routeMetadata: {
-          pageIdentifier: 'submit-task',
+          pageIdentifier: 'contractor',
         },
       },
       {
-        path: "portal/tasks",
-        element: (
-          <MemberProtectedRoute messageToSignIn="Sign in to view your tasks">
-            <MyTasksPage />
-          </MemberProtectedRoute>
-        ),
+        path: "realtor",
+        element: <RealtorPage />,
         routeMetadata: {
-          pageIdentifier: 'my-tasks',
+          pageIdentifier: 'realtor',
         },
       },
       {
-        path: "portal/billing",
-        element: (
-          <MemberProtectedRoute messageToSignIn="Sign in to manage billing">
-            <BillingPage />
-          </MemberProtectedRoute>
-        ),
+        path: "restaurant",
+        element: <RestaurantPage />,
         routeMetadata: {
-          pageIdentifier: 'billing',
+          pageIdentifier: 'restaurant',
         },
       },
       {
-        path: "profile",
-        element: (
-          <MemberProtectedRoute messageToSignIn="Sign in to view your profile">
-            <ProfilePage />
-          </MemberProtectedRoute>
-        ),
+        path: "retail",
+        element: <RetailPage />,
         routeMetadata: {
-          pageIdentifier: 'profile',
+          pageIdentifier: 'retail',
         },
       },
       {
-        path: "privacy",
-        element: <Navigate to="/" replace />,
-      },
-      {
-        path: "terms",
-        element: <Navigate to="/" replace />,
+        path: "bar",
+        element: <BarPage />,
+        routeMetadata: {
+          pageIdentifier: 'bar',
+        },
       },
       {
         path: "*",

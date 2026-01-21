@@ -1,80 +1,43 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Rocket, Menu, X } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { useMember } from '@/integrations';
+import { Menu, X } from 'lucide-react';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
-  const { isAuthenticated, actions } = useMember();
 
   const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'Services', path: '/services' },
     { name: 'Pricing', path: '/pricing' },
-    { name: 'Contact', path: '/contact' },
+    { name: 'Help', path: '/help' },
   ];
 
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white border-b border-cool-gray200">
+    <header className="sticky top-0 z-50 w-full bg-white border-b border-cool-gray300">
       <div className="max-w-[100rem] mx-auto px-8 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3">
-            <Rocket className="w-6 h-6 text-rocket-orange" />
-            <span className="font-heading text-xl font-bold text-deep-navy">
-              Task Rocket
-            </span>
+          <Link to="/" className="font-heading text-xl font-bold text-deep-navy">
+            Office Work, Done Faster
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`font-paragraph text-sm transition-colors ${
+                className={`font-paragraph text-base transition-colors ${
                   isActive(link.path)
-                    ? 'text-rocket-orange'
-                    : 'text-cool-gray700 hover:text-rocket-orange'
+                    ? 'text-deep-navy font-medium'
+                    : 'text-cool-gray700 hover:text-deep-navy'
                 }`}
               >
                 {link.name}
               </Link>
             ))}
-            {isAuthenticated ? (
-              <>
-                <Link
-                  to="/portal"
-                  className={`font-paragraph text-sm transition-colors ${
-                    isActive('/portal')
-                      ? 'text-rocket-orange'
-                      : 'text-cool-gray700 hover:text-rocket-orange'
-                  }`}
-                >
-                  Portal
-                </Link>
-                <Button
-                  onClick={actions.logout}
-                  variant="outline"
-                  size="sm"
-                  className="border-cool-gray300 text-deep-navy hover:bg-cool-gray100"
-                >
-                  Sign Out
-                </Button>
-              </>
-            ) : (
-              <Button
-                asChild
-                size="sm"
-                className="bg-rocket-orange hover:bg-rocket-orange/90 text-white"
-              >
-                <Link to="/portal">Login</Link>
-              </Button>
-            )}
           </nav>
 
           {/* Mobile Menu Button */}
@@ -93,58 +56,22 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <nav className="md:hidden mt-4 pb-4 border-t border-cool-gray200 pt-4">
+          <nav className="md:hidden mt-4 pb-4 border-t border-cool-gray300 pt-4">
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`font-paragraph text-sm transition-colors ${
+                  className={`font-paragraph text-base transition-colors ${
                     isActive(link.path)
-                      ? 'text-rocket-orange'
-                      : 'text-cool-gray700 hover:text-rocket-orange'
+                      ? 'text-deep-navy font-medium'
+                      : 'text-cool-gray700 hover:text-deep-navy'
                   }`}
                 >
                   {link.name}
                 </Link>
               ))}
-              {isAuthenticated ? (
-                <>
-                  <Link
-                    to="/portal"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className={`font-paragraph text-sm transition-colors ${
-                      isActive('/portal')
-                        ? 'text-rocket-orange'
-                        : 'text-cool-gray700 hover:text-rocket-orange'
-                    }`}
-                  >
-                    Portal
-                  </Link>
-                  <Button
-                    onClick={() => {
-                      actions.logout();
-                      setMobileMenuOpen(false);
-                    }}
-                    variant="outline"
-                    size="sm"
-                    className="border-cool-gray300 text-deep-navy hover:bg-cool-gray100 w-full"
-                  >
-                    Sign Out
-                  </Button>
-                </>
-              ) : (
-                <Button
-                  asChild
-                  size="sm"
-                  className="bg-rocket-orange hover:bg-rocket-orange/90 text-white w-full"
-                >
-                  <Link to="/portal" onClick={() => setMobileMenuOpen(false)}>
-                    Login
-                  </Link>
-                </Button>
-              )}
             </div>
           </nav>
         )}
