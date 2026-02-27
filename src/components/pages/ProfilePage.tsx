@@ -231,12 +231,12 @@ export default function ProfilePage() {
                   Contact our support team if you have any questions or need assistance with your account.
                 </p>
                 <Button
-                  asChild
                   size="lg"
                   variant="outline"
                   className="w-full border-2 border-white text-white hover:bg-white hover:text-deep-navy font-heading"
+                  onClick={() => window.location.href = 'mailto:info@taskreocket.com?subject=Support Request'}
                 >
-                  <a href="/contact">Contact Support</a>
+                  Contact Support
                 </Button>
               </Card>
             </motion.div>

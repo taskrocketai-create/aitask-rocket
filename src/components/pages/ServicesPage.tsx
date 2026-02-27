@@ -422,7 +422,7 @@ export default function ServicesPage() {
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <a
-              href="/pricing"
+              href="mailto:info@taskreocket.com?subject=Pricing Inquiry"
               className="inline-flex items-center justify-center bg-rocket-orange hover:bg-rocket-orange/90 text-white font-heading text-lg px-10 py-7 rounded-md transition-colors"
             >
               View Pricing Plans
