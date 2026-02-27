@@ -281,7 +281,7 @@ export default function PricingPage() {
                 What is an AI Workflow?
               </h2>
               <p className="font-paragraph text-lg text-cool-gray700 max-w-3xl mx-auto">
-                Think of an AI workflow as a smart assistant that handles repetitive tasks automatically, saving you time and money.
+                AI Workflows, in simple terms, are like having a super-efficient assistant that automates repetitive tasks. Instead of doing everything manually, you use AI to handle parts of the process.
               </p>
             </motion.div>
 
@@ -435,27 +435,22 @@ export default function PricingPage() {
             </motion.div>
 
             {/* Workflow Steps */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
               {[
                 {
                   icon: Send,
                   title: 'Submit Your Task',
-                  description: 'Provide details about what you need prepared or reviewed.',
+                  description: 'You tell the system what you need.',
                 },
                 {
                   icon: Brain,
                   title: 'AI Analysis',
-                  description: 'Our AI analyzes your requirements and generates initial content.',
+                  description: 'The AI looks at your request and starts creating content.',
                 },
                 {
                   icon: CheckCircle,
                   title: 'Expert Review',
-                  description: 'Our team reviews and refines the AI output for quality.',
-                },
-                {
-                  icon: Zap,
-                  title: 'Fast Delivery',
-                  description: 'Receive polished, professional results ready to use.',
+                  description: 'A real person checks the AI\'s work to make sure it\'s high quality.',
                 },
               ].map((step, index) => {
                 const Icon = step.icon;
