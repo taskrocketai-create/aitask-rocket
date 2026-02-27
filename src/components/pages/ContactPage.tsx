@@ -227,10 +227,10 @@ export default function ContactPage() {
                       Email Us
                     </h3>
                     <a
-                      href="mailto:info@taskreocket.com"
+                      href="mailto:taskrocketAI@gmail.com"
                       className="font-paragraph text-base text-rocket-orange hover:underline"
                     >
-                      info@taskreocket.com
+                      taskrocketAI@gmail.com
                     </a>
                   </div>
                 </div>

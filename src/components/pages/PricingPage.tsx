@@ -11,7 +11,7 @@ export default function PricingPage() {
   const handlePlanClick = (planName) => {
     if (planName === 'AI Workflow') {
       // Send email for AI Workflow quote request
-      const mailtoLink = `mailto:info@taskreocket.com?subject=AI Workflow Quote Request&body=I am interested in a custom AI workflow solution. Please contact me to discuss my requirements.`;
+      const mailtoLink = `mailto:taskrocketAI@gmail.com?subject=AI Workflow Quote Request&body=I am interested in a custom AI workflow solution. Please contact me to discuss my requirements.`;
       window.location.href = mailtoLink;
     } else {
       navigate('/submit-task', { state: { selectedPlan: planName } });

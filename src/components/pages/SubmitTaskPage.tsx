@@ -59,7 +59,7 @@ Files: ${formData.clientUploadedFiles || 'None'}
 Submitted: ${new Date().toLocaleString()}
       `.trim();
 
-      const mailtoLink = `mailto:info@taskreocket.com?subject=New Task Submission: ${encodeURIComponent(formData.taskTitle)}&body=${encodeURIComponent(emailBody)}`;
+      const mailtoLink = `mailto:taskrocketAI@gmail.com?subject=New Task Submission: ${encodeURIComponent(formData.taskTitle)}&body=${encodeURIComponent(emailBody)}`;
       window.location.href = mailtoLink;
       
       navigate('/portal/tasks');
