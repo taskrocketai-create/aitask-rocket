@@ -156,6 +156,117 @@ export default function PricingPage() {
           </div>
         </section>
 
+        {/* AI Workflow Pricing Section */}
+        <section className="py-20 bg-gradient-to-br from-primary/10 to-secondary/10 border-t-4 border-primary">
+          <div className="max-w-[100rem] mx-auto px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <h2 className="font-heading text-4xl md:text-5xl font-bold text-deep-navy mb-4">
+                AI Workflow Pricing
+              </h2>
+              <p className="font-paragraph text-xl text-cool-gray700 max-w-3xl mx-auto">
+                Custom pricing per project. Get a personalized quote based on your specific AI workflow requirements.
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
+              {/* Left Side - Features */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                <div className="bg-white rounded-lg p-8 border-2 border-primary">
+                  <h3 className="font-heading text-2xl font-bold text-deep-navy mb-6">
+                    What's Included
+                  </h3>
+                  <ul className="space-y-4">
+                    {[
+                      'Custom AI workflow design tailored to your needs',
+                      'Integration with your existing systems',
+                      'Automated task processing and generation',
+                      'Quality assurance and human review',
+                      'Ongoing optimization and refinement',
+                      'Dedicated support and maintenance',
+                      'Scalable infrastructure for growth',
+                      'Monthly performance analytics',
+                    ].map((feature) => (
+                      <li key={feature} className="flex items-start gap-3">
+                        <Brain className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
+                        <span className="font-paragraph text-base text-cool-gray700">
+                          {feature}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+
+              {/* Right Side - Pricing Info */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="space-y-6"
+              >
+                <div className="bg-white rounded-lg p-8 border-4 border-primary shadow-lg">
+                  <div className="mb-6">
+                    <p className="font-paragraph text-lg text-cool-gray700 mb-2">
+                      Pricing Model
+                    </p>
+                    <h4 className="font-heading text-3xl font-bold text-deep-navy">
+                      Per Project
+                    </h4>
+                  </div>
+
+                  <div className="space-y-4 mb-6 pb-6 border-b-2 border-cool-gray300">
+                    <div>
+                      <p className="font-paragraph text-sm text-cool-gray700 mb-1">
+                        Project Complexity
+                      </p>
+                      <p className="font-heading text-lg font-semibold text-deep-navy">
+                        Determines Your Price
+                      </p>
+                    </div>
+                    <div>
+                      <p className="font-paragraph text-sm text-cool-gray700 mb-1">
+                        Factors Considered
+                      </p>
+                      <ul className="space-y-2 font-paragraph text-base text-cool-gray700">
+                        <li>• Workflow complexity and scope</li>
+                        <li>• Integration requirements</li>
+                        <li>• Volume of tasks processed</li>
+                        <li>• Customization level needed</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <p className="font-paragraph text-base text-cool-gray700 mb-6">
+                    Each AI workflow project is unique. We'll work with you to understand your requirements and provide a custom quote that fits your budget and needs.
+                  </p>
+
+                  <Button className="w-full h-12 text-base bg-primary hover:bg-primary/90 text-white">
+                    Request a Custom Quote
+                  </Button>
+                </div>
+
+                <div className="bg-cool-gray100 rounded-lg p-6 border-2 border-cool-gray300">
+                  <p className="font-paragraph text-sm text-cool-gray700">
+                    <span className="font-semibold text-deep-navy">Ready to get started?</span> Contact our team to discuss your AI workflow needs and receive a personalized proposal.
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
         {/* AI Workflow Section */}
         <section className="py-20 bg-white">
           <div className="max-w-[100rem] mx-auto px-8">
