@@ -8,6 +8,7 @@ export default function Header() {
 
   const navLinks = [
     { name: 'Home', path: '/' },
+    { name: 'How It Works', path: '/what-is-a-task' },
     { name: 'Pricing', path: '/pricing' },
     { name: 'Help', path: '/help' },
   ];

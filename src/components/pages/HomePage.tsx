@@ -1,11 +1,32 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle, Zap, Brain } from 'lucide-react';
+import { ArrowRight, CheckCircle, Zap, Brain, Workflow, Sparkles, Cpu } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 
 export default function HomePage() {
+  const workflowFeatures = [
+    {
+      title: 'Custom AI Workflows',
+      description: 'Build intelligent automation tailored to your exact business needs',
+      icon: Workflow,
+      highlight: true,
+    },
+    {
+      title: 'Unlimited Automation',
+      description: 'Scale your operations without hiring more staff',
+      icon: Cpu,
+      highlight: true,
+    },
+    {
+      title: 'AI-Powered Intelligence',
+      description: 'Leverage advanced AI to handle complex business processes',
+      icon: Sparkles,
+      highlight: true,
+    },
+  ];
+
   const workflowUseCases = [
     {
       title: 'Email Generation',
@@ -62,7 +83,7 @@ export default function HomePage() {
       <Header />
 
       <main className="flex-1">
-        {/* Hero Section - AI Workflow Focus */}
+        {/* Hero Section - AI Workflow as Primary Focus */}
         <section className="w-full bg-gradient-to-br from-deep-navy via-primary to-primary py-28 md:py-40">
           <div className="max-w-[100rem] mx-auto px-8">
             <motion.div
@@ -73,14 +94,14 @@ export default function HomePage() {
             >
               <div className="inline-block mb-6 px-4 py-2 bg-secondary/20 rounded-full border border-secondary/40">
                 <p className="font-paragraph text-sm font-semibold text-secondary">
-                  Automate Your Business
+                  The Future of Business Automation
                 </p>
               </div>
               <h1 className="font-heading text-6xl md:text-8xl font-bold text-white mb-6">
-                AI Workflows That Work
+                Custom AI Workflows for Your Business
               </h1>
               <p className="font-paragraph text-xl md:text-2xl text-white/90 mb-10 max-w-3xl mx-auto">
-                Automate repetitive tasks, scale your operations, and focus on what matters. Build custom AI workflows tailored to your business.
+                Stop doing repetitive work. Build intelligent automation that scales with your business. Custom AI workflows designed specifically for how you operate.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
@@ -88,7 +109,7 @@ export default function HomePage() {
                   size="lg"
                   className="bg-secondary hover:bg-secondary/90 text-white text-lg px-8 py-6 h-auto"
                 >
-                  <Link to="/pricing">Start Your Workflow</Link>
+                  <Link to="/pricing">Build Your Workflow</Link>
                 </Button>
                 <Button
                   asChild
@@ -96,10 +117,58 @@ export default function HomePage() {
                   variant="outline"
                   className="border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-6 h-auto"
                 >
-                  <Link to="/what-is-a-task">Learn More</Link>
+                  <Link to="/what-is-a-task">See How It Works</Link>
                 </Button>
               </div>
             </motion.div>
+          </div>
+        </section>
+
+        {/* Core Features Section - Workflow Capabilities */}
+        <section className="py-24 bg-gradient-to-br from-primary/10 to-secondary/10">
+          <div className="max-w-[100rem] mx-auto px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <h2 className="font-heading text-4xl md:text-5xl font-bold text-deep-navy mb-4">
+                Enterprise-Grade AI Workflows
+              </h2>
+              <p className="font-paragraph text-lg text-cool-gray700 max-w-3xl mx-auto">
+                Powerful automation built for businesses that demand reliability, customization, and scale
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {workflowFeatures.map((feature, index) => {
+                const Icon = feature.icon;
+                return (
+                  <motion.div
+                    key={feature.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="bg-white rounded-lg p-8 border-2 border-primary/20 hover:border-primary/50 transition-all shadow-sm hover:shadow-md"
+                  >
+                    <div className="flex justify-center mb-4">
+                      <div className="bg-primary p-3 rounded-lg">
+                        <Icon className="w-6 h-6 text-white" />
+                      </div>
+                    </div>
+                    <h3 className="font-heading text-xl font-bold text-deep-navy mb-3 text-center">
+                      {feature.title}
+                    </h3>
+                    <p className="font-paragraph text-base text-cool-gray700 text-center">
+                      {feature.description}
+                    </p>
+                  </motion.div>
+                );
+              })}
+            </div>
           </div>
         </section>
 
@@ -114,7 +183,7 @@ export default function HomePage() {
               className="text-center mb-16"
             >
               <h2 className="font-heading text-4xl md:text-5xl font-bold text-deep-navy mb-4">
-                What Can AI Workflows Do?
+                What Can Your Workflow Automate?
               </h2>
               <p className="font-paragraph text-lg text-cool-gray700 max-w-3xl mx-auto">
                 From email generation to data analysis, AI workflows handle the repetitive work so your team can focus on strategy
@@ -155,10 +224,10 @@ export default function HomePage() {
               className="text-center mb-16"
             >
               <h2 className="font-heading text-4xl md:text-5xl font-bold text-deep-navy mb-4">
-                Why Choose AI Workflows?
+                Why Build Custom AI Workflows?
               </h2>
               <p className="font-paragraph text-lg text-cool-gray700 max-w-2xl mx-auto">
-                Transform how your business operates with intelligent automation
+                Transform how your business operates with intelligent automation designed specifically for you
               </p>
             </motion.div>
 
@@ -208,7 +277,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Industries Using Workflows Section */}
+        {/* How Workflows Work Section */}
         <section className="py-24 bg-white">
           <div className="max-w-[100rem] mx-auto px-8">
             <motion.div
@@ -219,58 +288,10 @@ export default function HomePage() {
               className="text-center mb-16"
             >
               <h2 className="font-heading text-4xl md:text-5xl font-bold text-deep-navy mb-4">
-                Built for Your Industry
+                How Custom Workflows Work
               </h2>
               <p className="font-paragraph text-lg text-cool-gray700 max-w-2xl mx-auto">
-                Explore how AI workflows transform operations across different sectors
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {industries.map((industry, index) => (
-                <motion.div
-                  key={industry.path}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <Link
-                    to={industry.path}
-                    className="block bg-white p-8 rounded-lg border-2 border-cool-gray300 hover:border-primary hover:shadow-lg transition-all group h-full"
-                  >
-                    <h3 className="font-heading text-2xl font-bold text-deep-navy mb-3 group-hover:text-primary transition-colors">
-                      {industry.title}
-                    </h3>
-                    <p className="font-paragraph text-base text-cool-gray700 mb-4">
-                      {industry.description}
-                    </p>
-                    <div className="flex items-center text-primary font-paragraph text-base font-medium">
-                      Explore
-                      <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </div>
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* How It Works Section */}
-        <section className="py-24 bg-cool-gray100">
-          <div className="max-w-[100rem] mx-auto px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-16"
-            >
-              <h2 className="font-heading text-4xl md:text-5xl font-bold text-deep-navy mb-4">
-                Get Started in 3 Steps
-              </h2>
-              <p className="font-paragraph text-lg text-cool-gray700 max-w-2xl mx-auto">
-                From setup to automation, it's simple and straightforward
+                From concept to deployment, we build and manage your AI workflows
               </p>
             </motion.div>
 
@@ -312,21 +333,90 @@ export default function HomePage() {
                 </motion.div>
               ))}
             </div>
+          </div>
+        </section>
 
+        {/* Industries Using Workflows Section - Secondary */}
+        <section className="py-24 bg-cool-gray100">
+          <div className="max-w-[100rem] mx-auto px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="text-center mt-16"
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
             >
-              <Button
-                asChild
-                size="lg"
-                className="bg-primary hover:bg-primary/90 text-white text-lg px-8 py-6 h-auto"
-              >
-                <Link to="/pricing">View Pricing Plans</Link>
-              </Button>
+              <h2 className="font-heading text-4xl md:text-5xl font-bold text-deep-navy mb-4">
+                Workflows for Every Industry
+              </h2>
+              <p className="font-paragraph text-lg text-cool-gray700 max-w-2xl mx-auto">
+                See how AI workflows transform operations across different sectors
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {industries.map((industry, index) => (
+                <motion.div
+                  key={industry.path}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <Link
+                    to={industry.path}
+                    className="block bg-white p-8 rounded-lg border-2 border-cool-gray300 hover:border-primary hover:shadow-lg transition-all group h-full"
+                  >
+                    <h3 className="font-heading text-2xl font-bold text-deep-navy mb-3 group-hover:text-primary transition-colors">
+                      {industry.title}
+                    </h3>
+                    <p className="font-paragraph text-base text-cool-gray700 mb-4">
+                      {industry.description}
+                    </p>
+                    <div className="flex items-center text-primary font-paragraph text-base font-medium">
+                      Explore
+                      <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-24 bg-gradient-to-br from-deep-navy via-primary to-primary">
+          <div className="max-w-[100rem] mx-auto px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center max-w-3xl mx-auto"
+            >
+              <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-6">
+                Ready to Transform Your Business?
+              </h2>
+              <p className="font-paragraph text-lg text-white/90 mb-10">
+                Start building your custom AI workflow today. Let us handle the automation while you focus on growth.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-secondary hover:bg-secondary/90 text-white text-lg px-8 py-6 h-auto"
+                >
+                  <Link to="/pricing">View Pricing Plans</Link>
+                </Button>
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-6 h-auto"
+                >
+                  <Link to="/help">Get Help</Link>
+                </Button>
+              </div>
             </motion.div>
           </div>
         </section>
