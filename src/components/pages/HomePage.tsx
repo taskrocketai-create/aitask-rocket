@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle, Zap, Brain } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -128,6 +128,155 @@ export default function HomePage() {
                 </motion.div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* AI Workflow Featured Section */}
+        <section className="py-20 bg-gradient-to-br from-primary/10 to-secondary/10 border-t-4 border-primary">
+          <div className="max-w-[100rem] mx-auto px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <h2 className="font-heading text-4xl md:text-5xl font-bold text-deep-navy mb-4">
+                What is an AI Workflow?
+              </h2>
+              <p className="font-paragraph text-lg text-cool-gray700 max-w-3xl mx-auto">
+                AI Workflows, in simple terms, are like having a super-efficient assistant that automates repetitive tasks. Instead of doing everything manually, you use AI to handle parts of the process.
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto mb-16">
+              {/* Left - Simple Explanation */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="space-y-6"
+              >
+                <div className="bg-white rounded-lg p-8 border-2 border-primary">
+                  <h3 className="font-heading text-2xl font-bold text-deep-navy mb-4">
+                    The Simple Version
+                  </h3>
+                  <p className="font-paragraph text-base text-cool-gray700 mb-4">
+                    An AI workflow is like having a tireless employee who:
+                  </p>
+                  <ul className="space-y-3">
+                    {[
+                      'Learns what you need done',
+                      'Does the work automatically and consistently',
+                      'Handles the same task over and over without getting tired',
+                      'Scales up or down based on your needs',
+                      'Works 24/7 without breaks',
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-3">
+                        <Zap className="w-5 h-5 text-secondary flex-shrink-0 mt-1" />
+                        <span className="font-paragraph text-base text-cool-gray700">
+                          {item}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+
+              {/* Right - Real Examples */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="space-y-6"
+              >
+                <div className="bg-white rounded-lg p-8 border-2 border-secondary">
+                  <h3 className="font-heading text-2xl font-bold text-deep-navy mb-4">
+                    Real-World Examples
+                  </h3>
+                  <div className="space-y-4">
+                    {[
+                      {
+                        title: 'Email Generation',
+                        desc: 'Automatically create personalized emails to hundreds of customers',
+                      },
+                      {
+                        title: 'Document Processing',
+                        desc: 'Extract data from forms and organize it into reports automatically',
+                      },
+                      {
+                        title: 'Content Creation',
+                        desc: 'Generate product descriptions, social posts, or blog content at scale',
+                      },
+                      {
+                        title: 'Data Analysis',
+                        desc: 'Process large datasets and create insights without manual work',
+                      },
+                    ].map((example) => (
+                      <div key={example.title} className="pb-4 border-b border-cool-gray300 last:border-b-0">
+                        <p className="font-heading text-base font-semibold text-deep-navy mb-1">
+                          {example.title}
+                        </p>
+                        <p className="font-paragraph text-sm text-cool-gray700">
+                          {example.desc}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Key Benefits */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-lg p-8 md:p-12 max-w-5xl mx-auto"
+            >
+              <h3 className="font-heading text-2xl font-bold text-deep-navy mb-8 text-center">
+                Why Businesses Use AI Workflows
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {[
+                  {
+                    icon: Zap,
+                    title: 'Save Time',
+                    desc: 'Hours of manual work completed in minutes',
+                  },
+                  {
+                    icon: Brain,
+                    title: 'Reduce Costs',
+                    desc: 'Automate repetitive tasks instead of hiring more staff',
+                  },
+                  {
+                    icon: CheckCircle,
+                    title: 'Improve Quality',
+                    desc: 'Consistent, error-free results every single time',
+                  },
+                ].map((benefit) => {
+                  const Icon = benefit.icon;
+                  return (
+                    <div key={benefit.title} className="text-center">
+                      <div className="flex justify-center mb-4">
+                        <div className="bg-primary p-3 rounded-lg">
+                          <Icon className="w-6 h-6 text-white" />
+                        </div>
+                      </div>
+                      <h4 className="font-heading text-lg font-bold text-deep-navy mb-2">
+                        {benefit.title}
+                      </h4>
+                      <p className="font-paragraph text-base text-cool-gray700">
+                        {benefit.desc}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </motion.div>
           </div>
         </section>
 
