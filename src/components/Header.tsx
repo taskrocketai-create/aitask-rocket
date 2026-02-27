@@ -23,7 +23,7 @@ export default function Header() {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
             <Image
-              src="https://static.wixstatic.com/media/18d7f4_9a1d192eee7549128dd5742fbde8c0dd~mv2.jpg"
+              src="https://static.wixstatic.com/media/18d7f4_e1c01261b5144af59eded5e0940606a8~mv2.png"
               alt="Task Rocket Logo"
               width={40}
               height={40}
