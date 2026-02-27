@@ -56,7 +56,6 @@ export default function PricingPage() {
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Header />
-
       <main className="flex-1">
         {/* Hero Section */}
         <section className="py-20 bg-gradient-to-br from-deep-navy to-primary">
@@ -95,108 +94,70 @@ export default function PricingPage() {
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
-              {/* Left Side - Features */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-              >
-                <div className="bg-white rounded-lg p-8 border-2 border-primary">
-                  <h3 className="font-heading text-2xl font-bold text-deep-navy mb-6">
-                    What's Included
-                  </h3>
-                  <ul className="space-y-4">
-                    {[
-                      'Custom AI workflow design tailored to your needs',
-                      'Integration with your existing systems',
-                      'Automated task processing and generation',
-                      'Quality assurance and human review',
-                      'Ongoing optimization and refinement',
-                      'Dedicated support and maintenance',
-                      'Scalable infrastructure for growth',
-                      'Monthly performance analytics',
-                    ].map((feature) => (
-                      <li key={feature} className="flex items-start gap-3">
-                        <Brain className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                        <span className="font-paragraph text-base text-cool-gray700">
-                          {feature}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-5xl mx-auto pt-24 px-6 md:px-12">
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="lg:col-span-2 bg-white rounded-xl p-8 shadow-xl border-t-8 border-primary relative overflow-hidden">
+                <div className="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full mix-blend-multiply blur-xl opacity-70"></div>
+                <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-secondary/10 rounded-full mix-blend-multiply blur-xl opacity-70"></div>
+                <h3 className="font-heading text-3xl md:text-4xl font-bold text-deep-navy mb-8 relative z-10">What's Included in Your AI Workflow</h3>
+                <ul className="space-y-6 relative z-10">
+                  {[ "Custom AI workflow design tailored to your needs", "Integration with your existing systems", "Automated task processing and generation", "Quality assurance and human review", "Ongoing optimization and refinement", "Dedicated support and maintenance", "Scalable infrastructure for growth", "Monthly performance analytics" ].map((feature) => (
+                    <li key={feature} className="flex items-start gap-4 p-4 bg-cool-gray100 rounded-lg shadow-sm">
+                      <Brain className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                      <span className="font-paragraph text-lg text-cool-gray700 font-medium">
+                        {feature}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
               </motion.div>
-
-              {/* Right Side - Pricing Info */}
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="space-y-6"
-              >
-                <div className="bg-white rounded-lg p-8 border-4 border-primary shadow-lg">
-                  <div className="mb-6">
-                    <p className="font-paragraph text-lg text-cool-gray700 mb-2">
-                      Pricing Model
+              <div className="lg:col-span-1 flex flex-col space-y-8">
+                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }} className="bg-gradient-to-br from-primary to-secondary rounded-xl p-8 shadow-2xl text-white flex-1 flex flex-col justify-between">
+                  <div>
+                    <p className="font-paragraph text-lg mb-2 opacity-90">Pricing Model</p>
+                    <h4 className="font-heading text-4xl font-bold mb-6">Per Project</h4>
+                    <div className="space-y-4 mb-8 pb-6 border-b border-white/30">
+                      <div>
+                        <p className="font-paragraph text-sm mb-1 opacity-80">Project Complexity</p>
+                        <p className="font-heading text-xl font-semibold">Determines Your Price</p>
+                      </div>
+                      <div>
+                        <p className="font-paragraph text-sm mb-1 opacity-80">Factors Considered</p>
+                        <ul className="space-y-2 font-paragraph text-base">
+                          <li>• Workflow complexity and scope</li>
+                          <li>• Integration requirements</li>
+                          <li>• Volume of tasks processed</li>
+                          <li>• Customization level needed</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <p className="font-paragraph text-base mb-8 opacity-90">
+                      Each AI workflow project is unique. We'll work with you to understand your requirements and provide a custom quote that fits your budget and needs.
                     </p>
-                    <h4 className="font-heading text-3xl font-bold text-deep-navy">
-                      Per Project
-                    </h4>
                   </div>
-
-                  <div className="space-y-4 mb-6 pb-6 border-b-2 border-cool-gray300">
-                    <div>
-                      <p className="font-paragraph text-sm text-cool-gray700 mb-1">
-                        Project Complexity
-                      </p>
-                      <p className="font-heading text-lg font-semibold text-deep-navy">
-                        Determines Your Price
-                      </p>
-                    </div>
-                    <div>
-                      <p className="font-paragraph text-sm text-cool-gray700 mb-1">
-                        Factors Considered
-                      </p>
-                      <ul className="space-y-2 font-paragraph text-base text-cool-gray700">
-                        <li>• Workflow complexity and scope</li>
-                        <li>• Integration requirements</li>
-                        <li>• Volume of tasks processed</li>
-                        <li>• Customization level needed</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <p className="font-paragraph text-base text-cool-gray700 mb-6">
-                    Each AI workflow project is unique. We'll work with you to understand your requirements and provide a custom quote that fits your budget and needs.
-                  </p>
-
-                  <Button className="w-full h-12 text-base bg-primary hover:bg-primary/90 text-white">
+                  <Button className="w-full h-14 text-lg bg-white text-primary hover:bg-cool-gray100 transition-all duration-300 shadow-md">
                     Request a Custom Quote
                   </Button>
-                </div>
-
-                <div className="bg-cool-gray100 rounded-lg p-6 border-2 border-cool-gray300">
-                  <p className="font-paragraph text-sm text-cool-gray700">
+                </motion.div>
+                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.4 }} className="bg-cool-gray100 rounded-xl p-6 border border-cool-gray300 shadow-sm">
+                  <p className="font-paragraph text-base text-cool-gray700">
                     <span className="font-semibold text-deep-navy">Ready to get started?</span> Contact our team to discuss your AI workflow needs and receive a personalized proposal.
                   </p>
-                </div>
-              </motion.div>
+                </motion.div>
+              </div>
             </div>
           </div>
         </section>
 
         {/* Task Pricing Cards - SECOND */}
         <section className="py-20 bg-cool-gray100">
-          <div className="max-w-[100rem] mx-auto px-8">
+          <div className="max-w-[100rem] mx-auto px-6 md:px-12 pt-24 pb-16 relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-cool-gray100 to-white opacity-70"></div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-center mb-16"
+              className="text-center mb-16 relative z-10"
             >
               <h2 className="font-heading text-4xl md:text-5xl font-bold text-deep-navy mb-4">
                 Task-Based Pricing
@@ -206,76 +167,75 @@ export default function PricingPage() {
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-y-12 lg:gap-x-8 max-w-7xl mx-auto items-end">
               {pricingPlans.map((plan, index) => (
                 <motion.div
                   key={plan.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className={`bg-white rounded-lg p-8 ${
+                  transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
+                  className={`relative bg-white rounded-2xl p-8 shadow-2xl flex flex-col h-full transform transition-all duration-300 hover:scale-[1.02] ${
                     plan.highlighted
-                      ? 'border-4 border-primary shadow-xl scale-105'
+                      ? 'border-4 border-primary ring-8 ring-primary/20' // Added ring for more emphasis
                       : 'border-2 border-cool-gray300'
                   }`}
                 >
                   {plan.highlighted && (
-                    <div className="bg-primary text-white text-center py-2 px-4 rounded-lg mb-4 font-paragraph text-sm font-semibold">
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-center py-2 px-6 rounded-full font-paragraph text-sm font-semibold shadow-lg whitespace-nowrap">
                       MOST POPULAR
                     </div>
                   )}
                   
-                  <h3 className="font-heading text-2xl font-bold text-deep-navy mb-2">
+                  <h3 className="font-heading text-3xl font-bold text-deep-navy mb-3 mt-4">
                     {plan.name}
                   </h3>
                   
-                  <div className="mb-4">
-                    <span className="font-heading text-5xl font-bold text-deep-navy">
+                  <p className="font-paragraph text-base text-cool-gray700 mb-6 flex-grow">
+                    {plan.description}
+                  </p>
+
+                  <div className="mb-8 flex items-baseline justify-center lg:justify-start">
+                    <span className="font-heading text-6xl font-bold text-deep-navy">
                       ${plan.price}
                     </span>
-                    <span className="font-paragraph text-lg text-cool-gray700 ml-2">
+                    <span className="font-paragraph text-xl text-cool-gray700 ml-2">
                       {plan.period}
                     </span>
                   </div>
 
-                  <p className="font-paragraph text-base text-cool-gray700 mb-6">
-                    {plan.description}
-                  </p>
-
-                  <Button
-                    className={`w-full mb-6 h-12 text-base ${
-                      plan.highlighted
-                        ? 'bg-primary hover:bg-primary/90 text-white'
-                        : 'bg-secondary hover:bg-secondary/90 text-white'
-                    }`}
-                  >
-                    {plan.buttonText}
-                  </Button>
-
-                  <ul className="space-y-3">
+                  <ul className="space-y-4 mb-8 flex-grow">
                     {plan.features.map((feature) => (
                       <li key={feature} className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                        <Check className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
                         <span className="font-paragraph text-base text-cool-gray700">
                           {feature}
                         </span>
                       </li>
                     ))}
                   </ul>
+
+                  <Button
+                    className={`w-full h-14 text-lg font-semibold rounded-lg shadow-md transition-all duration-300 ${
+                      plan.highlighted
+                        ? 'bg-primary hover:bg-primary/90 text-white' 
+                        : 'bg-secondary hover:bg-secondary/90 text-white'
+                    }`}
+                  >
+                    {plan.buttonText}
+                  </Button>
                 </motion.div>
               ))}
             </div>
 
-            {/* Footer Text */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-center mt-16 max-w-3xl mx-auto"
+              className="text-center mt-20 max-w-3xl mx-auto relative z-10"
             >
-              <p className="font-paragraph text-lg text-cool-gray700 bg-white p-6 rounded-lg border-2 border-cool-gray300">
+              <p className="font-paragraph text-lg text-cool-gray700 bg-white p-8 rounded-xl border-2 border-cool-gray300 shadow-lg">
                 This is a service. Every task is prepared and reviewed before delivery.
               </p>
             </motion.div>
@@ -526,7 +486,6 @@ export default function PricingPage() {
           </div>
         </section>
       </main>
-
       <Footer />
     </div>
   );
