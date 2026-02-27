@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Check } from 'lucide-react';
+import { Check, Zap, Brain, CheckCircle, Send } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -149,6 +149,106 @@ export default function PricingPage() {
               <p className="font-paragraph text-lg text-cool-gray700 bg-white p-6 rounded-lg border-2 border-cool-gray300">
                 This is a service. Every task is prepared and reviewed before delivery.
               </p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* AI Workflow Section */}
+        <section className="py-20 bg-white">
+          <div className="max-w-[100rem] mx-auto px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <h2 className="font-heading text-4xl md:text-5xl font-bold text-deep-navy mb-4">
+                How Our AI Workflow Works
+              </h2>
+              <p className="font-paragraph text-lg text-cool-gray700 max-w-2xl mx-auto">
+                We combine intelligent automation with human expertise to deliver exceptional results quickly and efficiently.
+              </p>
+            </motion.div>
+
+            {/* Workflow Steps */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+              {[
+                {
+                  icon: Send,
+                  title: 'Submit Your Task',
+                  description: 'Provide details about what you need prepared or reviewed.',
+                },
+                {
+                  icon: Brain,
+                  title: 'AI Analysis',
+                  description: 'Our AI analyzes your requirements and generates initial content.',
+                },
+                {
+                  icon: CheckCircle,
+                  title: 'Expert Review',
+                  description: 'Our team reviews and refines the AI output for quality.',
+                },
+                {
+                  icon: Zap,
+                  title: 'Fast Delivery',
+                  description: 'Receive polished, professional results ready to use.',
+                },
+              ].map((step, index) => {
+                const Icon = step.icon;
+                return (
+                  <motion.div
+                    key={step.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="bg-cool-gray100 rounded-lg p-6 text-center"
+                  >
+                    <div className="flex justify-center mb-4">
+                      <div className="bg-primary p-3 rounded-lg">
+                        <Icon className="w-6 h-6 text-white" />
+                      </div>
+                    </div>
+                    <h3 className="font-heading text-xl font-bold text-deep-navy mb-2">
+                      {step.title}
+                    </h3>
+                    <p className="font-paragraph text-base text-cool-gray700">
+                      {step.description}
+                    </p>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* Benefits Grid */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="bg-gradient-to-br from-primary/5 to-secondary/5 rounded-lg p-8 md:p-12"
+            >
+              <h3 className="font-heading text-2xl font-bold text-deep-navy mb-8 text-center">
+                Why Choose Our AI-Powered Approach?
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {[
+                  'Faster turnaround times with AI acceleration',
+                  'Consistent quality through expert review',
+                  'Cost-effective automation combined with human touch',
+                  'Scalable solutions for any volume of tasks',
+                  'Intelligent learning from your preferences',
+                  'Professional results every single time',
+                ].map((benefit) => (
+                  <div key={benefit} className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
+                    <span className="font-paragraph text-base text-cool-gray700">
+                      {benefit}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </motion.div>
           </div>
         </section>
