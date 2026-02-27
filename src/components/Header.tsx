@@ -29,9 +29,14 @@ export default function Header() {
               className="h-10 w-auto"
               originWidth={1024}
               originHeight={1024} />
-            <span className="font-heading text-xl font-bold text-deep-navy">
-              Office Work, Done Faster
-            </span>
+            <div className="flex flex-col">
+              <span className="font-heading text-2xl font-bold">
+                <span className="text-rocket-orange">Task</span><span className="text-primary">Rocket</span>
+              </span>
+              <span className="font-heading text-xs font-bold text-deep-navy">
+                Office Work, Done Faster
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
