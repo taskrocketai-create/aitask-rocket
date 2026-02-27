@@ -23,12 +23,12 @@ export default function Header() {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
             <Image
-              src="https://static.wixstatic.com/media/18d7f4_9a1d192eee7549128dd5742fbde8c0dd~mv2.jpg"
-              alt="Task Rocket Logo"
+              src="https://static.wixstatic.com/media/18d7f4_37430035763444e693fcdd9f76b78c72~mv2.png"
               width={40}
               height={40}
               className="h-10 w-auto"
-            />
+              originWidth={1024}
+              originHeight={1024} />
             <span className="font-heading text-xl font-bold text-deep-navy">
               Office Work, Done Faster
             </span>
