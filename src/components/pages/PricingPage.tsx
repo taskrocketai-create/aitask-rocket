@@ -1,10 +1,17 @@
 import { motion } from 'framer-motion';
 import { Check, Zap, Brain, CheckCircle, Send } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 
 export default function PricingPage() {
+  const navigate = useNavigate();
+
+  const handlePlanClick = (planName) => {
+    navigate('/submit-task', { state: { selectedPlan: planName } });
+  };
+
   const pricingPlans = [
     {
       name: 'One-Off Task',
@@ -134,7 +141,10 @@ export default function PricingPage() {
                       Each AI workflow project is unique. We'll work with you to understand your requirements and provide a custom quote that fits your budget and needs.
                     </p>
                   </div>
-                  <Button className="w-full h-14 text-lg bg-white text-primary hover:bg-cool-gray100 transition-all duration-300 shadow-md">
+                  <Button 
+                    className="w-full h-14 text-lg bg-white text-primary hover:bg-cool-gray100 transition-all duration-300 shadow-md"
+                    onClick={() => handlePlanClick('AI Workflow')}
+                  >
                     Request a Custom Quote
                   </Button>
                 </motion.div>
@@ -221,6 +231,7 @@ export default function PricingPage() {
                         ? 'bg-primary hover:bg-primary/90 text-white' 
                         : 'bg-secondary hover:bg-secondary/90 text-white'
                     }`}
+                    onClick={() => handlePlanClick(plan.name)}
                   >
                     {plan.buttonText}
                   </Button>
