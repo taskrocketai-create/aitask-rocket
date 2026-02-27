@@ -6,6 +6,29 @@ import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 
 export default function HomePage() {
+  const workflowUseCases = [
+    {
+      title: 'Email Generation',
+      description: 'Automatically create personalized emails to hundreds of customers',
+      icon: '✉️',
+    },
+    {
+      title: 'Document Processing',
+      description: 'Extract data from forms and organize it into reports automatically',
+      icon: '📄',
+    },
+    {
+      title: 'Content Creation',
+      description: 'Generate product descriptions, social posts, or blog content at scale',
+      icon: '✍️',
+    },
+    {
+      title: 'Data Analysis',
+      description: 'Process large datasets and create insights without manual work',
+      icon: '📊',
+    },
+  ];
+
   const industries = [
     {
       title: 'Contractor & Estimator',
@@ -34,31 +57,13 @@ export default function HomePage() {
     },
   ];
 
-  const howItWorksSteps = [
-    {
-      number: '1',
-      title: 'Choose your industry',
-      description: 'Select the industry that matches your business needs',
-    },
-    {
-      number: '2',
-      title: 'Submit one task',
-      description: 'Send us your notes and requirements',
-    },
-    {
-      number: '3',
-      title: 'Draft is prepared and reviewed before delivery',
-      description: 'Receive professional, ready-to-use documents',
-    },
-  ];
-
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Header />
 
       <main className="flex-1">
-        {/* Hero Section */}
-        <section className="w-full bg-gradient-to-br from-deep-navy to-primary py-24 md:py-32">
+        {/* Hero Section - AI Workflow Focus */}
+        <section className="w-full bg-gradient-to-br from-deep-navy via-primary to-primary py-28 md:py-40">
           <div className="max-w-[100rem] mx-auto px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -66,38 +71,158 @@ export default function HomePage() {
               transition={{ duration: 0.6 }}
               className="text-center max-w-4xl mx-auto"
             >
-              <h1 className="font-heading text-5xl md:text-7xl font-bold text-white mb-6">
-                Office Work, Done Faster
+              <div className="inline-block mb-6 px-4 py-2 bg-secondary/20 rounded-full border border-secondary/40">
+                <p className="font-paragraph text-sm font-semibold text-secondary">
+                  Automate Your Business
+                </p>
+              </div>
+              <h1 className="font-heading text-6xl md:text-8xl font-bold text-white mb-6">
+                AI Workflows That Work
               </h1>
-              <p className="font-paragraph text-xl md:text-2xl text-white/90 mb-8">
-                Send notes. Get finished paperwork and content back.
+              <p className="font-paragraph text-xl md:text-2xl text-white/90 mb-10 max-w-3xl mx-auto">
+                Automate repetitive tasks, scale your operations, and focus on what matters. Build custom AI workflows tailored to your business.
               </p>
-              <Button
-                asChild
-                size="lg"
-                className="bg-secondary hover:bg-secondary/90 text-white text-lg px-8 py-6 h-auto"
-              >
-                <Link to="/pricing">Get Started</Link>
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-secondary hover:bg-secondary/90 text-white text-lg px-8 py-6 h-auto"
+                >
+                  <Link to="/pricing">Start Your Workflow</Link>
+                </Button>
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-white text-white hover:bg-white/10 text-lg px-8 py-6 h-auto"
+                >
+                  <Link to="/what-is-a-task">Learn More</Link>
+                </Button>
+              </div>
             </motion.div>
           </div>
         </section>
 
-        {/* Industries Section */}
-        <section className="py-20 bg-cool-gray100">
+        {/* Workflow Use Cases Section */}
+        <section className="py-24 bg-white">
           <div className="max-w-[100rem] mx-auto px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-center mb-12"
+              className="text-center mb-16"
             >
               <h2 className="font-heading text-4xl md:text-5xl font-bold text-deep-navy mb-4">
-                Choose Your Industry
+                What Can AI Workflows Do?
+              </h2>
+              <p className="font-paragraph text-lg text-cool-gray700 max-w-3xl mx-auto">
+                From email generation to data analysis, AI workflows handle the repetitive work so your team can focus on strategy
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {workflowUseCases.map((useCase, index) => (
+                <motion.div
+                  key={useCase.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="bg-gradient-to-br from-primary/5 to-secondary/5 rounded-lg p-8 border border-primary/10 hover:border-primary/30 transition-all"
+                >
+                  <div className="text-4xl mb-4">{useCase.icon}</div>
+                  <h3 className="font-heading text-xl font-bold text-deep-navy mb-3">
+                    {useCase.title}
+                  </h3>
+                  <p className="font-paragraph text-base text-cool-gray700">
+                    {useCase.description}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Key Benefits Section */}
+        <section className="py-24 bg-gradient-to-br from-primary/10 to-secondary/10">
+          <div className="max-w-[100rem] mx-auto px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <h2 className="font-heading text-4xl md:text-5xl font-bold text-deep-navy mb-4">
+                Why Choose AI Workflows?
               </h2>
               <p className="font-paragraph text-lg text-cool-gray700 max-w-2xl mx-auto">
-                We specialize in creating professional documents tailored to your industry
+                Transform how your business operates with intelligent automation
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              {[
+                {
+                  icon: Zap,
+                  title: 'Save Time',
+                  desc: 'Hours of manual work completed in minutes. Your team works smarter, not harder.',
+                },
+                {
+                  icon: Brain,
+                  title: 'Reduce Costs',
+                  desc: 'Automate repetitive tasks instead of hiring more staff. Scale without overhead.',
+                },
+                {
+                  icon: CheckCircle,
+                  title: 'Improve Quality',
+                  desc: 'Consistent, error-free results every single time. No human mistakes.',
+                },
+              ].map((benefit) => {
+                const Icon = benefit.icon;
+                return (
+                  <motion.div
+                    key={benefit.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="bg-white rounded-lg p-8 border-2 border-primary/20 hover:border-primary/50 transition-all"
+                  >
+                    <div className="flex justify-center mb-4">
+                      <div className="bg-primary p-3 rounded-lg">
+                        <Icon className="w-6 h-6 text-white" />
+                      </div>
+                    </div>
+                    <h4 className="font-heading text-lg font-bold text-deep-navy mb-2 text-center">
+                      {benefit.title}
+                    </h4>
+                    <p className="font-paragraph text-base text-cool-gray700 text-center">
+                      {benefit.desc}
+                    </p>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Industries Using Workflows Section */}
+        <section className="py-24 bg-white">
+          <div className="max-w-[100rem] mx-auto px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <h2 className="font-heading text-4xl md:text-5xl font-bold text-deep-navy mb-4">
+                Built for Your Industry
+              </h2>
+              <p className="font-paragraph text-lg text-cool-gray700 max-w-2xl mx-auto">
+                Explore how AI workflows transform operations across different sectors
               </p>
             </motion.div>
 
@@ -121,7 +246,7 @@ export default function HomePage() {
                       {industry.description}
                     </p>
                     <div className="flex items-center text-primary font-paragraph text-base font-medium">
-                      Learn more
+                      Explore
                       <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </Link>
@@ -131,157 +256,8 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* AI Workflow Featured Section */}
-        <section className="py-20 bg-gradient-to-br from-primary/10 to-secondary/10 border-t-4 border-primary">
-          <div className="max-w-[100rem] mx-auto px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-16"
-            >
-              <h2 className="font-heading text-4xl md:text-5xl font-bold text-deep-navy mb-4">
-                What is an AI Workflow?
-              </h2>
-              <p className="font-paragraph text-lg text-cool-gray700 max-w-3xl mx-auto">
-                AI Workflows, in simple terms, are like having a super-efficient assistant that automates repetitive tasks. Instead of doing everything manually, you use AI to handle parts of the process.
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto mb-16">
-              {/* Left - Simple Explanation */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="space-y-6"
-              >
-                <div className="bg-white rounded-lg p-8 border-2 border-primary">
-                  <h3 className="font-heading text-2xl font-bold text-deep-navy mb-4">
-                    The Simple Version
-                  </h3>
-                  <p className="font-paragraph text-base text-cool-gray700 mb-4">
-                    An AI workflow is like having a tireless employee who:
-                  </p>
-                  <ul className="space-y-3">
-                    {[
-                      'Learns what you need done',
-                      'Does the work automatically and consistently',
-                      'Handles the same task over and over without getting tired',
-                      'Scales up or down based on your needs',
-                      'Works 24/7 without breaks',
-                    ].map((item) => (
-                      <li key={item} className="flex items-start gap-3">
-                        <Zap className="w-5 h-5 text-secondary flex-shrink-0 mt-1" />
-                        <span className="font-paragraph text-base text-cool-gray700">
-                          {item}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-
-              {/* Right - Real Examples */}
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="space-y-6"
-              >
-                <div className="bg-white rounded-lg p-8 border-2 border-secondary">
-                  <h3 className="font-heading text-2xl font-bold text-deep-navy mb-4">
-                    Real-World Examples
-                  </h3>
-                  <div className="space-y-4">
-                    {[
-                      {
-                        title: 'Email Generation',
-                        desc: 'Automatically create personalized emails to hundreds of customers',
-                      },
-                      {
-                        title: 'Document Processing',
-                        desc: 'Extract data from forms and organize it into reports automatically',
-                      },
-                      {
-                        title: 'Content Creation',
-                        desc: 'Generate product descriptions, social posts, or blog content at scale',
-                      },
-                      {
-                        title: 'Data Analysis',
-                        desc: 'Process large datasets and create insights without manual work',
-                      },
-                    ].map((example) => (
-                      <div key={example.title} className="pb-4 border-b border-cool-gray300 last:border-b-0">
-                        <p className="font-heading text-base font-semibold text-deep-navy mb-1">
-                          {example.title}
-                        </p>
-                        <p className="font-paragraph text-sm text-cool-gray700">
-                          {example.desc}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Key Benefits */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-lg p-8 md:p-12 max-w-5xl mx-auto"
-            >
-              <h3 className="font-heading text-2xl font-bold text-deep-navy mb-8 text-center">
-                Why Businesses Use AI Workflows
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {[
-                  {
-                    icon: Zap,
-                    title: 'Save Time',
-                    desc: 'Hours of manual work completed in minutes',
-                  },
-                  {
-                    icon: Brain,
-                    title: 'Reduce Costs',
-                    desc: 'Automate repetitive tasks instead of hiring more staff',
-                  },
-                  {
-                    icon: CheckCircle,
-                    title: 'Improve Quality',
-                    desc: 'Consistent, error-free results every single time',
-                  },
-                ].map((benefit) => {
-                  const Icon = benefit.icon;
-                  return (
-                    <div key={benefit.title} className="text-center">
-                      <div className="flex justify-center mb-4">
-                        <div className="bg-primary p-3 rounded-lg">
-                          <Icon className="w-6 h-6 text-white" />
-                        </div>
-                      </div>
-                      <h4 className="font-heading text-lg font-bold text-deep-navy mb-2">
-                        {benefit.title}
-                      </h4>
-                      <p className="font-paragraph text-base text-cool-gray700">
-                        {benefit.desc}
-                      </p>
-                    </div>
-                  );
-                })}
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
         {/* How It Works Section */}
-        <section className="py-20 bg-white">
+        <section className="py-24 bg-cool-gray100">
           <div className="max-w-[100rem] mx-auto px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -291,15 +267,31 @@ export default function HomePage() {
               className="text-center mb-16"
             >
               <h2 className="font-heading text-4xl md:text-5xl font-bold text-deep-navy mb-4">
-                How It Works
+                Get Started in 3 Steps
               </h2>
               <p className="font-paragraph text-lg text-cool-gray700 max-w-2xl mx-auto">
-                Three simple steps to get your work done
+                From setup to automation, it's simple and straightforward
               </p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              {howItWorksSteps.map((step, index) => (
+              {[
+                {
+                  number: '1',
+                  title: 'Define Your Workflow',
+                  description: 'Tell us what task you want to automate and how it should work',
+                },
+                {
+                  number: '2',
+                  title: 'We Build & Test',
+                  description: 'Our team creates and tests your custom AI workflow',
+                },
+                {
+                  number: '3',
+                  title: 'Deploy & Scale',
+                  description: 'Launch your workflow and watch it automate your business',
+                },
+              ].map((step, index) => (
                 <motion.div
                   key={step.number}
                   initial={{ opacity: 0, y: 20 }}
@@ -326,14 +318,14 @@ export default function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="text-center mt-12"
+              className="text-center mt-16"
             >
               <Button
                 asChild
                 size="lg"
                 className="bg-primary hover:bg-primary/90 text-white text-lg px-8 py-6 h-auto"
               >
-                <Link to="/pricing">View Pricing</Link>
+                <Link to="/pricing">View Pricing Plans</Link>
               </Button>
             </motion.div>
           </div>
