@@ -70,6 +70,9 @@ export default function PricingPage() {
               <h1 className="font-heading text-5xl md:text-6xl font-bold text-white mb-6">
                 Simple pricing. Pay per task or save with a monthly plan.
               </h1>
+              <p className="font-paragraph text-xl text-white/90">
+                All pricing is per project. Choose the plan that works best for your needs.
+              </p>
             </motion.div>
           </div>
         </section>
