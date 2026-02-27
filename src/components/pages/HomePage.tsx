@@ -336,8 +336,108 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Industries Using Workflows Section - Secondary */}
+        {/* Task-Based Services Section - Now Secondary */}
         <section className="py-24 bg-cool-gray100">
+          <div className="max-w-[100rem] mx-auto px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <h2 className="font-heading text-4xl md:text-5xl font-bold text-deep-navy mb-4">
+                One-Off Tasks Available Too
+              </h2>
+              <p className="font-paragraph text-lg text-cool-gray700 max-w-2xl mx-auto">
+                Don't need a full workflow? Submit individual tasks and get professional results with expert review.
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              {[
+                {
+                  title: 'Pay Per Task',
+                  price: '$75',
+                  description: 'Perfect for occasional needs. Single task submission with professional preparation.',
+                  features: ['Single submission', 'Expert review', 'No commitment'],
+                },
+                {
+                  title: 'Basic Plan',
+                  price: '$240',
+                  description: 'Great for regular users. 4 tasks per month with priority support.',
+                  features: ['4 tasks/month', 'Priority support', 'Rollover unused'],
+                  highlighted: false,
+                },
+                {
+                  title: 'Premium Plan',
+                  price: '$500',
+                  description: 'Best value. 10 tasks per month with faster turnaround.',
+                  features: ['10 tasks/month', 'Faster turnaround', 'Rollover unused'],
+                  highlighted: true,
+                },
+              ].map((plan, index) => (
+                <motion.div
+                  key={plan.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className={`rounded-lg p-8 border-2 ${
+                    plan.highlighted
+                      ? 'bg-primary text-white border-primary shadow-lg scale-105'
+                      : 'bg-gradient-to-br from-primary/5 to-secondary/5 border-primary/20'
+                  }`}
+                >
+                  <h3 className={`font-heading text-2xl font-bold mb-2 ${
+                    plan.highlighted ? 'text-white' : 'text-deep-navy'
+                  }`}>
+                    {plan.title}
+                  </h3>
+                  <p className={`font-heading text-3xl font-bold mb-4 ${
+                    plan.highlighted ? 'text-white' : 'text-primary'
+                  }`}>
+                    {plan.price}
+                  </p>
+                  <p className={`font-paragraph text-base mb-6 ${
+                    plan.highlighted ? 'text-white/90' : 'text-cool-gray700'
+                  }`}>
+                    {plan.description}
+                  </p>
+                  <ul className="space-y-2">
+                    {plan.features.map((feature) => (
+                      <li key={feature} className={`flex items-center gap-2 font-paragraph text-sm ${
+                        plan.highlighted ? 'text-white' : 'text-cool-gray700'
+                      }`}>
+                        <CheckCircle className="w-4 h-4" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="text-center mt-12"
+            >
+              <Button
+                asChild
+                size="lg"
+                className="bg-primary hover:bg-primary/90 text-white text-lg px-8 py-6 h-auto"
+              >
+                <Link to="/pricing">View All Pricing Options</Link>
+              </Button>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Industries Using Workflows Section - Now Tertiary */}
+        <section className="py-24 bg-white">
           <div className="max-w-[100rem] mx-auto px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -365,7 +465,7 @@ export default function HomePage() {
                 >
                   <Link
                     to={industry.path}
-                    className="block bg-white p-8 rounded-lg border-2 border-cool-gray300 hover:border-primary hover:shadow-lg transition-all group h-full"
+                    className="block bg-gradient-to-br from-primary/5 to-secondary/5 p-8 rounded-lg border-2 border-cool-gray300 hover:border-primary hover:shadow-lg transition-all group h-full"
                   >
                     <h3 className="font-heading text-2xl font-bold text-deep-navy mb-3 group-hover:text-primary transition-colors">
                       {industry.title}
