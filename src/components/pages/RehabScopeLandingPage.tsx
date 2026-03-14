@@ -6,6 +6,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { CheckCircle2, AlertCircle, Upload, ArrowRight, BookOpen } from 'lucide-react';
+import { Image } from '@/components/ui/image';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
@@ -69,10 +70,21 @@ export default function RehabScopeLandingPage() {
               className="text-center"
             >
               {/* RehabScope Logo/Title */}
-              <div className="mb-8">
-                <h1 className="font-heading text-7xl md:text-8xl font-bold text-white mb-2 tracking-tight">
-                  RehabScope<span className="text-yellow-400">™</span>
-                </h1>
+              <div className="mb-8 flex flex-col items-center">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8 }}
+                  className="mb-6"
+                >
+                  <Image
+                    src="https://static.wixstatic.com/media/18d7f4_dba591839ebb43a1aa0ca0da244be512~mv2.jpg"
+                    alt="RehabScope Logo"
+                    width={280}
+                    height={120}
+                    className="object-contain"
+                  />
+                </motion.div>
                 <p className="font-paragraph text-sm text-yellow-300 font-semibold tracking-widest uppercase">
                   A TaskRocket Investor Service
                 </p>
