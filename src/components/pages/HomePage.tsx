@@ -84,7 +84,7 @@ export default function HomePage() {
 
       <main className="flex-1">
         {/* RehabScope Promotion Button */}
-        <section className="w-full bg-white py-8 px-6 flex items-center justify-center">
+        <section className="w-full bg-white py-8 px-6 flex flex-col items-center justify-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -122,6 +122,16 @@ export default function HomePage() {
               </motion.button>
             </Link>
           </motion.div>
+          
+          {/* RehabScope Description */}
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="font-paragraph text-center text-cool-gray700 text-sm md:text-base mt-4 max-w-2xl"
+          >
+            Specialized AI workflows for construction and rehabilitation projects. Generate detailed scopes of work, estimates, and project documentation instantly.
+          </motion.p>
         </section>
 
         {/* Hero Section - AI Workflow as Primary Focus */}
