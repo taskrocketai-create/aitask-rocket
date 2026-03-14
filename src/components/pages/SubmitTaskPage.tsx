@@ -105,19 +105,39 @@ Submitted: ${new Date().toLocaleString()}
   };
 
   const handlePackageChange = (value: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      selectedPackage: prev.selectedPackage === value ? '' : value,
-      taskType: prev.selectedPackage === value ? '' : prev.taskType,
-    }));
+    // If clicking the same value, toggle it off
+    if (formData.selectedPackage === value) {
+      setFormData((prev) => ({
+        ...prev,
+        selectedPackage: '',
+        taskType: '',
+      }));
+    } else {
+      // If selecting a different value, set it and clear taskType
+      setFormData((prev) => ({
+        ...prev,
+        selectedPackage: value,
+        taskType: '',
+      }));
+    }
   };
 
   const handleTaskTypeChange = (value: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      taskType: prev.taskType === value ? '' : value,
-      selectedPackage: prev.taskType === value ? '' : prev.selectedPackage,
-    }));
+    // If clicking the same value, toggle it off
+    if (formData.taskType === value) {
+      setFormData((prev) => ({
+        ...prev,
+        taskType: '',
+        selectedPackage: '',
+      }));
+    } else {
+      // If selecting a different value, set it and clear selectedPackage
+      setFormData((prev) => ({
+        ...prev,
+        taskType: value,
+        selectedPackage: '',
+      }));
+    }
   };
 
   return (
