@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, Rocket, ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { Image } from '@/components/ui/image';
+import { Button } from '@/components/ui/button';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -14,7 +16,6 @@ export default function Header() {
     { name: 'How It Works', path: '/what-is-a-task' },
     { name: 'Pricing', path: '/pricing' },
     { name: 'Help', path: '/help' },
-    { name: 'RehabScope', path: '/rehabscope-landing' },
   ];
 
   const industryPages = [
@@ -36,9 +37,9 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full bg-white border-b border-cool-gray300">
       <div className="max-w-[100rem] mx-auto px-8 py-4">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-4">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3">
+          <Link to="/" className="flex items-center gap-3 flex-shrink-0">
             <Image
               src="https://static.wixstatic.com/media/18d7f4_37430035763444e693fcdd9f76b78c72~mv2.png"
               width={40}
@@ -131,9 +132,28 @@ export default function Header() {
             </div>
           </nav>
 
+          {/* RehabScope Button - Desktop */}
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="hidden md:block flex-shrink-0"
+          >
+            <Button
+              asChild
+              size="lg"
+              className="bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-deep-navy font-heading font-bold text-sm px-6 py-2 h-auto rounded-full shadow-lg hover:shadow-xl transition-all whitespace-nowrap"
+            >
+              <Link to="/rehabscope-landing" className="inline-flex items-center gap-2">
+                <Rocket className="w-5 h-5" />
+                <span>RehabScope™</span>
+              </Link>
+            </Button>
+          </motion.div>
+
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-deep-navy"
+            className="md:hidden p-2 text-deep-navy flex-shrink-0"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -223,6 +243,26 @@ export default function Header() {
                   ))}
                 </div>
               )}
+
+              {/* Mobile RehabScope Button */}
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="mt-4 pt-4 border-t border-cool-gray300"
+              >
+                <Button
+                  asChild
+                  size="lg"
+                  className="w-full bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-deep-navy font-heading font-bold text-base px-6 py-3 h-auto rounded-full shadow-lg hover:shadow-xl transition-all"
+                >
+                  <Link to="/rehabscope-landing" className="inline-flex items-center justify-center gap-2">
+                    <Rocket className="w-5 h-5" />
+                    <span>Explore RehabScope™</span>
+                    <ArrowRight className="w-5 h-5" />
+                  </Link>
+                </Button>
+              </motion.div>
             </div>
           </nav>
         )}

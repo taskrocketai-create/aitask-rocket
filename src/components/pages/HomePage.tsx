@@ -83,27 +83,6 @@ export default function HomePage() {
       <Header />
 
       <main className="flex-1">
-        {/* RehabScope Promotion Button */}
-        <section className="w-full bg-white py-6 px-6 flex items-center justify-center">
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <Button
-              asChild
-              size="lg"
-              className="bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-deep-navy font-heading font-bold text-lg px-8 py-6 h-auto rounded-full shadow-lg hover:shadow-xl transition-all"
-            >
-              <Link to="/rehabscope-landing" className="inline-flex items-center gap-3">
-                <Rocket className="w-6 h-6" />
-                <span>Explore RehabScope™</span>
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-            </Button>
-          </motion.div>
-        </section>
-
         {/* Hero Section - AI Workflow as Primary Focus */}
         <section className="w-full bg-gradient-to-br from-deep-navy via-primary to-primary py-28 md:py-40">
           <div className="max-w-[100rem] mx-auto px-8">
