@@ -83,56 +83,32 @@ export default function HomePage() {
       <Header />
 
       <main className="flex-1">
-        {/* RehabScope Promotion Button */}
-        <section className="w-full bg-white py-8 px-6 flex flex-col items-center justify-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-          >
-            <Link to="/rehabscope-landing">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
+        {/* RehabScope Promotion Banner */}
+        <Link to="/rehabscope-landing">
+          <section className="w-full bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-400 py-16 px-6 flex flex-col items-center justify-center hover:shadow-lg transition-shadow cursor-pointer">
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-center max-w-4xl"
+            >
+              <h2 className="font-heading text-4xl md:text-5xl font-bold text-deep-navy mb-4">
+                Explore RehabScope™
+              </h2>
+              <p className="font-paragraph text-lg md:text-xl text-deep-navy/90 mb-6">
+                Specialized AI workflows for construction and rehabilitation projects. Generate detailed scopes of work, estimates, and project documentation instantly.
+              </p>
+              <motion.div
+                whileHover={{ x: 4 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 10 }}
-                className="relative px-8 py-4 rounded-lg font-heading font-bold text-lg text-deep-navy overflow-hidden group"
+                className="inline-flex items-center gap-2 font-heading font-bold text-lg text-deep-navy"
               >
-                {/* Gradient background */}
-                <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-400 rounded-lg" />
-                
-                {/* Animated shimmer overlay on hover */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-30 rounded-lg"
-                  initial={{ x: '-100%' }}
-                  whileHover={{ x: '100%' }}
-                  transition={{ duration: 0.6 }}
-                />
-                
-                {/* Content */}
-                <div className="relative flex items-center gap-2">
-                  <span>🏗️ Explore RehabScope™</span>
-                  <motion.div
-                    initial={{ x: 0 }}
-                    whileHover={{ x: 4 }}
-                    transition={{ type: 'spring', stiffness: 400, damping: 10 }}
-                  >
-                    <ArrowRight className="w-5 h-5" />
-                  </motion.div>
-                </div>
-              </motion.button>
-            </Link>
-          </motion.div>
-          
-          {/* RehabScope Description */}
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="font-paragraph text-center text-cool-gray700 text-sm md:text-base mt-4 max-w-2xl"
-          >
-            Specialized AI workflows for construction and rehabilitation projects. Generate detailed scopes of work, estimates, and project documentation instantly.
-          </motion.p>
-        </section>
+                <span>Learn More</span>
+                <ArrowRight className="w-6 h-6" />
+              </motion.div>
+            </motion.div>
+          </section>
+        </Link>
 
         {/* Hero Section - AI Workflow as Primary Focus */}
         <section className="w-full bg-gradient-to-br from-deep-navy via-primary to-primary py-28 md:py-40">
