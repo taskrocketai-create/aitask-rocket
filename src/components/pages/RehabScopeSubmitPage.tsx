@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Upload, Send, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Upload, Send, ArrowRight, CheckCircle2, Mail, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -30,6 +30,7 @@ export default function RehabScopeSubmitPage() {
     taskType: 'RehabScope Review',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const rehabScopePackages = [
     'RehabScope™ Review',
@@ -104,7 +105,10 @@ Submitted: ${new Date().toLocaleString()}
       const mailtoLink = `mailto:taskrocketAI@gmail.com?subject=New RehabScope Submission - ${encodeURIComponent(formData.contactName)}&body=${encodeURIComponent(emailBody)}`;
       window.location.href = mailtoLink;
 
-      navigate('/rehabscope-landing');
+      setShowSuccess(true);
+      setTimeout(() => {
+        navigate('/rehabscope-landing');
+      }, 2000);
     } catch (error) {
       console.error('Error submitting RehabScope request:', error);
     } finally {
@@ -131,6 +135,26 @@ Submitted: ${new Date().toLocaleString()}
   return (
     <div className="min-h-screen bg-cool-gray100">
       <Header />
+
+      {/* Success Message */}
+      {showSuccess && (
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50"
+        >
+          <Card className="p-6 bg-green-50 border-2 border-green-400 shadow-lg max-w-md">
+            <div className="flex items-center gap-3">
+              <CheckCircle2 className="w-6 h-6 text-green-600 flex-shrink-0" />
+              <div>
+                <p className="font-heading font-bold text-green-900">Submission Sent!</p>
+                <p className="font-paragraph text-sm text-green-800">Your RehabScope submission has been sent. Check your email to complete the process.</p>
+              </div>
+            </div>
+          </Card>
+        </motion.div>
+      )}
 
       <div className="max-w-[100rem] mx-auto px-6 py-12">
         <motion.div
