@@ -83,35 +83,45 @@ export default function HomePage() {
       <Header />
 
       <main className="flex-1">
-        {/* RehabScope Promotion Banner */}
-        <section className="w-full bg-gradient-to-r from-deep-navy to-deep-navy/90 py-6 px-6 border-b-4 border-yellow-400">
-          <div className="max-w-[100rem] mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="flex flex-col md:flex-row items-center justify-between gap-4"
-            >
-              <div className="flex-1">
-                <p className="font-heading text-lg md:text-2xl font-bold text-white mb-2">
-                  🏗️ Introducing RehabScope™
-                </p>
-                <p className="font-paragraph text-base text-yellow-100">
-                  Independent rehab scope & budget review for real estate investors. Know the real numbers before you start.
-                </p>
-              </div>
-              <Button
-                asChild
-                size="lg"
-                className="bg-yellow-400 hover:bg-yellow-300 text-deep-navy font-bold text-lg px-8 py-6 h-auto whitespace-nowrap flex-shrink-0"
+        {/* RehabScope Promotion Button */}
+        <section className="w-full bg-white py-8 px-6 flex items-center justify-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+          >
+            <Link to="/rehabscope-landing">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                className="relative px-8 py-4 rounded-lg font-heading font-bold text-lg text-deep-navy overflow-hidden group"
               >
-                <Link to="/rehabscope-landing">
-                  Explore RehabScope
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Link>
-              </Button>
-            </motion.div>
-          </div>
+                {/* Gradient background */}
+                <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-400 rounded-lg" />
+                
+                {/* Animated shimmer overlay on hover */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-30 rounded-lg"
+                  initial={{ x: '-100%' }}
+                  whileHover={{ x: '100%' }}
+                  transition={{ duration: 0.6 }}
+                />
+                
+                {/* Content */}
+                <div className="relative flex items-center gap-2">
+                  <span>🏗️ Explore RehabScope™</span>
+                  <motion.div
+                    initial={{ x: 0 }}
+                    whileHover={{ x: 4 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                  >
+                    <ArrowRight className="w-5 h-5" />
+                  </motion.div>
+                </div>
+              </motion.button>
+            </Link>
+          </motion.div>
         </section>
 
         {/* Hero Section - AI Workflow as Primary Focus */}
