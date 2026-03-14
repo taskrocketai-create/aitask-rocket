@@ -89,32 +89,6 @@ export default function RehabScopeSubmitPage() {
       // Save to database
       await BaseCrudService.create('TaskRequests', newRequest);
 
-      // Send email notification
-      const emailBody = `
-New RehabScope Submission:
-
-Package: ${formData.rehabScopePackage}
-Contact Name: ${formData.contactName}
-Business Name: ${formData.businessName || 'Not provided'}
-Email: ${formData.deliveryEmail}
-Phone: ${formData.phone}
-
-Property Address: ${formData.propertyAddress}
-Property Type: ${formData.propertyType}
-Square Footage: ${formData.squareFootage}
-Estimated Budget: ${formData.estimatedBudget}
-
-Additional Notes:
-${formData.notes}
-
-Submitted: ${new Date().toLocaleString()}
-      `.trim();
-
-      const mailtoLink = `mailto:taskrocketAI@gmail.com?subject=New RehabScope Submission - ${encodeURIComponent(formData.contactName)}&body=${encodeURIComponent(emailBody)}`;
-      
-      // Open email client
-      window.location.href = mailtoLink;
-
       // Show success message
       setShowSuccess(true);
       
