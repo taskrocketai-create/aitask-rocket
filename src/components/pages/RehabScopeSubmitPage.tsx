@@ -50,13 +50,20 @@ export default function RehabScopeSubmitPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate required fields
+    if (!formData.contactName || !formData.deliveryEmail || !formData.phone || !formData.propertyAddress || !formData.propertyType || !formData.estimatedBudget || !formData.rehabScopePackage) {
+      alert('Please fill in all required fields');
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
       const newRequest: TaskRequests = {
         _id: crypto.randomUUID(),
         title: `RehabScope Submission - ${formData.contactName}`,
-        businessName: formData.businessName,
+        businessName: formData.businessName || 'Not provided',
         contactName: formData.contactName,
         deliveryEmail: formData.deliveryEmail,
         industry: formData.industry,
@@ -79,6 +86,7 @@ export default function RehabScopeSubmitPage() {
         createdAt: new Date().toISOString(),
       };
 
+      // Save to database
       await BaseCrudService.create('TaskRequests', newRequest);
 
       // Send email notification
@@ -87,7 +95,7 @@ New RehabScope Submission:
 
 Package: ${formData.rehabScopePackage}
 Contact Name: ${formData.contactName}
-Business Name: ${formData.businessName}
+Business Name: ${formData.businessName || 'Not provided'}
 Email: ${formData.deliveryEmail}
 Phone: ${formData.phone}
 
@@ -104,21 +112,19 @@ Submitted: ${new Date().toLocaleString()}
 
       const mailtoLink = `mailto:taskrocketAI@gmail.com?subject=New RehabScope Submission - ${encodeURIComponent(formData.contactName)}&body=${encodeURIComponent(emailBody)}`;
       
-      // Open email client without navigating away
-      const link = document.createElement('a');
-      link.href = mailtoLink;
-      link.click();
+      // Open email client
+      window.location.href = mailtoLink;
 
       // Show success message
       setShowSuccess(true);
       
-      // Redirect after 2 seconds
+      // Redirect after 3 seconds
       setTimeout(() => {
         navigate('/rehabscope-landing');
-      }, 2000);
+      }, 3000);
     } catch (error) {
       console.error('Error submitting RehabScope request:', error);
-    } finally {
+      alert('Error submitting form. Please try again.');
       setIsSubmitting(false);
     }
   };
