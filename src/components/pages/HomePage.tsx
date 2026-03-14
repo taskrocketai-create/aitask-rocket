@@ -85,26 +85,23 @@ export default function HomePage() {
       <main className="flex-1">
         {/* RehabScope Promotion Banner */}
         <Link to="/rehabscope-landing">
-          <section className="w-full bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-400 py-16 px-6 flex flex-col items-center justify-center hover:shadow-lg transition-shadow cursor-pointer">
+          <section className="w-full bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-400 py-8 px-6 flex flex-col items-center justify-center hover:shadow-lg transition-shadow cursor-pointer">
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-center max-w-4xl"
+              className="text-center max-w-2xl"
             >
-              <h2 className="font-heading text-4xl md:text-5xl font-bold text-deep-navy mb-4">
+              <h2 className="font-heading text-2xl md:text-3xl font-bold text-deep-navy">
                 Explore RehabScope™
               </h2>
-              <p className="font-paragraph text-lg md:text-xl text-deep-navy/90 mb-6">
-                Specialized AI workflows for construction and rehabilitation projects. Generate detailed scopes of work, estimates, and project documentation instantly.
-              </p>
               <motion.div
                 whileHover={{ x: 4 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 10 }}
-                className="inline-flex items-center gap-2 font-heading font-bold text-lg text-deep-navy"
+                className="inline-flex items-center gap-2 font-heading font-bold text-base text-deep-navy mt-2"
               >
                 <span>Learn More</span>
-                <ArrowRight className="w-6 h-6" />
+                <ArrowRight className="w-5 h-5" />
               </motion.div>
             </motion.div>
           </section>
