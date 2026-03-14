@@ -87,7 +87,7 @@ export default function RehabScopeSubmitPage() {
       };
 
       // Save to database
-      await BaseCrudService.create('TaskRequests', newRequest);
+      await BaseCrudService.create('TaskRequests', newRequest, {});
 
       // Show success message
       setShowSuccess(true);
