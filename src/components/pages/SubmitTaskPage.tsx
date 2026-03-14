@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Upload, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -14,31 +14,13 @@ import Footer from '@/components/Footer';
 
 export default function SubmitTaskPage() {
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
   const [formData, setFormData] = useState({
     taskTitle: '',
     taskType: '',
     taskDescription: '',
     clientUploadedFiles: '',
-    selectedPackage: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const packages = [
-    'RehabScope™ Review',
-    'RehabScope™ Pro',
-    'RehabScope™ Elite',
-  ];
-
-  useEffect(() => {
-    const packageParam = searchParams.get('package');
-    if (packageParam) {
-      setFormData(prev => ({
-        ...prev,
-        selectedPackage: packageParam,
-      }));
-    }
-  }, [searchParams]);
 
   const taskTypes = [
     'Proposal',
@@ -63,20 +45,13 @@ export default function SubmitTaskPage() {
         taskStatus: 'Pending',
         submissionDateTime: new Date().toISOString(),
       };
-      
-      // Store selected package in the task description or as a separate field if available
-      const taskDescriptionWithPackage = `Package: ${formData.selectedPackage}\n\n${formData.taskDescription}`;
 
-      await BaseCrudService.create('clienttasks', {
-        ...newTask,
-        taskDescription: taskDescriptionWithPackage,
-      });
+      await BaseCrudService.create('clienttasks', newTask);
       
       // Send email notification
       const emailBody = `
 New Task Submission:
 
-Package: ${formData.selectedPackage}
 Title: ${formData.taskTitle}
 Type: ${formData.taskType}
 Description: ${formData.taskDescription}
@@ -104,40 +79,11 @@ Submitted: ${new Date().toLocaleString()}
     }));
   };
 
-  const handlePackageChange = (value: string) => {
-    // If clicking the same value, toggle it off
-    if (formData.selectedPackage === value) {
-      setFormData((prev) => ({
-        ...prev,
-        selectedPackage: '',
-        taskType: '',
-      }));
-    } else {
-      // If selecting a different value, set it and clear taskType
-      setFormData((prev) => ({
-        ...prev,
-        selectedPackage: value,
-        taskType: '',
-      }));
-    }
-  };
-
   const handleTaskTypeChange = (value: string) => {
-    // If clicking the same value, toggle it off
-    if (formData.taskType === value) {
-      setFormData((prev) => ({
-        ...prev,
-        taskType: '',
-        selectedPackage: '',
-      }));
-    } else {
-      // If selecting a different value, set it and clear selectedPackage
-      setFormData((prev) => ({
-        ...prev,
-        taskType: value,
-        selectedPackage: '',
-      }));
-    }
+    setFormData((prev) => ({
+      ...prev,
+      taskType: value,
+    }));
   };
 
   return (
@@ -190,32 +136,6 @@ Submitted: ${new Date().toLocaleString()}
 
                   <div>
                     <label
-                      htmlFor="selectedPackage"
-                      className="block font-paragraph text-sm font-medium text-cool-gray700 mb-2"
-                    >
-                      RehabScope Package *
-                    </label>
-                    <Select
-                      value={formData.selectedPackage}
-                      onValueChange={handlePackageChange}
-                      disabled={!!formData.taskType}
-                      required
-                    >
-                      <SelectTrigger className={`w-full ${formData.taskType ? 'opacity-50 cursor-not-allowed' : ''}`}>
-                        <SelectValue placeholder="Select a package" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {packages.map((pkg) => (
-                          <SelectItem key={pkg} value={pkg}>
-                            {pkg}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  <div>
-                    <label
                       htmlFor="taskType"
                       className="block font-paragraph text-sm font-medium text-cool-gray700 mb-2"
                     >
@@ -224,10 +144,9 @@ Submitted: ${new Date().toLocaleString()}
                     <Select
                       value={formData.taskType}
                       onValueChange={handleTaskTypeChange}
-                      disabled={!!formData.selectedPackage}
                       required
                     >
-                      <SelectTrigger className={`w-full ${formData.selectedPackage ? 'opacity-50 cursor-not-allowed' : ''}`}>
+                      <SelectTrigger className="w-full">
                         <SelectValue placeholder="Select task type" />
                       </SelectTrigger>
                       <SelectContent>
