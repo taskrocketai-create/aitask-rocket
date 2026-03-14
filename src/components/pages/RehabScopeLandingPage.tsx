@@ -110,7 +110,7 @@ export default function RehabScopeLandingPage() {
                   whileTap={{ scale: 0.95 }}
                 >
                   <Button
-                    onClick={scrollToForm}
+                    onClick={() => handleGetStarted('RehabScope™ Review')}
                     className="bg-yellow-400 hover:bg-yellow-500 text-deep-navy font-heading font-bold text-lg px-8 py-6 h-auto rounded-lg"
                   >
                     Submit Deal for Review
