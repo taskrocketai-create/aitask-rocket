@@ -85,7 +85,7 @@ ${formData.notes}`;
       };
 
       // Save to database
-      await BaseCrudService.create('TaskRequests', newRequest, {});
+      await BaseCrudService.create('TaskRequests', newRequest);
 
       // Show success message
       setShowSuccess(true);
