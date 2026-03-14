@@ -14,6 +14,7 @@ export default function Header() {
     { name: 'How It Works', path: '/what-is-a-task' },
     { name: 'Pricing', path: '/pricing' },
     { name: 'Help', path: '/help' },
+    { name: 'RehabScope', path: '/rehabscope-landing' },
   ];
 
   const industryPages = [
@@ -28,7 +29,6 @@ export default function Header() {
     { name: 'Submit Task', path: '/submit-task' },
     { name: 'My Tasks', path: '/my-tasks' },
     { name: 'Portal', path: '/portal-dashboard' },
-    { name: 'RehabScope', path: '/rehabscope' },
   ];
 
   const isActive = (path: string) => location.pathname === path;
