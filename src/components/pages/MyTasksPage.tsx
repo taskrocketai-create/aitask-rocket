@@ -90,7 +90,7 @@ export default function MyTasksPage() {
               size="lg"
               className="bg-rocket-orange hover:bg-rocket-orange/90 text-white font-heading"
             >
-              <Link to="/portal/submit">
+              <Link to="/submit-task">
                 <Plus className="w-5 h-5 mr-2" />
                 Submit New Task
               </Link>
@@ -241,7 +241,7 @@ export default function MyTasksPage() {
                   size="lg"
                   className="bg-rocket-orange hover:bg-rocket-orange/90 text-white font-heading"
                 >
-                  <Link to="/portal/submit">
+                  <Link to="/submit-task">
                     <Plus className="w-5 h-5 mr-2" />
                     Submit New Task
                   </Link>

@@ -212,7 +212,7 @@ Submitted: ${new Date().toLocaleString()}
                       type="button"
                       size="lg"
                       variant="outline"
-                      onClick={() => navigate('/portal')}
+                      onClick={() => navigate('/')}
                       className="border-cool-gray300 text-cool-gray700 hover:bg-cool-gray100 font-heading text-lg py-7 h-auto"
                     >
                       Cancel

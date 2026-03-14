@@ -170,7 +170,7 @@ export default function PortalDashboard() {
                     Recent Tasks
                   </h2>
                   <Button asChild variant="outline" className="border-rocket-orange text-rocket-orange hover:bg-rocket-orange hover:text-white">
-                    <Link to="/portal/tasks">View All</Link>
+                    <Link to="/my-tasks">View All</Link>
                   </Button>
                 </div>
 
@@ -220,7 +220,7 @@ export default function PortalDashboard() {
                         No tasks yet
                       </p>
                       <Button asChild className="bg-rocket-orange hover:bg-rocket-orange/90 text-white">
-                        <Link to="/portal/submit">Submit Your First Task</Link>
+                        <Link to="/submit-task">Submit Your First Task</Link>
                       </Button>
                     </div>
                   )}
@@ -247,7 +247,7 @@ export default function PortalDashboard() {
                     size="lg"
                     className="w-full bg-white hover:bg-cool-gray100 text-rocket-orange font-heading"
                   >
-                    <Link to="/portal/submit">
+                    <Link to="/submit-task">
                       <Plus className="w-5 h-5 mr-2" />
                       Submit New Task
                     </Link>
@@ -258,7 +258,7 @@ export default function PortalDashboard() {
                     variant="outline"
                     className="w-full border-2 border-white text-white hover:bg-white hover:text-rocket-orange font-heading"
                   >
-                    <Link to="/portal/tasks">View All Tasks</Link>
+                    <Link to="/my-tasks">View All Tasks</Link>
                   </Button>
                   <Button
                     asChild
@@ -266,7 +266,7 @@ export default function PortalDashboard() {
                     variant="outline"
                     className="w-full border-2 border-white text-white hover:bg-white hover:text-rocket-orange font-heading"
                   >
-                    <Link to="/portal/billing">Manage Billing</Link>
+                    <Link to="/pricing">Manage Billing</Link>
                   </Button>
                 </div>
               </Card>
