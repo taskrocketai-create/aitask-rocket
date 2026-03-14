@@ -69,31 +69,18 @@ export default function RehabScopeLandingPage() {
               transition={{ duration: 0.8 }}
               className="text-center"
             >
-              {/* RehabScope Logo/Title */}
-              <div className="mb-8 flex flex-col items-center">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.8 }}
-                  className="mb-6"
-                >
-                  <Image
-                    src="https://static.wixstatic.com/media/18d7f4_dba591839ebb43a1aa0ca0da244be512~mv2.jpg"
-                    alt="RehabScope Logo"
-                    width={280}
-                    height={120}
-                    className="object-contain"
-                  />
-                </motion.div>
-                <p className="font-paragraph text-sm text-yellow-300 font-semibold tracking-widest uppercase">
-                  A TaskRocket Investor Service
-                </p>
-              </div>
-
-              {/* Main Headline */}
-              <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-6">
-                Review
-              </h2>
+              {/* RehabScope™ Title */}
+              <motion.h1
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="font-heading text-6xl md:text-7xl font-bold text-white mb-2"
+              >
+                RehabScope™
+              </motion.h1>
+              <p className="font-paragraph text-sm text-yellow-300 font-semibold tracking-widest uppercase mb-8">
+                A TaskRocket Investor Service
+              </p>
 
               {/* Subheadline */}
               <p className="font-heading text-xl md:text-2xl text-yellow-100 mb-6 font-semibold max-w-3xl mx-auto">
