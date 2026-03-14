@@ -162,11 +162,12 @@ Submitted: ${new Date().toLocaleString()}
                     <Select
                       value={formData.selectedPackage}
                       onValueChange={(value) =>
-                        setFormData((prev) => ({ ...prev, selectedPackage: value }))
+                        setFormData((prev) => ({ ...prev, selectedPackage: value, taskType: '' }))
                       }
+                      disabled={!!formData.taskType}
                       required
                     >
-                      <SelectTrigger className="w-full">
+                      <SelectTrigger className={`w-full ${formData.taskType ? 'opacity-50 cursor-not-allowed' : ''}`}>
                         <SelectValue placeholder="Select a package" />
                       </SelectTrigger>
                       <SelectContent>
@@ -189,11 +190,12 @@ Submitted: ${new Date().toLocaleString()}
                     <Select
                       value={formData.taskType}
                       onValueChange={(value) =>
-                        setFormData((prev) => ({ ...prev, taskType: value }))
+                        setFormData((prev) => ({ ...prev, taskType: value, selectedPackage: '' }))
                       }
+                      disabled={!!formData.selectedPackage}
                       required
                     >
-                      <SelectTrigger className="w-full">
+                      <SelectTrigger className={`w-full ${formData.selectedPackage ? 'opacity-50 cursor-not-allowed' : ''}`}>
                         <SelectValue placeholder="Select task type" />
                       </SelectTrigger>
                       <SelectContent>
