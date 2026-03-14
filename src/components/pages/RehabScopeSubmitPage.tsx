@@ -103,9 +103,16 @@ Submitted: ${new Date().toLocaleString()}
       `.trim();
 
       const mailtoLink = `mailto:taskrocketAI@gmail.com?subject=New RehabScope Submission - ${encodeURIComponent(formData.contactName)}&body=${encodeURIComponent(emailBody)}`;
-      window.location.href = mailtoLink;
+      
+      // Open email client without navigating away
+      const link = document.createElement('a');
+      link.href = mailtoLink;
+      link.click();
 
+      // Show success message
       setShowSuccess(true);
+      
+      // Redirect after 2 seconds
       setTimeout(() => {
         navigate('/rehabscope-landing');
       }, 2000);
