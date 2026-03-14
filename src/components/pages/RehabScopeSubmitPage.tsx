@@ -8,7 +8,6 @@ import { Textarea } from '@/components/ui/textarea';
 import { Card } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { BaseCrudService } from '@/integrations';
-import { TaskRequests } from '@/entities';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
@@ -70,7 +69,7 @@ Estimated Budget: ${formData.estimatedBudget}
 Additional Notes:
 ${formData.notes}`;
 
-      const newRequest: TaskRequests = {
+      const newRequest = {
         _id: crypto.randomUUID(),
         title: `RehabScope Submission - ${formData.contactName}`,
         businessName: formData.businessName || 'Not provided',
