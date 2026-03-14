@@ -269,7 +269,10 @@ export default function RehabScopeLandingPage() {
                         </li>
                       ))}
                     </ul>
-                    <Button className="w-full bg-deep-navy hover:bg-blue-900 text-white font-heading font-bold">
+                    <Button 
+                      onClick={scrollToForm}
+                      className="w-full bg-deep-navy hover:bg-blue-900 text-white font-heading font-bold"
+                    >
                       Get Started
                     </Button>
                   </Card>
@@ -307,7 +310,10 @@ export default function RehabScopeLandingPage() {
                         </li>
                       ))}
                     </ul>
-                    <Button className="w-full bg-yellow-400 hover:bg-yellow-500 text-deep-navy font-heading font-bold">
+                    <Button 
+                      onClick={scrollToForm}
+                      className="w-full bg-yellow-400 hover:bg-yellow-500 text-deep-navy font-heading font-bold"
+                    >
                       Get Started
                     </Button>
                   </Card>
@@ -342,7 +348,10 @@ export default function RehabScopeLandingPage() {
                         </li>
                       ))}
                     </ul>
-                    <Button className="w-full bg-deep-navy hover:bg-blue-900 text-white font-heading font-bold">
+                    <Button 
+                      onClick={scrollToForm}
+                      className="w-full bg-deep-navy hover:bg-blue-900 text-white font-heading font-bold"
+                    >
                       Get Started
                     </Button>
                   </Card>
