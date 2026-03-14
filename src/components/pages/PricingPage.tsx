@@ -14,7 +14,7 @@ export default function PricingPage() {
       const mailtoLink = `mailto:taskrocketAI@gmail.com?subject=AI Workflow Quote Request&body=I am interested in a custom AI workflow solution. Please contact me to discuss my requirements.`;
       window.location.href = mailtoLink;
     } else {
-      navigate('/submit-task', { state: { selectedPlan: planName }, replace: false });
+      navigate(`/submit-task?package=${encodeURIComponent(planName)}`);
     }
   };
 
