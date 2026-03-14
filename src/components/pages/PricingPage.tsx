@@ -8,13 +8,13 @@ import { Button } from '@/components/ui/button';
 export default function PricingPage() {
   const navigate = useNavigate();
 
-  const handlePlanClick = (planName) => {
+  const handlePlanClick = (planName: string) => {
     if (planName === 'AI Workflow') {
       // Send email for AI Workflow quote request
       const mailtoLink = `mailto:taskrocketAI@gmail.com?subject=AI Workflow Quote Request&body=I am interested in a custom AI workflow solution. Please contact me to discuss my requirements.`;
       window.location.href = mailtoLink;
     } else {
-      navigate('/submit-task', { state: { selectedPlan: planName } });
+      navigate('/submit-task', { state: { selectedPlan: planName }, replace: false });
     }
   };
 
