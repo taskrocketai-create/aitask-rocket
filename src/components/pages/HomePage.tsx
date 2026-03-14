@@ -83,6 +83,37 @@ export default function HomePage() {
       <Header />
 
       <main className="flex-1">
+        {/* RehabScope Promotion Banner */}
+        <section className="w-full bg-gradient-to-r from-deep-navy to-deep-navy/90 py-6 px-6 border-b-4 border-yellow-400">
+          <div className="max-w-[100rem] mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="flex flex-col md:flex-row items-center justify-between gap-4"
+            >
+              <div className="flex-1">
+                <p className="font-heading text-lg md:text-2xl font-bold text-white mb-2">
+                  🏗️ Introducing RehabScope™
+                </p>
+                <p className="font-paragraph text-base text-yellow-100">
+                  Independent rehab scope & budget review for real estate investors. Know the real numbers before you start.
+                </p>
+              </div>
+              <Button
+                asChild
+                size="lg"
+                className="bg-yellow-400 hover:bg-yellow-300 text-deep-navy font-bold text-lg px-8 py-6 h-auto whitespace-nowrap flex-shrink-0"
+              >
+                <Link to="/rehabscope-landing">
+                  Explore RehabScope
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Link>
+              </Button>
+            </motion.div>
+          </div>
+        </section>
+
         {/* Hero Section - AI Workflow as Primary Focus */}
         <section className="w-full bg-gradient-to-br from-deep-navy via-primary to-primary py-28 md:py-40">
           <div className="max-w-[100rem] mx-auto px-8">
