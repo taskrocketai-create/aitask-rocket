@@ -60,6 +60,8 @@ export default function RehabScopeSubmitPage() {
     setIsSubmitting(true);
 
     try {
+      const notesContent = `Package: ${formData.rehabScopePackage}\n\nProperty Address: ${formData.propertyAddress}\nProperty Type: ${formData.propertyType}\nSquare Footage: ${formData.squareFootage}\nEstimated Budget: ${formData.estimatedBudget}\n\nAdditional Notes:\n${formData.notes}`;
+
       const newRequest: TaskRequests = {
         _id: crypto.randomUUID(),
         title: `RehabScope Submission - ${formData.contactName}`,
@@ -68,26 +70,13 @@ export default function RehabScopeSubmitPage() {
         deliveryEmail: formData.deliveryEmail,
         industry: formData.industry,
         taskType: formData.taskType,
-        notes: {
-          blocks: [
-            {
-              key: 'notes',
-              text: `Package: ${formData.rehabScopePackage}\n\nProperty Address: ${formData.propertyAddress}\nProperty Type: ${formData.propertyType}\nSquare Footage: ${formData.squareFootage}\nEstimated Budget: ${formData.estimatedBudget}\n\nAdditional Notes:\n${formData.notes}`,
-              type: 'unstyled',
-              depth: 0,
-              inlineStyleRanges: [],
-              entityRanges: [],
-              data: {},
-            },
-          ],
-          entityMap: {},
-        },
+        notes: notesContent,
         status: 'Pending',
         createdAt: new Date().toISOString(),
       };
 
       // Save to database
-      await BaseCrudService.create('TaskRequests', newRequest, {});
+      await BaseCrudService.create('TaskRequests', newRequest);
 
       // Show success message
       setShowSuccess(true);
