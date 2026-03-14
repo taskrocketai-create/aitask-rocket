@@ -60,7 +60,15 @@ export default function RehabScopeSubmitPage() {
     setIsSubmitting(true);
 
     try {
-      const notesContent = `Package: ${formData.rehabScopePackage}\n\nProperty Address: ${formData.propertyAddress}\nProperty Type: ${formData.propertyType}\nSquare Footage: ${formData.squareFootage}\nEstimated Budget: ${formData.estimatedBudget}\n\nAdditional Notes:\n${formData.notes}`;
+      const notesContent = `Package: ${formData.rehabScopePackage}
+
+Property Address: ${formData.propertyAddress}
+Property Type: ${formData.propertyType}
+Square Footage: ${formData.squareFootage}
+Estimated Budget: ${formData.estimatedBudget}
+
+Additional Notes:
+${formData.notes}`;
 
       const newRequest: TaskRequests = {
         _id: crypto.randomUUID(),
@@ -73,6 +81,7 @@ export default function RehabScopeSubmitPage() {
         notes: notesContent,
         status: 'Pending',
         createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
       };
 
       // Save to database
