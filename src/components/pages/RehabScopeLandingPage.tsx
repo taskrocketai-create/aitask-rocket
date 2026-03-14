@@ -58,7 +58,7 @@ export default function RehabScopeLandingPage() {
   };
 
   const handleGetStarted = (packageName: string) => {
-    navigate(`/submit-task?package=${encodeURIComponent(packageName)}`);
+    navigate(`/rehabscope-submit?package=${encodeURIComponent(packageName)}`);
   };
 
   return (

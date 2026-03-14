@@ -13,6 +13,7 @@ import RetailPage from '@/components/pages/RetailPage';
 import BarPage from '@/components/pages/BarPage';
 import SubmitTaskPage from '@/components/pages/SubmitTaskPage';
 import RehabScopeLandingPage from '@/components/pages/RehabScopeLandingPage';
+import RehabScopeSubmitPage from '@/components/pages/RehabScopeSubmitPage';
 import MyTasksPage from '@/components/pages/MyTasksPage';
 import PortalDashboard from '@/components/pages/PortalDashboard';
 
@@ -107,6 +108,13 @@ const router = createBrowserRouter([
         element: <RehabScopeLandingPage />,
         routeMetadata: {
           pageIdentifier: 'rehabscope-landing',
+        },
+      },
+      {
+        path: "rehabscope-submit",
+        element: <RehabScopeSubmitPage />,
+        routeMetadata: {
+          pageIdentifier: 'rehabscope-submit',
         },
       },
       {
