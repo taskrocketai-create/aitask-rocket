@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { Image } from '@/components/ui/image';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [industriesOpen, setIndustriesOpen] = useState(false);
+  const [appsOpen, setAppsOpen] = useState(false);
   const location = useLocation();
 
   const navLinks = [
@@ -12,6 +14,21 @@ export default function Header() {
     { name: 'How It Works', path: '/what-is-a-task' },
     { name: 'Pricing', path: '/pricing' },
     { name: 'Help', path: '/help' },
+  ];
+
+  const industryPages = [
+    { name: 'Contractor', path: '/contractor' },
+    { name: 'Realtor', path: '/realtor' },
+    { name: 'Restaurant', path: '/restaurant' },
+    { name: 'Retail', path: '/retail' },
+    { name: 'Bar', path: '/bar' },
+  ];
+
+  const appPages = [
+    { name: 'Submit Task', path: '/submit-task' },
+    { name: 'My Tasks', path: '/my-tasks' },
+    { name: 'Portal', path: '/portal-dashboard' },
+    { name: 'RehabScope', path: '/rehabscope' },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -40,20 +57,78 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`font-paragraph text-base transition-colors ${
+                className={`font-paragraph text-base px-3 py-2 rounded transition-colors ${
                   isActive(link.path)
-                    ? 'text-deep-navy font-medium'
-                    : 'text-cool-gray700 hover:text-deep-navy'
+                    ? 'text-deep-navy font-medium bg-cool-gray100'
+                    : 'text-cool-gray700 hover:text-deep-navy hover:bg-cool-gray100'
                 }`}
               >
                 {link.name}
               </Link>
             ))}
+
+            {/* Industries Dropdown */}
+            <div className="relative group">
+              <button
+                className={`font-paragraph text-base px-3 py-2 rounded flex items-center gap-1 transition-colors ${
+                  industryPages.some(p => isActive(p.path))
+                    ? 'text-deep-navy font-medium bg-cool-gray100'
+                    : 'text-cool-gray700 hover:text-deep-navy hover:bg-cool-gray100'
+                }`}
+              >
+                Industries
+                <ChevronDown className="w-4 h-4" />
+              </button>
+              <div className="absolute left-0 mt-0 w-48 bg-white border border-cool-gray300 rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                {industryPages.map((link) => (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    className={`block px-4 py-3 font-paragraph text-sm transition-colors ${
+                      isActive(link.path)
+                        ? 'text-deep-navy font-medium bg-cool-gray100'
+                        : 'text-cool-gray700 hover:text-deep-navy hover:bg-cool-gray100'
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Apps Dropdown */}
+            <div className="relative group">
+              <button
+                className={`font-paragraph text-base px-3 py-2 rounded flex items-center gap-1 transition-colors ${
+                  appPages.some(p => isActive(p.path))
+                    ? 'text-deep-navy font-medium bg-cool-gray100'
+                    : 'text-cool-gray700 hover:text-deep-navy hover:bg-cool-gray100'
+                }`}
+              >
+                Apps
+                <ChevronDown className="w-4 h-4" />
+              </button>
+              <div className="absolute left-0 mt-0 w-48 bg-white border border-cool-gray300 rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                {appPages.map((link) => (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    className={`block px-4 py-3 font-paragraph text-sm transition-colors ${
+                      isActive(link.path)
+                        ? 'text-deep-navy font-medium bg-cool-gray100'
+                        : 'text-cool-gray700 hover:text-deep-navy hover:bg-cool-gray100'
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -73,21 +148,81 @@ export default function Header() {
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
           <nav className="md:hidden mt-4 pb-4 border-t border-cool-gray300 pt-4">
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-2">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`font-paragraph text-base transition-colors ${
+                  className={`font-paragraph text-base px-3 py-2 rounded transition-colors ${
                     isActive(link.path)
-                      ? 'text-deep-navy font-medium'
-                      : 'text-cool-gray700 hover:text-deep-navy'
+                      ? 'text-deep-navy font-medium bg-cool-gray100'
+                      : 'text-cool-gray700 hover:text-deep-navy hover:bg-cool-gray100'
                   }`}
                 >
                   {link.name}
                 </Link>
               ))}
+
+              {/* Mobile Industries */}
+              <button
+                onClick={() => setIndustriesOpen(!industriesOpen)}
+                className="font-paragraph text-base px-3 py-2 rounded flex items-center gap-1 text-cool-gray700 hover:text-deep-navy hover:bg-cool-gray100 transition-colors text-left w-full"
+              >
+                Industries
+                <ChevronDown className={`w-4 h-4 transition-transform ${industriesOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {industriesOpen && (
+                <div className="pl-4 flex flex-col gap-2">
+                  {industryPages.map((link) => (
+                    <Link
+                      key={link.path}
+                      to={link.path}
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        setIndustriesOpen(false);
+                      }}
+                      className={`font-paragraph text-sm px-3 py-2 rounded transition-colors ${
+                        isActive(link.path)
+                          ? 'text-deep-navy font-medium bg-cool-gray100'
+                          : 'text-cool-gray700 hover:text-deep-navy hover:bg-cool-gray100'
+                      }`}
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+
+              {/* Mobile Apps */}
+              <button
+                onClick={() => setAppsOpen(!appsOpen)}
+                className="font-paragraph text-base px-3 py-2 rounded flex items-center gap-1 text-cool-gray700 hover:text-deep-navy hover:bg-cool-gray100 transition-colors text-left w-full"
+              >
+                Apps
+                <ChevronDown className={`w-4 h-4 transition-transform ${appsOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {appsOpen && (
+                <div className="pl-4 flex flex-col gap-2">
+                  {appPages.map((link) => (
+                    <Link
+                      key={link.path}
+                      to={link.path}
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        setAppsOpen(false);
+                      }}
+                      className={`font-paragraph text-sm px-3 py-2 rounded transition-colors ${
+                        isActive(link.path)
+                          ? 'text-deep-navy font-medium bg-cool-gray100'
+                          : 'text-cool-gray700 hover:text-deep-navy hover:bg-cool-gray100'
+                      }`}
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
           </nav>
         )}
