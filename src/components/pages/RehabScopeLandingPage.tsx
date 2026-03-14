@@ -5,9 +5,24 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { CheckCircle2, AlertCircle, Upload, ArrowRight } from 'lucide-react';
+import { CheckCircle2, AlertCircle, Upload, ArrowRight, BookOpen } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+
+// Blueprint grid background pattern
+const BlueprintGrid = () => (
+  <div className="absolute inset-0 opacity-5">
+    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="0.5"/>
+          <circle cx="0" cy="0" r="1" fill="white"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#grid)" />
+    </svg>
+  </div>
+);
 
 export default function RehabScopeLandingPage() {
   const [formData, setFormData] = useState({
@@ -44,44 +59,82 @@ export default function RehabScopeLandingPage() {
       <Header />
       <main className="w-full">
         {/* HERO SECTION */}
-        <section className="w-full bg-gradient-to-br from-deep-navy via-blue-gray-gradient-start to-blue-gray-gradient-end py-24 px-6">
-          <div className="max-w-[100rem] mx-auto">
+        <section className="relative w-full bg-deep-navy py-32 px-6 overflow-hidden">
+          <BlueprintGrid />
+          <div className="max-w-[100rem] mx-auto relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               className="text-center"
             >
-              <h1 className="font-heading text-6xl md:text-7xl font-bold text-white mb-6">
-                RehabScope™ Review
-              </h1>
-              <p className="font-heading text-2xl md:text-3xl text-blue-100 mb-4 font-semibold">
+              {/* RehabScope Logo/Title */}
+              <div className="mb-8">
+                <h1 className="font-heading text-7xl md:text-8xl font-bold text-white mb-2 tracking-tight">
+                  RehabScope<span className="text-yellow-400">™</span>
+                </h1>
+                <p className="font-paragraph text-sm text-yellow-300 font-semibold tracking-widest uppercase">
+                  A TaskRocket Investor Service
+                </p>
+              </div>
+
+              {/* Main Headline */}
+              <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-6">
+                Review
+              </h2>
+
+              {/* Subheadline */}
+              <p className="font-heading text-xl md:text-2xl text-yellow-100 mb-6 font-semibold max-w-3xl mx-auto">
                 Independent Rehab Scope & Budget Review for Real Estate Investors
               </p>
-              <p className="font-paragraph text-lg text-blue-100 mb-8 max-w-2xl mx-auto">
+
+              {/* Support Line */}
+              <p className="font-paragraph text-lg text-yellow-50 mb-8 max-w-2xl mx-auto font-semibold">
                 Before you swing the first hammer, know the real numbers.
               </p>
-              <p className="font-paragraph text-base text-blue-50 mb-12 max-w-2xl mx-auto leading-relaxed">
+
+              {/* Additional Info */}
+              <p className="font-paragraph text-base text-yellow-50 mb-12 max-w-2xl mx-auto leading-relaxed">
                 Upload your contractor scope and rehab estimate to receive an independent review before construction begins.
               </p>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Button
-                  onClick={scrollToForm}
-                  className="bg-rocket-orange hover:bg-orange-600 text-white font-heading font-bold text-lg px-8 py-6 h-auto rounded-lg"
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  Submit Deal for Review
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-              </motion.div>
+                  <Button
+                    onClick={scrollToForm}
+                    className="bg-yellow-400 hover:bg-yellow-500 text-deep-navy font-heading font-bold text-lg px-8 py-6 h-auto rounded-lg"
+                  >
+                    Submit Deal for Review
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </Button>
+                </motion.div>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Button
+                    onClick={() => {
+                      const section = document.getElementById('why-investors');
+                      if (section) section.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    variant="outline"
+                    className="border-2 border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-deep-navy font-heading font-bold text-lg px-8 py-6 h-auto rounded-lg"
+                  >
+                    <BookOpen className="mr-2 w-5 h-5" />
+                    Learn How RehabScope Works
+                  </Button>
+                </motion.div>
+              </div>
             </motion.div>
           </div>
         </section>
 
-        {/* THE PROBLEM SECTION */}
-        <section className="w-full py-20 px-6 bg-white">
+        {/* WHY INVESTORS USE REHABSCOPE */}
+        <section id="why-investors" className="relative w-full py-24 px-6 bg-white">
           <div className="max-w-[100rem] mx-auto">
             <motion.div
               initial={{ opacity: 0 }}
@@ -92,18 +145,18 @@ export default function RehabScopeLandingPage() {
               <h2 className="font-heading text-4xl md:text-5xl font-bold text-deep-navy mb-4 text-center">
                 Why Investors Use RehabScope
               </h2>
-              <p className="font-paragraph text-lg text-cool-gray700 text-center mb-16 max-w-3xl mx-auto">
-                Renovation budgets often fail because contractor scopes are incomplete, items are missing, or costs are underestimated. These gaps can derail projects and destroy profitability.
+              <p className="font-paragraph text-lg text-cool-gray700 text-center mb-16 max-w-3xl mx-auto leading-relaxed">
+                Renovation budgets often fail because contractor scopes are incomplete, items are missing, or costs are underestimated. These gaps can derail projects and destroy profitability. RehabScope identifies these issues before construction begins.
               </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {[
-                  { icon: AlertCircle, title: 'Missing Scope Items', description: 'Critical work not included in contractor estimates' },
-                  { icon: AlertCircle, title: 'Underestimated Materials', description: 'Quantities and costs significantly below reality' },
-                  { icon: AlertCircle, title: 'Unrealistic Pricing', description: 'Contractor bids that don\'t reflect actual market rates' },
-                  { icon: AlertCircle, title: 'Incomplete Trade Coverage', description: 'Entire trades or specialties overlooked' },
-                  { icon: AlertCircle, title: 'Sequencing Issues', description: 'Work order problems that increase costs and delays' },
-                  { icon: AlertCircle, title: 'Hidden Conditions', description: 'Unforeseen problems discovered during demolition' },
+                  { title: 'Missing Scope Items', description: 'Critical work not included in contractor estimates' },
+                  { title: 'Underestimated Materials', description: 'Quantities and costs significantly below reality' },
+                  { title: 'Unrealistic Contractor Pricing', description: 'Bids that don\'t reflect actual market rates' },
+                  { title: 'Incomplete Trade Coverage', description: 'Entire trades or specialties overlooked' },
+                  { title: 'Sequencing Issues', description: 'Work order problems that increase costs and delays' },
+                  { title: 'Hidden Repair Costs', description: 'Unforeseen problems discovered during demolition' },
                 ].map((item, idx) => (
                   <motion.div
                     key={idx}
@@ -112,15 +165,15 @@ export default function RehabScopeLandingPage() {
                     transition={{ duration: 0.6, delay: idx * 0.1 }}
                     viewport={{ once: true }}
                   >
-                    <Card className="p-6 border border-cool-gray300 hover:shadow-lg transition-shadow">
-                      <item.icon className="w-8 h-8 text-rocket-orange mb-4" />
-                      <h3 className="font-heading text-xl font-bold text-deep-navy mb-2">
+                    <div className="p-6 bg-gradient-to-br from-deep-navy to-blue-gray-gradient-end rounded-lg border border-yellow-400 border-opacity-20 hover:border-opacity-40 transition-all">
+                      <AlertCircle className="w-8 h-8 text-yellow-400 mb-4" />
+                      <h3 className="font-heading text-lg font-bold text-white mb-2">
                         {item.title}
                       </h3>
-                      <p className="font-paragraph text-cool-gray700">
+                      <p className="font-paragraph text-yellow-50">
                         {item.description}
                       </p>
-                    </Card>
+                    </div>
                   </motion.div>
                 ))}
               </div>
@@ -129,8 +182,9 @@ export default function RehabScopeLandingPage() {
         </section>
 
         {/* WHAT REHABSCOPE REVIEWS */}
-        <section className="w-full py-20 px-6 bg-cool-gray100">
-          <div className="max-w-[100rem] mx-auto">
+        <section className="relative w-full py-24 px-6 bg-cool-gray100">
+          <BlueprintGrid />
+          <div className="max-w-[100rem] mx-auto relative z-10">
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -140,11 +194,11 @@ export default function RehabScopeLandingPage() {
               <h2 className="font-heading text-4xl md:text-5xl font-bold text-deep-navy mb-4 text-center">
                 What RehabScope Reviews
               </h2>
-              <p className="font-paragraph text-lg text-cool-gray700 text-center mb-16 max-w-3xl mx-auto">
-                Our comprehensive analysis identifies gaps and risks before construction begins, ensuring you have a realistic understanding of your renovation scope.
+              <p className="font-paragraph text-lg text-cool-gray700 text-center mb-16 max-w-3xl mx-auto leading-relaxed">
+                Our comprehensive analysis reviews all aspects of your renovation project to identify gaps and risks before construction begins, ensuring you have a realistic understanding of your true renovation scope.
               </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {[
                   'Contractor Scopes of Work',
                   'Contractor Estimates & Bids',
@@ -159,9 +213,9 @@ export default function RehabScopeLandingPage() {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: idx * 0.1 }}
                     viewport={{ once: true }}
-                    className="flex items-start gap-4 p-6 bg-white rounded-lg border border-cool-gray300"
+                    className="flex items-start gap-4 p-6 bg-white rounded-lg border border-cool-gray300 hover:border-yellow-400 transition-colors"
                   >
-                    <CheckCircle2 className="w-6 h-6 text-rocket-orange flex-shrink-0 mt-1" />
+                    <CheckCircle2 className="w-6 h-6 text-yellow-400 flex-shrink-0 mt-1" />
                     <p className="font-paragraph text-lg text-cool-gray900 font-medium">
                       {item}
                     </p>
@@ -173,7 +227,7 @@ export default function RehabScopeLandingPage() {
         </section>
 
         {/* PRICING PACKAGES */}
-        <section className="w-full py-20 px-6 bg-white">
+        <section className="w-full py-24 px-6 bg-white">
           <div className="max-w-[100rem] mx-auto">
             <motion.div
               initial={{ opacity: 0 }}
@@ -196,11 +250,11 @@ export default function RehabScopeLandingPage() {
                   transition={{ duration: 0.6 }}
                   viewport={{ once: true }}
                 >
-                  <Card className="p-8 border-2 border-cool-gray300 hover:shadow-lg transition-shadow h-full flex flex-col">
+                  <Card className="p-8 border-2 border-cool-gray300 hover:shadow-lg transition-shadow h-full flex flex-col bg-white">
                     <h3 className="font-heading text-2xl font-bold text-deep-navy mb-2">
                       RehabScope™ Review
                     </h3>
-                    <p className="font-paragraph text-rocket-orange text-3xl font-bold mb-6">
+                    <p className="font-paragraph text-yellow-400 text-3xl font-bold mb-6">
                       Starting at $1,500
                     </p>
                     <ul className="space-y-4 mb-8 flex-grow">
@@ -211,12 +265,12 @@ export default function RehabScopeLandingPage() {
                         'Written RehabScope Review Report',
                       ].map((feature, idx) => (
                         <li key={idx} className="flex items-start gap-3">
-                          <CheckCircle2 className="w-5 h-5 text-rocket-orange flex-shrink-0 mt-0.5" />
+                          <CheckCircle2 className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" />
                           <span className="font-paragraph text-cool-gray900">{feature}</span>
                         </li>
                       ))}
                     </ul>
-                    <Button className="w-full bg-primary hover:bg-blue-700 text-white font-heading font-bold">
+                    <Button className="w-full bg-deep-navy hover:bg-blue-900 text-white font-heading font-bold">
                       Get Started
                     </Button>
                   </Card>
@@ -229,14 +283,14 @@ export default function RehabScopeLandingPage() {
                   transition={{ duration: 0.6, delay: 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <Card className="p-8 border-2 border-rocket-orange shadow-xl hover:shadow-2xl transition-shadow h-full flex flex-col relative">
-                    <Badge className="absolute -top-3 left-6 bg-rocket-orange text-white font-heading font-bold">
+                  <Card className="p-8 border-2 border-yellow-400 shadow-xl hover:shadow-2xl transition-shadow h-full flex flex-col relative bg-gradient-to-br from-deep-navy to-blue-gray-gradient-end">
+                    <Badge className="absolute -top-3 left-6 bg-yellow-400 text-deep-navy font-heading font-bold">
                       Most Popular
                     </Badge>
-                    <h3 className="font-heading text-2xl font-bold text-deep-navy mb-2 mt-4">
+                    <h3 className="font-heading text-2xl font-bold text-white mb-2 mt-4">
                       RehabScope™ Pro
                     </h3>
-                    <p className="font-paragraph text-rocket-orange text-3xl font-bold mb-6">
+                    <p className="font-paragraph text-yellow-400 text-3xl font-bold mb-6">
                       Starting at $2,500
                     </p>
                     <ul className="space-y-4 mb-8 flex-grow">
@@ -247,14 +301,14 @@ export default function RehabScopeLandingPage() {
                         'Renovation sequencing recommendations',
                       ].map((feature, idx) => (
                         <li key={idx} className="flex items-start gap-3">
-                          <CheckCircle2 className="w-5 h-5 text-rocket-orange flex-shrink-0 mt-0.5" />
-                          <span className={`font-paragraph ${idx === 0 ? 'font-bold text-deep-navy' : 'text-cool-gray900'}`}>
+                          <CheckCircle2 className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" />
+                          <span className={`font-paragraph ${idx === 0 ? 'font-bold text-yellow-300' : 'text-yellow-50'}`}>
                             {feature}
                           </span>
                         </li>
                       ))}
                     </ul>
-                    <Button className="w-full bg-rocket-orange hover:bg-orange-600 text-white font-heading font-bold">
+                    <Button className="w-full bg-yellow-400 hover:bg-yellow-500 text-deep-navy font-heading font-bold">
                       Get Started
                     </Button>
                   </Card>
@@ -267,11 +321,11 @@ export default function RehabScopeLandingPage() {
                   transition={{ duration: 0.6, delay: 0.2 }}
                   viewport={{ once: true }}
                 >
-                  <Card className="p-8 border-2 border-cool-gray300 hover:shadow-lg transition-shadow h-full flex flex-col">
+                  <Card className="p-8 border-2 border-cool-gray300 hover:shadow-lg transition-shadow h-full flex flex-col bg-white">
                     <h3 className="font-heading text-2xl font-bold text-deep-navy mb-2">
                       RehabScope™ Elite
                     </h3>
-                    <p className="font-paragraph text-rocket-orange text-3xl font-bold mb-6">
+                    <p className="font-paragraph text-yellow-400 text-3xl font-bold mb-6">
                       Starting at $4,500
                     </p>
                     <ul className="space-y-4 mb-8 flex-grow">
@@ -282,14 +336,14 @@ export default function RehabScopeLandingPage() {
                         'Follow-up support during early project stages',
                       ].map((feature, idx) => (
                         <li key={idx} className="flex items-start gap-3">
-                          <CheckCircle2 className="w-5 h-5 text-rocket-orange flex-shrink-0 mt-0.5" />
+                          <CheckCircle2 className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" />
                           <span className={`font-paragraph ${idx === 0 ? 'font-bold text-deep-navy' : 'text-cool-gray900'}`}>
                             {feature}
                           </span>
                         </li>
                       ))}
                     </ul>
-                    <Button className="w-full bg-primary hover:bg-blue-700 text-white font-heading font-bold">
+                    <Button className="w-full bg-deep-navy hover:bg-blue-900 text-white font-heading font-bold">
                       Get Started
                     </Button>
                   </Card>
@@ -300,7 +354,7 @@ export default function RehabScopeLandingPage() {
         </section>
 
         {/* OPTIONAL INVESTOR TOOLS */}
-        <section className="w-full py-20 px-6 bg-cool-gray100">
+        <section className="w-full py-24 px-6 bg-cool-gray100">
           <div className="max-w-[100rem] mx-auto">
             <motion.div
               initial={{ opacity: 0 }}
@@ -329,11 +383,11 @@ export default function RehabScopeLandingPage() {
                     transition={{ duration: 0.6, delay: idx * 0.1 }}
                     viewport={{ once: true }}
                   >
-                    <Card className="p-6 border border-cool-gray300 hover:shadow-lg transition-shadow">
+                    <Card className="p-6 border border-cool-gray300 hover:border-yellow-400 hover:shadow-lg transition-all bg-white">
                       <h3 className="font-heading text-xl font-bold text-deep-navy mb-2">
                         {tool.title}
                       </h3>
-                      <p className="font-paragraph text-rocket-orange text-lg font-bold mb-3">
+                      <p className="font-paragraph text-yellow-400 text-lg font-bold mb-3">
                         {tool.price}
                       </p>
                       <p className="font-paragraph text-cool-gray700">
@@ -348,7 +402,7 @@ export default function RehabScopeLandingPage() {
         </section>
 
         {/* COMMON REHAB BUDGET MISTAKES */}
-        <section className="w-full py-20 px-6 bg-white">
+        <section className="w-full py-24 px-6 bg-white">
           <div className="max-w-[100rem] mx-auto">
             <motion.div
               initial={{ opacity: 0 }}
@@ -378,9 +432,9 @@ export default function RehabScopeLandingPage() {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: idx * 0.1 }}
                     viewport={{ once: true }}
-                    className="flex items-start gap-4 p-6 bg-cool-gray100 rounded-lg border border-cool-gray300"
+                    className="flex items-start gap-4 p-6 bg-cool-gray100 rounded-lg border border-cool-gray300 hover:border-yellow-400 transition-colors"
                   >
-                    <AlertCircle className="w-6 h-6 text-rocket-orange flex-shrink-0 mt-1" />
+                    <AlertCircle className="w-6 h-6 text-yellow-400 flex-shrink-0 mt-1" />
                     <p className="font-paragraph text-cool-gray900">
                       {mistake}
                     </p>
@@ -392,8 +446,9 @@ export default function RehabScopeLandingPage() {
         </section>
 
         {/* EXAMPLE REVIEW FINDING */}
-        <section className="w-full py-20 px-6 bg-gradient-to-r from-deep-navy to-blue-gray-gradient-end">
-          <div className="max-w-[100rem] mx-auto">
+        <section className="relative w-full py-24 px-6 bg-gradient-to-r from-deep-navy to-blue-gray-gradient-end overflow-hidden">
+          <BlueprintGrid />
+          <div className="max-w-[100rem] mx-auto relative z-10">
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -431,7 +486,7 @@ export default function RehabScopeLandingPage() {
                           'Exterior repairs',
                         ].map((item, idx) => (
                           <li key={idx} className="flex items-center gap-2 font-paragraph text-cool-gray900">
-                            <CheckCircle2 className="w-4 h-4 text-rocket-orange" />
+                            <CheckCircle2 className="w-4 h-4 text-yellow-400" />
                             {item}
                           </li>
                         ))}
@@ -441,7 +496,7 @@ export default function RehabScopeLandingPage() {
                       <p className="font-paragraph text-sm text-cool-gray700 uppercase tracking-wide font-bold mb-2">
                         Revised Realistic Budget
                       </p>
-                      <p className="font-heading text-4xl font-bold text-rocket-orange">
+                      <p className="font-heading text-4xl font-bold text-yellow-400">
                         ~$50,000
                       </p>
                     </div>
@@ -465,7 +520,7 @@ export default function RehabScopeLandingPage() {
         </section>
 
         {/* PROJECT INTAKE FORM */}
-        <section id="intake-form" className="w-full py-20 px-6 bg-cool-gray100">
+        <section id="intake-form" className="w-full py-24 px-6 bg-cool-gray100">
           <div className="max-w-[100rem] mx-auto">
             <motion.div
               initial={{ opacity: 0 }}
@@ -613,7 +668,7 @@ export default function RehabScopeLandingPage() {
                         'Property Photos (if available)',
                       ].map((doc, idx) => (
                         <li key={idx} className="flex items-center gap-2 font-paragraph text-cool-gray900">
-                          <Upload className="w-4 h-4 text-rocket-orange" />
+                          <Upload className="w-4 h-4 text-yellow-400" />
                           {doc}
                         </li>
                       ))}
@@ -626,7 +681,7 @@ export default function RehabScopeLandingPage() {
                   >
                     <Button
                       type="submit"
-                      className="w-full bg-rocket-orange hover:bg-orange-600 text-white font-heading font-bold text-lg py-6 h-auto rounded-lg"
+                      className="w-full bg-yellow-400 hover:bg-yellow-500 text-deep-navy font-heading font-bold text-lg py-6 h-auto rounded-lg"
                     >
                       Submit Deal for Review
                       <ArrowRight className="ml-2 w-5 h-5" />
