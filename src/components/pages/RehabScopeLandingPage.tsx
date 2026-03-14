@@ -276,7 +276,7 @@ export default function RehabScopeLandingPage() {
                       ))}
                     </ul>
                     <Button 
-                      onClick={scrollToForm}
+                      onClick={() => handleGetStarted('RehabScope™ Review')}
                       className="w-full bg-deep-navy hover:bg-blue-900 text-white font-heading font-bold"
                     >
                       Get Started
@@ -317,7 +317,7 @@ export default function RehabScopeLandingPage() {
                       ))}
                     </ul>
                     <Button 
-                      onClick={scrollToForm}
+                      onClick={() => handleGetStarted('RehabScope™ Pro')}
                       className="w-full bg-yellow-400 hover:bg-yellow-500 text-deep-navy font-heading font-bold"
                     >
                       Get Started
@@ -355,7 +355,7 @@ export default function RehabScopeLandingPage() {
                       ))}
                     </ul>
                     <Button 
-                      onClick={scrollToForm}
+                      onClick={() => handleGetStarted('RehabScope™ Elite')}
                       className="w-full bg-deep-navy hover:bg-blue-900 text-white font-heading font-bold"
                     >
                       Get Started
