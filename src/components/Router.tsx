@@ -13,6 +13,7 @@ import RetailPage from '@/components/pages/RetailPage';
 import BarPage from '@/components/pages/BarPage';
 import SubmitTaskPage from '@/components/pages/SubmitTaskPage';
 import RehabScopePage from '@/components/pages/RehabScopePage';
+import RehabScopeLandingPage from '@/components/pages/RehabScopeLandingPage';
 
 // Layout component that includes ScrollToTop
 function Layout() {
@@ -105,6 +106,13 @@ const router = createBrowserRouter([
         element: <RehabScopePage />,
         routeMetadata: {
           pageIdentifier: 'rehabscope',
+        },
+      },
+      {
+        path: "rehabscope-landing",
+        element: <RehabScopeLandingPage />,
+        routeMetadata: {
+          pageIdentifier: 'rehabscope-landing',
         },
       },
       {
