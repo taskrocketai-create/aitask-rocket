@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -26,6 +27,7 @@ const BlueprintGrid = () => (
 );
 
 export default function RehabScopeLandingPage() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     investorName: '',
     email: '',
@@ -53,6 +55,10 @@ export default function RehabScopeLandingPage() {
     if (formElement) {
       formElement.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleGetStarted = (packageName: string) => {
+    navigate(`/submit-task?package=${encodeURIComponent(packageName)}`);
   };
 
   return (

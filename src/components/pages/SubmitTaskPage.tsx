@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Upload, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -14,13 +14,31 @@ import Footer from '@/components/Footer';
 
 export default function SubmitTaskPage() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [formData, setFormData] = useState({
     taskTitle: '',
     taskType: '',
     taskDescription: '',
     clientUploadedFiles: '',
+    selectedPackage: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const packages = [
+    'RehabScope™ Review',
+    'RehabScope™ Pro',
+    'RehabScope™ Elite',
+  ];
+
+  useEffect(() => {
+    const packageParam = searchParams.get('package');
+    if (packageParam) {
+      setFormData(prev => ({
+        ...prev,
+        selectedPackage: packageParam,
+      }));
+    }
+  }, [searchParams]);
 
   const taskTypes = [
     'Proposal',
@@ -45,13 +63,20 @@ export default function SubmitTaskPage() {
         taskStatus: 'Pending',
         submissionDateTime: new Date().toISOString(),
       };
+      
+      // Store selected package in the task description or as a separate field if available
+      const taskDescriptionWithPackage = `Package: ${formData.selectedPackage}\n\n${formData.taskDescription}`;
 
-      await BaseCrudService.create('clienttasks', newTask);
+      await BaseCrudService.create('clienttasks', {
+        ...newTask,
+        taskDescription: taskDescriptionWithPackage,
+      });
       
       // Send email notification
       const emailBody = `
 New Task Submission:
 
+Package: ${formData.selectedPackage}
 Title: ${formData.taskTitle}
 Type: ${formData.taskType}
 Description: ${formData.taskDescription}
@@ -125,6 +150,33 @@ Submitted: ${new Date().toLocaleString()}
                       className="w-full"
                       placeholder="e.g., Kitchen Remodel Proposal"
                     />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="selectedPackage"
+                      className="block font-paragraph text-sm font-medium text-cool-gray700 mb-2"
+                    >
+                      RehabScope Package *
+                    </label>
+                    <Select
+                      value={formData.selectedPackage}
+                      onValueChange={(value) =>
+                        setFormData((prev) => ({ ...prev, selectedPackage: value }))
+                      }
+                      required
+                    >
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Select a package" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {packages.map((pkg) => (
+                          <SelectItem key={pkg} value={pkg}>
+                            {pkg}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
                   </div>
 
                   <div>
