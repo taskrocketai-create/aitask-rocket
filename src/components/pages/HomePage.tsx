@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle, Zap, Brain, Workflow, Sparkles, Cpu } from 'lucide-react';
+import { ArrowRight, CheckCircle, Zap, Brain, Workflow, Sparkles, Cpu, Rocket } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -83,29 +83,26 @@ export default function HomePage() {
       <Header />
 
       <main className="flex-1">
-        {/* RehabScope Promotion Banner */}
-        <Link to="/rehabscope-landing">
-          <section className="w-full bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-400 py-8 px-6 flex flex-col items-center justify-center hover:shadow-lg transition-shadow cursor-pointer">
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-center max-w-2xl"
+        {/* RehabScope Promotion Button */}
+        <section className="w-full bg-white py-6 px-6 flex items-center justify-center">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <Button
+              asChild
+              size="lg"
+              className="bg-gradient-to-r from-yellow-400 to-orange-400 hover:from-yellow-500 hover:to-orange-500 text-deep-navy font-heading font-bold text-lg px-8 py-6 h-auto rounded-full shadow-lg hover:shadow-xl transition-all"
             >
-              <h2 className="font-heading text-2xl md:text-3xl font-bold text-deep-navy">
-                Explore RehabScope™
-              </h2>
-              <motion.div
-                whileHover={{ x: 4 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 10 }}
-                className="inline-flex items-center gap-2 font-heading font-bold text-base text-deep-navy mt-2"
-              >
-                <span>Learn More</span>
+              <Link to="/rehabscope-landing" className="inline-flex items-center gap-3">
+                <Rocket className="w-6 h-6" />
+                <span>Explore RehabScope™</span>
                 <ArrowRight className="w-5 h-5" />
-              </motion.div>
-            </motion.div>
-          </section>
-        </Link>
+              </Link>
+            </Button>
+          </motion.div>
+        </section>
 
         {/* Hero Section - AI Workflow as Primary Focus */}
         <section className="w-full bg-gradient-to-br from-deep-navy via-primary to-primary py-28 md:py-40">
