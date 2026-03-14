@@ -104,6 +104,22 @@ Submitted: ${new Date().toLocaleString()}
     }));
   };
 
+  const handlePackageChange = (value: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      selectedPackage: prev.selectedPackage === value ? '' : value,
+      taskType: prev.selectedPackage === value ? '' : prev.taskType,
+    }));
+  };
+
+  const handleTaskTypeChange = (value: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      taskType: prev.taskType === value ? '' : value,
+      selectedPackage: prev.taskType === value ? '' : prev.selectedPackage,
+    }));
+  };
+
   return (
     <div className="min-h-screen bg-cool-gray100">
       <Header />
@@ -161,9 +177,7 @@ Submitted: ${new Date().toLocaleString()}
                     </label>
                     <Select
                       value={formData.selectedPackage}
-                      onValueChange={(value) =>
-                        setFormData((prev) => ({ ...prev, selectedPackage: value, taskType: '' }))
-                      }
+                      onValueChange={handlePackageChange}
                       disabled={!!formData.taskType}
                       required
                     >
@@ -189,9 +203,7 @@ Submitted: ${new Date().toLocaleString()}
                     </label>
                     <Select
                       value={formData.taskType}
-                      onValueChange={(value) =>
-                        setFormData((prev) => ({ ...prev, taskType: value, selectedPackage: '' }))
-                      }
+                      onValueChange={handleTaskTypeChange}
                       disabled={!!formData.selectedPackage}
                       required
                     >
