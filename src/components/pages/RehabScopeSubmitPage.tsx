@@ -84,10 +84,12 @@ ${formData.notes}`;
       };
 
       // Save to database
-      await BaseCrudService.create('TaskRequests', newRequest);
+      const result = await BaseCrudService.create('TaskRequests', newRequest);
+      console.log('RehabScope submission saved successfully:', result);
 
       // Show success message
       setShowSuccess(true);
+      setIsSubmitting(false);
       
       // Redirect after 3 seconds
       setTimeout(() => {
@@ -95,8 +97,9 @@ ${formData.notes}`;
       }, 3000);
     } catch (error) {
       console.error('Error submitting RehabScope request:', error);
-      alert('Error submitting form. Please try again.');
       setIsSubmitting(false);
+      const errorMessage = error instanceof Error ? error.message : 'Please try again.';
+      alert(`Error submitting form: ${errorMessage}`);
     }
   };
 
