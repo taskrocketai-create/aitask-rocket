@@ -107,25 +107,25 @@ export default function HomePage() {
 
               <h1 className="font-heading text-6xl sm:text-7xl lg:text-8xl font-bold mb-8 leading-tight">
                 <motion.span
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.1 }}
+                  initial={{ y: 40, scale: 0.9 }}
+                  animate={{ y: 0, scale: 1 }}
+                  transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
                   className="block"
                 >
                   Run Your
                 </motion.span>
                 <motion.span
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
+                  initial={{ y: 40, scale: 0.9 }}
+                  animate={{ y: 0, scale: 1 }}
+                  transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
                   className="block bg-gradient-to-r from-rocket-orange via-primary to-rocket-orange bg-clip-text text-transparent"
                 >
                   Business Without
                 </motion.span>
                 <motion.span
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.3 }}
+                  initial={{ y: 40, scale: 0.9 }}
+                  animate={{ y: 0, scale: 1 }}
+                  transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
                   className="block"
                 >
                   the Chaos
