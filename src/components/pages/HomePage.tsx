@@ -114,14 +114,32 @@ export default function HomePage() {
                 >
                   Run Your Business
                 </motion.span>
-                <motion.span
-                  initial={{ y: 40, scale: 0.9 }}
-                  animate={{ y: 0, scale: 1 }}
-                  transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                  className="block bg-gradient-to-r from-rocket-orange via-primary to-rocket-orange bg-clip-text text-transparent"
-                >
-                  Without the Chaos
-                </motion.span>
+                <span className="block">
+                  Without the{' '}
+                  <span className="inline-flex gap-0">
+                    {['C', 'h', 'a', 'o', 's'].map((letter, idx) => (
+                      <motion.span
+                        key={idx}
+                        initial={{ y: 40, scale: 0.9, rotate: 0 }}
+                        animate={{
+                          y: [0, -8, 4, -6, 2, 0],
+                          x: [0, 6, -4, 5, -3, 0],
+                          rotate: [0, 8, -6, 10, -8, 0],
+                        }}
+                        transition={{
+                          duration: 2.5,
+                          delay: 0.2 + idx * 0.08,
+                          repeat: Infinity,
+                          repeatType: "reverse",
+                          ease: "easeInOut",
+                        }}
+                        className="inline-block bg-gradient-to-r from-rocket-orange via-primary to-rocket-orange bg-clip-text text-transparent"
+                      >
+                        {letter}
+                      </motion.span>
+                    ))}
+                  </span>
+                </span>
               </h1>
 
               <motion.p
