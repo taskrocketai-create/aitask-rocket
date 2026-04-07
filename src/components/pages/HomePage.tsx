@@ -112,12 +112,11 @@ export default function HomePage() {
                   transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
                   className="block"
                 >
-                  Run Your Business
+                  Create More
                 </motion.span>
                 <span className="block">
-                  Without the{' '}
                   <span className="inline-flex gap-0">
-                    {['C', 'h', 'a', 'o', 's'].map((letter, idx) => (
+                    {['T', 'i', 'm', 'e'].map((letter, idx) => (
                       <motion.span
                         key={idx}
                         initial={{ y: 40, scale: 0.9, rotate: 0 }}
@@ -148,7 +147,7 @@ export default function HomePage() {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="font-paragraph text-xl sm:text-2xl text-cool-gray300 mb-8 leading-relaxed"
               >
-                Scheduling, estimates, follow-ups—we fix the bottlenecks slowing you down with systems that work for you.
+                Stop wasting hours on manual tasks. We automate your workflows so you can focus on growing your business and spending time on what matters most.
               </motion.p>
 
               <motion.div
@@ -238,16 +237,16 @@ export default function HomePage() {
           >
             <div className="text-center mb-16">
               <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-deep-navy mb-6">
-                If You're Doing This Manually, You're Losing Time and Money
+                Reclaim Your Time: Stop Losing Hours to Manual Work
               </h2>
               <div className="w-24 h-1 bg-gradient-to-r from-rocket-orange to-primary mx-auto"></div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
               {[
-                'Scheduling jobs by hand',
-                'Chasing down leads',
-                'Sending quotes late',
-                'Working nights just to stay caught up',
+                'Spending hours scheduling jobs manually',
+                'Chasing down leads instead of closing deals',
+                'Sending quotes late and losing opportunities',
+                'Working nights just to keep up with admin tasks',
               ].map((item, idx) => (
                 <motion.div
                   key={idx}
@@ -270,7 +269,7 @@ export default function HomePage() {
               className="text-center bg-gradient-to-r from-primary/10 to-secondary/10 p-8 rounded-xl border border-primary/20"
             >
               <p className="font-paragraph text-xl text-deep-navy font-semibold">
-                It doesn't have to run like that. Let's build a better system for you.
+                Every hour saved is an hour you get back. Let's build a system that gives you your time back.
               </p>
             </motion.div>
           </motion.div>
@@ -288,7 +287,7 @@ export default function HomePage() {
             className="text-center mb-16"
           >
             <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-deep-navy mb-6">
-              We Install Systems That Run Your Business
+              Automate Your Business. Reclaim Your Time.
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-rocket-orange to-primary mx-auto"></div>
           </motion.div>
@@ -296,17 +295,17 @@ export default function HomePage() {
             {[
               {
                 title: 'Scheduling & Dispatch',
-                description: 'Automatically assign jobs and keep your team moving efficiently',
+                description: 'Automatically assign jobs and keep your team moving—save hours every week',
                 icon: '📅',
               },
               {
                 title: 'Estimates & Quotes',
-                description: 'Create fast, consistent, professional estimates',
+                description: 'Create fast, consistent quotes and close deals faster',
                 icon: '📊',
               },
               {
                 title: 'Lead Follow-Up',
-                description: 'Respond to leads quickly and stop missing opportunities',
+                description: 'Never miss a lead again—automated follow-ups that convert',
                 icon: '🎯',
               },
             ].map((service, idx) => (
@@ -399,7 +398,7 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="font-heading text-4xl sm:text-5xl font-bold text-deep-navy mb-4 text-center"
           >
-            Simple Pricing. Built Around Your Business
+            Pricing That Gives You More Time, Not Less
           </motion.h2>
           <p className="font-paragraph text-lg text-cool-gray700 text-center mb-16 max-w-2xl mx-auto">
             We offer flexible pricing that scales with your business needs.
@@ -551,13 +550,13 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="font-heading text-4xl sm:text-5xl font-bold text-deep-navy mb-12"
           >
-            Built for Real Businesses
+            Built for Busy Business Owners
           </motion.h2>
           <div className="space-y-6">
             {[
-              'Designed for service-based businesses',
-              'Focused on saving time and improving efficiency',
-              'Systems built to work in real-world operations',
+              'Designed for service-based businesses that value their time',
+              'Focused on saving hours every week through smart automation',
+              'Systems built to work in real-world operations so you can focus on growth',
             ].map((item, idx) => (
               <motion.p
                 key={idx}
@@ -584,7 +583,7 @@ export default function HomePage() {
             viewport={{ once: true }}
             className="font-heading text-4xl sm:text-5xl font-bold mb-12"
           >
-            Stop Running Your Business the Hard Way
+            Ready to Get Your Time Back?
           </motion.h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
