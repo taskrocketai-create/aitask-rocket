@@ -175,7 +175,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <p className="font-paragraph text-sm text-cool-gray300">
-                  <span className="font-semibold text-white">No long-term contracts.</span> Cancel anytime.
+                  <span className="font-semibold text-white">Flexible, scalable solutions</span> that grow with your business.
                 </p>
               </motion.div>
             </motion.div>
@@ -218,18 +218,21 @@ export default function HomePage() {
       </section>
 
       {/* PROBLEM SECTION */}
-      <section id="problem" className="w-full py-20 px-4 sm:px-6 lg:px-8 bg-cool-gray100">
-        <div className="max-w-4xl mx-auto">
+      <section id="problem" className="w-full py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-cool-gray100">
+        <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="font-heading text-4xl sm:text-5xl font-bold text-deep-navy mb-12 text-center">
-              If You're Doing This Manually, You're Losing Time and Money
-            </h2>
-            <div className="space-y-6 mb-12">
+            <div className="text-center mb-16">
+              <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-deep-navy mb-6">
+                If You're Doing This Manually, You're Losing Time and Money
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-rocket-orange to-primary mx-auto"></div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
               {[
                 'Scheduling jobs by hand',
                 'Chasing down leads',
@@ -242,45 +245,59 @@ export default function HomePage() {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
                   viewport={{ once: true }}
-                  className="flex items-center gap-4"
+                  className="flex items-center gap-4 bg-white p-6 rounded-lg border-l-4 border-rocket-orange shadow-sm hover:shadow-md transition-shadow"
                 >
-                  <div className="w-2 h-2 bg-rocket-orange rounded-full flex-shrink-0"></div>
+                  <div className="w-3 h-3 bg-rocket-orange rounded-full flex-shrink-0"></div>
                   <p className="font-paragraph text-lg text-cool-gray700">{item}</p>
                 </motion.div>
               ))}
             </div>
-            <p className="font-paragraph text-xl text-deep-navy font-semibold text-center">
-              It doesn't have to run like that.
-            </p>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="text-center bg-gradient-to-r from-primary/10 to-secondary/10 p-8 rounded-xl border border-primary/20"
+            >
+              <p className="font-paragraph text-xl text-deep-navy font-semibold">
+                It doesn't have to run like that. Let's build a better system for you.
+              </p>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
       {/* SERVICES SECTION */}
-      <section id="services" className="w-full py-20 px-4 sm:px-6 lg:px-8 bg-white">
+      <section id="services" className="w-full py-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-6xl mx-auto">
-          <motion.h2
+          <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="font-heading text-4xl sm:text-5xl font-bold text-deep-navy mb-16 text-center"
+            className="text-center mb-16"
           >
-            We Install Systems That Run Your Business
-          </motion.h2>
+            <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-deep-navy mb-6">
+              We Install Systems That Run Your Business
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-rocket-orange to-primary mx-auto"></div>
+          </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
                 title: 'Scheduling & Dispatch',
                 description: 'Automatically assign jobs and keep your team moving efficiently',
+                icon: '📅',
               },
               {
                 title: 'Estimates & Quotes',
                 description: 'Create fast, consistent, professional estimates',
+                icon: '📊',
               },
               {
                 title: 'Lead Follow-Up',
                 description: 'Respond to leads quickly and stop missing opportunities',
+                icon: '🎯',
               },
             ].map((service, idx) => (
               <motion.div
@@ -289,8 +306,9 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-cool-gray100 p-8 rounded-lg border border-cool-gray300"
+                className="bg-gradient-to-br from-cool-gray100 to-white p-8 rounded-xl border-2 border-cool-gray300 hover:border-primary hover:shadow-lg transition-all duration-300"
               >
+                <div className="text-4xl mb-4">{service.icon}</div>
                 <h3 className="font-heading text-2xl font-bold text-deep-navy mb-4">
                   {service.title}
                 </h3>
@@ -304,17 +322,20 @@ export default function HomePage() {
       </section>
 
       {/* HOW IT WORKS SECTION */}
-      <section id="how-it-works" className="w-full py-20 px-4 sm:px-6 lg:px-8 bg-cool-gray100">
+      <section id="how-it-works" className="w-full py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-cool-gray100 to-white">
         <div className="max-w-6xl mx-auto">
-          <motion.h2
+          <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="font-heading text-4xl sm:text-5xl font-bold text-deep-navy mb-16 text-center"
+            className="text-center mb-16"
           >
-            How It Works
-          </motion.h2>
+            <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-deep-navy mb-6">
+              How It Works
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-rocket-orange to-primary mx-auto"></div>
+          </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
@@ -341,8 +362,8 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 className="relative"
               >
-                <div className="bg-white p-8 rounded-lg border-2 border-primary">
-                  <div className="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-heading font-bold text-xl mb-4">
+                <div className="bg-white p-8 rounded-xl border-2 border-primary shadow-lg hover:shadow-xl transition-shadow">
+                  <div className="w-14 h-14 bg-gradient-to-br from-primary to-secondary text-white rounded-full flex items-center justify-center font-heading font-bold text-2xl mb-6 shadow-md">
                     {item.step}
                   </div>
                   <h3 className="font-heading text-2xl font-bold text-deep-navy mb-3">
@@ -504,7 +525,7 @@ export default function HomePage() {
               <span className="font-bold">Managing multiple workflows?</span> We offer discounted pricing for bundled systems.
             </p>
             <p className="font-paragraph text-base text-cool-gray700">
-              <span className="font-bold">No long-term contracts.</span> Cancel anytime.
+              <span className="font-bold">Flexible and scalable.</span> Grow at your own pace.
             </p>
           </motion.div>
         </div>
