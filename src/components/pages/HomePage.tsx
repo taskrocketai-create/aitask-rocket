@@ -112,7 +112,7 @@ export default function HomePage() {
                   transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
                   className="block"
                 >
-                  Run Your
+                  Run Your Business
                 </motion.span>
                 <motion.span
                   initial={{ y: 40, scale: 0.9 }}
@@ -120,15 +120,7 @@ export default function HomePage() {
                   transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
                   className="block bg-gradient-to-r from-rocket-orange via-primary to-rocket-orange bg-clip-text text-transparent"
                 >
-                  Business Without
-                </motion.span>
-                <motion.span
-                  initial={{ y: 40, scale: 0.9 }}
-                  animate={{ y: 0, scale: 1 }}
-                  transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-                  className="block"
-                >
-                  the Chaos
+                  Without the Chaos
                 </motion.span>
               </h1>
 
