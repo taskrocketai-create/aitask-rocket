@@ -59,39 +59,161 @@ export default function HomePage() {
       <Header />
 
       {/* HERO SECTION */}
-      <section className="w-full bg-gradient-to-br from-deep-navy to-cool-gray900 text-white py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
+      <section className="w-full relative overflow-hidden bg-gradient-to-br from-deep-navy via-blue-gray-gradient-start to-cool-gray900 text-white py-32 px-4 sm:px-6 lg:px-8 min-h-screen flex items-center">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
-          >
-            <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-              Stop Drowning in Admin Work
-            </h1>
-            <p className="font-paragraph text-xl sm:text-2xl text-cool-gray300 mb-4">
-              Automate scheduling, quotes, and follow-ups so you can focus on growing.
-            </p>
-            <p className="font-paragraph text-lg sm:text-xl text-cool-gray300 mb-12 max-w-3xl mx-auto">
-              We build custom systems that handle the work your business needs done—so you don't have to.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                onClick={() => scrollToSection('contact')}
-                className="bg-rocket-orange hover:bg-orange-600 text-white font-heading text-lg px-8 py-6 rounded-lg"
+            animate={{
+              x: [0, 30, 0],
+              y: [0, -30, 0],
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="absolute top-0 right-0 w-96 h-96 bg-primary opacity-10 rounded-full blur-3xl"
+          />
+          <motion.div
+            animate={{
+              x: [0, -30, 0],
+              y: [0, 30, 0],
+            }}
+            transition={{
+              duration: 25,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="absolute bottom-0 left-0 w-96 h-96 bg-rocket-orange opacity-10 rounded-full blur-3xl"
+          />
+        </div>
+
+        {/* Content */}
+        <div className="max-w-7xl mx-auto w-full relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left content */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.9, ease: "easeOut" }}
+            >
+              {/* Accent line */}
+              <motion.div
+                initial={{ width: 0 }}
+                animate={{ width: 60 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="h-1 bg-gradient-to-r from-rocket-orange to-primary mb-8 rounded-full"
+              />
+
+              <h1 className="font-heading text-6xl sm:text-7xl lg:text-8xl font-bold mb-8 leading-tight">
+                <motion.span
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.1 }}
+                  className="block"
+                >
+                  Run Your
+                </motion.span>
+                <motion.span
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="block bg-gradient-to-r from-rocket-orange via-primary to-rocket-orange bg-clip-text text-transparent"
+                >
+                  Business Without
+                </motion.span>
+                <motion.span
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                  className="block"
+                >
+                  the Chaos
+                </motion.span>
+              </h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="font-paragraph text-xl sm:text-2xl text-cool-gray300 mb-8 leading-relaxed"
               >
-                Fix My Workflow
-              </Button>
-              <Button
-                onClick={() => scrollToSection('contact')}
-                variant="outline"
-                className="border-2 border-white text-white hover:bg-white hover:text-deep-navy font-heading text-lg px-8 py-6 rounded-lg"
+                Scheduling, estimates, follow-ups—we fix the bottlenecks slowing you down with systems that work for you.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+                className="flex flex-col sm:flex-row gap-4"
               >
-                Book a 15-Min Call
-              </Button>
-            </div>
-          </motion.div>
+                <Button
+                  onClick={() => scrollToSection('contact')}
+                  className="bg-rocket-orange hover:bg-orange-600 text-white font-heading text-lg px-10 py-7 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                >
+                  Fix My Workflow
+                </Button>
+                <Button
+                  onClick={() => scrollToSection('contact')}
+                  variant="outline"
+                  className="border-2 border-white text-white hover:bg-white hover:text-deep-navy font-heading text-lg px-10 py-7 rounded-lg transition-all duration-300 transform hover:scale-105"
+                >
+                  Book a 15-Min Call
+                </Button>
+              </motion.div>
+
+              {/* Trust indicators */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="mt-12 flex items-center gap-6"
+              >
+                <div className="flex-shrink-0">
+                  <div className="flex items-center justify-center h-12 w-12 rounded-full bg-primary bg-opacity-20">
+                    <span className="text-rocket-orange text-xl">✓</span>
+                  </div>
+                </div>
+                <p className="font-paragraph text-sm text-cool-gray300">
+                  <span className="font-semibold text-white">No long-term contracts.</span> Cancel anytime.
+                </p>
+              </motion.div>
+            </motion.div>
+
+            {/* Right side - Visual element */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.9, ease: "easeOut" }}
+              className="hidden lg:block relative h-96"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-primary to-rocket-orange opacity-20 rounded-2xl blur-2xl" />
+              <motion.div
+                animate={{
+                  y: [0, -20, 0],
+                }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="absolute inset-0 bg-gradient-to-br from-primary via-blue-gray-gradient-end to-rocket-orange rounded-2xl opacity-30 border border-white border-opacity-10"
+              />
+              <div className="absolute inset-4 bg-gradient-to-br from-deep-navy to-cool-gray900 rounded-xl border border-primary border-opacity-30 flex items-center justify-center">
+                <motion.div
+                  animate={{
+                    rotate: 360,
+                  }}
+                  transition={{
+                    duration: 20,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
+                  className="w-32 h-32 border-4 border-transparent border-t-rocket-orange border-r-primary rounded-full"
+                />
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
