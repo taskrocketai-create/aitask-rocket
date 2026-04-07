@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Check, Zap, Brain, CheckCircle, Send } from 'lucide-react';
+import { Check, Zap, Brain, CheckCircle2, Send } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
