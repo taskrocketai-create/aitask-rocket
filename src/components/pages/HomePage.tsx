@@ -68,13 +68,13 @@ export default function HomePage() {
             className="text-center"
           >
             <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-              We Fix the Parts of Your Business That Slow You Down
+              Stop Drowning in Admin Work
             </h1>
             <p className="font-paragraph text-xl sm:text-2xl text-cool-gray300 mb-4">
-              Scheduling. Estimates. Follow-ups.
+              Automate scheduling, quotes, and follow-ups so you can focus on growing.
             </p>
             <p className="font-paragraph text-lg sm:text-xl text-cool-gray300 mb-12 max-w-3xl mx-auto">
-              We build and manage systems so your business runs without the constant grind.
+              We build custom systems that handle the work your business needs done—so you don't have to.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
