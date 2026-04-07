@@ -4,72 +4,6 @@
  */
 
 /**
- * Collection ID: TaskBalances
- * Interface for TaskBalances
- */
-export interface TaskBalances {
-  _id: string;
-  _createdDate?: Date;
-  _updatedDate?: Date;
-  /** @wixFieldType text */
-  title?: string;
-  /** @wixFieldType text */
-  memberId?: string;
-  /** @wixFieldType text */
-  planName?: string;
-  /** @wixFieldType number */
-  tasksRemaining?: number;
-  /** @wixFieldType date */
-  periodStart?: Date | string;
-  /** @wixFieldType date */
-  periodEnd?: Date | string;
-  /** @wixFieldType date */
-  updatedAt?: Date | string;
-}
-
-
-/**
- * Collection ID: TaskRequests
- * Interface for TaskRequests
- */
-export interface TaskRequests {
-  _id: string;
-  _createdDate?: Date;
-  _updatedDate?: Date;
-  /** @wixFieldType text */
-  title?: string;
-  /** @wixFieldType text */
-  memberId?: string;
-  /** @wixFieldType text */
-  businessName?: string;
-  /** @wixFieldType text */
-  contactName?: string;
-  /** @wixFieldType text */
-  deliveryEmail?: string;
-  /** @wixFieldType text */
-  industry?: string;
-  /** @wixFieldType text */
-  taskType?: string;
-  /** @wixFieldType rich_text */
-  notes?: any;
-  /** @wixFieldType text */
-  status?: string;
-  /** @wixFieldType text */
-  generatedDocument?: string;
-  /** @wixFieldType text */
-  generatedEmail?: string;
-  /** @wixFieldType text */
-  assumptions?: string;
-  /** @wixFieldType text */
-  imageB64?: string;
-  /** @wixFieldType text */
-  createdAt?: string;
-  /** @wixFieldType text */
-  updatedAt?: string;
-}
-
-
-/**
  * Collection ID: benefits
  * Interface for Benefits
  */
@@ -216,6 +150,72 @@ export interface Services {
   deliveryTime?: string;
   /** @wixFieldType text */
   callToActionText?: string;
+}
+
+
+/**
+ * Collection ID: TaskBalances
+ * Interface for TaskBalances
+ */
+export interface TaskBalances {
+  _id: string;
+  _createdDate?: Date;
+  _updatedDate?: Date;
+  /** @wixFieldType text */
+  title?: string;
+  /** @wixFieldType text */
+  memberId?: string;
+  /** @wixFieldType text */
+  planName?: string;
+  /** @wixFieldType number */
+  tasksRemaining?: number;
+  /** @wixFieldType date */
+  periodStart?: Date | string;
+  /** @wixFieldType date */
+  periodEnd?: Date | string;
+  /** @wixFieldType date */
+  updatedAt?: Date | string;
+}
+
+
+/**
+ * Collection ID: TaskRequests
+ * Interface for TaskRequests
+ */
+export interface TaskRequests {
+  _id: string;
+  _createdDate?: Date;
+  _updatedDate?: Date;
+  /** @wixFieldType text */
+  title?: string;
+  /** @wixFieldType text */
+  memberId?: string;
+  /** @wixFieldType text */
+  businessName?: string;
+  /** @wixFieldType text */
+  contactName?: string;
+  /** @wixFieldType text */
+  deliveryEmail?: string;
+  /** @wixFieldType text */
+  industry?: string;
+  /** @wixFieldType text */
+  taskType?: string;
+  /** @wixFieldType rich_text */
+  notes?: any;
+  /** @wixFieldType text */
+  status?: string;
+  /** @wixFieldType text */
+  generatedDocument?: string;
+  /** @wixFieldType text */
+  generatedEmail?: string;
+  /** @wixFieldType text */
+  assumptions?: string;
+  /** @wixFieldType text */
+  imageB64?: string;
+  /** @wixFieldType text */
+  createdAt?: string;
+  /** @wixFieldType text */
+  updatedAt?: string;
 }
 
 
