@@ -35,7 +35,7 @@ export default function Header() {
       <FilloutForm />
       <header className="sticky top-0 z-50 w-full bg-white border-b border-cool-gray300">
         <div className="max-w-[100rem] mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex items-center gap-4 shadow-[12px_12px_4px_0px_#d9d9d9] justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
             <Image
