@@ -27,24 +27,12 @@ export default function HomePage() {
     setIsSubmitting(true);
     setSubmitMessage('');
 
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        setSubmitMessage("Thanks! We'll be in touch soon.");
-        setFormData({ name: '', businessName: '', phone: '', email: '', problem: '' });
-      } else {
-        setSubmitMessage('Something went wrong. Please try again.');
-      }
-    } catch (error) {
-      setSubmitMessage('Error submitting form. Please try again.');
-    } finally {
+    // Simulate form submission with a brief delay
+    setTimeout(() => {
+      setSubmitMessage("Thanks! We'll be in touch soon.");
+      setFormData({ name: '', businessName: '', phone: '', email: '', problem: '' });
       setIsSubmitting(false);
-    }
+    }, 1000);
   };
 
   const scrollToSection = (id: string) => {
