@@ -24,7 +24,7 @@ export default function FilloutForm() {
       data-fillout-dynamic-resize
       data-fillout-button-color="#F57D05"
       data-fillout-button-size="medium"
-      data-fillout-button-float="bottom-right"
+      data-fillout-button-float="top-right"
       data-fillout-inherit-parameters
       data-fillout-popup-size="medium"
     />
