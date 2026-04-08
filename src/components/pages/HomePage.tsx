@@ -105,39 +105,10 @@ export default function HomePage() {
                 className="h-1 bg-gradient-to-r from-rocket-orange to-primary mb-8 rounded-full"
               />
 
-              <h1 className="font-heading text-6xl sm:text-7xl lg:text-8xl font-bold mb-8 leading-tight">
-                <motion.span
-                  initial={{ y: 40, scale: 0.9 }}
-                  animate={{ y: 0, scale: 1 }}
-                  transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-                  className="block"
-                >
-                  Create More
-                </motion.span>
+              <h1 className="font-heading text-6xl sm:text-7xl lg:text-8xl font-bold mb-8 leading-tight text-white">
+                If Your Business Only Works When You Do…
                 <span className="block">
-                  <span className="inline-flex gap-0">
-                    {['T', 'i', 'm', 'e'].map((letter, idx) => (
-                      <motion.span
-                        key={idx}
-                        initial={{ y: 40, scale: 0.9, rotate: 0 }}
-                        animate={{
-                          y: [0, -8, 4, -6, 2, 0],
-                          x: [0, 6, -4, 5, -3, 0],
-                          rotate: [0, 8, -6, 10, -8, 0],
-                        }}
-                        transition={{
-                          duration: 2.5,
-                          delay: 0.2 + idx * 0.08,
-                          repeat: Infinity,
-                          repeatType: "reverse",
-                          ease: "easeInOut",
-                        }}
-                        className="inline-block bg-gradient-to-r from-rocket-orange via-primary to-rocket-orange bg-clip-text text-transparent"
-                      >
-                        {letter}
-                      </motion.span>
-                    ))}
-                  </span>
+                  Something's Broken.
                 </span>
               </h1>
 
@@ -147,7 +118,9 @@ export default function HomePage() {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="font-paragraph text-xl sm:text-2xl text-cool-gray300 mb-8 leading-relaxed"
               >
-                Stop wasting hours on manual tasks. We automate your workflows so you can focus on growing your business and spending time on what matters most.
+                Most businesses aren't short on work—they're buried in it.
+                <br />
+                We fix the systems that keep you stuck in the middle.
               </motion.p>
 
               <motion.div
