@@ -4,6 +4,7 @@ import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { Image } from '@/components/ui/image';
 import { motion } from 'framer-motion';
 
 export default function HomePage() {
@@ -150,14 +151,13 @@ export default function HomePage() {
               </motion.div>
             </motion.div>
 
-            {/* Right side - Visual element */}
+            {/* Right side - Rocket Logo */}
             <motion.div
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.9, ease: "easeOut" }}
-              className="hidden lg:block relative h-96"
+              className="hidden lg:flex items-center justify-center"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary to-rocket-orange opacity-20 rounded-2xl blur-2xl" />
               <motion.div
                 animate={{
                   y: [0, -20, 0],
@@ -167,58 +167,15 @@ export default function HomePage() {
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="absolute inset-0 bg-gradient-to-br from-primary via-blue-gray-gradient-end to-rocket-orange rounded-2xl opacity-30 border border-white border-opacity-10"
-              />
-              <div className="absolute inset-4 bg-gradient-to-br from-deep-navy to-cool-gray900 rounded-xl border border-primary border-opacity-30 flex items-center justify-center overflow-hidden">
-                {/* Animated grid pattern */}
-                <div className="absolute inset-0 opacity-20">
-                  <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                      <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="url(#gridGradient)" strokeWidth="1"/>
-                      </pattern>
-                      <linearGradient id="gridGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#F97316" stopOpacity="0.3"/>
-                        <stop offset="100%" stopColor="#617ac2" stopOpacity="0.3"/>
-                      </linearGradient>
-                    </defs>
-                    <rect width="100%" height="100%" fill="url(#grid)" />
-                  </svg>
-                </div>
-                
-                {/* Floating elements */}
-                <motion.div
-                  animate={{
-                    y: [0, -30, 0],
-                    x: [0, 10, 0],
-                  }}
-                  transition={{
-                    duration: 8,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="relative z-10 flex flex-col items-center gap-6"
-                >
-                  <div className="w-20 h-20 bg-gradient-to-br from-rocket-orange to-primary rounded-lg opacity-80 shadow-lg" />
-                  <div className="flex gap-4">
-                    <motion.div
-                      animate={{ scale: [1, 1.1, 1] }}
-                      transition={{ duration: 3, repeat: Infinity }}
-                      className="w-12 h-12 bg-primary rounded-lg opacity-60"
-                    />
-                    <motion.div
-                      animate={{ scale: [1, 1.1, 1] }}
-                      transition={{ duration: 3, repeat: Infinity, delay: 0.3 }}
-                      className="w-12 h-12 bg-rocket-orange rounded-lg opacity-60"
-                    />
-                    <motion.div
-                      animate={{ scale: [1, 1.1, 1] }}
-                      transition={{ duration: 3, repeat: Infinity, delay: 0.6 }}
-                      className="w-12 h-12 bg-primary rounded-lg opacity-60"
-                    />
-                  </div>
-                </motion.div>
-              </div>
+              >
+                <Image
+                  src="https://static.wixstatic.com/media/18d7f4_d0199c5b065f47b9847852425fe09702~mv2.png?originWidth=384&originHeight=384"
+                  alt="Rocket logo"
+                  width={300}
+                  height={300}
+                  className="drop-shadow-2xl"
+                />
+              </motion.div>
             </motion.div>
           </div>
         </div>
