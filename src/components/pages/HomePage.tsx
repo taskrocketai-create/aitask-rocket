@@ -151,31 +151,123 @@ export default function HomePage() {
               </motion.div>
             </motion.div>
 
-            {/* Right side - Rocket Logo */}
+            {/* Right side - Breaking Visual */}
             <motion.div
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.9, ease: "easeOut" }}
-              className="hidden lg:flex items-center justify-center"
+              className="hidden lg:flex items-center justify-center h-full"
             >
-              <motion.div
-                animate={{
-                  y: [0, -20, 0],
-                }}
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              >
-                <Image
-                  src="https://static.wixstatic.com/media/18d7f4_d0199c5b065f47b9847852425fe09702~mv2.png?originWidth=384&originHeight=384"
-                  alt="Rocket logo"
-                  width={300}
-                  height={300}
-                  className="drop-shadow-2xl"
-                />
-              </motion.div>
+              <div className="relative w-80 h-96 flex items-center justify-center">
+                {/* Main breaking glass effect */}
+                <motion.div
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="relative w-full h-full"
+                >
+                  {/* Outer circle with cracks */}
+                  <svg
+                    className="absolute inset-0 w-full h-full"
+                    viewBox="0 0 300 300"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    {/* Main circle */}
+                    <circle
+                      cx="150"
+                      cy="150"
+                      r="120"
+                      fill="none"
+                      stroke="#F97316"
+                      strokeWidth="3"
+                      opacity="0.3"
+                    />
+                    
+                    {/* Crack lines radiating from center */}
+                    <motion.g
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.6, delay: 0.4 }}
+                    >
+                      <line x1="150" y1="30" x2="150" y2="80" stroke="#F97316" strokeWidth="2" />
+                      <line x1="150" y1="220" x2="150" y2="270" stroke="#F97316" strokeWidth="2" />
+                      <line x1="30" y1="150" x2="80" y2="150" stroke="#F97316" strokeWidth="2" />
+                      <line x1="220" y1="150" x2="270" y2="150" stroke="#F97316" strokeWidth="2" />
+                      
+                      {/* Diagonal cracks */}
+                      <line x1="70" y1="70" x2="110" y2="110" stroke="#F97316" strokeWidth="2" />
+                      <line x1="230" y1="70" x2="190" y2="110" stroke="#F97316" strokeWidth="2" />
+                      <line x1="70" y1="230" x2="110" y2="190" stroke="#F97316" strokeWidth="2" />
+                      <line x1="230" y1="230" x2="190" y2="190" stroke="#F97316" strokeWidth="2" />
+                      
+                      {/* Secondary cracks */}
+                      <line x1="150" y1="80" x2="180" y2="100" stroke="#F97316" strokeWidth="1.5" opacity="0.6" />
+                      <line x1="150" y1="80" x2="120" y2="100" stroke="#F97316" strokeWidth="1.5" opacity="0.6" />
+                      <line x1="220" y1="150" x2="200" y2="120" stroke="#F97316" strokeWidth="1.5" opacity="0.6" />
+                      <line x1="220" y1="150" x2="200" y2="180" stroke="#F97316" strokeWidth="1.5" opacity="0.6" />
+                    </motion.g>
+                  </svg>
+
+                  {/* Animated fragments */}
+                  <motion.div
+                    animate={{
+                      x: [0, -15, 0],
+                      y: [0, -10, 0],
+                      rotate: [0, 5, 0],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    className="absolute top-8 left-8 w-12 h-12 bg-rocket-orange rounded-lg opacity-20"
+                  />
+                  <motion.div
+                    animate={{
+                      x: [0, 12, 0],
+                      y: [0, 15, 0],
+                      rotate: [0, -8, 0],
+                    }}
+                    transition={{
+                      duration: 3.5,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 0.3,
+                    }}
+                    className="absolute bottom-12 right-8 w-10 h-10 bg-primary rounded-lg opacity-20"
+                  />
+                  <motion.div
+                    animate={{
+                      x: [0, -10, 0],
+                      y: [0, 12, 0],
+                      rotate: [0, 6, 0],
+                    }}
+                    transition={{
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 0.6,
+                    }}
+                    className="absolute top-1/2 right-4 w-8 h-8 bg-rocket-orange rounded-lg opacity-20"
+                  />
+
+                  {/* Center exclamation mark */}
+                  <motion.div
+                    animate={{
+                      scale: [1, 1.1, 1],
+                      opacity: [0.8, 1, 0.8],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    className="absolute inset-0 flex items-center justify-center"
+                  >
+                    <span className="text-6xl font-bold text-rocket-orange">!</span>
+                  </motion.div>
+                </motion.div>
+              </div>
             </motion.div>
           </div>
         </div>
