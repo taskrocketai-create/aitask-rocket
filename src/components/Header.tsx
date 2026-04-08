@@ -34,8 +34,8 @@ export default function Header() {
     <>
       <FilloutForm />
       <header className="sticky top-0 z-50 w-full bg-white border-b border-cool-gray300">
-        <div className="max-w-[100rem] mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <div className="flex items-center justify-between gap-4">
+        <div className="max-w-[100rem] mx-auto px-4 sm:px-6 lg:px-8 py-4 border border-none shadow-[12px_12px_4px_0px_#d9d9d9]">
+        <div className="flex items-center gap-4 shadow-[12px_12px_4px_0px_#d9d9d9] justify-between border border-none">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
             <Image
@@ -44,11 +44,9 @@ export default function Header() {
               height={40}
               className="h-10 w-auto"
               originWidth={1024}
-              originHeight={1024}
-              alt="TaskRocket Logo"
-            />
+              originHeight={1024} />
             <div className="flex flex-col">
-              <span className="font-heading text-lg sm:text-2xl font-bold">
+              <span className="font-heading text-lg sm:text-2xl font-bold capitalize indent-0 [writing-mode:vertical-rl] text-right">
                 <span className="text-rocket-orange">Task</span><span className="text-primary">Rocket</span>
               </span>
               <span className="font-heading text-xs font-bold text-deep-navy hidden sm:block">
