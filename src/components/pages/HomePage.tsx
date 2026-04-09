@@ -151,7 +151,7 @@ export default function HomePage() {
               </motion.div>
             </motion.div>
 
-            {/* Right side - Breaking Visual */}
+            {/* Right side - Broken Cog Visual */}
             <motion.div
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
@@ -159,74 +159,113 @@ export default function HomePage() {
               className="hidden lg:flex items-center justify-center h-full"
             >
               <div className="relative w-80 h-96 flex items-center justify-center">
-                {/* Main breaking glass effect */}
+                {/* Main broken cog effect */}
                 <motion.div
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
-                  className="relative w-full h-full"
+                  className="relative w-full h-full flex items-center justify-center"
                 >
-                  {/* Outer circle with cracks */}
+                  {/* Broken Cog SVG */}
                   <svg
-                    className="absolute inset-0 w-full h-full"
+                    className="w-64 h-64"
                     viewBox="0 0 300 300"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    {/* Main circle */}
+                    {/* Main cog circle */}
                     <circle
                       cx="150"
                       cy="150"
-                      r="120"
+                      r="80"
                       fill="none"
                       stroke="#F97316"
-                      strokeWidth="3"
-                      opacity="0.3"
+                      strokeWidth="8"
+                      opacity="0.4"
+                    />
+
+                    {/* Cog teeth - with one broken */}
+                    <motion.g
+                      animate={{ rotate: [0, -5, 0] }}
+                      transition={{
+                        duration: 4,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                      style={{ transformOrigin: "150px 150px" }}
+                    >
+                      {/* Tooth 1 */}
+                      <rect x="135" y="50" width="30" height="35" fill="#F97316" opacity="0.8" rx="4" />
+                      
+                      {/* Tooth 2 */}
+                      <rect x="200" y="75" width="30" height="35" fill="#F97316" opacity="0.8" rx="4" transform="rotate(60 215 92.5)" />
+                      
+                      {/* Tooth 3 */}
+                      <rect x="220" y="155" width="30" height="35" fill="#F97316" opacity="0.8" rx="4" transform="rotate(120 235 172.5)" />
+                      
+                      {/* Tooth 4 - BROKEN */}
+                      <g opacity="0.4">
+                        <rect x="135" y="215" width="15" height="35" fill="#F97316" rx="4" />
+                        <rect x="155" y="225" width="15" height="25" fill="#F97316" rx="4" />
+                      </g>
+                      
+                      {/* Tooth 5 */}
+                      <rect x="50" y="155" width="30" height="35" fill="#F97316" opacity="0.8" rx="4" transform="rotate(-120 65 172.5)" />
+                      
+                      {/* Tooth 6 */}
+                      <rect x="70" y="75" width="30" height="35" fill="#F97316" opacity="0.8" rx="4" transform="rotate(-60 85 92.5)" />
+                    </motion.g>
+
+                    {/* Center hub */}
+                    <circle
+                      cx="150"
+                      cy="150"
+                      r="35"
+                      fill="none"
+                      stroke="#F97316"
+                      strokeWidth="6"
+                      opacity="0.6"
                     />
                     
-                    {/* Crack lines radiating from center */}
+                    {/* Inner circle */}
+                    <circle
+                      cx="150"
+                      cy="150"
+                      r="20"
+                      fill="#F97316"
+                      opacity="0.3"
+                    />
+
+                    {/* Crack lines through broken tooth */}
                     <motion.g
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ duration: 0.6, delay: 0.4 }}
                     >
-                      <line x1="150" y1="30" x2="150" y2="80" stroke="#F97316" strokeWidth="2" />
-                      <line x1="150" y1="220" x2="150" y2="270" stroke="#F97316" strokeWidth="2" />
-                      <line x1="30" y1="150" x2="80" y2="150" stroke="#F97316" strokeWidth="2" />
-                      <line x1="220" y1="150" x2="270" y2="150" stroke="#F97316" strokeWidth="2" />
-                      
-                      {/* Diagonal cracks */}
-                      <line x1="70" y1="70" x2="110" y2="110" stroke="#F97316" strokeWidth="2" />
-                      <line x1="230" y1="70" x2="190" y2="110" stroke="#F97316" strokeWidth="2" />
-                      <line x1="70" y1="230" x2="110" y2="190" stroke="#F97316" strokeWidth="2" />
-                      <line x1="230" y1="230" x2="190" y2="190" stroke="#F97316" strokeWidth="2" />
-                      
-                      {/* Secondary cracks */}
-                      <line x1="150" y1="80" x2="180" y2="100" stroke="#F97316" strokeWidth="1.5" opacity="0.6" />
-                      <line x1="150" y1="80" x2="120" y2="100" stroke="#F97316" strokeWidth="1.5" opacity="0.6" />
-                      <line x1="220" y1="150" x2="200" y2="120" stroke="#F97316" strokeWidth="1.5" opacity="0.6" />
-                      <line x1="220" y1="150" x2="200" y2="180" stroke="#F97316" strokeWidth="1.5" opacity="0.6" />
+                      <line x1="150" y1="215" x2="140" y2="270" stroke="#F97316" strokeWidth="2" opacity="0.7" />
+                      <line x1="160" y1="220" x2="175" y2="280" stroke="#F97316" strokeWidth="2" opacity="0.7" />
+                      <line x1="145" y1="215" x2="130" y2="265" stroke="#F97316" strokeWidth="1.5" opacity="0.5" />
                     </motion.g>
                   </svg>
 
-                  {/* Animated fragments */}
+                  {/* Animated debris fragments */}
                   <motion.div
                     animate={{
-                      x: [0, -15, 0],
-                      y: [0, -10, 0],
-                      rotate: [0, 5, 0],
+                      x: [0, -20, 0],
+                      y: [0, -15, 0],
+                      rotate: [0, 15, 0],
                     }}
                     transition={{
                       duration: 3,
                       repeat: Infinity,
                       ease: "easeInOut",
                     }}
-                    className="absolute top-8 left-8 w-12 h-12 bg-rocket-orange rounded-lg opacity-20"
+                    className="absolute top-12 left-12 w-8 h-8 bg-rocket-orange rounded-sm opacity-30"
                   />
                   <motion.div
                     animate={{
-                      x: [0, 12, 0],
-                      y: [0, 15, 0],
-                      rotate: [0, -8, 0],
+                      x: [0, 18, 0],
+                      y: [0, 20, 0],
+                      rotate: [0, -12, 0],
                     }}
                     transition={{
                       duration: 3.5,
@@ -234,13 +273,13 @@ export default function HomePage() {
                       ease: "easeInOut",
                       delay: 0.3,
                     }}
-                    className="absolute bottom-12 right-8 w-10 h-10 bg-primary rounded-lg opacity-20"
+                    className="absolute bottom-16 right-12 w-6 h-6 bg-primary rounded-sm opacity-30"
                   />
                   <motion.div
                     animate={{
-                      x: [0, -10, 0],
-                      y: [0, 12, 0],
-                      rotate: [0, 6, 0],
+                      x: [0, -12, 0],
+                      y: [0, 18, 0],
+                      rotate: [0, 10, 0],
                     }}
                     transition={{
                       duration: 4,
@@ -248,23 +287,23 @@ export default function HomePage() {
                       ease: "easeInOut",
                       delay: 0.6,
                     }}
-                    className="absolute top-1/2 right-4 w-8 h-8 bg-rocket-orange rounded-lg opacity-20"
+                    className="absolute top-1/3 right-8 w-5 h-5 bg-rocket-orange rounded-sm opacity-30"
                   />
 
-                  {/* Center exclamation mark */}
+                  {/* Warning indicator */}
                   <motion.div
                     animate={{
-                      scale: [1, 1.1, 1],
-                      opacity: [0.8, 1, 0.8],
+                      scale: [1, 1.15, 1],
+                      opacity: [0.7, 1, 0.7],
                     }}
                     transition={{
                       duration: 2,
                       repeat: Infinity,
                       ease: "easeInOut",
                     }}
-                    className="absolute inset-0 flex items-center justify-center"
+                    className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-rocket-orange font-bold text-sm"
                   >
-                    <span className="text-6xl font-bold text-rocket-orange">!</span>
+                    System Broken
                   </motion.div>
                 </motion.div>
               </div>
