@@ -90,6 +90,22 @@ export default function HomePage() {
             }}
             className="absolute top-1/2 left-1/2 w-80 h-80 bg-blue-gray-gradient-start opacity-10 rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2"
           />
+          
+          {/* Overlay Image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 0.15, scale: 1 }}
+            transition={{ duration: 1.2 }}
+            className="absolute inset-0 flex items-center justify-center pointer-events-none"
+          >
+            <Image
+              src="https://static.wixstatic.com/media/18d7f4_ed4a4836729f4fc9856bc4bfd80c227f~mv2.png"
+              alt="Task Rocket Logo Overlay"
+              width={800}
+              height={600}
+              className="object-contain opacity-20 max-w-4xl w-full h-auto"
+            />
+          </motion.div>
         </div>
 
         {/* Content */}
