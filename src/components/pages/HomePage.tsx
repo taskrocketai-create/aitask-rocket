@@ -48,7 +48,7 @@ export default function HomePage() {
       <Header />
 
       {/* HERO SECTION */}
-      <section className="w-full relative overflow-hidden bg-gradient-to-br from-deep-navy via-blue-gray-gradient-start to-cool-gray900 text-white py-32 px-4 sm:px-6 lg:px-8 min-h-screen flex items-center">
+      <section className="w-full relative overflow-hidden bg-gradient-to-br from-deep-navy via-blue-gray-gradient-start to-cool-gray900 text-white py-32 px-4 sm:px-6 lg:px-8 min-h-screen flex items-center justify-center">
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
@@ -77,239 +77,92 @@ export default function HomePage() {
           />
         </div>
 
-        {/* Content */}
-        <div className="max-w-7xl mx-auto w-full relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left content */}
+        {/* Centered Content Container */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.9, ease: "easeOut" }}
+          className="relative z-10 max-w-4xl mx-auto w-full text-center"
+        >
+          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-12 sm:p-16 lg:p-20">
+            {/* Accent line */}
             <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.9, ease: "easeOut" }}
+              initial={{ width: 0 }}
+              animate={{ width: 60 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="h-1 bg-gradient-to-r from-rocket-orange to-primary mx-auto mb-8 rounded-full"
+            />
+
+            <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl font-bold mb-8 leading-tight text-white">
+              If Your Business Only Works When You Do…
+            </h1>
+
+            {/* Engine Image */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="my-12 flex justify-center"
             >
-              {/* Accent line */}
-              <motion.div
-                initial={{ width: 0 }}
-                animate={{ width: 60 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="h-1 bg-gradient-to-r from-rocket-orange to-primary mb-8 rounded-full"
+              <Image
+                src="https://static.wixstatic.com/media/18d7f4_ca78f715dd9048548148f55a261fcd0f~mv2.png?originWidth=384&originHeight=256"
+                alt="Well-running engine components"
+                width={400}
+                height={300}
+                className="rounded-lg shadow-lg"
               />
-
-              <h1 className="font-heading text-6xl sm:text-7xl lg:text-8xl font-bold mb-8 leading-tight text-white">
-                If Your Business Only Works When You Do…
-                <span className="block">
-                  Something's Broken.
-                </span>
-              </h1>
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="font-paragraph text-xl sm:text-2xl text-cool-gray300 mb-8 leading-relaxed"
-              >
-                Most businesses aren't short on work—they're buried in it.
-                <br />
-                We fix the systems that keep you stuck in the middle.
-              </motion.p>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-                className="flex flex-col sm:flex-row gap-4"
-              >
-                <Button
-                  onClick={() => scrollToSection('contact')}
-                  className="bg-rocket-orange hover:bg-orange-600 text-white font-heading text-lg px-10 py-7 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-                >
-                  Fix My Workflow
-                </Button>
-                <Button
-                  onClick={() => scrollToSection('contact')}
-                  variant="outline"
-                  className="border-2 border-white text-white hover:bg-white hover:text-deep-navy font-heading text-lg px-10 py-7 rounded-lg transition-all duration-300 transform hover:scale-105"
-                >
-                  Book a 15-Min Call
-                </Button>
-              </motion.div>
-
-              {/* Trust indicators */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                className="mt-12 flex items-center gap-6"
-              >
-                <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center h-12 w-12 rounded-full bg-primary bg-opacity-20">
-                    <span className="text-rocket-orange text-xl">✓</span>
-                  </div>
-                </div>
-                <p className="font-paragraph text-sm text-cool-gray300">
-                  <span className="font-semibold text-white">Flexible, scalable solutions</span> that grow with your business.
-                </p>
-              </motion.div>
             </motion.div>
 
-            {/* Right side - Broken Cog Visual */}
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.9, ease: "easeOut" }}
-              className="hidden lg:flex items-center justify-center h-full"
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="font-paragraph text-xl sm:text-2xl text-cool-gray300 mb-8 leading-relaxed"
             >
-              <div className="relative w-80 h-96 flex items-center justify-center">
-                {/* Main broken cog effect */}
-                <motion.div
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                  className="relative w-full h-full flex items-center justify-center"
-                >
-                  {/* Broken Cog SVG */}
-                  <svg
-                    className="w-64 h-64"
-                    viewBox="0 0 300 300"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    {/* Main cog circle */}
-                    <circle
-                      cx="150"
-                      cy="150"
-                      r="80"
-                      fill="none"
-                      stroke="#F97316"
-                      strokeWidth="8"
-                      opacity="0.4"
-                    />
+              Most businesses aren't short on work—they're buried in it.
+              <br />
+              We fix the systems that keep you stuck in the middle.
+            </motion.p>
 
-                    {/* Cog teeth - with one broken */}
-                    <motion.g
-                      animate={{ rotate: [0, -5, 0] }}
-                      transition={{
-                        duration: 4,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                      }}
-                      style={{ transformOrigin: "150px 150px" }}
-                    >
-                      {/* Tooth 1 */}
-                      <rect x="135" y="50" width="30" height="35" fill="#F97316" opacity="0.8" rx="4" />
-                      
-                      {/* Tooth 2 */}
-                      <rect x="200" y="75" width="30" height="35" fill="#F97316" opacity="0.8" rx="4" transform="rotate(60 215 92.5)" />
-                      
-                      {/* Tooth 3 */}
-                      <rect x="220" y="155" width="30" height="35" fill="#F97316" opacity="0.8" rx="4" transform="rotate(120 235 172.5)" />
-                      
-                      {/* Tooth 4 - BROKEN */}
-                      <g opacity="0.4">
-                        <rect x="135" y="215" width="15" height="35" fill="#F97316" rx="4" />
-                        <rect x="155" y="225" width="15" height="25" fill="#F97316" rx="4" />
-                      </g>
-                      
-                      {/* Tooth 5 */}
-                      <rect x="50" y="155" width="30" height="35" fill="#F97316" opacity="0.8" rx="4" transform="rotate(-120 65 172.5)" />
-                      
-                      {/* Tooth 6 */}
-                      <rect x="70" y="75" width="30" height="35" fill="#F97316" opacity="0.8" rx="4" transform="rotate(-60 85 92.5)" />
-                    </motion.g>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+            >
+              <Button
+                onClick={() => scrollToSection('contact')}
+                className="bg-rocket-orange hover:bg-orange-600 text-white font-heading text-lg px-10 py-7 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+              >
+                Fix My Workflow
+              </Button>
+              <Button
+                onClick={() => scrollToSection('contact')}
+                variant="outline"
+                className="border-2 border-white text-white hover:bg-white hover:text-deep-navy font-heading text-lg px-10 py-7 rounded-lg transition-all duration-300 transform hover:scale-105"
+              >
+                Book a 15-Min Call
+              </Button>
+            </motion.div>
 
-                    {/* Center hub */}
-                    <circle
-                      cx="150"
-                      cy="150"
-                      r="35"
-                      fill="none"
-                      stroke="#F97316"
-                      strokeWidth="6"
-                      opacity="0.6"
-                    />
-                    
-                    {/* Inner circle */}
-                    <circle
-                      cx="150"
-                      cy="150"
-                      r="20"
-                      fill="#F97316"
-                      opacity="0.3"
-                    />
-
-                    {/* Crack lines through broken tooth */}
-                    <motion.g
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.6, delay: 0.4 }}
-                    >
-                      <line x1="150" y1="215" x2="140" y2="270" stroke="#F97316" strokeWidth="2" opacity="0.7" />
-                      <line x1="160" y1="220" x2="175" y2="280" stroke="#F97316" strokeWidth="2" opacity="0.7" />
-                      <line x1="145" y1="215" x2="130" y2="265" stroke="#F97316" strokeWidth="1.5" opacity="0.5" />
-                    </motion.g>
-                  </svg>
-
-                  {/* Animated debris fragments */}
-                  <motion.div
-                    animate={{
-                      x: [0, -20, 0],
-                      y: [0, -15, 0],
-                      rotate: [0, 15, 0],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                    className="absolute top-12 left-12 w-8 h-8 bg-rocket-orange rounded-sm opacity-30"
-                  />
-                  <motion.div
-                    animate={{
-                      x: [0, 18, 0],
-                      y: [0, 20, 0],
-                      rotate: [0, -12, 0],
-                    }}
-                    transition={{
-                      duration: 3.5,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                      delay: 0.3,
-                    }}
-                    className="absolute bottom-16 right-12 w-6 h-6 bg-primary rounded-sm opacity-30"
-                  />
-                  <motion.div
-                    animate={{
-                      x: [0, -12, 0],
-                      y: [0, 18, 0],
-                      rotate: [0, 10, 0],
-                    }}
-                    transition={{
-                      duration: 4,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                      delay: 0.6,
-                    }}
-                    className="absolute top-1/3 right-8 w-5 h-5 bg-rocket-orange rounded-sm opacity-30"
-                  />
-
-                  {/* Warning indicator */}
-                  <motion.div
-                    animate={{
-                      scale: [1, 1.15, 1],
-                      opacity: [0.7, 1, 0.7],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                    className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-rocket-orange font-bold text-sm"
-                  >
-                    System Broken
-                  </motion.div>
-                </motion.div>
+            {/* Trust indicators */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="mt-12 flex items-center justify-center gap-6"
+            >
+              <div className="flex-shrink-0">
+                <div className="flex items-center justify-center h-12 w-12 rounded-full bg-primary bg-opacity-20">
+                  <span className="text-rocket-orange text-xl">✓</span>
+                </div>
               </div>
+              <p className="font-paragraph text-sm text-cool-gray300">
+                <span className="font-semibold text-white">Flexible, scalable solutions</span> that grow with your business.
+              </p>
             </motion.div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* PROBLEM SECTION */}
