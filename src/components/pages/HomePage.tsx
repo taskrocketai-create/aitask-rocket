@@ -47,7 +47,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-white">
       <Header />
       {/* HERO SECTION */}
-      <section className="w-screen relative overflow-hidden bg-gradient-to-br from-deep-navy via-blue-gray-gradient-start to-cool-gray900 text-white py-32 min-h-screen flex items-center">
+      <section className="w-screen relative overflow-hidden bg-gradient-to-br from-deep-navy via-blue-gray-gradient-start to-cool-gray900 text-white py-20 min-h-screen flex flex-col items-center justify-center">
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden flex items-center justify-center pointer-events-none">
           <motion.div
@@ -90,23 +90,23 @@ export default function HomePage() {
             }}
             className="absolute top-1/2 left-1/2 w-80 h-80 bg-blue-gray-gradient-start opacity-10 rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2"
           />
-          
-          {/* Overlay Image */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 0.15, scale: 1 }}
-            transition={{ duration: 1.2 }}
-            className="absolute inset-0 flex items-center justify-center pointer-events-none"
-          >
-            <Image
-              src="https://static.wixstatic.com/media/18d7f4_ed4a4836729f4fc9856bc4bfd80c227f~mv2.png"
-              alt="Task Rocket Logo Overlay"
-              width={800}
-              height={600}
-              className="object-contain opacity-20 max-w-4xl w-full h-auto"
-            />
-          </motion.div>
         </div>
+
+        {/* Top Image - Positioned above content */}
+        <motion.div
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="relative z-10 mb-8 pt-8"
+        >
+          <Image
+            src="https://static.wixstatic.com/media/18d7f4_ed4a4836729f4fc9856bc4bfd80c227f~mv2.png"
+            alt="Task Rocket Logo"
+            width={400}
+            height={300}
+            className="object-contain w-full max-w-md h-auto"
+          />
+        </motion.div>
 
         {/* Content */}
         <div className="max-w-7xl mx-auto w-full relative z-10 px-4 sm:px-6 lg:px-8">
