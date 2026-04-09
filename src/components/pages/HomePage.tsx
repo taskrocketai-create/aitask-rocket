@@ -46,7 +46,6 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-
       {/* HERO SECTION */}
       <section className="w-full relative overflow-hidden bg-gradient-to-br from-deep-navy via-blue-gray-gradient-start to-cool-gray900 text-white py-32 px-4 sm:px-6 lg:px-8 min-h-screen flex items-center">
         {/* Animated background elements */}
@@ -94,9 +93,9 @@ export default function HomePage() {
                 className="h-1 bg-gradient-to-r from-rocket-orange to-primary mb-8 rounded-full"
               />
 
-              <h1 className="font-heading text-6xl sm:text-7xl lg:text-8xl font-bold mb-8 leading-tight text-white">
+              <h1 className="font-heading text-6xl sm:text-7xl lg:text-8xl mb-8 leading-tight text-white font-normal not-italic">
                 If Your Business Only Works When You Do…
-                <span className="block">
+                <span className="block font-bold font-heading text-6xl">
                   Something's Broken.
                 </span>
               </h1>
@@ -150,168 +149,11 @@ export default function HomePage() {
                 </p>
               </motion.div>
             </motion.div>
-
             {/* Right side - Broken Cog Visual */}
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.9, ease: "easeOut" }}
-              className="hidden lg:flex items-center justify-center h-full"
-            >
-              <div className="relative w-80 h-96 flex items-center justify-center">
-                {/* Main broken cog effect */}
-                <motion.div
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                  className="relative w-full h-full flex items-center justify-center"
-                >
-                  {/* Broken Cog SVG */}
-                  <svg
-                    className="w-64 h-64"
-                    viewBox="0 0 300 300"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    {/* Main cog circle */}
-                    <circle
-                      cx="150"
-                      cy="150"
-                      r="80"
-                      fill="none"
-                      stroke="#F97316"
-                      strokeWidth="8"
-                      opacity="0.4"
-                    />
 
-                    {/* Cog teeth - with one broken */}
-                    <motion.g
-                      animate={{ rotate: [0, -5, 0] }}
-                      transition={{
-                        duration: 4,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                      }}
-                      style={{ transformOrigin: "150px 150px" }}
-                    >
-                      {/* Tooth 1 */}
-                      <rect x="135" y="50" width="30" height="35" fill="#F97316" opacity="0.8" rx="4" />
-                      
-                      {/* Tooth 2 */}
-                      <rect x="200" y="75" width="30" height="35" fill="#F97316" opacity="0.8" rx="4" transform="rotate(60 215 92.5)" />
-                      
-                      {/* Tooth 3 */}
-                      <rect x="220" y="155" width="30" height="35" fill="#F97316" opacity="0.8" rx="4" transform="rotate(120 235 172.5)" />
-                      
-                      {/* Tooth 4 - BROKEN */}
-                      <g opacity="0.4">
-                        <rect x="135" y="215" width="15" height="35" fill="#F97316" rx="4" />
-                        <rect x="155" y="225" width="15" height="25" fill="#F97316" rx="4" />
-                      </g>
-                      
-                      {/* Tooth 5 */}
-                      <rect x="50" y="155" width="30" height="35" fill="#F97316" opacity="0.8" rx="4" transform="rotate(-120 65 172.5)" />
-                      
-                      {/* Tooth 6 */}
-                      <rect x="70" y="75" width="30" height="35" fill="#F97316" opacity="0.8" rx="4" transform="rotate(-60 85 92.5)" />
-                    </motion.g>
-
-                    {/* Center hub */}
-                    <circle
-                      cx="150"
-                      cy="150"
-                      r="35"
-                      fill="none"
-                      stroke="#F97316"
-                      strokeWidth="6"
-                      opacity="0.6"
-                    />
-                    
-                    {/* Inner circle */}
-                    <circle
-                      cx="150"
-                      cy="150"
-                      r="20"
-                      fill="#F97316"
-                      opacity="0.3"
-                    />
-
-                    {/* Crack lines through broken tooth */}
-                    <motion.g
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.6, delay: 0.4 }}
-                    >
-                      <line x1="150" y1="215" x2="140" y2="270" stroke="#F97316" strokeWidth="2" opacity="0.7" />
-                      <line x1="160" y1="220" x2="175" y2="280" stroke="#F97316" strokeWidth="2" opacity="0.7" />
-                      <line x1="145" y1="215" x2="130" y2="265" stroke="#F97316" strokeWidth="1.5" opacity="0.5" />
-                    </motion.g>
-                  </svg>
-
-                  {/* Animated debris fragments */}
-                  <motion.div
-                    animate={{
-                      x: [0, -20, 0],
-                      y: [0, -15, 0],
-                      rotate: [0, 15, 0],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                    className="absolute top-12 left-12 w-8 h-8 bg-rocket-orange rounded-sm opacity-30"
-                  />
-                  <motion.div
-                    animate={{
-                      x: [0, 18, 0],
-                      y: [0, 20, 0],
-                      rotate: [0, -12, 0],
-                    }}
-                    transition={{
-                      duration: 3.5,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                      delay: 0.3,
-                    }}
-                    className="absolute bottom-16 right-12 w-6 h-6 bg-primary rounded-sm opacity-30"
-                  />
-                  <motion.div
-                    animate={{
-                      x: [0, -12, 0],
-                      y: [0, 18, 0],
-                      rotate: [0, 10, 0],
-                    }}
-                    transition={{
-                      duration: 4,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                      delay: 0.6,
-                    }}
-                    className="absolute top-1/3 right-8 w-5 h-5 bg-rocket-orange rounded-sm opacity-30"
-                  />
-
-                  {/* Warning indicator */}
-                  <motion.div
-                    animate={{
-                      scale: [1, 1.15, 1],
-                      opacity: [0.7, 1, 0.7],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                    className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-rocket-orange font-bold text-sm"
-                  >
-                    System Broken
-                  </motion.div>
-                </motion.div>
-              </div>
-            </motion.div>
           </div>
         </div>
       </section>
-
       {/* PROBLEM SECTION */}
       <section id="problem" className="w-full py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-cool-gray100">
         <div className="max-w-5xl mx-auto">
@@ -361,7 +203,6 @@ export default function HomePage() {
           </motion.div>
         </div>
       </section>
-
       {/* SERVICES SECTION */}
       <section id="services" className="w-full py-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-6xl mx-auto">
@@ -415,7 +256,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
       {/* HOW IT WORKS SECTION */}
       <section id="how-it-works" className="w-full py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-cool-gray100 to-white">
         <div className="max-w-6xl mx-auto">
@@ -473,7 +313,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
       {/* PRICING SECTION */}
       <section id="pricing" className="w-full py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-6xl mx-auto">
@@ -625,7 +464,6 @@ export default function HomePage() {
           </motion.div>
         </div>
       </section>
-
       {/* TRUST SECTION */}
       <section id="trust" className="w-full py-20 px-4 sm:px-6 lg:px-8 bg-cool-gray100">
         <div className="max-w-4xl mx-auto text-center">
@@ -658,7 +496,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
       {/* FINAL CTA SECTION */}
       <section className="w-full py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-deep-navy to-cool-gray900 text-white">
         <div className="max-w-4xl mx-auto text-center">
@@ -688,7 +525,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
       {/* CONTACT FORM SECTION */}
       <section id="contact" className="w-full py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-2xl mx-auto">
@@ -806,7 +642,6 @@ export default function HomePage() {
           </motion.div>
         </div>
       </section>
-
       <Footer />
     </div>
   );
