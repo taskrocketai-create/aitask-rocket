@@ -112,7 +112,7 @@ export default function HomePage() {
                 onClick={() => scrollToSection('contact')}
                 className="bg-rocket-orange hover:bg-orange-600 text-white font-heading text-lg px-8 py-6 rounded-lg"
               >
-                Start Your Automation
+                Get Started - Fill Out Form
               </Button>
               <Button
                 onClick={() => scrollToSection('how-it-works')}
@@ -485,6 +485,17 @@ export default function HomePage() {
       {/* FINAL CTA SECTION */}
       <section className="w-full py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-deep-navy to-cool-gray900 text-white">
         <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="mb-8 bg-rocket-orange/20 border-2 border-rocket-orange p-6 rounded-lg"
+          >
+            <p className="font-heading text-lg sm:text-xl font-bold text-rocket-orange">
+              👇 Ready to transform your business? Fill out the intake form below to get started!
+            </p>
+          </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -499,14 +510,14 @@ export default function HomePage() {
               onClick={() => scrollToSection('contact')}
               className="bg-rocket-orange hover:bg-orange-600 text-white font-heading text-lg px-8 py-6 rounded-lg"
             >
-              Fix My Workflow
+              Get Started - Fill Out Form
             </Button>
             <Button
               onClick={() => scrollToSection('contact')}
               variant="outline"
               className="border-2 border-white text-white hover:bg-white hover:text-deep-navy font-heading text-lg px-8 py-6 rounded-lg"
             >
-              Book a 15-Min Call
+              Start Your Automation
             </Button>
           </div>
         </div>
