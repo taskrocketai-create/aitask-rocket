@@ -93,8 +93,35 @@ export default function HomePage() {
         </div>
 
         {/* Content */}
-        <div className="max-w-7xl mx-auto w-full relative z-10">
-
+        <div className="max-w-7xl mx-auto w-full relative z-10 px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center"
+          >
+            <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+              Your Business Should Work <span className="text-rocket-orange">Without You</span>
+            </h1>
+            <p className="font-paragraph text-xl sm:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed">
+              Stop being trapped by manual work. We build automated systems that run your business 24/7—so you can focus on growth, not admin tasks.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                onClick={() => scrollToSection('contact')}
+                className="bg-rocket-orange hover:bg-orange-600 text-white font-heading text-lg px-8 py-6 rounded-lg"
+              >
+                Start Your Automation
+              </Button>
+              <Button
+                onClick={() => scrollToSection('how-it-works')}
+                variant="outline"
+                className="border-2 border-white text-white hover:bg-white hover:text-deep-navy font-heading text-lg px-8 py-6 rounded-lg"
+              >
+                See How It Works
+              </Button>
+            </div>
+          </motion.div>
         </div>
       </section>
       {/* PROBLEM SECTION */}
