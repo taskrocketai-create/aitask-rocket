@@ -95,7 +95,7 @@ export default function HomePage() {
 
               <h1 className="font-heading text-6xl sm:text-7xl lg:text-8xl mb-8 leading-tight text-white font-normal not-italic">
                 If Your Business Only Works When You Do…
-                <span className="block font-bold font-heading text-6xl">
+                <span className="block font-bold font-heading text-8xl">
                   Something's Broken.
                 </span>
               </h1>
@@ -104,7 +104,7 @@ export default function HomePage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="font-paragraph text-xl sm:text-2xl text-cool-gray300 mb-8 leading-relaxed"
+                className="font-paragraph text-xl text-cool-gray300 mb-8 leading-relaxed sm:text-4xl"
               >
                 Most businesses aren't short on work—they're buried in it.
                 <br />
@@ -144,8 +144,8 @@ export default function HomePage() {
                     <span className="text-rocket-orange text-xl">✓</span>
                   </div>
                 </div>
-                <p className="font-paragraph text-sm text-cool-gray300">
-                  <span className="font-semibold text-white">Flexible, scalable solutions</span> that grow with your business.
+                <p className="font-paragraph text-cool-gray300 text-4xl font-bold text-left indent-0 [writing-mode:horizontal-tb]">
+                  <span className="font-semibold text-white text-4xl">Flexible, scalable solutions</span> that grow with your business.
                 </p>
               </motion.div>
             </motion.div>
