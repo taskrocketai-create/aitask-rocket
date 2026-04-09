@@ -93,21 +93,6 @@ export default function HomePage() {
         </div>
 
         {/* Top Image - Positioned above content */}
-        <motion.div
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="relative z-10 mb-8 pt-8"
-        >
-          <Image
-            src="https://static.wixstatic.com/media/18d7f4_ed4a4836729f4fc9856bc4bfd80c227f~mv2.png"
-            alt="Task Rocket Logo"
-            width={400}
-            height={300}
-            className="object-contain w-full max-w-md h-auto"
-          />
-        </motion.div>
-
         {/* Content */}
         <div className="max-w-7xl mx-auto w-full relative z-10 px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -139,7 +124,22 @@ export default function HomePage() {
             </div>
           </motion.div>
         </div>
-      </section>
+      <motion.div
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="relative z-10 mb-8 pt-8"
+        >
+          <Image
+            src="https://static.wixstatic.com/media/18d7f4_ed4a4836729f4fc9856bc4bfd80c227f~mv2.png"
+            alt="Task Rocket Logo"
+            width={400}
+            height={300}
+            className="object-contain w-full max-w-md h-auto opacity-[1] border border-none mix-blend-normal"
+          />
+        </motion.div>
+
+        </section>
       {/* PROBLEM SECTION */}
       <section id="problem" className="w-full py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-cool-gray100">
         <div className="max-w-5xl mx-auto">
