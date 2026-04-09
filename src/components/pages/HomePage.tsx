@@ -109,12 +109,6 @@ export default function HomePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
-                onClick={() => scrollToSection('contact')}
-                className="bg-rocket-orange hover:bg-orange-600 text-white font-heading text-lg px-8 py-6 rounded-lg"
-              >
-                Get Started - Fill Out Form
-              </Button>
-              <Button
                 onClick={() => scrollToSection('how-it-works')}
                 variant="outline"
                 className="border-2 border-white text-white hover:bg-white hover:text-deep-navy font-heading text-lg px-8 py-6 rounded-lg"
@@ -507,17 +501,11 @@ export default function HomePage() {
           </motion.h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
-              onClick={() => scrollToSection('contact')}
-              className="bg-rocket-orange hover:bg-orange-600 text-white font-heading text-lg px-8 py-6 rounded-lg"
-            >
-              Get Started - Fill Out Form
-            </Button>
-            <Button
-              onClick={() => scrollToSection('contact')}
+              onClick={() => scrollToSection('how-it-works')}
               variant="outline"
               className="border-2 border-white text-white hover:bg-white hover:text-deep-navy font-heading text-lg px-8 py-6 rounded-lg"
             >
-              Start Your Automation
+              Learn More
             </Button>
           </div>
         </div>

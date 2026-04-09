@@ -13,7 +13,6 @@ export default function Header() {
     { name: 'How It Works', path: '/', anchor: 'how-it-works' },
     { name: 'Services', path: '/', anchor: 'services' },
     { name: 'Pricing', path: '/', anchor: 'pricing' },
-    { name: 'Contact', path: '/', anchor: 'contact' },
   ];
 
   const isActive = (path: string) => location.pathname === path;

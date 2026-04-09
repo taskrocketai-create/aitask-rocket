@@ -38,30 +38,6 @@ export default function Footer() {
               >
                 Pricing
               </button>
-              <button
-                onClick={() => handleNavClick('contact')}
-                className="font-paragraph text-sm text-cool-gray300 hover:text-white transition-colors text-left"
-              >
-                Contact
-              </button>
-            </div>
-          </div>
-
-          <div>
-            <h4 className="font-heading text-base font-semibold mb-4">Get Started</h4>
-            <div className="flex flex-col gap-2">
-              <button
-                onClick={() => handleNavClick('contact')}
-                className="font-paragraph text-sm text-cool-gray300 hover:text-white transition-colors text-left"
-              >
-                Fix My Workflow
-              </button>
-              <button
-                onClick={() => handleNavClick('contact')}
-                className="font-paragraph text-sm text-cool-gray300 hover:text-white transition-colors text-left"
-              >
-                Book a 15-Min Call
-              </button>
             </div>
           </div>
         </div>
