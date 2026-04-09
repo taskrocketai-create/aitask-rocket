@@ -93,7 +93,7 @@ export default function HomePage() {
                 className="h-1 bg-gradient-to-r from-rocket-orange to-primary mb-8 rounded-full"
               />
 
-              <h1 className="font-heading text-6xl sm:text-7xl lg:text-8xl mb-8 leading-tight text-white font-normal not-italic">
+              <h1 className="font-heading text-6xl sm:text-7xl lg:text-8xl mb-8 leading-tight text-white font-normal not-italic w-full">
                 If Your Business Only Works When You Do…
                 <span className="block font-bold font-heading text-8xl">
                   Something's Broken.
