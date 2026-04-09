@@ -46,23 +46,6 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      {/* LOGO SECTION */}
-      <section className="w-full py-12 px-4 sm:px-6 lg:px-8 bg-white flex items-center justify-center">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6 }}
-          className="max-w-md w-full"
-        >
-          <Image
-            src="https://static.wixstatic.com/media/18d7f4_744b5d142b5946959a0e54129234c345~mv2.jpg"
-            alt="Task Rocket Logo"
-            width={400}
-            height={300}
-            className="w-full h-auto object-contain"
-          />
-        </motion.div>
-      </section>
       {/* HERO SECTION */}
       <section className="w-screen relative overflow-hidden bg-gradient-to-br from-deep-navy via-blue-gray-gradient-start to-cool-gray900 text-white py-32 min-h-screen flex items-center">
         {/* Animated background elements */}
