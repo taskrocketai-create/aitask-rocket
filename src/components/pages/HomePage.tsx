@@ -482,35 +482,32 @@ export default function HomePage() {
       </section>
       {/* TRUST SECTION */}
       <section id="trust" className="w-full py-20 px-4 sm:px-6 lg:px-8 bg-cool-gray100">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-4xl mx-auto text-center">
           <motion.h2
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="font-heading text-4xl sm:text-5xl font-bold text-deep-navy mb-12 text-center"
+            className="font-heading text-4xl sm:text-5xl font-bold text-deep-navy mb-12"
           >
             Built for Busy Business Owners
           </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="space-y-6">
             {[
               'Designed for service-based businesses that value their time',
               'Focused on saving hours every week through smart automation',
               'Systems built to work in real-world operations so you can focus on growth',
             ].map((item, idx) => (
-              <motion.div
+              <motion.p
                 key={idx}
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white p-8 rounded-lg border-l-4 border-primary shadow-sm hover:shadow-md transition-shadow"
+                className="font-paragraph text-xl text-cool-gray700"
               >
-                <p className="font-paragraph text-lg text-cool-gray700">
-                  <span className="text-primary font-bold text-2xl mr-3">✓</span>
-                  {item}
-                </p>
-              </motion.div>
+                ✓ {item}
+              </motion.p>
             ))}
           </div>
         </div>
