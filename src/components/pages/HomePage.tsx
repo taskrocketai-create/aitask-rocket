@@ -47,32 +47,48 @@ export default function HomePage() {
     <div className="min-h-screen bg-white">
       <Header />
       {/* HERO SECTION */}
-      <section className="w-full relative overflow-hidden bg-gradient-to-br from-deep-navy via-blue-gray-gradient-start to-cool-gray900 text-white py-32 px-4 sm:px-6 lg:px-8 min-h-screen flex items-center">
+      <section className="w-screen relative overflow-hidden bg-gradient-to-br from-deep-navy via-blue-gray-gradient-start to-cool-gray900 text-white py-32 min-h-screen flex items-center">
         {/* Animated background elements */}
-        <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden flex items-center justify-center pointer-events-none">
           <motion.div
             animate={{
-              x: [0, 30, 0],
-              y: [0, -30, 0],
+              scale: [1, 1.2, 1],
+              rotate: [0, 90, 0],
+              x: [0, 50, 0],
+              y: [0, -50, 0]
             }}
             transition={{
-              duration: 20,
+              duration: 30,
               repeat: Infinity,
-              ease: "easeInOut",
+              ease: "easeInOut"
             }}
-            className="absolute top-0 right-0 w-96 h-96 bg-primary opacity-10 rounded-full blur-3xl"
+            className="absolute top-1/4 left-1/4 w-72 h-72 bg-primary opacity-15 rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2"
           />
           <motion.div
             animate={{
-              x: [0, -30, 0],
-              y: [0, 30, 0],
+              scale: [1, 0.8, 1],
+              rotate: [0, -90, 0],
+              x: [0, -50, 0],
+              y: [0, 50, 0]
+            }}
+            transition={{
+              duration: 35,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-rocket-orange opacity-15 rounded-full blur-3xl transform translate-x-1/2 translate-y-1/2"
+          />
+          <motion.div
+            animate={{
+              scale: [1, 1.1, 1],
+              rotate: [0, 45, 0]
             }}
             transition={{
               duration: 25,
               repeat: Infinity,
-              ease: "easeInOut",
+              ease: "easeInOut"
             }}
-            className="absolute bottom-0 left-0 w-96 h-96 bg-rocket-orange opacity-10 rounded-full blur-3xl"
+            className="absolute top-1/2 left-1/2 w-80 h-80 bg-blue-gray-gradient-start opacity-10 rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2"
           />
         </div>
 
