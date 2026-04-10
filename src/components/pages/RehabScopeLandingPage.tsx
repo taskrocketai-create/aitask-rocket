@@ -14,7 +14,7 @@ import Footer from '@/components/Footer';
 // Blueprint grid background pattern
 const BlueprintGrid = () => (
   <div className="absolute inset-0 opacity-5">
-    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+    <svg width="100%" height="100%" xmlns="https://www.w3.org/2000/svg">
       <defs>
         <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
           <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="0.5"/>
