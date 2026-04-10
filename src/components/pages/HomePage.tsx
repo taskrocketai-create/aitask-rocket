@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Image } from '@/components/ui/image';
 import { motion } from 'framer-motion';
+import FilloutForm from '@/components/FilloutForm';
 
 export default function HomePage() {
   const [formData, setFormData] = useState({
@@ -45,6 +46,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-white">
+      <FilloutForm />
       <Header />
       {/* HERO SECTION */}
       <section className="w-screen relative overflow-hidden bg-gradient-to-br from-deep-navy via-blue-gray-gradient-start to-cool-gray900 text-white py-20 min-h-screen flex flex-col items-center justify-center">
