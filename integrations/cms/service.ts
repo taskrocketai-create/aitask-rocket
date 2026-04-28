@@ -56,6 +56,7 @@ export class BaseCrudService {
 
   /**
    * Retrieves rows from the table with pagination (default: 50 per page)
+   * @param _includeRefs - Ignored; kept for backward compatibility with the former Wix Data service signature
    */
   static async getAll<T extends SupabaseDataItem>(
     collectionId: string,

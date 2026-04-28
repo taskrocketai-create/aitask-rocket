@@ -8,9 +8,9 @@ export interface CartItem {
   collectionId: string;
   /** Product ID */
   itemId: string;
-  /** Product name for display */
+  /** Product name for display (falls back to itemId if not provided) */
   name: string;
-  /** Item price */
+  /** Item price (falls back to 0 if not provided) */
   price: number;
   /** Quantity in cart */
   quantity: number;
@@ -23,9 +23,9 @@ export interface AddToCartInput {
   collectionId: string;
   itemId: string;
   quantity?: number;
-  /** Optional product name (used for display only) */
+  /** Optional product name; displayed in cart UI (falls back to itemId) */
   name?: string;
-  /** Optional price (used for display only) */
+  /** Optional unit price in the site's currency (falls back to 0) */
   price?: number;
   /** Optional image URL */
   image?: string;

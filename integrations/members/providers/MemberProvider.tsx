@@ -128,15 +128,16 @@ export const MemberProvider: React.FC<MemberProviderProps> = ({ children }) => {
   };
 
   // Auto-load member on mount and subscribe to auth state changes
+  const loadCurrentMember = actions.loadCurrentMember;
   useEffect(() => {
-    actions.loadCurrentMember();
+    loadCurrentMember();
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange(() => {
-      actions.loadCurrentMember();
+      loadCurrentMember();
     });
 
     return () => subscription.unsubscribe();
-  }, []);
+  }, [loadCurrentMember]);
 
   // Context value
   const contextValue = {
