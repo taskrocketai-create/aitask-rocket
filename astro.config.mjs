@@ -8,7 +8,7 @@ import customErrorOverlayPlugin from "./vite-error-overlay-plugin.js";
 // https://astro.build/config
 export default defineConfig({
   output: "server",
-  adapter: vercel({ nodeVersion: "20" }),
+  adapter: vercel({ nodeVersion: "20.x" }),
   integrations: [
     tailwind(),
     react(),
