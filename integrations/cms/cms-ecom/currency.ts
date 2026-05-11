@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { currentCart } from '@wix/ecom';
 
 /**
  * Default currency code to use when the site currency is not available.
@@ -43,27 +44,69 @@ interface CurrencyState {
   currency: string | null;
   isLoading: boolean;
   error: string | null;
+  _initialized: boolean;
 }
 
-type CurrencyStore = CurrencyState;
+interface CurrencyActions {
+  _fetchCurrency: () => Promise<void>;
+}
+
+type CurrencyStore = CurrencyState & { actions: CurrencyActions };
 
 /**
  * Zustand store for site currency state.
- * Currency is read from the PUBLIC_CURRENCY env variable (defaults to USD).
+ * Fetches currency from the cart API (which reflects Business Manager config).
  */
-const useCurrencyStore = create<CurrencyStore>(() => ({
-  // Read from env or fall back to DEFAULT_CURRENCY
-  currency: (typeof import.meta !== 'undefined' && import.meta.env?.PUBLIC_CURRENCY) || DEFAULT_CURRENCY,
+const useCurrencyStore = create<CurrencyStore>((set, get) => ({
+  currency: null,
   isLoading: false,
   error: null,
+  _initialized: false,
+
+  actions: {
+    _fetchCurrency: async () => {
+      if (get()._initialized) return;
+
+      set({ isLoading: true, error: null });
+      try {
+        const cart = await currentCart.getCurrentCart();
+        set({
+          currency: cart.currency || null,
+          isLoading: false,
+          _initialized: true,
+        });
+      } catch (error: unknown) {
+        // Cart not found is fine - we just don't have currency yet
+        const isNotFound =
+          error &&
+          typeof error === 'object' &&
+          ((error as { details?: { applicationError?: { code?: string } } }).details?.applicationError
+            ?.code === 'CART_NOT_FOUND' ||
+            (error as { details?: { applicationError?: { code?: string } } }).details?.applicationError
+              ?.code === 'OWNED_CART_NOT_FOUND');
+
+        if (isNotFound) {
+          set({ currency: null, isLoading: false, _initialized: true });
+        } else {
+          console.warn('Failed to fetch currency:', error);
+          set({
+            currency: null,
+            isLoading: false,
+            error: error instanceof Error ? error.message : 'Failed to fetch currency',
+            _initialized: true,
+          });
+        }
+      }
+    },
+  },
 }));
 
 /**
  * Hook to access site currency for price formatting.
  * No provider needed - works anywhere in the app.
  *
- * Set the PUBLIC_CURRENCY environment variable (e.g. "USD", "EUR") to configure
- * the site currency. Defaults to USD.
+ * Currency is fetched from the ecommerce API and represents the site's
+ * configured currency from Business Manager.
  *
  * @example
  * ```tsx
@@ -78,13 +121,17 @@ const useCurrencyStore = create<CurrencyStore>(() => ({
 export const useCurrency = () => {
   const store = useCurrencyStore();
 
+  // Auto-fetch currency on first use
+  if (!store._initialized && !store.isLoading) {
+    store.actions._fetchCurrency();
+  }
+
   return {
-    /** Site currency code (e.g., "USD", "EUR") */
+    /** Site currency code (e.g., "USD", "EUR"), null while loading */
     currency: store.currency,
-    /** Always false – currency is resolved synchronously from env */
+    /** True while fetching currency */
     isLoading: store.isLoading,
-    /** Error message if resolution failed */
+    /** Error message if fetch failed */
     error: store.error,
   };
 };
-

@@ -31,6 +31,9 @@
       "@/integrations": [
         "integrations"
       ],
+      "@wix/codegen-framework-packages": [
+        "integrations"
+      ],
     }
   },
   "include": [
