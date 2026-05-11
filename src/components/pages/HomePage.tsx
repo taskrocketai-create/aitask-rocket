@@ -49,7 +49,7 @@ export default function HomePage() {
       <FilloutForm />
       <Header />
       {/* HERO SECTION */}
-      <section className="w-screen relative overflow-hidden bg-gradient-to-br from-deep-navy via-blue-gray-gradient-start to-cool-gray900 text-white py-20 min-h-screen flex flex-col items-center justify-center">
+      <section className="w-full relative overflow-hidden bg-gradient-to-br from-deep-navy via-blue-gray-gradient-start to-cool-gray900 text-white py-20 min-h-screen flex flex-col items-center justify-center">
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden flex items-center justify-center pointer-events-none">
           <motion.div
