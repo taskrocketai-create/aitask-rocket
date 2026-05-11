@@ -11,6 +11,7 @@ import { BaseCrudService } from '@/integrations';
 import { ClientTasks } from '@/entities';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import FilloutForm from '@/components/FilloutForm';
 
 export default function SubmitTaskPage() {
   const navigate = useNavigate();
@@ -296,6 +297,7 @@ Submitted: ${new Date().toLocaleString()}
       </div>
 
       <Footer />
+      <FilloutForm />
     </div>
   );
 }
