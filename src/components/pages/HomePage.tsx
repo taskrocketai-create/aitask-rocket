@@ -104,7 +104,7 @@ export default function HomePage() {
             width={1024}
             height={1024}
             fittingType="fit"
-            className="object-contain w-full max-w-[460px] sm:max-w-[620px] lg:max-w-[700px] h-auto drop-shadow-2xl mix-blend-normal"
+            className="object-contain max-w-[460px] sm:max-w-[620px] lg:max-w-[700px] h-auto drop-shadow-2xl mix-blend-normal"
           />
         </motion.div>
 
