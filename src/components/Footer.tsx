@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function Footer() {
   const handleNavClick = (anchor: string) => {
     const element = document.getElementById(anchor);
@@ -38,6 +40,24 @@ export default function Footer() {
               >
                 Pricing
               </button>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="font-heading text-base font-semibold mb-4">Legal</h4>
+            <div className="flex flex-col gap-2">
+              <Link
+                to="/privacy-policy"
+                className="font-paragraph text-sm text-cool-gray300 hover:text-white transition-colors"
+              >
+                Privacy Policy
+              </Link>
+              <Link
+                to="/terms-and-conditions"
+                className="font-paragraph text-sm text-cool-gray300 hover:text-white transition-colors"
+              >
+                Terms and Conditions
+              </Link>
             </div>
           </div>
         </div>
