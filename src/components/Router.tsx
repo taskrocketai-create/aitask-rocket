@@ -21,6 +21,7 @@ import RealtorPage from '@/components/pages/RealtorPage';
 import ContractorPage from '@/components/pages/ContractorPage';
 import RehabScopeLandingPage from '@/components/pages/RehabScopeLandingPage';
 import RehabScopeSubmitPage from '@/components/pages/RehabScopeSubmitPage';
+import TermsAndConditionsPage from '@/components/pages/TermsAndConditionsPage';
 
 // Layout component that includes ScrollToTop
 function Layout() {
@@ -169,6 +170,13 @@ const router = createBrowserRouter([
         element: <RehabScopeSubmitPage />,
         routeMetadata: {
           pageIdentifier: 'rehab-scope-submit',
+        },
+      },
+      {
+        path: "terms-and-conditions",
+        element: <TermsAndConditionsPage />,
+        routeMetadata: {
+          pageIdentifier: 'terms-and-conditions',
         },
       },
       {
