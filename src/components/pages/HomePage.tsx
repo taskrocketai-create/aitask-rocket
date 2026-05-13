@@ -96,7 +96,7 @@ export default function HomePage() {
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="relative z-10 mb-2 pt-0 px-4"
+          className="relative z-10 mb-10 pt-6 px-4"
         >
           <Image
             src="/taskrocket-logo.png"
@@ -104,7 +104,7 @@ export default function HomePage() {
             width={1024}
             height={1024}
             fittingType="fit"
-            className="object-contain w-full max-w-[460px] sm:max-w-[620px] lg:max-w-[700px] h-auto drop-shadow-2xl"
+            className="object-contain w-full max-w-[460px] sm:max-w-[620px] lg:max-w-[700px] h-auto drop-shadow-2xl mix-blend-normal"
           />
         </motion.div>
 
