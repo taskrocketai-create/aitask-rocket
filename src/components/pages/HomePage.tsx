@@ -125,7 +125,7 @@ export default function HomePage() {
           className="relative z-10 mb-8 pt-8"
         >
           <Image
-            src="https://static.wixstatic.com/media/18d7f4_e04424fc150c432e8140da25e10f6fea~mv2.png"
+            src="https://static.wixstatic.com/media/18d7f4_78b57f2f175044bd91d5d288febc28d7~mv2.png?originWidth=384&originHeight=256"
             alt="Task Rocket Logo"
             width={400}
             height={300}
