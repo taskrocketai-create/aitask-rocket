@@ -92,7 +92,22 @@ export default function HomePage() {
           />
         </div>
 
-        {/* Top Image - Positioned above content */}
+        <motion.div
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="relative z-10 mb-10 pt-6 px-4"
+        >
+          <Image
+            src="/taskrocket-logo.png"
+            alt="TaskRocket Logo"
+            width={1024}
+            height={1024}
+            fittingType="fit"
+            className="object-contain w-full max-w-[420px] sm:max-w-[520px] h-auto drop-shadow-2xl"
+          />
+        </motion.div>
+
         {/* Content */}
         <div className="max-w-7xl mx-auto w-full relative z-10 px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -118,22 +133,7 @@ export default function HomePage() {
             </div>
           </motion.div>
         </div>
-      <motion.div
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="relative z-10 mb-8 pt-8"
-        >
-          <Image
-            src="https://static.wixstatic.com/media/18d7f4_50df62e985c24c20bf1cc1f5ddf9efb4~mv2.png?originWidth=384&originHeight=256"
-            alt="Task Rocket Logo"
-            width={400}
-            height={300}
-            className="object-contain w-full max-w-md h-auto opacity-[1] border border-none mix-blend-normal"
-          />
-        </motion.div>
-
-        </section>
+      </section>
       {/* PROBLEM SECTION */}
       <section id="problem" className="w-full py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-cool-gray100">
         <div className="max-w-5xl mx-auto">
