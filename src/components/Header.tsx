@@ -36,11 +36,9 @@ export default function Header() {
           <Link to="/" className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
             <Image
               src="https://static.wixstatic.com/media/18d7f4_37430035763444e693fcdd9f76b78c72~mv2.png"
-              width={40}
-              height={40}
-              className="h-10 w-auto"
               originWidth={1024}
               originHeight={1024}
+              className="h-10 w-auto"
               alt="TaskRocket Logo"
             />
             <div className="flex flex-col">

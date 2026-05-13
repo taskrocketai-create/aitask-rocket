@@ -87,7 +87,6 @@ export default function ServicesPage() {
                               <Image
                                 src={service.serviceImage}
                                 alt={service.serviceName || 'Service'}
-                                width={400}
                                 className="w-full h-full object-cover"
                               />
                             </div>

@@ -101,8 +101,8 @@ export default function HomePage() {
           <Image
             src="https://static.wixstatic.com/media/18d7f4_e76c704a9a6c4cefb2c36f97438df737~mv2.png"
             alt="TaskRocket Logo"
-            width={1024}
-            height={1024}
+            originWidth={1024}
+            originHeight={1024}
             fittingType="fit"
             className="object-contain max-w-[460px] sm:max-w-[620px] lg:max-w-[700px] h-auto drop-shadow-2xl mix-blend-normal"
           />

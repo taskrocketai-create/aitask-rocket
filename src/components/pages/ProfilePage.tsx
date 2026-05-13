@@ -43,7 +43,6 @@ export default function ProfilePage() {
                     <Image
                       src={member.profile.photo.url}
                       alt={member.profile.nickname || 'Profile'}
-                      width={120}
                       className="w-32 h-32 rounded-full object-cover"
                     />
                   ) : (
