@@ -96,7 +96,7 @@ export default function HomePage() {
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="relative z-10 mb-10 pt-6 px-4"
+          className="relative z-10 mb-2 pt-0 px-4"
         >
           <Image
             src="/taskrocket-logo.png"
