@@ -99,7 +99,7 @@ export default function HomePage() {
           className="relative z-10 mb-10 pt-6 px-4"
         >
           <Image
-            src="/taskrocket-logo.png"
+            src="https://static.wixstatic.com/media/18d7f4_e76c704a9a6c4cefb2c36f97438df737~mv2.png"
             alt="TaskRocket Logo"
             width={1024}
             height={1024}
