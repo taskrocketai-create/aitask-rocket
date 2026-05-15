@@ -251,6 +251,8 @@ const tutorialSteps = [
   },
 ];
 
+const revenueBarScaleFactor = 18;
+const revenueBarMinHeight = 18;
 const sectionBaseClass = 'rounded-3xl border border-cool-gray300 bg-white p-6 shadow-sm transition-all duration-300';
 const tutorialHighlightClass = 'ring-4 ring-rocket-orange/80 shadow-[0_0_0_8px_rgba(249,115,22,0.16)]';
 
@@ -275,6 +277,7 @@ export default function HomePage() {
   const selectedJob = bookedJobs.find((job) => job.id === selectedJobId) || bookedJobs[0];
   const activeThread = conversationThreads[selectedLead.id] || [];
   const currentTutorialStep = tutorialSteps[tutorialStepIndex];
+  const selectedLeadFirstName = selectedLead.name.trim().split(/\s+/)[0] || 'there';
 
   useEffect(() => {
     if (!isDemoOpen) {
@@ -304,13 +307,13 @@ export default function HomePage() {
       return;
     }
 
-    const step = tutorialSteps[tutorialStepIndex];
     const timeout = window.setTimeout(() => {
-      const element = document.getElementById(step.targetId);
+      const currentTargetId = tutorialSteps[tutorialStepIndex].targetId;
+      const element = document.getElementById(currentTargetId);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
-      setActiveDemoSection(step.targetId);
+      setActiveDemoSection(currentTargetId);
     }, 150);
 
     return () => window.clearTimeout(timeout);
@@ -367,7 +370,7 @@ export default function HomePage() {
       setIsTutorialVisible(false);
       return;
     }
-    setTutorialStepIndex(prev => prev + 1);
+    setTutorialStepIndex(prev => Math.min(prev + 1, tutorialSteps.length - 1));
   };
 
   const isTutorialTarget = (targetId: string) => isTutorialVisible && currentTutorialStep.targetId === targetId;
@@ -581,7 +584,7 @@ export default function HomePage() {
                 Meet <span className="text-primary">Riverside Plumbing</span> — a realistic Aitha demo built for home-service teams
               </h2>
               <p className="font-paragraph text-lg sm:text-xl text-cool-gray700 mb-8 max-w-3xl">
-                See how Aitha handles missed calls, sends immediate follow-up texts, keeps the conversation moving, and turns after-hours opportunities into booked plumbing jobs without sending visitors to a separate page.
+                See how Aitha handles missed calls, sends immediate follow-up texts, and keeps the conversation moving. It turns after-hours opportunities into booked plumbing jobs without sending visitors to a separate page.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                 {[
@@ -1325,7 +1328,7 @@ export default function HomePage() {
                               </div>
                               <div className="space-y-3">
                                 <div className="rounded-2xl rounded-br-md bg-primary px-4 py-3 text-sm text-white">
-                                  Hi {selectedLead.name.split(' ')[0]} — this is Aitha with Riverside Plumbing. Sorry we missed your call. Are you dealing with {selectedLead.service.toLowerCase()} today?
+                                  Hi {selectedLeadFirstName} — this is Aitha with Riverside Plumbing. Sorry we missed your call. Are you dealing with {selectedLead.service.toLowerCase()} today?
                                 </div>
                                 <div className="rounded-2xl bg-cool-gray100 px-4 py-3 text-sm text-cool-gray700">
                                   Triggered {selectedLead.autoTextAt} • Customer profile attached • Booking link ready if needed
@@ -1492,7 +1495,7 @@ export default function HomePage() {
                           <div className="grid grid-cols-6 gap-3 items-end h-44 rounded-2xl bg-cool-gray100 p-4">
                             {revenueMoments.map((item) => (
                               <div key={item.label} className="flex h-full flex-col items-center justify-end gap-3">
-                                <div className="flex w-full items-end justify-center rounded-t-2xl bg-gradient-to-t from-primary to-secondary" style={{ height: `${Math.max(18, item.value / 18)}px` }}>
+                                <div className="flex w-full items-end justify-center rounded-t-2xl bg-gradient-to-t from-primary to-secondary" style={{ height: `${Math.max(revenueBarMinHeight, item.value / revenueBarScaleFactor)}px` }}>
                                   <span className="mb-2 text-[11px] font-semibold text-white">${Math.round(item.value / 10) * 10}</span>
                                 </div>
                                 <span className="text-xs font-medium text-cool-gray700">{item.label}</span>
