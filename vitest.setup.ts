@@ -28,3 +28,14 @@ configure({
 
 // Make React's act available globally for testing-library
 global.IS_REACT_ACT_ENVIRONMENT = true
+
+class MockIntersectionObserver {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+  takeRecords() {
+    return []
+  }
+}
+
+global.IntersectionObserver = MockIntersectionObserver as any

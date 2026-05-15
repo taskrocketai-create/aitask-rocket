@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import HomePage from './HomePage';
 
@@ -11,7 +11,7 @@ vi.mock('@/components/Footer', () => ({
 }));
 
 vi.mock('@/components/ui/image', () => ({
-  Image: (props: any) => <img {...props} />,
+  Image: ({ originWidth: _originWidth, originHeight: _originHeight, fittingType: _fittingType, ...props }: any) => <img {...props} />,
 }));
 
 describe('HomePage Riverside Plumbing demo', () => {
@@ -39,16 +39,20 @@ describe('HomePage Riverside Plumbing demo', () => {
     expect(screen.getByTestId('demo-tutorial-title')).toHaveTextContent('Auto-text');
   });
 
-  it('allows dismissing the tutorial and closing the overlay', () => {
+  it('allows dismissing the tutorial and closing the overlay', async () => {
     renderPage();
 
     fireEvent.click(screen.getAllByRole('button', { name: /try live demo/i })[0]);
     fireEvent.click(screen.getByRole('button', { name: /explore freely/i }));
 
-    expect(screen.queryByTestId('demo-tutorial-title')).not.toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.queryByTestId('demo-tutorial-title')).not.toBeInTheDocument();
+    });
 
     fireEvent.click(screen.getByRole('button', { name: /back to taskrocket/i }));
 
-    expect(screen.queryByRole('dialog', { name: /riverside plumbing live demo/i })).not.toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.queryByRole('dialog', { name: /riverside plumbing live demo/i })).not.toBeInTheDocument();
+    });
   });
 });
