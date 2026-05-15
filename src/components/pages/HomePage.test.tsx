@@ -1,6 +1,13 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import type { ComponentProps } from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import HomePage from './HomePage';
+
+type MockImageProps = ComponentProps<'img'> & {
+  originWidth?: number;
+  originHeight?: number;
+  fittingType?: string;
+};
 
 vi.mock('@/components/Header', () => ({
   default: () => <div>Header</div>,
@@ -11,7 +18,12 @@ vi.mock('@/components/Footer', () => ({
 }));
 
 vi.mock('@/components/ui/image', () => ({
-  Image: ({ originWidth: _originWidth, originHeight: _originHeight, fittingType: _fittingType, ...props }: any) => <img {...props} />,
+  Image: ({ originWidth, originHeight, fittingType, ...props }: MockImageProps) => {
+    void originWidth;
+    void originHeight;
+    void fittingType;
+    return <img {...props} />;
+  },
 }));
 
 describe('HomePage Riverside Plumbing demo', () => {

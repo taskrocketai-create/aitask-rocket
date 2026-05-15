@@ -30,12 +30,12 @@ configure({
 global.IS_REACT_ACT_ENVIRONMENT = true
 
 class MockIntersectionObserver {
-  observe() {}
-  unobserve() {}
+  observe(_target: Element) {}
+  unobserve(_target: Element) {}
   disconnect() {}
   takeRecords() {
     return []
   }
 }
 
-global.IntersectionObserver = MockIntersectionObserver as any
+global.IntersectionObserver = MockIntersectionObserver as unknown as typeof IntersectionObserver

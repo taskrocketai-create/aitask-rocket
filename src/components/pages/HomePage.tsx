@@ -370,7 +370,7 @@ export default function HomePage() {
       setIsTutorialVisible(false);
       return;
     }
-    setTutorialStepIndex(prev => Math.min(prev + 1, tutorialSteps.length - 1));
+    setTutorialStepIndex(prev => prev + 1);
   };
 
   const isTutorialTarget = (targetId: string) => isTutorialVisible && currentTutorialStep.targetId === targetId;
