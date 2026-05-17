@@ -3,12 +3,180 @@ import Layout from '../layouts/TaskRocketLayout.astro';
 ---
 <Layout title="TaskRocket | AI-Powered Virtual Receptionist" description="TaskRocket helps local businesses recover missed calls, respond quickly, and turn messages into workflows.">
   <div class="tr-home">
-    <section class="hero-dark"><div class="container"><div class="hero-content"><div class="eyebrow">AI-Powered Virtual Receptionist</div><h1 class="hero-headline">Never miss<br/><span class="accent">another customer.</span><span class="muted-line">Ever again.</span></h1><p class="lead">When a customer calls your business and nobody picks up, TaskRocket catches it, texts them back quickly, and gets you the information you need. Built for local service businesses, property managers, contractors, and busy offices.</p><div class="actions"><a class="btn orange" href="/contact">Get a Free Workflow Review</a><a class="btn light" href="/aitha">Meet Aitha</a></div><div class="proof"><div><strong>30<span class="accent">%</span></strong><span>of calls can go unanswered</span></div><div><strong>&lt;60s</strong><span>fast response expectation</span></div><div><strong>24/7</strong><span>after-hours capture</span></div></div></div></div></section>
+
+    <!-- HERO WITH VIDEO BACKGROUND -->
+    <section class="hero-dark" style="position:relative;overflow:hidden;">
+
+      <!-- Video Background -->
+      <div class="hero-video-wrap">
+        <video autoplay muted loop playsinline preload="auto" id="hero-video">
+          <source src="https://cdn.coverr.co/videos/coverr-rocket-launch-2926/1080p.mp4" type="video/mp4" />
+        </video>
+        <iframe
+          id="hero-iframe"
+          style="display:none"
+          src="https://www.youtube-nocookie.com/embed/mNPSEoqxhOk?autoplay=1&mute=1&loop=1&playlist=mNPSEoqxhOk&controls=0&disablekb=1&rel=0&modestbranding=1&start=12"
+          frameborder="0"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+          title="Rocket launch background"
+        ></iframe>
+      </div>
+
+      <!-- Dark overlay -->
+      <div class="hero-video-overlay"></div>
+
+      <div class="container" style="position:relative;z-index:3;">
+        <div class="hero-content">
+          <div class="eyebrow">AI-Powered Virtual Receptionist</div>
+          <h1 class="hero-headline">Never miss<br/><span class="accent">another customer.</span><span class="muted-line">Ever again.</span></h1>
+          <p class="lead">When a customer calls your business and nobody picks up, TaskRocket catches it, texts them back quickly, and gets you the information you need. Built for local service businesses, property managers, contractors, and busy offices.</p>
+          <div class="actions">
+            <a class="btn orange" href="https://taskrocket.fillout.com/freebusinessreview" target="_blank">Get a Free Workflow Review</a>
+            <a class="btn light" href="/aitha">Meet Aitha</a>
+          </div>
+          <div class="proof">
+            <div><strong>30<span class="accent">%</span></strong><span>of calls can go unanswered</span></div>
+            <div><strong>&lt;60s</strong><span>fast response expectation</span></div>
+            <div><strong>24/7</strong><span>after-hours capture</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <div class="strip"><div class="container"><div class="strip-track"><span>Missed Calls</span><span>Text Intake</span><span>Emergency Routing</span><span>Workflow Automation</span><span>Customer Records</span></div></div></div>
+
     <section class="section"><div class="container grid2"><div><div class="eyebrow">The problem</div><h2>Your phone is busy. Your customers still expect an answer.</h2><p class="lead">Most small businesses do not lose customers because they do bad work. They lose them because calls get missed, messages pile up, and the person who knows what to do is already doing ten other things.</p></div><div class="tr-card"><ul class="list"><li>Missed calls become lost jobs.</li><li>Customers text, email, call, and leave voicemails in different places.</li><li>Urgent issues interrupt the owner while routine issues still need a record.</li><li>Staff needs support before another full-time admin hire makes sense.</li></ul></div></div></section>
+
     <section class="section alt"><div class="container"><div class="eyebrow">How it works</div><h2>From missed call to handled request.</h2><div class="grid"><div class="card"><h3>01 · Capture</h3><p>A call, voicemail, text, or form submission comes in and gets recorded.</p></div><div class="card"><h3>02 · Respond</h3><p>The customer gets a fast, friendly response that sounds like your business.</p></div><div class="card"><h3>03 · Route</h3><p>The request is triaged, organized, and routed to the right person or workflow.</p></div></div></div></section>
+
     <section class="section"><div class="container"><div class="eyebrow">Features</div><h2>Built for real local businesses, not tech demos.</h2><div class="grid"><div class="card"><h3>Missed call recovery</h3><p>Turn unanswered calls into text conversations before the customer moves on.</p></div><div class="card"><h3>Voicemail and message intake</h3><p>Collect the details your staff needs without chasing every caller manually.</p></div><div class="card"><h3>Escalation logic</h3><p>Separate true urgent issues from work that should be scheduled during business hours.</p></div><div class="card"><h3>Task and CRM triggers</h3><p>Send data into forms, spreadsheets, CRMs, calendars, or task boards.</p></div><div class="card"><h3>Aitha integration</h3><p>Use Aitha as the modern front desk layer for missed calls and message workflows.</p></div><div class="card"><h3>Compliance-ready consent</h3><p>Clear opt-in language, SMS terms, and privacy policies for responsible messaging.</p></div></div></div></section>
+
     <section class="section alt"><div class="container grid2"><div><div class="eyebrow">Featured product</div><h2>Meet Aitha, The Modern Front Desk.</h2><p class="lead">Aitha captures missed calls, responds by text, gathers the right details, routes urgent issues, and starts the workflows your business depends on.</p><a class="btn orange" href="/aitha">Explore Aitha</a></div><div class="tr-card"><div class="aitha-mark"></div><h3>Aitha handles the gap between missed and handled.</h3><ul class="list"><li>Responds by text</li><li>Collects useful details</li><li>Creates a record</li><li>Routes the next step</li></ul></div></div></section>
-    <section class="section"><div class="container"><div class="tr-card" style="text-align:center"><h2>Ready to stop letting missed calls become missed revenue?</h2><p class="lead" style="margin:auto auto 28px">Start with a free workflow review. We will look at where calls, messages, and admin work are slowing your business down.</p><a class="btn orange" href="/contact">Get a Free Workflow Review</a></div></div></section>
+
+    <section class="section"><div class="container"><div class="tr-card" style="text-align:center"><h2>Ready to stop letting missed calls become missed revenue?</h2><p class="lead" style="margin:auto auto 28px">Start with a free workflow review. We will look at where calls, messages, and admin work are slowing your business down.</p><a class="btn orange" href="https://taskrocket.fillout.com/freebusinessreview" target="_blank">Get a Free Workflow Review</a></div></div></section>
+
   </div>
+
+  <!-- FLOATING CTA BUTTON -->
+  <a href="https://taskrocket.fillout.com/freebusinessreview" target="_blank" class="float-btn">
+    <span class="float-pulse"></span>
+    🚀 Get a Free Review
+  </a>
+
 </Layout>
+
+<style>
+  /* VIDEO BACKGROUND */
+  .hero-video-wrap {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .hero-video-wrap video,
+  .hero-video-wrap iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 177.78vh;
+    height: 100vh;
+    min-width: 100%;
+    min-height: 56.25vw;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    object-fit: cover;
+  }
+  .hero-video-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      to right,
+      rgba(17, 17, 24, 0.93) 0%,
+      rgba(17, 17, 24, 0.80) 50%,
+      rgba(17, 17, 24, 0.60) 100%
+    );
+  }
+
+  /* FLOATING BUTTON */
+  .float-btn {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    z-index: 999;
+    background: #E8622A;
+    color: #ffffff;
+    padding: 15px 28px;
+    border-radius: 100px;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 8px 32px rgba(232, 98, 42, 0.45);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    letter-spacing: -0.2px;
+    animation: floatIn 0.8s 1s ease both;
+  }
+  .float-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(232, 98, 42, 0.55);
+    background: #F07A45;
+  }
+  .float-pulse {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    width: 14px;
+    height: 14px;
+    background: #4ADE80;
+    border-radius: 50%;
+    border: 2px solid #111118;
+  }
+  .float-pulse::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    background: #4ADE80;
+    border-radius: 50%;
+    animation: pulse 2s ease infinite;
+    opacity: 0.5;
+  }
+  @keyframes floatIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse {
+    0% { transform: scale(1); opacity: 0.5; }
+    70% { transform: scale(2); opacity: 0; }
+    100% { transform: scale(1); opacity: 0; }
+  }
+  @media (max-width: 768px) {
+    .float-btn {
+      bottom: 20px;
+      right: 20px;
+      padding: 13px 20px;
+      font-size: 14px;
+    }
+  }
+</style>
+
+<script>
+  // Fallback: if MP4 fails or stalls, show YouTube iframe
+  const vid = document.getElementById('hero-video') as HTMLVideoElement;
+  const ifr = document.getElementById('hero-iframe') as HTMLIFrameElement;
+  if (vid && ifr) {
+    vid.addEventListener('error', () => {
+      vid.style.display = 'none';
+      ifr.style.display = 'block';
+    });
+    setTimeout(() => {
+      if (vid.readyState < 2) {
+        vid.style.display = 'none';
+        ifr.style.display = 'block';
+      }
+    }, 4000);
+  }
+</script>
