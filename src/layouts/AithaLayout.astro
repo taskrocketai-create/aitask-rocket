@@ -1,0 +1,248 @@
+---
+import '../styles/global.css';
+const {
+  title = 'Aitha | The Modern Front Desk',
+  description = 'Aitha captures missed calls, responds by text, gathers the right details, routes urgent issues, and starts the workflows your business depends on.',
+} = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body class="al-site">
+
+    <!-- ─── Aitha Nav ─────────────────────────────────────────────────── -->
+    <header class="al-header">
+      <div class="container al-nav">
+        <a class="al-brand" href="/aitha">
+          <img src="/aitha-logo.svg" alt="Aitha – The Modern Front Desk" height="40" width="auto" />
+        </a>
+        <nav class="al-nav-links">
+          <a href="#features">Features</a>
+          <a href="#how-it-works">How it works</a>
+          <a href="#industries">Industries</a>
+          <a class="al-btn al-btn-cta" href="/contact">Get a Free Demo</a>
+        </nav>
+        <button class="al-menu-toggle" aria-label="Open menu" id="menuToggle">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="al-mobile-menu" id="mobileMenu">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#industries">Industries</a>
+        <a href="/contact" class="al-btn al-btn-cta" style="display:inline-flex;margin-top:8px;">Get a Free Demo</a>
+      </div>
+    </header>
+
+    <main><slot /></main>
+
+    <!-- ─── Aitha Footer ───────────────────────────────────────────────── -->
+    <footer class="al-footer">
+      <div class="container al-footer-grid">
+        <div class="al-footer-brand">
+          <img src="/aitha-logo.svg" alt="Aitha" height="36" width="auto" style="filter:brightness(0) invert(1) opacity(0.85);" />
+          <p>AI-powered front desk for service businesses, property managers, and local offices.</p>
+          <p class="al-footer-powered">Part of the <a href="/">TaskRocket</a> suite.</p>
+        </div>
+        <div>
+          <h4>Product</h4>
+          <a href="#features">Features</a>
+          <a href="#how-it-works">How it works</a>
+          <a href="#industries">Industries</a>
+          <a href="/contact">Get a Demo</a>
+        </div>
+        <div>
+          <h4>TaskRocket</h4>
+          <a href="/">Home</a>
+          <a href="/services">Services</a>
+          <a href="/contact">Free Workflow Review</a>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <a href="/privacy-policy">Privacy Policy</a>
+          <a href="/terms-of-service">Terms of Service</a>
+          <a href="/sms-terms">SMS Terms</a>
+          <a href="/messaging-compliance">Messaging Compliance</a>
+        </div>
+      </div>
+      <div class="container">
+        <p class="al-disclosure">Messaging disclosure: By submitting a form and opting in to SMS, you agree to receive text messages from TaskRocket related to your inquiry, workflow review, demo request, scheduling, service updates, and account communication. Message frequency varies. Message and data rates may apply. Reply STOP to unsubscribe or HELP for help. Consent is not a condition of purchase.</p>
+      </div>
+    </footer>
+
+    <script>
+      const toggle = document.getElementById('menuToggle');
+      const menu = document.getElementById('mobileMenu');
+      if (toggle && menu) {
+        toggle.addEventListener('click', () => {
+          const open = menu.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', String(open));
+        });
+        menu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            menu.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
+
+<style is:global>
+/* ══════════════════════════════════════════════════════════════════════
+   Aitha Layout Styles — scoped under .al-site
+   Does NOT affect TaskRocket pages (which use .tr-home / body without .al-site)
+══════════════════════════════════════════════════════════════════════ */
+
+.al-site {
+  margin: 0;
+  background: #ffffff;
+  color: #101828;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+/* ── Header ─────────────────────────────────────────────── */
+.al-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.93);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid #E4EAF0;
+}
+.al-nav {
+  height: 72px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.al-brand { display: flex; align-items: center; text-decoration: none; }
+.al-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.al-nav-links a {
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #475467;
+  transition: color 0.18s;
+}
+.al-nav-links a:hover { color: #101828; }
+.al-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 0.88rem;
+  transition: opacity 0.18s, transform 0.18s;
+  cursor: pointer;
+  border: 0;
+}
+.al-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+.al-btn-cta { background: #FF7A30; color: white; box-shadow: 0 6px 20px rgba(255,122,48,0.32); }
+.al-btn-outline { background: transparent; color: #101828; border: 1.5px solid #E4EAF0; box-shadow: none; }
+.al-btn-white { background: white; color: #101828; box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+.al-btn-teal { background: #2DD4BF; color: #101828; box-shadow: 0 6px 20px rgba(45,212,191,0.32); }
+.al-btn-lg { padding: 16px 36px; font-size: 1rem; border-radius: 12px; }
+
+/* Mobile menu */
+.al-menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+.al-menu-toggle span {
+  display: block;
+  width: 24px;
+  height: 2.5px;
+  background: #101828;
+  border-radius: 2px;
+}
+.al-mobile-menu {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 24px 20px;
+  border-top: 1px solid #E4EAF0;
+  background: white;
+}
+.al-mobile-menu.open { display: flex; }
+.al-mobile-menu a {
+  text-decoration: none;
+  font-weight: 700;
+  color: #475467;
+  padding: 10px 0;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+/* ── Footer ─────────────────────────────────────────────── */
+.al-footer {
+  background: #101828;
+  color: white;
+  padding: 64px 0 0;
+}
+.al-footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 56px;
+}
+.al-footer-brand p {
+  color: rgba(255,255,255,0.55);
+  margin-top: 16px;
+  font-size: 0.92rem;
+  max-width: 260px;
+}
+.al-footer-powered { margin-top: 10px !important; font-size: 0.82rem !important; }
+.al-footer-powered a { color: #2DD4BF; text-decoration: none; }
+.al-footer h4 {
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.38);
+  margin: 0 0 16px;
+}
+.al-footer a {
+  display: block;
+  text-decoration: none;
+  color: rgba(255,255,255,0.62);
+  font-size: 0.9rem;
+  margin: 8px 0;
+  transition: color 0.18s;
+}
+.al-footer a:hover { color: white; }
+.al-disclosure {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding: 20px 0 28px;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.35);
+  line-height: 1.7;
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .al-nav-links { display: none; }
+  .al-menu-toggle { display: flex; }
+  .al-footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .al-footer-grid { grid-template-columns: 1fr; }
+}
+</style>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 56" fill="none" role="img" aria-label="Aitha – The Modern Front Desk">
+  <!-- Icon mark: rounded square with stylised headset -->
+  <rect width="56" height="56" rx="14" fill="#101828"/>
+  <!-- Headset arc -->
+  <path d="M18 30 C18 21 22 15 28 15 C34 15 38 21 38 30" stroke="#2DD4BF" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+  <!-- Left ear cup -->
+  <rect x="13" y="28" width="8" height="11" rx="4" fill="#2DD4BF"/>
+  <!-- Right ear cup -->
+  <rect x="35" y="28" width="8" height="11" rx="4" fill="#2DD4BF"/>
+  <!-- Boom mic -->
+  <path d="M14 38 L14 43 Q14 45 16 45 L19 45" stroke="#FF7A30" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+  <!-- Wordmark: Aitha -->
+  <text x="72" y="33" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="800" font-size="24" fill="#101828" letter-spacing="-0.04em">Aitha</text>
+  <!-- Tagline -->
+  <text x="73" y="47" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="600" font-size="8.5" fill="#475467" letter-spacing="0.09em">THE MODERN FRONT DESK</text>
+</svg>
