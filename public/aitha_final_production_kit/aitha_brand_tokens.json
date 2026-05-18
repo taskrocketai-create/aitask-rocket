@@ -1,0 +1,20 @@
+{
+  "brand": "Aitha",
+  "pronunciation": "Aye-tha",
+  "tagline": "The Modern Front Desk",
+  "colors": {
+    "navy": "#101828",
+    "teal": "#2DD4BF",
+    "orange": "#FF7A30",
+    "slate": "#475467",
+    "light_background": "#F8FAFC",
+    "white": "#FFFFFF"
+  },
+  "recommended_logo": "aitha_horizontal_light.svg",
+  "recommended_icon": "aitha_icon_light.svg",
+  "notes": [
+    "Use the icon for favicons, app icons, social avatars, and small ad placements.",
+    "Use the horizontal logo for websites, presentations, print, and digital ads.",
+    "Use monochrome versions where color reproduction is limited."
+  ]
+}

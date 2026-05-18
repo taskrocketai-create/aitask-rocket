@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1800" height="1050" viewBox="0 0 1800 1050" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+<rect width="1800" height="1050" fill="#FF7A30"/>
+<g transform="translate(130 235) scale(0.52)">
+
+<rect width="1024" height="1024" rx="210" fill="#FF7A30"/>
+<path d="M240 520C240 345 355 226 512 226C669 226 784 345 784 520"
+      stroke="#101828" stroke-width="72" stroke-linecap="round"/>
+<rect x="168" y="482" width="126" height="204" rx="63" fill="#101828"/>
+<rect x="730" y="482" width="126" height="204" rx="63" fill="#101828"/>
+<path d="M792 675C742 800 630 862 492 862"
+      stroke="#101828" stroke-width="54" stroke-linecap="round"/>
+<circle cx="468" cy="862" r="42" fill="#FFFFFF"/>
+<path d="M346 672C346 672 448 402 494 310C503 292 529 292 538 310C585 402 688 672 688 672"
+      stroke="#FFFFFF" stroke-width="68" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M416 564C464 538 570 538 620 564"
+      stroke="#FFFFFF" stroke-width="50" stroke-linecap="round"/>
+
+</g>
+
+<g transform="translate(745 315)">
+  <text x="0" y="145" font-family="Inter, Avenir Next, Arial, sans-serif" font-size="172" font-weight="790" letter-spacing="-8" fill="#FFFFFF">Aitha</text>
+  <text x="8" y="208" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="650" letter-spacing="1.3" fill="#FFE4D2">The Modern Front Desk</text>
+  <path d="M10 260H500" stroke="#101828" stroke-width="10" stroke-linecap="round"/>
+  <path d="M10 296H315" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round"/>
+</g>
+
+
+</svg>
