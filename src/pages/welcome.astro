@@ -170,11 +170,13 @@
     .form-wrap {
       border-radius: 4px;
       overflow: hidden;
+      background: transparent;
     }
-    /* Jotform script embed overrides */
     .form-wrap iframe {
-      width: 100% !important;
-      border: none !important;
+      width: 100%;
+      min-height: 800px;
+      border: none;
+      display: block;
     }
 
     footer { padding: 40px 0 50px; text-align: center; border-top: 1px solid var(--rule); }
@@ -247,7 +249,15 @@
       <h2>Tell us about your <em>business</em>.</h2>
       <p class="intro">Everything below is required to configure Aitha properly.</p>
       <div class="form-wrap">
-        <script type="text/javascript" src="https://form.jotform.com/jsform/261375553411050"></script>
+        <iframe
+          src="https://form.jotform.com/261375553411050"
+          title="Aitha onboarding form"
+          loading="lazy"
+          allowtransparency="true"
+          allow="geolocation; microphone; camera"
+          scrolling="no"
+          onload="this.style.height = this.contentWindow.document.body.scrollHeight + 'px';"
+        ></iframe>
       </div>
     </div>
   </section>
