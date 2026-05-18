@@ -167,19 +167,14 @@
       font-size: 16px;
     }
 
-    .fillout-wrap {
-      background: var(--parchment-deep);
-      border: 1px solid var(--rule);
+    .form-wrap {
       border-radius: 4px;
-      padding: 8px;
-      min-height: 680px;
-      position: relative;
+      overflow: hidden;
     }
-    .fillout-wrap iframe {
-      width: 100%;
-      min-height: 660px;
-      border: none;
-      background: transparent;
+    /* Jotform script embed overrides */
+    .form-wrap iframe {
+      width: 100% !important;
+      border: none !important;
     }
 
     footer { padding: 40px 0 50px; text-align: center; border-top: 1px solid var(--rule); }
@@ -251,13 +246,8 @@
     <div class="container">
       <h2>Tell us about your <em>business</em>.</h2>
       <p class="intro">Everything below is required to configure Aitha properly.</p>
-      <div class="fillout-wrap">
-        <!-- Replace src with your actual Fillout onboarding form URL -->
-        <iframe
-          src="https://taskrocket.fillout.com/aitha-onboarding"
-          title="Aitha onboarding form"
-          loading="lazy"
-        ></iframe>
+      <div class="form-wrap">
+        <script type="text/javascript" src="https://form.jotform.com/jsform/261375553411050"></script>
       </div>
     </div>
   </section>
