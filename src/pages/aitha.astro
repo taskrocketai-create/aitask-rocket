@@ -1,13 +1,755 @@
 ---
-import Layout from '../layouts/TaskRocketLayout.astro';
+// src/pages/aitha.astro
+// Aitha — The Modern Front Desk
+// Standalone landing page, vintage-SaaS-AI aesthetic
 ---
-<Layout title="Aitha | The Modern Front Desk" description="Aitha captures missed calls, responds by text, gathers the right details, routes urgent issues, and starts workflows.">
-  <div class="aitha-page">
-    <section class="aitha-hero"><div class="container hero-inner"><div><div class="eyebrow">Powered by TaskRocket</div><h1>Your Modern Front Desk,<br/><em style="font-style:normal;color:#FF7A30">Always Ready.</em></h1><p class="lead">Aitha captures missed calls, responds by text, gathers the right details, routes urgent issues, and starts the workflows your business depends on, even when no one can pick up.</p><div class="actions"><a class="btn orange" href="/contact">Get a Free Workflow Review</a><a class="btn light" href="#how-it-works">See How It Works</a></div><p class="small">Built for small businesses · No call left unanswered · Customized to your workflow</p></div><div class="phone-stack"><div class="phone-card"><div class="label">Incoming call</div><h3>Missed call from a customer</h3><p>Customer needs help while your staff is already busy.</p></div><div class="phone-card featured"><div class="label">Aitha responding</div><div class="bubble aitha">Hi, this is the office. Sorry we missed your call. What can we help you with?</div><div class="bubble in">I have a leak and need someone to call me.</div><div class="bubble out">Thanks. Is water actively running or causing damage right now?</div></div><div class="phone-card"><div class="label">Workflow started</div><h3>Routed to the right person</h3><p>Urgency, details, and contact information are organized for your team.</p></div></div></div></section>
-    <section class="section" id="problem"><div class="container grid2"><div><div class="eyebrow">The problem</div><h2>Your customers do not care that your office is busy.</h2><p class="lead">They expect a response. Aitha gives your business a clean front-desk layer for the calls and texts that usually slip through the cracks.</p></div><div class="card"><ul class="list"><li>Missed calls become lost opportunities.</li><li>After-hours messages get buried.</li><li>Urgent issues interrupt the wrong person.</li><li>Routine issues still need a record for regular business hours.</li></ul></div></div></section>
-    <section class="section"><div class="container"><div class="eyebrow">What Aitha does</div><h2>From customer message to organized action.</h2><div class="grid"><div class="card solution-card"><h3>Missed call response</h3><p>Aitha can text a caller after a missed call and ask what they need.</p></div><div class="card solution-card"><h3>Text intake</h3><p>Aitha collects the right information and organizes the request.</p></div><div class="card solution-card"><h3>Urgency triage</h3><p>Aitha helps separate true emergency items from regular business-hour requests.</p></div><div class="card solution-card"><h3>Routing</h3><p>Aitha can notify a manager, vendor, technician, or staff member based on your rules.</p></div><div class="card solution-card"><h3>Records</h3><p>Each interaction can create a record so requests do not get forgotten.</p></div><div class="card solution-card"><h3>Workflow triggers</h3><p>Aitha can start forms, tasks, scheduling, CRM updates, and other automations.</p></div></div></div></section>
-    <section class="section teal-section" id="how-it-works"><div class="container"><div class="eyebrow" style="color:#2DD4BF">How it works</div><h2>Aitha answers the gap between missed and handled.</h2><div class="grid"><div class="card dark-card"><h3>01 · Customer reaches out</h3><p>They call, text, or submit a request.</p></div><div class="card dark-card"><h3>02 · Aitha asks smart questions</h3><p>The conversation collects details and checks urgency.</p></div><div class="card dark-card"><h3>03 · The workflow moves</h3><p>Your team gets a record, alert, task, or next step.</p></div></div></div></section>
-    <section class="section"><div class="container"><div class="eyebrow">Use cases</div><h2>Built for the work that normally lives in someone's head.</h2><div class="grid"><div class="card"><h3>Property management</h3><p>Tenant requests, maintenance triage, vendor routing, and records.</p></div><div class="card"><h3>Service businesses</h3><p>Missed calls, estimate requests, scheduling, and customer questions.</p></div><div class="card"><h3>Local offices</h3><p>Busy phones, repetitive intake, after-hours messages, and callback requests.</p></div></div></div></section>
-    <section class="section"><div class="container"><div class="card" style="text-align:center"><h2>Let Aitha catch the next missed call before it becomes missed revenue.</h2><p class="lead" style="margin:auto auto 28px">Start with a TaskRocket workflow review and we will map where Aitha can support your business.</p><a class="btn orange" href="/contact">Get a Free Workflow Review</a></div></div></section>
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aitha — The Modern Front Desk</title>
+  <meta name="description" content="Aitha (Aye-tha) is the modern front desk from TaskRocket. Hear her answer your phones — call (252) 360-0654 and you'll get a personalized demo by text in under a minute." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --parchment: #F5EFE1;
+      --parchment-deep: #EFE6D2;
+      --ink: #1B1A17;
+      --ink-soft: #2C2A26;
+      --brass: #B08B3E;
+      --brass-light: #D4B274;
+      --teal: #2DD4BF;
+      --teal-deep: #14B8A6;
+      --orange: #FF7A30;
+      --navy: #101828;
+      --rule: rgba(27, 26, 23, 0.12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--parchment);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.55;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Paper-grain texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.4;
+      mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.08 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ============ NAV ============ */
+    nav {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    nav .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .wordmark {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: 28px;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+    .wordmark em {
+      font-style: italic;
+      color: var(--brass);
+    }
+    .nav-meta {
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      opacity: 0.7;
+    }
+    .nav-meta a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .nav-meta a:hover { border-color: var(--brass); }
+
+    /* ============ HERO ============ */
+    .hero {
+      padding: 90px 0 60px;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--brass);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .eyebrow::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--brass);
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: clamp(48px, 7vw, 86px);
+      line-height: 0.98;
+      letter-spacing: -0.025em;
+      color: var(--ink);
+      margin-bottom: 32px;
+    }
+    h1 .accent {
+      font-style: italic;
+      color: var(--brass);
+      font-weight: 400;
+    }
+    h1 .name {
+      position: relative;
+      display: inline-block;
+    }
+    h1 .name::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; bottom: 0.05em;
+      height: 6px;
+      background: var(--teal);
+      opacity: 0.35;
+      z-index: -1;
+    }
+
+    .pronounce {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 18px;
+      color: var(--ink-soft);
+      opacity: 0.7;
+      margin-bottom: 24px;
+    }
+
+    .lede {
+      font-size: 19px;
+      line-height: 1.5;
+      max-width: 520px;
+      color: var(--ink-soft);
+      margin-bottom: 44px;
+    }
+
+    /* ============ DEMO CTA CARD ============ */
+    .demo-card {
+      background: var(--navy);
+      color: var(--parchment);
+      padding: 48px 44px;
+      border-radius: 4px;
+      position: relative;
+      box-shadow: 0 30px 60px -20px rgba(16, 24, 40, 0.35), 0 12px 24px -12px rgba(16, 24, 40, 0.25);
+      transform: rotate(-1deg);
+    }
+    .demo-card::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border: 1px solid var(--brass);
+      border-radius: 4px;
+      transform: rotate(1.5deg);
+      z-index: -1;
+      opacity: 0.5;
+    }
+
+    .demo-label {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--brass-light);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .demo-label .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--orange);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
+
+    .demo-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      display: block;
+      color: var(--parchment);
+      text-decoration: none;
+      margin-bottom: 18px;
+      transition: color 0.2s;
+    }
+    .demo-number:hover { color: var(--teal); }
+
+    .demo-desc {
+      font-size: 14px;
+      line-height: 1.5;
+      color: rgba(245, 239, 225, 0.75);
+      margin-bottom: 28px;
+    }
+
+    .demo-meta {
+      display: flex;
+      gap: 24px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(245, 239, 225, 0.15);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(245, 239, 225, 0.6);
+    }
+    .demo-meta span::before { content: '— '; color: var(--brass); }
+
+    /* ============ DIVIDER ORNAMENT ============ */
+    .ornament {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+      padding: 50px 0;
+    }
+    .ornament .line {
+      flex: 0 0 80px;
+      height: 1px;
+      background: var(--brass);
+      opacity: 0.6;
+    }
+    .ornament .mark {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 20px;
+      color: var(--brass);
+    }
+
+    /* ============ WHAT SHE DOES ============ */
+    .what {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: clamp(36px, 5vw, 60px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      max-width: 720px;
+      margin-bottom: 80px;
+    }
+    .section-title em {
+      font-style: italic;
+      color: var(--brass);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+    .feature {
+      background: var(--parchment);
+      padding: 40px 36px;
+      position: relative;
+      transition: background 0.3s;
+    }
+    .feature:hover { background: var(--parchment-deep); }
+    .feature-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 22px;
+      color: var(--brass);
+      margin-bottom: 24px;
+      display: block;
+    }
+    .feature h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: 26px;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-bottom: 14px;
+      color: var(--ink);
+    }
+    .feature p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--ink-soft);
+      opacity: 0.85;
+    }
+
+    /* ============ HOW IT WORKS ============ */
+    .how {
+      padding: 100px 0;
+      background: var(--navy);
+      color: var(--parchment);
+      margin: 60px 0;
+      position: relative;
+    }
+    .how::before, .how::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0;
+      height: 12px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--brass) 0px,
+        var(--brass) 2px,
+        transparent 2px,
+        transparent 8px
+      );
+      opacity: 0.3;
+    }
+    .how::before { top: 0; }
+    .how::after { bottom: 0; }
+
+    .how .eyebrow { color: var(--brass-light); }
+    .how .eyebrow::before { background: var(--brass-light); }
+    .how .section-title { color: var(--parchment); }
+    .how .section-title em { color: var(--teal); }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .step {
+      position: relative;
+      padding-top: 32px;
+      border-top: 1px solid rgba(245, 239, 225, 0.25);
+    }
+    .step-num {
+      position: absolute;
+      top: -14px;
+      left: 0;
+      background: var(--navy);
+      padding-right: 12px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 28px;
+      color: var(--brass-light);
+    }
+    .step h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: 22px;
+      margin-bottom: 10px;
+      color: var(--parchment);
+    }
+    .step p {
+      font-size: 14px;
+      line-height: 1.55;
+      color: rgba(245, 239, 225, 0.7);
+    }
+
+    /* ============ QUOTE ============ */
+    .quote {
+      padding: 120px 0;
+      text-align: center;
+    }
+    .quote blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      max-width: 880px;
+      margin: 0 auto;
+      color: var(--ink);
+      position: relative;
+    }
+    .quote blockquote::before {
+      content: '"';
+      position: absolute;
+      left: -40px; top: -30px;
+      font-size: 120px;
+      color: var(--brass);
+      opacity: 0.5;
+      line-height: 1;
+    }
+    .quote cite {
+      display: block;
+      margin-top: 32px;
+      font-family: 'DM Sans', sans-serif;
+      font-style: normal;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--brass);
+    }
+
+    /* ============ FINAL CTA ============ */
+    .final {
+      padding: 100px 0;
+      background: var(--parchment-deep);
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      text-align: center;
+    }
+    .final h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: clamp(40px, 6vw, 64px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+    .final h2 em {
+      font-style: italic;
+      color: var(--brass);
+    }
+    .final p {
+      font-size: 18px;
+      max-width: 540px;
+      margin: 0 auto 48px;
+      color: var(--ink-soft);
+    }
+    .final-ctas {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--navy);
+      color: var(--parchment);
+      border: 1px solid var(--navy);
+    }
+    .btn-primary:hover {
+      background: var(--teal-deep);
+      border-color: var(--teal-deep);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--ink);
+    }
+    .btn-secondary:hover {
+      background: var(--ink);
+      color: var(--parchment);
+    }
+    .btn .arrow { font-size: 18px; line-height: 1; }
+
+    /* ============ FOOTER ============ */
+    footer {
+      padding: 50px 0 60px;
+      text-align: center;
+    }
+    .footer-mark {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 18px;
+      color: var(--brass);
+      margin-bottom: 12px;
+    }
+    .footer-meta {
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      opacity: 0.6;
+    }
+    .footer-meta a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+    .footer-meta a:hover { border-color: var(--brass); }
+
+    /* ============ HEADSET MARK SVG ============ */
+    .headset-mark {
+      display: inline-block;
+      vertical-align: middle;
+      width: 36px;
+      height: 36px;
+      margin-right: 6px;
+    }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+      .features { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .demo-card { transform: rotate(-0.5deg); }
+      .quote blockquote::before { left: -10px; top: -50px; font-size: 80px; }
+    }
+    @media (max-width: 600px) {
+      .container { padding: 0 22px; }
+      .hero { padding: 60px 0 40px; }
+      .steps { grid-template-columns: 1fr; }
+      .demo-number { font-size: 40px; }
+      .demo-card { padding: 36px 28px; }
+      nav .row { flex-direction: column; gap: 8px; align-items: flex-start; }
+    }
+
+    /* ============ ENTRANCE ANIMATIONS ============ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: reveal 0.9s ease-out forwards;
+    }
+    @keyframes reveal {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.35s; }
+    .delay-4 { animation-delay: 0.5s; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container">
+      <div class="row">
+        <div class="wordmark">
+          <svg class="headset-mark" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 21V18C7 11.9249 11.9249 7 18 7C24.0751 7 29 11.9249 29 18V21" stroke="#2DD4BF" stroke-width="2.2" stroke-linecap="round"/>
+            <rect x="6" y="20" width="6" height="9" rx="2.5" fill="#2DD4BF"/>
+            <rect x="24" y="20" width="6" height="9" rx="2.5" fill="#2DD4BF"/>
+            <circle cx="27" cy="30" r="2.4" fill="#FF7A30"/>
+          </svg>
+          Aitha<em>.</em>
+        </div>
+        <div class="nav-meta">
+          A TaskRocket Product · <a href="https://aitask-rocket.vercel.app">taskrocket.org</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow reveal delay-1">The Modern Front Desk</div>
+          <h1 class="reveal delay-2">
+            Meet <span class="name">Aitha</span><span class="accent">.</span><br/>
+            She <em>answers</em> when<br/>nobody else can.
+          </h1>
+          <div class="pronounce reveal delay-3">— pronounced "Aye-tha"</div>
+          <p class="lede reveal delay-3">
+            Aitha is not a chatbot. She's the modern front desk for businesses
+            that can't afford to miss a call. She greets, qualifies, books,
+            triages, and follows up — twenty-four hours a day, in your voice,
+            for your business.
+          </p>
+        </div>
+
+        <div class="demo-card reveal delay-4">
+          <div class="demo-label">
+            <span class="dot"></span>
+            Hear her now · Live demo
+          </div>
+          <a href="tel:+12523600654" class="demo-number">
+            (252) 360&#8209;0654
+          </a>
+          <p class="demo-desc">
+            Call this number from your phone. Aitha will answer, take down
+            your business and one sample customer message — and in under a
+            minute she'll text you back a personalized demo of how she'd
+            handle that customer for <em>your</em> business.
+          </p>
+          <div class="demo-meta">
+            <span>30 seconds</span>
+            <span>Live AI</span>
+            <span>No signup</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORNAMENT -->
+  <div class="ornament" aria-hidden="true">
+    <span class="line"></span>
+    <span class="mark">&sect;</span>
+    <span class="line"></span>
   </div>
-</Layout>
+
+  <!-- WHAT SHE DOES -->
+  <section class="what">
+    <div class="container">
+      <div class="eyebrow">What Aitha Does</div>
+      <h2 class="section-title">
+        She catches the calls<br/>your <em>staff</em> can't &mdash;<br/>
+        and turns them into revenue.
+      </h2>
+
+      <div class="features">
+        <div class="feature">
+          <span class="feature-num">i.</span>
+          <h3>Answers every call.</h3>
+          <p>
+            Day, night, weekend, holiday. Aitha picks up on the first ring
+            with a warm greeting tailored to your business — and never sounds
+            like a robot reading a script.
+          </p>
+        </div>
+        <div class="feature">
+          <span class="feature-num">ii.</span>
+          <h3>Triages with judgment.</h3>
+          <p>
+            She knows the difference between an emergency, a scheduling
+            question, and a sales lead. Routes urgent calls to you, handles
+            the rest, and logs everything for the morning.
+          </p>
+        </div>
+        <div class="feature">
+          <span class="feature-num">iii.</span>
+          <h3>Texts, books, follows up.</h3>
+          <p>
+            Sends a confirmation. Drops a follow-up. Loops in the customer
+            until the appointment is on the calendar — and you have a record
+            of every conversation she touched.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how">
+    <div class="container">
+      <div class="eyebrow">How the Demo Works</div>
+      <h2 class="section-title">
+        Four steps. Sixty seconds.<br/>
+        Then you'll <em>know</em>.
+      </h2>
+
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">i</span>
+          <h4>You call.</h4>
+          <p>Dial (252) 360-0654 from any phone. Aitha picks up and introduces herself.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">ii</span>
+          <h4>You answer two questions.</h4>
+          <p>Your business name and what kind of business it is. That's all she needs.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">iii</span>
+          <h4>You leave a sample.</h4>
+          <p>Pretend to be one of your customers. Leave a message you actually hear all the time.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">iv</span>
+          <h4>Aitha texts you back.</h4>
+          <p>In under a minute. The exact response she'd give that customer — for your business.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="quote">
+    <div class="container">
+      <blockquote>
+        She's not here to replace your office. She's here to make sure the
+        revenue doesn't slip through it.
+      </blockquote>
+      <cite>— The Aitha Brief</cite>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final">
+    <div class="container">
+      <h2>Ready when <em>your customers</em> are.</h2>
+      <p>
+        Hear Aitha for yourself, then book a free workflow review and we'll
+        tailor her to your business.
+      </p>
+      <div class="final-ctas">
+        <a href="tel:+12523600654" class="btn btn-primary">
+          Call the demo line <span class="arrow">&rarr;</span>
+        </a>
+        <a href="https://taskrocket.fillout.com/freebusinessreview" class="btn btn-secondary" target="_blank" rel="noopener">
+          Book a free review
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-mark">Aitha — A TaskRocket Product</div>
+      <div class="footer-meta">
+        Wilson, NC · <a href="/">taskrocket.org</a> · <a href="tel:+12523600654">(252) 360-0654</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
