@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#0A0F1E">
+<title>TaskRocket — AI Assistant Setup</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{--bg:#0A0F1E;--surface:#111827;--card:#1A2235;--border:#2A3550;--accent:#3B82F6;--accent2:#60A5FA;--gold:#F59E0B;--text:#F0F4FF;--muted:#8B9BB4;--success:#10B981}
+html{min-height:100%}
+body{min-height:100vh;background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;padding-bottom:60px}
+.hero{background:linear-gradient(160deg,#0A0F1E 0%,#0F1D3A 60%,#0A0F1E 100%);padding:40px 20px 32px;text-align:center}
+.brand{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent2);font-weight:500;margin-bottom:14px}
+.hero h1{font-family:'DM Serif Display',serif;font-size:28px;line-height:1.2;margin-bottom:10px}
+.hero p{font-size:14px;color:var(--muted);max-width:320px;margin:0 auto 22px}
+.prog-wrap{background:var(--border);border-radius:100px;height:4px;max-width:260px;margin:0 auto;overflow:hidden}
+.prog-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--gold));border-radius:100px;transition:width .4s ease;width:0}
+.prog-label{font-size:12px;color:var(--muted);margin-top:8px}
+.wrap{max-width:480px;margin:0 auto;padding:0 16px}
+.step{display:none}
+.step.active{display:block;animation:up .35s ease}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:24px 20px;margin:16px 0 12px}
+.sec-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:8px;opacity:.85}
+.q{font-family:'DM Serif Display',serif;font-size:21px;line-height:1.3;margin-bottom:6px}
+.hint{font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.5}
+.field{margin-bottom:14px}
+.field:last-child{margin-bottom:0}
+.flabel{display:block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.finput{display:block;width:100%;background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:14px 16px;font-size:16px;color:var(--text);font-family:'DM Sans',sans-serif;outline:none;-webkit-appearance:none;appearance:none;transition:border-color .2s;min-height:50px}
+.finput:focus{border-color:var(--accent)}
+.finput::placeholder{color:var(--muted)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+select.finput{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238B9BB4' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:38px;cursor:pointer}
+select.finput option{background:#1A2235}
+textarea.finput{min-height:90px;resize:none;padding-right:52px;line-height:1.5}
+.chips{display:flex;flex-wrap:wrap;gap:9px}
+.chip{background:var(--surface);border:1.5px solid var(--border);border-radius:100px;padding:11px 18px;font-size:14px;color:var(--text);cursor:pointer;transition:background .15s,border-color .15s,color .15s;user-select:none;font-family:'DM Sans',sans-serif;min-height:44px;display:flex;align-items:center}
+.chip.sel{background:rgba(59,130,246,.15);border-color:var(--accent);color:var(--accent2)}
+.chip-block{display:flex;align-items:center;width:100%;background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:14px 16px;font-size:14px;color:var(--text);cursor:pointer;transition:background .15s,border-color .15s,color .15s;user-select:none;font-family:'DM Sans',sans-serif;margin-bottom:8px;min-height:50px}
+.chip-block:last-child{margin-bottom:0}
+.chip-block.sel{background:rgba(59,130,246,.15);border-color:var(--accent);color:var(--accent2)}
+.time-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.time-chip{background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:12px 6px;text-align:center;font-size:13px;color:var(--text);cursor:pointer;user-select:none;line-height:1.4;min-height:60px;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:background .15s,border-color .15s,color .15s}
+.time-chip small{font-size:11px;opacity:.55;margin-top:2px}
+.time-chip.sel{background:rgba(59,130,246,.15);border-color:var(--accent);color:var(--accent2)}
+.range-labels{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:10px}
+input[type=range]{width:100%;-webkit-appearance:none;height:4px;border-radius:100px;background:var(--border);outline:none;cursor:pointer;margin:4px 0}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:30px;height:30px;background:var(--accent);border-radius:50%;border:3px solid var(--bg);box-shadow:0 0 0 2px var(--accent)}
+.range-val{text-align:center;font-family:'DM Serif Display',serif;font-size:30px;color:var(--accent2);margin-top:14px}
+.tog-row{display:flex;align-items:center;justify-content:space-between;padding:15px 0;border-bottom:1px solid var(--border)}
+.tog-row:last-child{border-bottom:none}
+.tog-label{font-size:14px;flex:1;padding-right:16px;line-height:1.4}
+.tog{width:50px;height:30px;background:var(--border);border-radius:100px;position:relative;cursor:pointer;transition:background .2s;flex-shrink:0}
+.tog.on{background:var(--accent)}
+.tog::after{content:'';position:absolute;top:4px;left:4px;width:22px;height:22px;background:white;border-radius:50%;transition:transform .2s}
+.tog.on::after{transform:translateX(20px)}
+.mic-wrap{position:relative}
+.mic-btn{position:absolute;right:10px;bottom:10px;width:40px;height:40px;background:var(--accent);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;touch-action:manipulation}
+.mic-btn.on{background:var(--gold);animation:pulse 1.2s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(245,158,11,.4)}50%{box-shadow:0 0 0 10px rgba(245,158,11,0)}}
+.mic-btn svg{width:18px;height:18px;fill:white}
+.mic-hint{font-size:12px;color:var(--muted);text-align:center;margin-top:8px}
+.mic-status{font-size:13px;color:var(--gold);text-align:center;margin-top:4px;min-height:20px;font-weight:500}
+.nav{display:flex;gap:10px;margin-top:6px}
+.btn-back{background:transparent;border:1.5px solid var(--border);border-radius:14px;padding:0 20px;height:56px;font-size:18px;color:var(--muted);cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center;min-width:56px;touch-action:manipulation}
+.btn-next{flex:1;background:var(--accent);border:none;border-radius:14px;height:56px;font-size:16px;font-weight:500;color:white;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center;touch-action:manipulation}
+.btn-next:active{background:#2563EB}
+.btn-submit{flex:1;background:linear-gradient(135deg,var(--gold),#F97316);border:none;border-radius:14px;height:56px;font-size:16px;font-weight:500;color:white;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center;touch-action:manipulation}
+.done{display:none;text-align:center;padding:60px 24px}
+.done.active{display:block;animation:up .4s ease}
+.done-icon{width:80px;height:80px;background:rgba(16,185,129,.15);border:2px solid var(--success);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:36px}
+.done h2{font-family:'DM Serif Display',serif;font-size:26px;margin-bottom:12px}
+.done p{color:var(--muted);font-size:15px;line-height:1.7}
+.done a{color:var(--accent2)}
+.err-msg{font-size:13px;color:#FCA5A5;margin-top:12px;text-align:center;display:none}
+.err-msg.show{display:block}
+.section-divider{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent2);font-weight:500;margin:20px 0 4px;padding-top:16px;border-top:1px solid var(--border)}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="brand">TaskRocket · AI Setup</div>
+  <h1>Let's build your AI assistant</h1>
+  <p>Answer a few quick questions so we can configure your system perfectly. About 4 minutes.</p>
+  <div class="prog-wrap"><div class="prog-bar" id="pb"></div></div>
+  <div class="prog-label" id="pl">Step 1 of 16</div>
+</div>
+<div class="wrap">
+
+<!-- 1: Name -->
+<div class="step active" id="s1">
+  <div class="card">
+    <div class="sec-label">👤 About You</div>
+    <div class="q">What's your full name?</div>
+    <div class="hint">This is how your AI will sign off on every message.</div>
+    <div class="two-col">
+      <div class="field"><label class="flabel">First name</label><input class="finput" id="first_name" type="text" placeholder="Adam" autocomplete="given-name"></div>
+      <div class="field"><label class="flabel">Last name</label><input class="finput" id="last_name" type="text" placeholder="Chesson" autocomplete="family-name"></div>
+    </div>
+    <div class="field" style="margin-top:12px"><label class="flabel">Business name</label><input class="finput" id="biz_name" type="text" placeholder="Chesson Realty" autocomplete="organization"></div>
+  </div>
+  <div class="nav"><button class="btn-next" onclick="go(1,2)">Next →</button></div>
+</div>
+
+<!-- 2: Contact -->
+<div class="step" id="s2">
+  <div class="card">
+    <div class="sec-label">📞 Contact Info</div>
+    <div class="q">How do clients reach you?</div>
+    <div class="hint">Your AI will include this info in auto-replies and messages.</div>
+    <div class="field"><label class="flabel">Cell phone</label><input class="finput" id="cell" type="tel" placeholder="(252) 555-0100" autocomplete="tel" inputmode="tel"></div>
+    <div class="field"><label class="flabel">Business phone (if different)</label><input class="finput" id="biz_phone" type="tel" placeholder="(252) 555-0200" autocomplete="tel" inputmode="tel"></div>
+    <div class="field"><label class="flabel">Business email</label><input class="finput" id="biz_email" type="email" placeholder="adam@yourrealty.com" autocomplete="email" inputmode="email"></div>
+  </div>
+  <div class="nav"><button class="btn-back" onclick="go(2,1)">←</button><button class="btn-next" onclick="go(2,3)">Next →</button></div>
+</div>
+
+<!-- 3: Address -->
+<div class="step" id="s3">
+  <div class="card">
+    <div class="sec-label">📍 Location</div>
+    <div class="q">Where is your business located?</div>
+    <div class="hint">Used for service area references and location-based replies.</div>
+    <div class="field"><label class="flabel">Street address</label><input class="finput" id="address" type="text" placeholder="123 Main Street" autocomplete="street-address"></div>
+    <div class="two-col">
+      <div class="field"><label class="flabel">City</label><input class="finput" id="city" type="text" placeholder="Wilson" autocomplete="address-level2"></div>
+      <div class="field"><label class="flabel">State</label><input class="finput" id="state" type="text" placeholder="NC" maxlength="2" autocomplete="address-level1"></div>
+    </div>
+    <div class="field" style="margin-top:12px"><label class="flabel">ZIP code</label><input class="finput" id="zip" type="text" placeholder="27893" inputmode="numeric" maxlength="5" autocomplete="postal-code"></div>
+  </div>
+  <div class="nav"><button class="btn-back" onclick="go(3,2)">←</button><button class="btn-next" onclick="go(3,4)">Next →</button></div>
+</div>
+
+<!-- 4: Specialty -->
+<div class="step" id="s4">
+  <div class="card">
+    <div class="sec-label">🏠 Your Specialty</div>
+    <div class="q">What type of real estate do you focus on?</div>
+    <div class="hint">Tap all that apply — your AI tailors responses to your market.</div>
+    <div class="chips">
+      <div class="chip" onclick="tap(this,'spec_residential')">Residential</div>
+      <div class="chip" onclick="tap(this,'spec_commercial')">Commercial</div>
+      <div class="chip" onclick="tap(this,'spec_rentals')">Rentals</div>
+      <div class="chip" onclick="tap(this,'spec_investment')">Investment</div>
+      <div class="chip" onclick="tap(this,'spec_luxury')">Luxury</div>
+      <div class="chip" onclick="tap(this,'spec_land')">Land & lots</div>
+      <div class="chip" onclick="tap(this,'spec_newconstruction')">New construction</div>
+    </div>
+  </div>
+  <div class="nav"><button class="btn-back" onclick="go(4,3)">←</button><button class="btn-next" onclick="go(4,5)">Next →</button></div>
+</div>
+
+<!-- 5: Service area -->
+<div class="step" id="s5">
+  <div class="card">
+    <div class="sec-label">📍 Service Area</div>
+    <div class="q">What areas do you serve?</div>
+    <div class="hint">Type or tap the mic and speak the cities, counties, or regions you work in.</div>
+    <div class="mic-wrap">
+      <textarea class="finput" id="service_area" placeholder="e.g. Wilson, Nash County, Rocky Mount, Raleigh metro..."></textarea>
+      <button class="mic-btn" id="mic_sa" onclick="voice('service_area','mic_sa','vs_sa')"><svg viewBox="0 0 24 24"><path d="M12 1a4 4 0 0 1 4 4v6a4 4 0 0 1-8 0V5a4 4 0 0 1 4-4zm6.5 9a1 1 0 0 1 1 1 7.5 7.5 0 0 1-15 0 1 1 0 0 1 2 0 5.5 5.5 0 0 0 11 0 1 1 0 0 1 1-1zM12 18.5a1 1 0 0 1 1 1V21h1.5a1 1 0 0 1 0 2h-5a1 1 0 0 1 0-2H11v-1.5a1 1 0 0 1 1-1z"/></svg></button>
+    </div>
+    <div class="mic-status" id="vs_sa"></div>
+    <div class="mic-hint">🎤 Tap mic to speak your answer</div>
+  </div>
+  <div class="nav"><button class="btn-back" onclick="go(5,4)">←</button><button class="btn-next" onclick="go(5,6)">Next →</button></div>
+</div>
+
+<!-- 6: Hours -->
+<div class="step" id="s6">
+  <div class="card">
+    <div class="sec-label">🕐 Business Hours</div>
+    <div class="q">When are you open for business?</div>
+    <div class="hint">Tap your working days and set your hours.</div>
+    <div class="chips" style="margin-bottom:20px">
+      <div class="chip" onclick="tap(this,'day_mon')">Mon</div>
+      <div class="chip" onclick="tap(this,'day_tue')">Tue</div>
+      <div class="chip" onclick="tap(this,'day_wed')">Wed</div>
+      <div class="chip" onclick="tap(this,'day_thu')">Thu</div>
+      <div class="chip" onclick="tap(this,'day_fri')">Fri</div>
+      <div class="chip" onclick="tap(this,'day_sat')">Sat</div>
+      <div class="chip" onclick="tap(this,'day_sun')">Sun</div>
+    </div>
+    <div class="two-col">
+      <div class="field"><label class="flabel">Opens at</label>
+        <select class="finput" id="opens"><option>7:00 AM</option><option>8:00 AM</option><option selected>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>12:00 PM</option></select>
+      </div>
+      <div class="field"><label class="flabel">Closes at</label>
+        <select class="finput" id="closes"><option>3:00 PM</option><option>4:00 PM</option><option>5:00 PM</option><option selected>6:00 PM</option><option>7:00 PM</option><option>8:00 PM</option><option>9:00 PM</option></select>
+      </div>
+    </div>
+  </div>
+  <div class="nav"><button class="btn-back" onclick="go(6,5)">←</button><button class="btn-next" onclick="go(6,7)">Next →</button></div>
+</div>
+
+<!-- 7: Online -->
+<div class="step" id="s7">
+  <div class="card">
+    <div class="sec-label">🌐 Online Presence</div>
+    <div class="q">Where can clients find you online?</div>
+    <div class="hint">Your AI can drop these links into relevant replies. Skip any that don't apply.</div>
+    <div class="field"><label class="flabel">Website</label><input class="finput" id="website" type="url" placeholder="www.yourrealty.com" inputmode="url"></div>
+    <div class="field"><label class="flabel">Facebook page URL</label><input class="finput" id="facebook" type="url" placeholder="facebook.com/yourpage" inputmode="url"></div>
+    <div class="field"><label class="flabel">Instagram handle</label><input class="finput" id="instagram" type="text" placeholder="@yourhandle"></div>
+    <div class="field"><label class="flabel">Zillow / Realtor.com profile (optional)</label><input class="finput" id="zillow" type="url" placeholder="zillow.com/profile/..." inputmode="url"></div>
+  </div>
+  <div class="nav"><button class="btn-back" onclick="go(7,6)">←</button><button class="btn-next" onclick="go(7,8)">Next →</button></div>
+</div>
+
+<!-- 8: Email volume -->
+<div class="step" id="s8">
+  <div class="card">
+    <div class="sec-label">📨 Message Volume</div>
+    <div class="q">How many emails hit your inbox per day?</div>
+    <div class="hint">Ballpark is fine — this calibrates how aggressively your AI filters.</div>
+    <div class="range-labels"><span>Almost none</span><span>Hundreds</span></div>
+    <input type="range" min="0" max="4" step="1" value="1" id="email_vol" oninput="rng('email_vol','rv1',['Under 20','20–50','50–100','100–200','200+'])">
+    <div class="range-val" id="rv1">20–50</div>
+  </div>
+  <div class="nav"><button class="btn-back" onclick="go(8,7)">←</button><button class="btn-next" onclick="go(8,9)">Next →</button></div>
+</div>
+
+<!-- 9: Text volume -->
+<div class="step" id="s9">
+  <div class="card">
+    <div class="sec-label">💬 Message Volume</div>
+    <div class="q">How many client texts do you get per day?</div>
+    <div class="hint">Business texts only — showings, questions, follow-ups.</div>
+    <div class="range-labels"><span>Just a few</span><span>Non-stop</span></div>
+    <input type="range" min="0" max="4" step="1" value="1" id="text_vol" oninput="rng('text_vol','rv2',['Under 5','5–15','15–30','30–50','50+'])">
+    <div class="range-val" id="rv2">5–15</div>
+  </div>
+  <div class="nav"><button class="btn-back" onclick="go(9,8)">←</button><button class="btn-next" onclick="go(9,10)">Next →</button></div>
+</div>
+
+<!-- 10: Calendar -->
+<div class="step" id="s10">
+  <div class="card">
+    <div class="sec-label">📅 Calendar</div>
+    <div class="q">Which calendar manages your schedule?</div>
+    <div class="hint">Tap all you'd want your AI to check before suggesting appointment times.</div>
+    <div class="chips">
+      <div class="chip" onclick="tap(this,'cal_google')">Google Calendar</div>
+      <div class="chip" onclick="tap(this,'cal_apple')">Apple Calendar</div>
+      <div class="chip" onclick="tap(this,'cal_outlook')">Outlook</div>
+      <div class="chip" onclick="tap(this,'cal_mls')">MLS Calendar</div>
+      <div class="chip" onclick="tap(this,'cal_other')">Other</div>
+    </div>
+  </div>
+  <div class="nav"><button class="btn-back" onclick="go(10,9)">←</button><button class="btn-next" onclick="go(10,11)">Next →</button></div>
+</div>
+
+<!-- 11: Availability -->
+<div class="step" id="s11">
+  <div class="card">
+    <div class="sec-label">⏰ Availability</div>
+    <div class="q">When are you available for client appointments?</div>
+    <div class="hint">Your AI won't suggest times outside these windows.</div>
+    <div class="time-grid" style="margin-bottom:20px">
+      <div class="time-chip" onclick="tap(this,'avail_early')">Early AM<small>7–9am</small></div>
+      <div class="time-chip" onclick="tap(this,'avail_morning')">Morning<small>9am–12pm</small></div>
+      <div class="time-chip" onclick="tap(this,'avail_midday')">Midday<small>12–2pm</small></div>
+      <div class="time-chip" onclick="tap(this,'avail_afternoon')">Afternoon<small>2–5pm</small></div>
+      <div class="time-chip" onclick="tap(this,'avail_evening')">Evening<small>5–8pm</small></div>
+      <div class="time-chip" onclick="tap(this,'avail_weekend')">Weekends<small>Sat & Sun</small></div>
+    </div>
+    <div class="flabel" style="margin-bottom:10px">Buffer time between appointments</div>
+    <div class="chips">
+      <div class="chip" onclick="solo(this,'buffer')">No buffer</div>
+      <div class="chip" onclick="solo(this,'buffer')">15 min</div>
+      <div class="chip" onclick="solo(this,'buffer')">30 min</div>
+      <div class="chip" onclick="solo(this,'buffer')">1 hour</div>
+    </div>
+  </div>
+  <div class="nav"><button class="btn-back" onclick="go(11,10)">←</button><button class="btn-next" onclick="go(11,12)">Next →</button></div>
+</div>
+
+<!-- 12: Priority -->
+<div class="step" id="s12">
+  <div class="card">
+    <div class="sec-label">🎯 Priority Messages</div>
+    <div class="q">Which messages always need your personal attention?</div>
+    <div class="hint">These will never be auto-replied — you'll be alerted immediately.</div>
+    <div class="chips">
+      <div class="chip" onclick="tap(this,'pri_offers')">Offers & contracts</div>
+      <div class="chip" onclick="tap(this,'pri_upset')">Upset clients</div>
+      <div class="chip" onclick="tap(this,'pri_lender')">Lender messages</div>
+      <div class="chip" onclick="tap(this,'pri_attorney')">Attorney messages</div>
+      <div class="chip" onclick="tap(this,'pri_newbuyer')">New buyer leads</div>
+      <div class="chip" onclick="tap(this,'pri_newseller')">New seller leads</div>
+      <div class="chip" onclick="tap(this,'pri_inspection')">Inspection issues</div>
+      <div class="chip" onclick="tap(this,'pri_closing')">Closing questions</div>
+    </div>
+  </div>
+  <div class="nav"><button class="btn-back" onclick="go(12,11)">←</button><button class="btn-next" onclick="go(12,13)">Next →</button></div>
+</div>
+
+<!-- 13: Auto-reply -->
+<div class="step" id="s13">
+  <div class="card">
+    <div class="sec-label">🤖 Auto-Reply</div>
+    <div class="q">What can your AI handle automatically?</div>
+    <div class="hint">These get answered instantly — no approval needed from you.</div>
+    <div class="chips">
+      <div class="chip" onclick="tap(this,'auto_showing')">Showing availability</div>
+      <div class="chip" onclick="tap(this,'auto_listing')">Basic listing questions</div>
+      <div class="chip" onclick="tap(this,'auto_hours')">Hours & contact info</div>
+      <div class="chip" onclick="tap(this,'auto_confirm')">Appointment confirmations</div>
+      <div class="chip" onclick="tap(this,'auto_thankyou')">Thank you follow-ups</div>
+      <div class="chip" onclick="tap(this,'auto_spam')">Spam & solicitations</div>
+    </div>
+  </div>
+  <div class="nav"><button class="btn-back" onclick="go(13,12)">←</button><button class="btn-next" onclick="go(13,14)">Next →</button></div>
+</div>
+
+<!-- 14: Notifications -->
+<div class="step" id="s14">
+  <div class="card">
+    <div class="sec-label">🔔 Notifications</div>
+    <div class="q">How should your AI alert you when something needs approval?</div>
+    <div class="chips" style="margin-bottom:20px">
+      <div class="chip" onclick="tap(this,'notif_text')">Text message</div>
+      <div class="chip" onclick="tap(this,'notif_email')">Email</div>
+      <div class="chip" onclick="tap(this,'notif_push')">Push notification</div>
+      <div class="chip" onclick="tap(this,'notif_digest')">Daily digest only</div>
+    </div>
+    <div class="tog-row">
+      <span class="tog-label">Send me a morning summary every day</span>
+      <div class="tog on" id="tog_digest" onclick="tog(this,'morning_digest')"></div>
+    </div>
+    <div class="tog-row">
+      <span class="tog-label">Send a holding reply if I don't respond within 2 hours</span>
+      <div class="tog" id="tog_hold" onclick="tog(this,'holding_reply')"></div>
+    </div>
+  </div>
+  <div class="nav"><button class="btn-back" onclick="go(14,13)">←</button><button class="btn-next" onclick="go(14,15)">Next →</button></div>
+</div>
+
+<!-- 15: Tone -->
+<div class="step" id="s15">
+  <div class="card">
+    <div class="sec-label">🗣 Your Voice</div>
+    <div class="q">How would you describe your style with clients?</div>
+    <div class="hint">Pick the one that feels most like you.</div>
+    <div class="chip-block" onclick="solo(this,'tone')">Warm & friendly — I like to build relationships</div>
+    <div class="chip-block" onclick="solo(this,'tone')">Professional & direct — I keep it business</div>
+    <div class="chip-block" onclick="solo(this,'tone')">Casual & approachable — I talk like a neighbor</div>
+    <div class="chip-block" onclick="solo(this,'tone')">Detailed & thorough — I explain everything</div>
+    <div class="flabel" style="margin:18px 0 8px">How do you sign off your messages?</div>
+    <div class="mic-wrap">
+      <textarea class="finput" id="signoff" placeholder="e.g. Talk soon, Adam  |  Thanks — Adam Chesson (252) 555-0100"></textarea>
+      <button class="mic-btn" id="mic_so" onclick="voice('signoff','mic_so','vs_so')"><svg viewBox="0 0 24 24"><path d="M12 1a4 4 0 0 1 4 4v6a4 4 0 0 1-8 0V5a4 4 0 0 1 4-4zm6.5 9a1 1 0 0 1 1 1 7.5 7.5 0 0 1-15 0 1 1 0 0 1 2 0 5.5 5.5 0 0 0 11 0 1 1 0 0 1 1-1zM12 18.5a1 1 0 0 1 1 1V21h1.5a1 1 0 0 1 0 2h-5a1 1 0 0 1 0-2H11v-1.5a1 1 0 0 1 1-1z"/></svg></button>
+    </div>
+    <div class="mic-status" id="vs_so"></div>
+    <div class="mic-hint">🎤 Tap mic to speak</div>
+  </div>
+  <div class="nav"><button class="btn-back" onclick="go(15,14)">←</button><button class="btn-next" onclick="go(15,16)">Next →</button></div>
+</div>
+
+<!-- 16: Never -->
+<div class="step" id="s16">
+  <div class="card">
+    <div class="sec-label">🚫 Ground Rules</div>
+    <div class="q">Anything your AI should never say or do?</div>
+    <div class="hint">Phrases that don't sound like you, off-limit topics, competitors to avoid. Tap mic or type it out.</div>
+    <div class="mic-wrap">
+      <textarea class="finput" id="never_say" placeholder="e.g. Don't mention competitors, never discuss price reductions unless I bring it up, avoid corporate-sounding language..."></textarea>
+      <button class="mic-btn" id="mic_nv" onclick="voice('never_say','mic_nv','vs_nv')"><svg viewBox="0 0 24 24"><path d="M12 1a4 4 0 0 1 4 4v6a4 4 0 0 1-8 0V5a4 4 0 0 1 4-4zm6.5 9a1 1 0 0 1 1 1 7.5 7.5 0 0 1-15 0 1 1 0 0 1 2 0 5.5 5.5 0 0 0 11 0 1 1 0 0 1 1-1zM12 18.5a1 1 0 0 1 1 1V21h1.5a1 1 0 0 1 0 2h-5a1 1 0 0 1 0-2H11v-1.5a1 1 0 0 1 1-1z"/></svg></button>
+    </div>
+    <div class="mic-status" id="vs_nv"></div>
+    <div class="mic-hint">🎤 Tap mic to speak</div>
+    <div class="err-msg" id="submit_err">Something went wrong. Please try again or text Alan at (252) 555-0100.</div>
+  </div>
+  <div class="nav"><button class="btn-back" onclick="go(16,15)">←</button><button class="btn-submit" id="submitBtn" onclick="submitForm()">Submit ✓</button></div>
+</div>
+
+<!-- DONE -->
+<div class="done" id="done">
+  <div class="done-icon">✓</div>
+  <h2>You're all set.</h2>
+  <p>Your setup has been sent to Alan at TaskRocket. He'll have your AI assistant configured and ready within 24 hours.<br><br>Questions? Text Alan at <a href="tel:+12525550100">(252) 555-0100</a></p>
+</div>
+
+</div>
+
+<script>
+const TOTAL=16;
+let cur=1;
+const A={morning_digest:true,holding_reply:false};
+let rec=null,listening=false;
+
+const SB_URL='https://snzdwixepyatasvjjurk.supabase.co';
+const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNuemR3aXhlcHlhdGFzdmpqdXJrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc0MjQ1NTQsImV4cCI6MjA5MzAwMDU1NH0.UM2zWfnhO7pOCryDYvHKXSSoWBPb_rWPyTB2bv-aiNI';
+
+function prog(){
+  document.getElementById('pb').style.width=((cur-1)/TOTAL*100)+'%';
+  document.getElementById('pl').textContent='Step '+cur+' of '+TOTAL;
+}
+
+function collect(){
+  ['first_name','last_name','biz_name','cell','biz_phone','biz_email',
+   'address','city','state','zip','website','facebook','instagram','zillow',
+   'opens','closes','service_area','signoff','never_say'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) A[id]=el.value.trim();
+  });
+  const r1=document.getElementById('rv1');
+  const r2=document.getElementById('rv2');
+  if(r1) A.email_vol=r1.textContent;
+  if(r2) A.text_vol=r2.textContent;
+}
+
+function go(from,to){
+  collect();
+  document.getElementById('s'+from).classList.remove('active');
+  cur=to;
+  document.getElementById('s'+to).classList.add('active');
+  prog();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function tap(el,key){
+  el.classList.toggle('sel');
+  A[key]=el.classList.contains('sel');
+}
+
+function solo(el,group){
+  // find siblings — look up to chip-block parent or chips container
+  const parent=el.parentElement;
+  parent.querySelectorAll('.chip,.chip-block').forEach(c=>c.classList.remove('sel'));
+  el.classList.add('sel');
+  A[group]=el.textContent.trim();
+}
+
+function rng(id,valId,labels){
+  const v=parseInt(document.getElementById(id).value);
+  document.getElementById(valId).textContent=labels[v];
+  A[id+'_label']=labels[v];
+}
+
+function tog(el,key){
+  el.classList.toggle('on');
+  A[key]=el.classList.contains('on');
+}
+
+function voice(taId,micId,vsId){
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!SR){document.getElementById(vsId).textContent='Voice not supported — please type.';return;}
+  if(listening){rec&&rec.stop();return;}
+  rec=new SR();
+  rec.continuous=true;rec.interimResults=true;rec.lang='en-US';
+  rec.onstart=()=>{listening=true;document.getElementById(micId).classList.add('on');document.getElementById(vsId).textContent='🎙 Listening...';};
+  rec.onresult=e=>{
+    let fin='',tmp='';
+    for(let i=e.resultIndex;i<e.results.length;i++){
+      if(e.results[i].isFinal)fin+=e.results[i][0].transcript;
+      else tmp+=e.results[i][0].transcript;
+    }
+    const ta=document.getElementById(taId);
+    if(fin){ta.value+=(ta.value?' ':'')+fin;A[taId]=ta.value;}
+    document.getElementById(vsId).textContent=tmp?'🎙 '+tmp:'🎙 Listening...';
+  };
+  rec.onerror=rec.onend=()=>{
+    listening=false;
+    document.getElementById(micId).classList.remove('on');
+    document.getElementById(vsId).textContent='';
+  };
+  rec.start();
+}
+
+async function submitForm(){
+  collect();
+  const btn=document.getElementById('submitBtn');
+  const err=document.getElementById('submit_err');
+  btn.textContent='Saving...';
+  btn.style.opacity='0.7';
+  err.classList.remove('show');
+
+  // Build chip selections as readable strings
+  const specialties=Object.keys(A).filter(k=>k.startsWith('spec_')&&A[k]).map(k=>k.replace('spec_','')).join(', ');
+  const days=Object.keys(A).filter(k=>k.startsWith('day_')&&A[k]).map(k=>k.replace('day_','')).join(', ');
+  const availability=Object.keys(A).filter(k=>k.startsWith('avail_')&&A[k]).map(k=>k.replace('avail_','')).join(', ');
+  const calendars=Object.keys(A).filter(k=>k.startsWith('cal_')&&A[k]).map(k=>k.replace('cal_','')).join(', ');
+  const priority_msgs=Object.keys(A).filter(k=>k.startsWith('pri_')&&A[k]).map(k=>k.replace('pri_','')).join(', ');
+  const auto_reply=Object.keys(A).filter(k=>k.startsWith('auto_')&&A[k]).map(k=>k.replace('auto_','')).join(', ');
+  const notifications=Object.keys(A).filter(k=>k.startsWith('notif_')&&A[k]).map(k=>k.replace('notif_','')).join(', ');
+
+  const payload={
+    first_name: A.first_name||'',
+    last_name: A.last_name||'',
+    business_name: A.biz_name||'',
+    cell_phone: A.cell||'',
+    business_phone: A.biz_phone||'',
+    email: A.biz_email||'',
+    address: A.address||'',
+    city: A.city||'',
+    state: A.state||'',
+    zip: A.zip||'',
+    website: A.website||'',
+    facebook: A.facebook||'',
+    instagram: A.instagram||'',
+    zillow: A.zillow||'',
+    service_area: A.service_area||'',
+    business_hours_open: A.opens||'',
+    business_hours_close: A.closes||'',
+    email_volume: A.email_vol_label||A.email_vol||'',
+    text_volume: A.text_vol_label||A.text_vol||'',
+    signoff: A.signoff||'',
+    never_say: A.never_say||'',
+    tone: A.tone||'',
+    specialties,
+    working_days: days,
+    availability_windows: availability,
+    calendars,
+    priority_messages: priority_msgs,
+    auto_reply_allowed: auto_reply,
+    notification_prefs: notifications,
+    morning_digest: A.morning_digest,
+    holding_reply: A.holding_reply,
+    buffer_time: A.buffer||'',
+    raw_answers: A,
+    status: 'new'
+  };
+
+  try{
+    const res=await fetch(SB_URL+'/rest/v1/intake_responses',{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+        'apikey':SB_KEY,
+        'Authorization':'Bearer '+SB_KEY,
+        'Prefer':'return=minimal'
+      },
+      body:JSON.stringify(payload)
+    });
+    if(!res.ok){
+      const txt=await res.text();
+      throw new Error(res.status+': '+txt);
+    }
+    document.getElementById('s16').classList.remove('active');
+    document.getElementById('done').classList.add('active');
+    document.getElementById('pb').style.width='100%';
+    document.getElementById('pl').textContent='Complete!';
+    window.scrollTo({top:0,behavior:'smooth'});
+  }catch(e){
+    console.error('Submit error:',e);
+    btn.textContent='Submit ✓';
+    btn.style.opacity='1';
+    err.classList.add('show');
+  }
+}
+
+prog();
+rng('email_vol','rv1',['Under 20','20–50','50–100','100–200','200+']);
+rng('text_vol','rv2',['Under 5','5–15','15–30','30–50','50+']);
+</script>
+</body>
+</html>
