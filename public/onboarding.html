@@ -525,8 +525,18 @@ async function submitForm(){
     status: 'new'
   };
 
+  const MAKE_WEBHOOK='https://hook.us2.make.com/i7hrg6u4lr7a1s7qw8iluxmre68dv2qo';
+
   try{
-    const res=await fetch(SB_URL+'/rest/v1/intake_responses',{
+    // Send to Make webhook (fires full AI workflow)
+    const makeRes=await fetch(MAKE_WEBHOOK,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(payload)
+    });
+
+    // Also store in Supabase for records
+    const sbRes=await fetch(SB_URL+'/rest/v1/intake_responses',{
       method:'POST',
       headers:{
         'Content-Type':'application/json',
@@ -536,9 +546,9 @@ async function submitForm(){
       },
       body:JSON.stringify(payload)
     });
-    if(!res.ok){
-      const txt=await res.text();
-      throw new Error(res.status+': '+txt);
+
+    if(!makeRes.ok && !sbRes.ok){
+      throw new Error('Both endpoints failed');
     }
     document.getElementById('s16').classList.remove('active');
     document.getElementById('done').classList.add('active');
