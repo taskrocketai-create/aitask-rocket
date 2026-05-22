@@ -2,5 +2,39 @@
 import Layout from '../layouts/TaskRocketLayout.astro';
 ---
 <Layout title="Messaging Compliance | TaskRocket" description="TaskRocket opt-in and messaging compliance policy.">
-  <section class="legal"><div class="container"><article><h1>Messaging Compliance / Opt-In Policy</h1><p>TaskRocket only sends SMS messages to users who opt in through the TaskRocket website form.</p><h2>Opt-In Workflow</h2><p>Users opt in by completing the TaskRocket Free Workflow Review form and checking the optional SMS consent checkbox. The checkbox is unchecked by default and consent is not required to purchase services.</p><h2>Message Purpose</h2><p>Messages may relate to the user's inquiry, workflow review, demo request, scheduling, service updates, and account communication.</p><h2>Opt-Out and Help</h2><p>Users can reply STOP to unsubscribe or HELP for help.</p><h2>Privacy</h2><p>SMS consent is not sold or shared with third parties for marketing purposes.</p><h2>Twilio Verification Description</h2><p>Users opt in by completing the TaskRocket Free Workflow Review form on taskrocket.org. The form includes an optional SMS consent checkbox that is unchecked by default. The checkbox states that by checking it, the user consents to receive text messages from TaskRocket related to their inquiry, workflow review, demo request, scheduling, service updates, and account communication. Consent is not a condition of purchase. The form links to the Privacy Policy and SMS Terms & Conditions. Users can reply STOP to unsubscribe or HELP for help.</p></article></div></section>
+  <section class="legal"><div class="container"><article>
+    <h1>Messaging Compliance / Opt-In Policy</h1>
+
+    <h2>Business Contact</h2>
+    <p>TaskRocket · Wilson, NC 27893<br/>
+    Phone: <a href="tel:+12526686539">(252) 668-6539</a><br/>
+    Email: info@taskrocket.org<br/>
+    Website: <a href="https://taskrocket.org">taskrocket.org</a></p>
+
+    <h2>Opt-In Workflow</h2>
+    <p>TaskRocket (operating the Aitha AI phone assistant service) sends SMS messages only to users who have explicitly opted in through one of the following methods:</p>
+    <ul>
+      <li>Completing the TaskRocket Free Workflow Review form on taskrocket.org and checking the optional SMS consent checkbox (unchecked by default).</li>
+      <li>Calling an Aitha-powered business phone number and receiving an initial opt-in SMS requesting their consent before any further messages are sent.</li>
+    </ul>
+
+    <h2>Initial Opt-In SMS Message</h2>
+    <p>When a caller's call is not answered by an Aitha-powered business, the first SMS message sent to the caller is an opt-in request. The message reads:</p>
+    <blockquote style="background:#f5f5f5;border-left:4px solid #ccc;padding:12px 16px;margin:16px 0;font-style:italic;">
+      "Hi, this is [Business Name]'s AI assistant. We noticed your call and would love to help! Before we send you any updates via SMS, do you agree to receive text messages from [Business Name]? Message frequency varies. Msg &amp; data rates may apply. Reply YES to agree or STOP to decline. Reply HELP for support."
+    </blockquote>
+    <p>No further SMS messages are sent unless the caller replies YES. Callers who reply STOP or do not reply receive no further messages.</p>
+
+    <h2>Message Purpose</h2>
+    <p>After opt-in, messages may relate to the caller's inquiry, appointment scheduling, business hours, service information, and follow-up communication on behalf of the Aitha client business.</p>
+
+    <h2>Opt-Out and Help</h2>
+    <p>Users can reply <strong>STOP</strong> at any time to unsubscribe from all messages. Users can reply <strong>HELP</strong> for support contact information. Opt-out requests are honored immediately.</p>
+
+    <h2>Privacy</h2>
+    <p>SMS consent data is not sold or shared with third parties for marketing purposes. See our <a href="/privacy-policy">Privacy Policy</a> and <a href="/sms-terms">SMS Terms &amp; Conditions</a> for full details.</p>
+
+    <h2>Twilio Verification Description</h2>
+    <p>TaskRocket's Aitha service operates dedicated business phone numbers on behalf of small business clients. When a call goes unanswered, the system sends a single opt-in SMS to the caller asking for explicit consent before any follow-up messages are sent. The opt-in message clearly identifies the business, explains message frequency, discloses potential message and data rates, and provides STOP and HELP instructions. Only callers who reply YES receive subsequent SMS messages. The business phone number (252) 668-6539 is listed on this page and on taskrocket.org. Consent is not required to receive services.</p>
+  </article></div></section>
 </Layout>
