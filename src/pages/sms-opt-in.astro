@@ -1,0 +1,138 @@
+---
+// src/pages/sms-opt-in.astro
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SMS Opt-In | TaskRocket</title>
+  <meta name="robots" content="noindex" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --parchment:#F5EFE1; --ink:#1B1A17; --ink-soft:#2C2A26; --brass:#B08B3E; --teal:#2DD4BF; --orange:#FF7A30; --navy:#101828; --rule:rgba(27,26,23,0.12); }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'DM Sans',sans-serif;background:var(--parchment);color:var(--ink);min-height:100vh;display:flex;flex-direction:column;}
+    nav{padding:28px 0;border-bottom:1px solid var(--rule);}
+    .container{max-width:1200px;margin:0 auto;padding:0 32px;}
+    nav .row{display:flex;justify-content:space-between;align-items:center;}
+    .wordmark{font-family:'DM Sans',sans-serif;font-weight:700;font-size:20px;color:var(--ink);text-decoration:none;}
+    .nav-cta{font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink);text-decoration:none;padding:10px 18px;border:1px solid var(--ink);border-radius:2px;}
+    main{flex:1;display:flex;align-items:center;justify-content:center;padding:60px 24px;}
+    .card{background:#fff;border:1px solid var(--rule);border-radius:4px;padding:48px;max-width:480px;width:100%;box-shadow:0 4px 24px rgba(0,0,0,0.06);}
+    .eyebrow{font-size:11px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--brass);margin-bottom:16px;}
+    h1{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:500;line-height:1.1;margin-bottom:8px;}
+    .subtitle{font-size:15px;color:var(--ink-soft);margin-bottom:32px;line-height:1.6;}
+    .field{margin-bottom:16px;}
+    label{display:block;font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px;}
+    input[type=text],input[type=tel]{width:100%;padding:12px 14px;border:1px solid var(--rule);border-radius:2px;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--ink);background:#fafafa;outline:none;transition:border-color 0.2s;}
+    input:focus{border-color:var(--teal);}
+    .field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+    .consent{display:flex;align-items:flex-start;gap:12px;background:var(--parchment);border:1px solid var(--rule);border-radius:2px;padding:16px;margin-bottom:24px;cursor:pointer;}
+    .consent-check{appearance:none;-webkit-appearance:none;width:20px;height:20px;min-width:20px;border:2px solid var(--rule);border-radius:3px;background:#fff;cursor:pointer;position:relative;margin-top:1px;transition:all 0.15s;}
+    .consent-check:checked{background:var(--teal);border-color:var(--teal);}
+    .consent-check:checked::after{content:'';position:absolute;left:5px;top:1px;width:6px;height:11px;border:2px solid #fff;border-top:none;border-left:none;transform:rotate(45deg);}
+    .consent-text{font-size:13px;color:var(--ink-soft);line-height:1.55;}
+    .btn{width:100%;background:var(--orange);color:#fff;font-family:'DM Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;border:none;border-radius:2px;padding:16px;cursor:pointer;transition:opacity 0.2s;}
+    .btn:hover{opacity:0.88;}
+    .btn:disabled{opacity:0.5;cursor:not-allowed;}
+    .error{display:none;background:#fff0f0;border:1px solid #ffcccc;color:#cc0000;font-size:13px;padding:12px 14px;border-radius:2px;margin-bottom:16px;}
+    .success{display:none;flex-direction:column;align-items:center;text-align:center;gap:16px;padding:16px 0;}
+    .success-icon{width:56px;height:56px;background:rgba(45,212,191,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+    .success h2{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:500;}
+    .success p{font-size:14px;color:var(--ink-soft);line-height:1.6;}
+    footer{padding:32px;text-align:center;font-size:12px;color:var(--ink-soft);border-top:1px solid var(--rule);letter-spacing:0.08em;}
+    footer a{color:var(--brass);text-decoration:none;}
+    @media(max-width:480px){.field-row{grid-template-columns:1fr;}.card{padding:32px 24px;}}
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <div class="row">
+        <a href="/" class="wordmark">TaskRocket</a>
+        <a href="/" class="nav-cta">Home</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="card">
+      <div class="eyebrow">SMS Updates</div>
+      <h1>Stay in the loop</h1>
+      <p class="subtitle">Sign up to receive SMS messages from TaskRocket — workflow tips, service alerts, and support messages.</p>
+
+      <div class="error" id="errorMsg"></div>
+
+      <form id="optInForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" novalidate>
+        <input type="hidden" name="_next" value="https://taskrocket.org/sms-opt-in?success=true" />
+        <input type="hidden" name="_subject" value="New SMS Opt-In: TaskRocket" />
+
+        <div class="field-row">
+          <div class="field">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" placeholder="Jane" required />
+          </div>
+          <div class="field">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Smith" required />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" required />
+        </div>
+
+        <label class="consent" for="consent">
+          <input class="consent-check" type="checkbox" id="consent" name="smsConsent" value="yes" required />
+          <span class="consent-text">I agree to receive SMS messages from TaskRocket. Message and data rates may apply. Message frequency varies. Reply <strong>STOP</strong> to opt out, <strong>HELP</strong> for help.</span>
+        </label>
+
+        <button type="submit" class="btn" id="submitBtn">Subscribe to SMS Updates</button>
+        <p style="text-align:center;font-size:11px;color:var(--ink-soft);margin-top:12px;letter-spacing:0.04em;">Consent is not a condition of purchase. <a href="/privacy-policy" style="color:var(--brass);">Privacy Policy</a> · <a href="/sms-terms" style="color:var(--brass);">SMS Terms</a></p>
+      </form>
+
+      <div class="success" id="successState">
+        <div class="success-icon">
+          <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="#2DD4BF" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <h2>You're subscribed!</h2>
+        <p>Thanks for signing up. You'll receive a confirmation text shortly.<br/>Reply <strong>STOP</strong> at any time to unsubscribe.</p>
+        <a href="/" style="color:var(--brass);font-size:13px;">← Back to TaskRocket</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p><a href="/privacy-policy">Privacy Policy</a> &nbsp;·&nbsp; <a href="/sms-terms">SMS Terms</a> &nbsp;·&nbsp; <a href="mailto:info@taskrocket.org">info@taskrocket.org</a> &nbsp;·&nbsp; © 2025 TaskRocket</p>
+  </footer>
+
+  <script>
+    if(new URLSearchParams(window.location.search).get('success')==='true'){
+      document.getElementById('optInForm').style.display='none';
+      document.getElementById('successState').style.display='flex';
+    }
+    const phone=document.getElementById('phone');
+    phone.addEventListener('input',e=>{
+      let v=e.target.value.replace(/\D/g,'');
+      if(v.length>=6)v=`(${v.slice(0,3)}) ${v.slice(3,6)}-${v.slice(6,10)}`;
+      else if(v.length>=3)v=`(${v.slice(0,3)}) ${v.slice(3)}`;
+      e.target.value=v;
+    });
+    document.getElementById('optInForm').addEventListener('submit',e=>{
+      const fn=document.getElementById('firstName').value.trim();
+      const ln=document.getElementById('lastName').value.trim();
+      const ph=document.getElementById('phone').value.trim();
+      const co=document.getElementById('consent').checked;
+      const err=document.getElementById('errorMsg');
+      err.style.display='none';
+      if(!fn||!ln||!ph){e.preventDefault();err.textContent='Please fill in all fields.';err.style.display='block';return;}
+      if(ph.replace(/\D/g,'').length<10){e.preventDefault();err.textContent='Please enter a valid 10-digit phone number.';err.style.display='block';return;}
+      if(!co){e.preventDefault();err.textContent='You must check the consent box to subscribe.';err.style.display='block';return;}
+      document.getElementById('submitBtn').textContent='Submitting…';
+      document.getElementById('submitBtn').disabled=true;
+    });
+  </script>
+</body>
+</html>
