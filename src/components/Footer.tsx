@@ -58,6 +58,12 @@ export default function Footer() {
               >
                 Terms and Conditions
               </Link>
+              <Link
+              to="/sms-opt-in"
+              className="font-paragraph text-sm text-cool-gray300 hover:text-white transition-colors"
+            >
+              SMS Opt-In
+            </Link>
             </div>
           </div>
         </div>
