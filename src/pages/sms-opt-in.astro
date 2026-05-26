@@ -62,37 +62,8 @@
       <h1>Stay in the loop</h1>
       <p class="subtitle">Sign up to receive SMS messages from TaskRocket — workflow tips, service alerts, and support messages.</p>
 
-      <div class="error" id="errorMsg"></div>
-
-      <form id="optInForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" novalidate>
-        <input type="hidden" name="_next" value="https://taskrocket.org/sms-opt-in?success=true" />
-        <input type="hidden" name="_subject" value="New SMS Opt-In: TaskRocket" />
-
-        <div class="field-row">
-          <div class="field">
-            <label for="firstName">First Name</label>
-            <input type="text" id="firstName" name="firstName" placeholder="Jane" required />
-          </div>
-          <div class="field">
-            <label for="lastName">Last Name</label>
-            <input type="text" id="lastName" name="lastName" placeholder="Smith" required />
-          </div>
-        </div>
-
-        <div class="field">
-          <label for="phone">Phone Number</label>
-          <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" required />
-        </div>
-
-        <label class="consent" for="consent">
-          <input class="consent-check" type="checkbox" id="consent" name="smsConsent" value="yes" required />
-          <span class="consent-text">I agree to receive SMS messages from TaskRocket. Message and data rates may apply. Message frequency varies. Reply <strong>STOP</strong> to opt out, <strong>HELP</strong> for help.</span>
-        </label>
-
-        <button type="submit" class="btn" id="submitBtn">Subscribe to SMS Updates</button>
-        <p style="text-align:center;font-size:11px;color:var(--ink-soft);margin-top:12px;letter-spacing:0.04em;">Consent is not a condition of purchase. <a href="/privacy-policy" style="color:var(--brass);">Privacy Policy</a> · <a href="/sms-terms" style="color:var(--brass);">SMS Terms</a></p>
-      </form>
-
+           <iframe src="https://gimpgqy6mq.zite.so" width="100%" height="600" frameborder="0" style="border:none;border-radius:2px;"></iframe>
+       
       <div class="success" id="successState">
         <div class="success-icon">
           <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="#2DD4BF" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
@@ -108,31 +79,5 @@
     <p><a href="/privacy-policy">Privacy Policy</a> &nbsp;·&nbsp; <a href="/sms-terms">SMS Terms</a> &nbsp;·&nbsp; <a href="mailto:info@taskrocket.org">info@taskrocket.org</a> &nbsp;·&nbsp; © 2025 TaskRocket</p>
   </footer>
 
-  <script>
-    if(new URLSearchParams(window.location.search).get('success')==='true'){
-      document.getElementById('optInForm').style.display='none';
-      document.getElementById('successState').style.display='flex';
-    }
-    const phone=document.getElementById('phone');
-    phone.addEventListener('input',e=>{
-      let v=e.target.value.replace(/\D/g,'');
-      if(v.length>=6)v=`(${v.slice(0,3)}) ${v.slice(3,6)}-${v.slice(6,10)}`;
-      else if(v.length>=3)v=`(${v.slice(0,3)}) ${v.slice(3)}`;
-      e.target.value=v;
-    });
-    document.getElementById('optInForm').addEventListener('submit',e=>{
-      const fn=document.getElementById('firstName').value.trim();
-      const ln=document.getElementById('lastName').value.trim();
-      const ph=document.getElementById('phone').value.trim();
-      const co=document.getElementById('consent').checked;
-      const err=document.getElementById('errorMsg');
-      err.style.display='none';
-      if(!fn||!ln||!ph){e.preventDefault();err.textContent='Please fill in all fields.';err.style.display='block';return;}
-      if(ph.replace(/\D/g,'').length<10){e.preventDefault();err.textContent='Please enter a valid 10-digit phone number.';err.style.display='block';return;}
-      if(!co){e.preventDefault();err.textContent='You must check the consent box to subscribe.';err.style.display='block';return;}
-      document.getElementById('submitBtn').textContent='Submitting…';
-      document.getElementById('submitBtn').disabled=true;
-    });
-  </script>
-</body>
+ </body>
 </html>
