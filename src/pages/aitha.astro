@@ -60,10 +60,44 @@
     }
 
     /* NAV */
-    nav { padding: 12px 0; border-bottom: 1px solid var(--rule); }
+    nav { padding: 20px 0; border-bottom: 1px solid var(--rule); }
     nav .row { display: flex; justify-content: space-between; align-items: center; }
-    .wordmark { display: flex; align-items: center; }
-    .wordmark svg { height: 120px; width: auto; }
+
+    /* WORDMARK — icon + text lockup */
+    .wordmark {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+    .wordmark-icon {
+      width: 52px;
+      height: 52px;
+      flex-shrink: 0;
+    }
+    .wordmark-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .wordmark-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 32px;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .wordmark-tagline {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #475467;
+      line-height: 1;
+    }
+
     .nav-cta {
       font-size: 12px;
       letter-spacing: 0.18em;
@@ -550,6 +584,9 @@
       .price-card { padding: 36px 28px; }
       .price-amount { font-size: 56px; }
       nav .row { gap: 12px; }
+      .wordmark-name { font-size: 24px; }
+      .wordmark-tagline { display: none; }
+      .wordmark-icon { width: 40px; height: 40px; }
     }
 
     /* REVEAL */
@@ -567,22 +604,25 @@
   <nav>
     <div class="container">
       <div class="row">
-<div class="wordmark">
-            <svg width="44" height="44" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="1024" height="1024" rx="210" fill="#FFFFFF" stroke="#101828" stroke-width="42"/>
-              <path d="M240 520C240 345 355 226 512 226C669 226 784 345 784 520" stroke="#2DD4BF" stroke-width="72" stroke-linecap="round"/>
-              <rect x="168" y="482" width="126" height="204" rx="63" fill="#2DD4BF"/>
-              <rect x="730" y="482" width="126" height="204" rx="63" fill="#2DD4BF"/>
-              <path d="M792 675C742 800 630 862 492 862" stroke="#2DD4BF" stroke-width="54" stroke-linecap="round"/>
-              <circle cx="468" cy="862" r="42" fill="#FF7A30"/>
-              <path d="M346 672C346 672 448 402 494 310C503 292 529 292 538 310C585 402 688 672 688 672" stroke="#101828" stroke-width="68" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M416 564C464 538 570 538 620 564" stroke="#101828" stroke-width="50" stroke-linecap="round"/>
-            </svg>
-            <div style="display:flex; flex-direction:column; line-height:1.1;">
-              <span style="font-family:'DM Sans',sans-serif; font-weight:700; font-size:20px; letter-spacing:-0.02em; color:#1B1A17;">Aitha</span>
-              <span style="font-family:'DM Sans',sans-serif; font-weight:500; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#475467;">The Modern Front Desk</span>
-            </div>
+
+        <!-- WORDMARK — icon + Cormorant name + DM Sans tagline -->
+        <a href="/" class="wordmark">
+          <svg class="wordmark-icon" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="1024" height="1024" rx="210" fill="#FFFFFF" stroke="#101828" stroke-width="42"/>
+            <path d="M240 520C240 345 355 226 512 226C669 226 784 345 784 520" stroke="#2DD4BF" stroke-width="72" stroke-linecap="round"/>
+            <rect x="168" y="482" width="126" height="204" rx="63" fill="#2DD4BF"/>
+            <rect x="730" y="482" width="126" height="204" rx="63" fill="#2DD4BF"/>
+            <path d="M792 675C742 800 630 862 492 862" stroke="#2DD4BF" stroke-width="54" stroke-linecap="round"/>
+            <circle cx="468" cy="862" r="42" fill="#FF7A30"/>
+            <path d="M346 672C346 672 448 402 494 310C503 292 529 292 538 310C585 402 688 672 688 672" stroke="#101828" stroke-width="68" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M416 564C464 538 570 538 620 564" stroke="#101828" stroke-width="50" stroke-linecap="round"/>
+          </svg>
+          <div class="wordmark-text">
+            <span class="wordmark-name">Aitha</span>
+            <span class="wordmark-tagline">The Modern Front Desk</span>
           </div>
+        </a>
+
         <a href="#pricing" class="nav-cta">Start 14-day trial</a>
       </div>
     </div>
@@ -712,7 +752,7 @@
           <div class="price-trial">— 14 days free, then.</div>
           <ul class="price-includes">
             <li>Missed-call auto-text in your business's voice</li>
-            <li>Voicemail capture & transcription</li>
+            <li>Voicemail capture &amp; transcription</li>
             <li>Two-way SMS conversations with customers</li>
             <li>Business hours awareness — open, closed, holiday</li>
             <li>Answers common questions: hours, location, services</li>
