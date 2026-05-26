@@ -10,17 +10,17 @@ export default function Footer() {
 
   return (
     <footer className="bg-cool-gray900 text-white py-12">
-      <div className="max-w-[100rem] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-w-[100rem] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <h3 className="font-heading text-lg font-bold mb-4">TaskRocket</h3>
             <p className="font-paragraph text-sm text-cool-gray300">
-              We fix the parts of your business that slow you down by building and managing systems.
+              AI consulting and business automation for busy local businesses.
             </p>
           </div>
-          
+
           <div>
-            <h4 className="font-heading text-base font-semibold mb-4">Quick Links</h4>
+            <h4 className="font-heading text-base font-semibold mb-4">Company</h4>
             <div className="flex flex-col gap-2">
               <button
                 onClick={() => handleNavClick('how-it-works')}
@@ -59,11 +59,23 @@ export default function Footer() {
                 Terms and Conditions
               </Link>
               <Link
-              to="/sms-opt-in"
-              className="font-paragraph text-sm text-cool-gray300 hover:text-white transition-colors"
-            >
-              SMS Opt-In
-            </Link>
+                to="/sms-terms"
+                className="font-paragraph text-sm text-cool-gray300 hover:text-white transition-colors"
+              >
+                SMS Terms & Conditions
+              </Link>
+              <Link
+                to="/messaging-compliance"
+                className="font-paragraph text-sm text-cool-gray300 hover:text-white transition-colors"
+              >
+                Messaging Compliance
+              </Link>
+              <Link
+                to="/sms-opt-in"
+                className="font-paragraph text-sm text-cool-gray300 hover:text-white transition-colors"
+              >
+                SMS Opt-In
+              </Link>
             </div>
           </div>
         </div>
