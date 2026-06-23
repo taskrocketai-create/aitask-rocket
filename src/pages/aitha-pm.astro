@@ -1,0 +1,650 @@
+---
+// src/pages/aitha-pm.astro
+// Aitha PM — AI Front Desk for Property Managers
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aitha PM — AI Front Desk for Property Managers | TaskRocket</title>
+  <meta name="description" content="Aitha PM handles tenant maintenance requests automatically — triages, dispatches vendors, and keeps your tenants updated. No missed calls, no chasing voicemails. $299/month, 14 days free." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --parchment: #F5EFE1;
+      --parchment-deep: #EFE6D2;
+      --ink: #1B1A17;
+      --ink-soft: #2C2A26;
+      --brass: #B08B3E;
+      --brass-light: #D4B274;
+      --teal: #2DD4BF;
+      --teal-deep: #14B8A6;
+      --orange: #FF7A30;
+      --navy: #101828;
+      --rule: rgba(27, 26, 23, 0.12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--parchment);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.55;
+      overflow-x: hidden;
+      position: relative;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.4;
+      mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.1 0 0 0 0 0.08 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* NAV */
+    nav { padding: 20px 0; border-bottom: 1px solid var(--rule); }
+    nav .row { display: flex; justify-content: space-between; align-items: center; }
+
+    .wordmark { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .wordmark-icon { width: 52px; height: 52px; flex-shrink: 0; }
+    .wordmark-text { display: flex; flex-direction: column; gap: 2px; }
+    .wordmark-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600; font-size: 32px;
+      letter-spacing: -0.02em; color: var(--ink); line-height: 1;
+    }
+    .wordmark-tagline {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal);
+    }
+
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-link {
+      font-size: 14px; font-weight: 500; color: rgba(27,26,23,0.6);
+      text-decoration: none; transition: color 0.15s;
+    }
+    .nav-link:hover { color: var(--ink); }
+    .nav-link.active { color: var(--brass); font-weight: 600; }
+
+    .nav-cta {
+      display: inline-block;
+      padding: 10px 22px;
+      background: var(--navy);
+      color: #fff;
+      border-radius: 6px;
+      font-size: 14px; font-weight: 600;
+      text-decoration: none;
+      transition: background 0.15s;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { background: #1d2e47; }
+    .nav-cta-outline {
+      display: inline-block;
+      padding: 9px 20px;
+      border: 1.5px solid var(--brass);
+      color: var(--brass);
+      border-radius: 6px;
+      font-size: 14px; font-weight: 600;
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-cta-outline:hover { background: var(--brass); color: #fff; }
+
+    /* HERO */
+    .hero {
+      padding: 80px 0 72px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--brass); margin-bottom: 18px;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block; width: 20px; height: 2px; background: var(--brass);
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(40px, 5vw, 58px);
+      font-weight: 700; line-height: 1.06;
+      letter-spacing: -0.02em; color: var(--navy); margin-bottom: 22px;
+    }
+    h1 em { font-style: normal; color: var(--brass); }
+    .hero-desc {
+      font-size: 17px; color: rgba(27,26,23,0.65);
+      line-height: 1.7; margin-bottom: 36px; max-width: 480px;
+    }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; background: var(--navy); color: #fff;
+      border-radius: 8px; font-size: 15px; font-weight: 600;
+      text-decoration: none; transition: background 0.15s;
+    }
+    .btn-primary:hover { background: #1d2e47; }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 14px 22px; color: var(--ink); font-size: 15px; font-weight: 500;
+      text-decoration: none; border-bottom: 1.5px solid var(--rule);
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .btn-ghost:hover { border-color: var(--brass); color: var(--brass); }
+
+    /* MOCKUP */
+    .hero-mockup {
+      background: var(--navy);
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 20px 60px rgba(16,24,40,0.2);
+    }
+    .mockup-bar {
+      display: flex; align-items: center; gap: 6px; margin-bottom: 18px;
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-r { background: #FF5F57; } .dot-y { background: #FEBC2E; } .dot-g { background: #28C840; }
+    .mockup-title { color: #6B7280; font-size: 12px; margin-left: 8px; }
+    .stats-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 14px; }
+    .stat-box {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px; padding: 12px; text-align: center;
+    }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      color: #F9FAFB; font-size: 24px; font-weight: 700;
+    }
+    .stat-label { color: #9CA3AF; font-size: 11px; margin-top: 2px; }
+    .inc-card {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px; padding: 12px 14px; margin-bottom: 8px;
+    }
+    .inc-card:last-child { margin-bottom: 0; }
+    .inc-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 5px; }
+    .inc-title { color: #F3F4F6; font-size: 13px; font-weight: 600; }
+    .inc-meta { color: #9CA3AF; font-size: 12px; }
+    .badge {
+      font-size: 11px; font-weight: 600; padding: 2px 8px;
+      border-radius: 20px; letter-spacing: 0.02em;
+    }
+    .badge-teal { background: rgba(45,212,191,0.15); color: #2DD4BF; }
+    .badge-orange { background: rgba(255,122,48,0.15); color: #FF7A30; }
+    .badge-green { background: rgba(74,222,128,0.15); color: #4ADE80; }
+
+    /* STRIP */
+    .proof-strip {
+      border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+      background: rgba(255,255,255,0.5);
+      padding: 18px 0;
+      position: relative; z-index: 2;
+    }
+    .proof-strip .row {
+      display: flex; align-items: center; justify-content: center;
+      gap: 40px; flex-wrap: wrap;
+    }
+    .proof-item {
+      font-size: 13px; color: rgba(27,26,23,0.55);
+      display: flex; align-items: center; gap: 7px;
+    }
+    .proof-check { color: var(--teal); font-weight: 700; }
+
+    /* SECTIONS */
+    .section { padding: 80px 0; }
+    .section-white {
+      padding: 80px 0;
+      background: rgba(255,255,255,0.6);
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+    .section-navy { padding: 80px 0; background: var(--navy); }
+
+    .section-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--brass); margin-bottom: 12px;
+    }
+    .section-navy .section-label { color: var(--teal); }
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(30px, 4vw, 46px);
+      font-weight: 700; color: var(--navy);
+      line-height: 1.1; margin-bottom: 14px;
+    }
+    .section-navy h2 { color: #F9FAFB; }
+    .section-intro {
+      font-size: 17px; color: rgba(27,26,23,0.6);
+      max-width: 540px; line-height: 1.7; margin-bottom: 52px;
+    }
+    .section-navy .section-intro { color: #9CA3AF; }
+
+    /* FLOW */
+    .flow { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; }
+    .step { text-align: center; }
+    .step-icon {
+      width: 60px; height: 60px; border-radius: 50%;
+      background: rgba(255,255,255,0.7); border: 1px solid var(--rule);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; margin: 0 auto 14px;
+    }
+    .step-title { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+    .step-desc { font-size: 13px; color: rgba(27,26,23,0.55); line-height: 1.55; }
+
+    /* FEATURES */
+    .features { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .feature-card {
+      background: rgba(255,255,255,0.8); border: 1px solid var(--rule);
+      border-radius: 12px; padding: 26px 22px;
+      transition: box-shadow 0.2s;
+    }
+    .feature-card:hover { box-shadow: 0 8px 32px rgba(16,24,40,0.07); }
+    .feature-icon {
+      width: 42px; height: 42px; border-radius: 9px;
+      background: var(--parchment-deep); display: flex; align-items: center;
+      justify-content: center; font-size: 18px; margin-bottom: 14px;
+    }
+    .feature-title { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 7px; }
+    .feature-desc { font-size: 13px; color: rgba(27,26,23,0.55); line-height: 1.6; }
+
+    /* TRIAGE — navy bg, two-col */
+    .triage-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+    }
+    .check-list { list-style: none; display: flex; flex-direction: column; gap: 13px; }
+    .check-item { display: flex; align-items: flex-start; gap: 11px; color: #D1D5DB; font-size: 15px; line-height: 1.5; }
+    .check-dot {
+      flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%;
+      background: rgba(45,212,191,0.12); border: 1px solid var(--teal);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--teal); font-size: 11px; margin-top: 2px;
+    }
+
+    /* SMS DEMO */
+    .sms-demo {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px; padding: 22px;
+    }
+    .sms-header {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 18px; padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .sms-avatar {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: var(--teal); display: flex; align-items: center;
+      justify-content: center; font-size: 13px; font-weight: 700; color: var(--navy);
+    }
+    .sms-name { color: #F9FAFB; font-size: 14px; font-weight: 600; }
+    .sms-sub { color: #9CA3AF; font-size: 11px; }
+    .sms-row { display: flex; margin-bottom: 9px; }
+    .sms-row.out { justify-content: flex-end; }
+    .bubble {
+      max-width: 82%; padding: 9px 13px; border-radius: 12px;
+      font-size: 13px; line-height: 1.5;
+    }
+    .bubble.in { background: rgba(255,255,255,0.09); color: #E5E7EB; border-bottom-left-radius: 3px; }
+    .bubble.out { background: var(--teal); color: var(--navy); font-weight: 500; border-bottom-right-radius: 3px; }
+    .sms-ts { font-size: 11px; color: #6B7280; text-align: center; margin: 7px 0; }
+
+    /* PRICING */
+    .pricing-card {
+      background: var(--parchment-deep); border: 2px solid var(--brass);
+      border-radius: 16px; padding: 48px; text-align: center;
+      max-width: 640px; margin: 0 auto; position: relative;
+    }
+    .pricing-badge {
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      background: var(--brass); color: #fff;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 3px 16px; border-radius: 20px;
+    }
+    .price { font-family: 'Cormorant Garamond', serif; font-size: 76px; font-weight: 700; color: var(--navy); line-height: 1; margin: 24px 0 4px; }
+    .price-period { font-size: 15px; color: rgba(27,26,23,0.5); margin-bottom: 32px; }
+    .pricing-feats {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px 28px;
+      text-align: left; margin-bottom: 36px;
+    }
+    .pf {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 14px; color: var(--ink-soft);
+    }
+    .pf::before { content: '✓'; color: var(--brass); font-weight: 700; }
+    .pricing-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 15px 36px; background: var(--navy); color: #fff;
+      border-radius: 8px; font-size: 15px; font-weight: 600;
+      text-decoration: none; transition: background 0.15s;
+    }
+    .pricing-cta:hover { background: #1d2e47; }
+    .pricing-note { font-size: 12px; color: rgba(27,26,23,0.4); margin-top: 14px; }
+
+    /* CTA BAND */
+    .cta-band { padding: 80px 0; text-align: center; }
+    .cta-band h2 { margin-bottom: 14px; }
+    .cta-band p { font-size: 17px; color: rgba(27,26,23,0.6); margin-bottom: 34px; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--rule); padding: 28px 0;
+      position: relative; z-index: 2;
+    }
+    .footer-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; text-decoration: none; color: var(--ink); }
+    .footer-logo span { color: var(--orange); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 13px; color: rgba(27,26,23,0.45); text-decoration: none; }
+    .footer-links a:hover { color: var(--ink); }
+    .footer-copy { font-size: 12px; color: rgba(27,26,23,0.35); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; gap: 40px; padding: 56px 0 48px; }
+      .flow { grid-template-columns: 1fr 1fr; }
+      .features { grid-template-columns: 1fr 1fr; }
+      .triage-grid { grid-template-columns: 1fr; gap: 40px; }
+      .pricing-feats { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .container { padding: 0 20px; }
+      .nav-links { display: none; }
+      .features { grid-template-columns: 1fr; }
+      .flow { grid-template-columns: 1fr; }
+      .pricing-card { padding: 36px 24px; }
+      .price { font-size: 60px; }
+      .proof-strip .row { gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <div class="row">
+      <a href="/" class="wordmark">
+        <svg class="wordmark-icon" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="1024" height="1024" rx="210" fill="#FFFFFF" stroke="#101828" stroke-width="42"/>
+          <path d="M240 520C240 345 355 226 512 226C669 226 784 345 784 520" stroke="#2DD4BF" stroke-width="72" stroke-linecap="round"/>
+          <rect x="168" y="482" width="126" height="204" rx="63" fill="#2DD4BF"/>
+          <rect x="730" y="482" width="126" height="204" rx="63" fill="#2DD4BF"/>
+          <path d="M792 675C742 800 630 862 492 862" stroke="#2DD4BF" stroke-width="54" stroke-linecap="round"/>
+          <circle cx="468" cy="862" r="42" fill="#FF7A30"/>
+          <path d="M346 672C346 672 448 402 494 310C503 292 529 292 538 310C585 402 688 672 688 672" stroke="#101828" stroke-width="68" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M416 564C464 538 570 538 620 564" stroke="#101828" stroke-width="50" stroke-linecap="round"/>
+        </svg>
+        <div class="wordmark-text">
+          <span class="wordmark-name">Aitha PM</span>
+          <span class="wordmark-tagline">Property Management</span>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="/aitha" class="nav-link">Aitha for Trades</a>
+        <a href="https://dashboard.taskrocket.org/login" class="nav-cta-outline">Client Login</a>
+        <a href="mailto:alan@taskrocket.org?subject=Aitha PM Demo" class="nav-cta">Schedule a demo</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="section">
+  <div class="container">
+    <div class="hero">
+      <div>
+        <div class="hero-eyebrow">Aitha PM — Property Management</div>
+        <h1>Your tenants get help.<br/><em>You get silence.</em></h1>
+        <p class="hero-desc">
+          Aitha PM handles inbound maintenance requests automatically — triages the issue, sends self-fix instructions when appropriate, dispatches vendors when it isn't, and keeps your tenants updated at every step.
+        </p>
+        <div class="hero-actions">
+          <a href="mailto:alan@taskrocket.org?subject=Aitha PM Demo" class="btn-primary">
+            Schedule a demo
+            <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="/aitha" class="btn-ghost">See Aitha for trades →</a>
+        </div>
+      </div>
+
+      <div class="hero-mockup">
+        <div class="mockup-bar">
+          <div class="dot dot-r"></div>
+          <div class="dot dot-y"></div>
+          <div class="dot dot-g"></div>
+          <span class="mockup-title">Bridge Point — Incident Queue</span>
+        </div>
+        <div class="stats-row">
+          <div class="stat-box"><div class="stat-num">7</div><div class="stat-label">Open</div></div>
+          <div class="stat-box"><div class="stat-num">3</div><div class="stat-label">Dispatched</div></div>
+          <div class="stat-box"><div class="stat-num">12</div><div class="stat-label">Resolved</div></div>
+        </div>
+        <div class="inc-card">
+          <div class="inc-top">
+            <span class="inc-title">🔧 Unit 4B — HVAC not cooling</span>
+            <span class="badge badge-orange">Dispatched</span>
+          </div>
+          <div class="inc-meta">Tenant: Marcus W. · 2 hours ago · High priority</div>
+        </div>
+        <div class="inc-card">
+          <div class="inc-top">
+            <span class="inc-title">🚿 Unit 2A — Low water pressure</span>
+            <span class="badge badge-teal">Self-fix sent</span>
+          </div>
+          <div class="inc-meta">Tenant: Priya S. · 4 hours ago · Low priority</div>
+        </div>
+        <div class="inc-card">
+          <div class="inc-top">
+            <span class="inc-title">🔑 Unit 7C — Locked out</span>
+            <span class="badge badge-green">Resolved</span>
+          </div>
+          <div class="inc-meta">Tenant: Daniel R. · Yesterday · Medium priority</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<div class="proof-strip">
+  <div class="container">
+    <div class="row">
+      <div class="proof-item"><span class="proof-check">✓</span> No setup fee</div>
+      <div class="proof-item"><span class="proof-check">✓</span> 14-day free trial</div>
+      <div class="proof-item"><span class="proof-check">✓</span> Cancel anytime</div>
+      <div class="proof-item"><span class="proof-check">✓</span> Dedicated Twilio number</div>
+      <div class="proof-item"><span class="proof-check">✓</span> Real-time dashboard</div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">How it works</div>
+    <h2>Text in. Problem handled.</h2>
+    <p class="section-intro">
+      Tenants text your property management number. Aitha PM takes it from there — no portal, no app, no friction.
+    </p>
+    <div class="flow">
+      <div class="step">
+        <div class="step-icon">📱</div>
+        <div class="step-title">Tenant texts in</div>
+        <div class="step-desc">They describe the issue in plain English. No forms, no logins, no app download.</div>
+      </div>
+      <div class="step">
+        <div class="step-icon">🧠</div>
+        <div class="step-title">AI triages</div>
+        <div class="step-desc">Categorizes severity, type, and the right resolution path instantly.</div>
+      </div>
+      <div class="step">
+        <div class="step-icon">⚡</div>
+        <div class="step-title">Auto-resolved or dispatched</div>
+        <div class="step-desc">Self-fixable issues get instructions. Real repairs get a vendor assigned.</div>
+      </div>
+      <div class="step">
+        <div class="step-icon">📊</div>
+        <div class="step-title">You see everything</div>
+        <div class="step-desc">Full incident thread, vendor status, and resolution time in your dashboard.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section-white">
+  <div class="container">
+    <div class="section-label">What's included</div>
+    <h2>Everything you need.<br/>Nothing you don't.</h2>
+    <p class="section-intro">
+      Purpose-built for small-to-mid property managers who are tired of being the first call for every leaky faucet.
+    </p>
+    <div class="features">
+      <div class="feature-card">
+        <div class="feature-icon">💬</div>
+        <div class="feature-title">Two-way SMS with tenants</div>
+        <div class="feature-desc">Full conversation history per incident. Tenants get updates automatically — no calls to make, no emails to send.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔧</div>
+        <div class="feature-title">Smart triage &amp; self-fix</div>
+        <div class="feature-desc">Low-priority issues get instant self-fix instructions texted to the tenant, closing the loop without a vendor.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏢</div>
+        <div class="feature-title">Vendor dispatch</div>
+        <div class="feature-desc">Serious issues trigger an alert to your preferred vendor for that trade — with the incident summary already written.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📋</div>
+        <div class="feature-title">Incident dashboard</div>
+        <div class="feature-desc">Every incident, conversation thread, and vendor action logged in one place. Filter by property, status, or priority.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏘️</div>
+        <div class="feature-title">Multi-property support</div>
+        <div class="feature-desc">Manage unlimited properties and tenants under one account. Each property tracked independently.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔔</div>
+        <div class="feature-title">Manager escalation alerts</div>
+        <div class="feature-desc">Anything urgent surfaces to your phone immediately. You stay looped in on what matters, out of the loop on what doesn't.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRIAGE DETAIL + SMS DEMO -->
+<section class="section-navy">
+  <div class="container">
+    <div class="triage-grid">
+      <div>
+        <div class="section-label">Intelligent triage</div>
+        <h2>Knows when to act. Knows when to escalate.</h2>
+        <p class="section-intro">Not every maintenance request needs a vendor. Aitha PM handles the ones that don't — and escalates the ones that do.</p>
+        <ul class="check-list">
+          <li class="check-item"><div class="check-dot">✓</div>Classifies issue by category, priority, and repair type in seconds</li>
+          <li class="check-item"><div class="check-dot">✓</div>Sends actionable self-fix instructions for low-complexity issues</li>
+          <li class="check-item"><div class="check-dot">✓</div>Routes high-priority issues directly to your preferred vendor</li>
+          <li class="check-item"><div class="check-dot">✓</div>Writes the vendor summary so they arrive with context, not questions</li>
+          <li class="check-item"><div class="check-dot">✓</div>Keeps the thread open so tenants can reply with updates</li>
+        </ul>
+      </div>
+      <div class="sms-demo">
+        <div class="sms-header">
+          <div class="sms-avatar">MR</div>
+          <div>
+            <div class="sms-name">Marcus Rivera · Unit 4B</div>
+            <div class="sms-sub">(252) 555-0182</div>
+          </div>
+        </div>
+        <div class="sms-ts">Today, 9:14 AM</div>
+        <div class="sms-row"><div class="bubble in">Hey my AC is blowing warm air. It's 84 in here</div></div>
+        <div class="sms-row out"><div class="bubble out">Hi Marcus — I've logged this as a priority HVAC issue for Unit 4B. Our HVAC vendor has been notified and will contact you today to schedule. We'll keep you posted.</div></div>
+        <div class="sms-ts">9:17 AM — Vendor alerted</div>
+        <div class="sms-row"><div class="bubble in">Ok thanks. How long do you think?</div></div>
+        <div class="sms-row out"><div class="bubble out">Our vendor typically responds within 2–4 hours for priority issues. You'll get a text when they're on their way.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section">
+  <div class="container" style="text-align:center;">
+    <div class="section-label">Pricing</div>
+    <h2>Simple, flat pricing</h2>
+    <p style="font-size:17px;color:rgba(27,26,23,0.6);margin-bottom:40px;">One plan. No per-unit fees. No surprise charges.</p>
+    <div class="pricing-card">
+      <div class="pricing-badge">Aitha PM</div>
+      <div class="price">$299</div>
+      <div class="price-period">per month · unlimited properties &amp; tenants</div>
+      <div class="pricing-feats">
+        <div class="pf">AI triage on every request</div>
+        <div class="pf">Two-way tenant SMS</div>
+        <div class="pf">Self-fix instruction library</div>
+        <div class="pf">Vendor dispatch &amp; alerts</div>
+        <div class="pf">Incident dashboard</div>
+        <div class="pf">Manager escalation texts</div>
+        <div class="pf">Multi-property support</div>
+        <div class="pf">Dedicated Twilio number</div>
+        <div class="pf">Conversation history</div>
+        <div class="pf">Setup &amp; onboarding included</div>
+      </div>
+      <a href="mailto:alan@taskrocket.org?subject=Aitha PM — I'm interested" class="pricing-cta">
+        Get started — 14 days free
+      </a>
+      <p class="pricing-note">No setup fee · No contract · Cancel anytime</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="container">
+    <div class="section-label">Ready?</div>
+    <h2>Stop being your tenants' first call.</h2>
+    <p>Aitha PM handles the intake, the triage, and the follow-up. You handle the business.</p>
+    <a href="mailto:alan@taskrocket.org?subject=Aitha PM Demo" class="btn-primary" style="font-size:15px;padding:15px 34px;display:inline-flex;">
+      Schedule a demo
+      <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="margin-left:8px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <p style="margin-top:14px;font-size:13px;color:rgba(27,26,23,0.4);">
+      Or email <a href="mailto:alan@taskrocket.org" style="color:var(--brass);">alan@taskrocket.org</a> with questions.
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-row">
+      <a href="/" class="footer-logo">Task<span>Rocket</span></a>
+      <div class="footer-links">
+        <a href="/aitha">Aitha</a>
+        <a href="/aitha-pm">Aitha PM</a>
+        <a href="/privacy-policy">Privacy</a>
+        <a href="/sms-terms">SMS Terms</a>
+      </div>
+      <span class="footer-copy">© 2025 TaskRocket · Wilson, NC</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
