@@ -477,15 +477,15 @@
 <section class="section">
   <div class="container">
     <div class="section-label">How it works</div>
-    <h2>Text in. Problem handled.</h2>
+    <h2>Call in. Problem handled.</h2>
     <p class="section-intro">
-      Tenants text your property management number. Aitha PM takes it from there — no portal, no app, no friction.
+      Tenants call your property management number and leave a voicemail. Aitha PM transcribes it, triages the issue, and texts them back — no portal, no app, no friction.
     </p>
     <div class="flow">
       <div class="step">
-        <div class="step-icon">📱</div>
-        <div class="step-title">Tenant texts in</div>
-        <div class="step-desc">They describe the issue in plain English. No forms, no logins, no app download.</div>
+        <div class="step-icon">📞</div>
+        <div class="step-title">Tenant calls in</div>
+        <div class="step-desc">They leave a voicemail describing the issue. No portal, no app, no login required.</div>
       </div>
       <div class="step">
         <div class="step-icon">🧠</div>
@@ -517,8 +517,8 @@
     <div class="features">
       <div class="feature-card">
         <div class="feature-icon">💬</div>
-        <div class="feature-title">Two-way SMS with tenants</div>
-        <div class="feature-desc">Full conversation history per incident. Tenants get updates automatically — no calls to make, no emails to send.</div>
+        <div class="feature-title">Voicemail to text — automatically</div>
+        <div class="feature-desc">Tenant leaves a voicemail, Aitha PM transcribes it, triages it, and texts them back. The whole conversation is logged per incident.</div>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🔧</div>
@@ -573,9 +573,10 @@
             <div class="sms-sub">(252) 555-0182</div>
           </div>
         </div>
-        <div class="sms-ts">Today, 9:14 AM</div>
-        <div class="sms-row"><div class="bubble in">Hey my AC is blowing warm air. It's 84 in here</div></div>
-        <div class="sms-row out"><div class="bubble out">Hi Marcus — I've logged this as a priority HVAC issue for Unit 4B. Our HVAC vendor has been notified and will contact you today to schedule. We'll keep you posted.</div></div>
+        <div class="sms-ts">Today, 9:14 AM — Voicemail received</div>
+        <div class="sms-row"><div class="bubble in">🎙️ "Hey it's Marcus in 4B, my AC is blowing warm air. It's 84 degrees in here, can someone come look at it?"</div></div>
+        <div class="sms-ts">9:14 AM — Transcribed &amp; triaged by Aitha PM</div>
+        <div class="sms-row out"><div class="bubble out">Hi Marcus — we received your voicemail. I've logged this as a priority HVAC issue for Unit 4B. Our HVAC vendor has been notified and will contact you today to schedule. We'll keep you posted.</div></div>
         <div class="sms-ts">9:17 AM — Vendor alerted</div>
         <div class="sms-row"><div class="bubble in">Ok thanks. How long do you think?</div></div>
         <div class="sms-row out"><div class="bubble out">Our vendor typically responds within 2–4 hours for priority issues. You'll get a text when they're on their way.</div></div>
@@ -588,29 +589,65 @@
 <section class="section">
   <div class="container" style="text-align:center;">
     <div class="section-label">Pricing</div>
-    <h2>Simple, flat pricing</h2>
-    <p style="font-size:17px;color:rgba(27,26,23,0.6);margin-bottom:40px;">One plan. No per-unit fees. No surprise charges.</p>
-    <div class="pricing-card">
-      <div class="pricing-badge">Aitha PM</div>
-      <div class="price">$299</div>
-      <div class="price-period">per month · unlimited properties &amp; tenants</div>
-      <div class="pricing-feats">
-        <div class="pf">AI triage on every request</div>
-        <div class="pf">Two-way tenant SMS</div>
-        <div class="pf">Self-fix instruction library</div>
-        <div class="pf">Vendor dispatch &amp; alerts</div>
-        <div class="pf">Incident dashboard</div>
-        <div class="pf">Manager escalation texts</div>
-        <div class="pf">Multi-property support</div>
-        <div class="pf">Dedicated Twilio number</div>
-        <div class="pf">Conversation history</div>
-        <div class="pf">Setup &amp; onboarding included</div>
+    <h2>Priced for your portfolio size.</h2>
+    <p style="font-size:17px;color:rgba(27,26,23,0.6);margin-bottom:48px;">Monthly pricing scales with your tenant count. Setup is a one-time fee based on portfolio size and the features you need. Every plan includes a 7-day free trial.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-bottom:40px;text-align:left;">
+
+      <div style="background:#fff;border:1px solid rgba(176,139,62,0.2);border-top:4px solid #B08B3E;border-radius:12px;padding:28px 24px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#B08B3E;margin-bottom:10px;">Starter</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:700;color:#101828;line-height:1;">$299<span style="font-size:16px;font-weight:400;color:#888;">/mo</span></div>
+        <div style="font-size:13px;color:#888;margin-bottom:18px;margin-top:4px;">Up to 25 tenants</div>
+        <ul style="list-style:none;font-size:14px;color:#3A3A3A;line-height:2;">
+          <li>✓ AI voicemail triage</li>
+          <li>✓ Voicemail to text</li>
+          <li>✓ Two-way tenant SMS</li>
+          <li>✓ Self-fix instructions</li>
+          <li>✓ Manager escalation alerts</li>
+          <li>✓ Incident dashboard</li>
+          <li>✓ Dedicated phone number</li>
+        </ul>
       </div>
-      <a href="mailto:alan@taskrocket.org?subject=Aitha PM — I'm interested" class="pricing-cta">
-        Get started — 14 days free
-      </a>
-      <p class="pricing-note">No setup fee · No contract · Cancel anytime</p>
+
+      <div style="background:#fff;border:1px solid rgba(45,212,191,0.3);border-top:4px solid #2DD4BF;border-radius:12px;padding:28px 24px;position:relative;">
+        <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#2DD4BF;color:#101828;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 14px;border-radius:20px;white-space:nowrap;">Most Popular</div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#2DD4BF;margin-bottom:10px;">Growth</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:700;color:#101828;line-height:1;">$499<span style="font-size:16px;font-weight:400;color:#888;">/mo</span></div>
+        <div style="font-size:13px;color:#888;margin-bottom:18px;margin-top:4px;">26 – 75 tenants</div>
+        <ul style="list-style:none;font-size:14px;color:#3A3A3A;line-height:2;">
+          <li>✓ Everything in Starter</li>
+          <li>✓ Multi-property support</li>
+          <li>✓ Vendor dispatch &amp; tracking</li>
+          <li>✓ Conversation history</li>
+          <li>✓ Priority support</li>
+        </ul>
+      </div>
+
+      <div style="background:#101828;border:1px solid rgba(255,255,255,0.08);border-top:4px solid #FF7A30;border-radius:12px;padding:28px 24px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#FF7A30;margin-bottom:10px;">Enterprise</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:700;color:#F5EFE1;line-height:1;">Custom</div>
+        <div style="font-size:13px;color:rgba(245,239,225,0.5);margin-bottom:18px;margin-top:4px;">76+ tenants</div>
+        <ul style="list-style:none;font-size:14px;color:rgba(245,239,225,0.75);line-height:2;">
+          <li>✓ Everything in Growth</li>
+          <li>✓ Custom workflows</li>
+          <li>✓ Multiple manager lines</li>
+          <li>✓ Dedicated onboarding</li>
+          <li>✓ Volume pricing</li>
+        </ul>
+      </div>
+
     </div>
+
+    <div style="background:#F5EFE1;border:1px solid rgba(176,139,62,0.2);border-radius:10px;padding:24px 32px;max-width:640px;margin:0 auto 40px;text-align:left;">
+      <div style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#B08B3E;margin-bottom:8px;">Setup Fee</div>
+      <p style="font-size:14px;color:#3A3A3A;line-height:1.6;">A one-time setup fee applies based on your portfolio size and the features you need — tenant onboarding, vendor configuration, dashboard setup, and workflow customization. Pricing provided with your quote.</p>
+    </div>
+
+    <a href="mailto:alan@taskrocket.org?subject=Aitha PM — Quote Request" style="display:inline-flex;align-items:center;gap:8px;padding:15px 36px;background:#101828;color:#fff;border-radius:8px;font-size:16px;font-weight:600;text-decoration:none;">
+      Contact us for a quote →
+    </a>
+    <p style="margin-top:14px;font-size:13px;color:rgba(27,26,23,0.45);">7-day free trial · Setup fee quoted per project · No long-term contract</p>
+
   </div>
 </section>
 
