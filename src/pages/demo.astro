@@ -1,0 +1,689 @@
+---
+// src/pages/demo.astro
+// Bridge Point PM Dashboard — Interactive Demo Replica
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bridge Point Dashboard — Aitha PM Demo</title>
+  <meta name="description" content="Live demo of the Aitha PM property management dashboard. See how tenant requests, incidents, and vendor dispatch work in real time." />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; overflow: hidden; }
+    body { font-family: 'DM Sans', sans-serif; background: #0D1520; color: #E5E7EB; font-size: 14px; }
+
+    /* LAYOUT */
+    .shell { display: flex; height: 100vh; }
+
+    /* SIDEBAR */
+    .sidebar {
+      width: 220px; flex-shrink: 0;
+      background: #0A1018;
+      border-right: 1px solid rgba(255,255,255,0.06);
+      display: flex; flex-direction: column;
+    }
+    .sidebar-brand {
+      padding: 20px 18px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .sidebar-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px; font-weight: 700;
+      color: #F5EFE1; letter-spacing: -0.02em;
+    }
+    .sidebar-sub {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: #2DD4BF; margin-top: 2px;
+    }
+    .sidebar-live {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 11px; color: rgba(255,255,255,0.35);
+      margin-top: 8px;
+    }
+    .live-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #2DD4BF;
+      animation: pulse-dot 2s ease infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; } 50% { opacity: 0.3; }
+    }
+    .sidebar-nav { padding: 12px 0; flex: 1; }
+    .nav-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 9px 18px;
+      font-size: 13px; font-weight: 500;
+      color: rgba(255,255,255,0.45);
+      cursor: pointer; transition: all 0.15s;
+      border-left: 2px solid transparent;
+      position: relative;
+    }
+    .nav-item:hover { color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.03); }
+    .nav-item.active { color: #F5EFE1; border-left-color: #2DD4BF; background: rgba(45,212,191,0.06); }
+    .nav-badge {
+      margin-left: auto;
+      background: #B08B3E; color: #fff;
+      font-size: 10px; font-weight: 700;
+      padding: 1px 6px; border-radius: 10px;
+    }
+    .nav-badge.teal { background: #2DD4BF; color: #0A1018; }
+    .sidebar-footer {
+      padding: 14px 18px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      font-size: 11px; color: rgba(255,255,255,0.3);
+    }
+    .sidebar-footer strong { color: rgba(255,255,255,0.6); display: block; margin-bottom: 2px; }
+
+    /* MAIN PANEL */
+    .main {
+      flex: 1; display: flex; flex-direction: column;
+      background: #F5EFE1; overflow: hidden;
+    }
+    .main-header {
+      background: #F5EFE1;
+      border-bottom: 1px solid rgba(27,26,23,0.1);
+      padding: 14px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .main-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px; font-weight: 700; color: #101828;
+    }
+    .main-subtitle { font-size: 12px; color: rgba(27,26,23,0.5); margin-top: 1px; }
+    .header-stats { display: flex; gap: 20px; }
+    .hstat { text-align: center; }
+    .hstat-num { font-size: 22px; font-weight: 700; color: #101828; line-height: 1; }
+    .hstat-num.orange { color: #FF7A30; }
+    .hstat-num.teal { color: #2DD4BF; }
+    .hstat-num.brass { color: #B08B3E; }
+    .hstat-label { font-size: 10px; color: rgba(27,26,23,0.45); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+
+    .filter-row {
+      padding: 10px 24px;
+      border-bottom: 1px solid rgba(27,26,23,0.08);
+      display: flex; gap: 6px; flex-shrink: 0;
+      background: #F5EFE1;
+    }
+    .filter-btn {
+      padding: 5px 14px; border-radius: 20px;
+      font-size: 12px; font-weight: 600;
+      cursor: pointer; border: 1.5px solid transparent;
+      transition: all 0.15s;
+      background: transparent; color: rgba(27,26,23,0.5);
+      border-color: rgba(27,26,23,0.15);
+    }
+    .filter-btn:hover { border-color: #B08B3E; color: #B08B3E; }
+    .filter-btn.active { background: #101828; color: #F5EFE1; border-color: #101828; }
+
+    .main-body { flex: 1; overflow-y: auto; padding: 16px 24px; }
+
+    /* INCIDENT CARDS */
+    .incident-card {
+      background: #fff;
+      border-radius: 10px;
+      border: 1px solid rgba(27,26,23,0.08);
+      border-left: 4px solid #B08B3E;
+      padding: 14px 16px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: all 0.15s;
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
+    }
+    .incident-card:hover { box-shadow: 0 2px 12px rgba(16,24,40,0.08); transform: translateX(2px); }
+    .incident-card.active { border-left-color: #2DD4BF; box-shadow: 0 2px 16px rgba(45,212,191,0.15); }
+    .incident-card.emergency { border-left-color: #DC2626; }
+    .incident-card.resolved { border-left-color: #10B981; opacity: 0.7; }
+    .incident-card.high { border-left-color: #FF7A30; }
+    .inc-left { flex: 1; }
+    .inc-title { font-size: 13px; font-weight: 600; color: #101828; margin-bottom: 4px; }
+    .inc-meta { font-size: 11px; color: rgba(27,26,23,0.5); }
+    .inc-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+    .badge {
+      font-size: 10px; font-weight: 700;
+      padding: 3px 8px; border-radius: 20px;
+      text-transform: uppercase; letter-spacing: 0.06em;
+      white-space: nowrap;
+    }
+    .badge-red { background: #FEE2E2; color: #DC2626; }
+    .badge-orange { background: #FEF3C7; color: #D97706; }
+    .badge-brass { background: #FEF9EC; color: #B08B3E; }
+    .badge-teal { background: #CCFBF1; color: #0F766E; }
+    .badge-green { background: #D1FAE5; color: #059669; }
+    .badge-gray { background: #F3F4F6; color: #6B7280; }
+    .inc-time { font-size: 10px; color: rgba(27,26,23,0.35); }
+
+    /* DETAIL PANEL */
+    .detail {
+      width: 340px; flex-shrink: 0;
+      background: #fff;
+      border-left: 1px solid rgba(27,26,23,0.08);
+      display: flex; flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.25s ease;
+    }
+    .detail.open { transform: translateX(0); }
+    .detail-header {
+      padding: 16px 18px;
+      border-bottom: 1px solid rgba(27,26,23,0.08);
+      flex-shrink: 0;
+    }
+    .detail-close {
+      float: right; cursor: pointer;
+      color: rgba(27,26,23,0.4); font-size: 18px; line-height: 1;
+      background: none; border: none; padding: 0;
+    }
+    .detail-close:hover { color: #101828; }
+    .detail-type {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: #B08B3E; margin-bottom: 4px;
+    }
+    .detail-title { font-size: 15px; font-weight: 700; color: #101828; margin-bottom: 6px; }
+    .detail-meta { font-size: 11px; color: rgba(27,26,23,0.5); }
+    .detail-body { flex: 1; overflow-y: auto; padding: 16px 18px; }
+    .convo-label {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(27,26,23,0.4); margin-bottom: 12px;
+    }
+    .msg { margin-bottom: 12px; }
+    .msg-ts { font-size: 10px; color: rgba(27,26,23,0.35); margin-bottom: 4px; }
+    .bubble {
+      display: inline-block; max-width: 85%;
+      padding: 8px 12px; border-radius: 12px;
+      font-size: 12px; line-height: 1.5;
+    }
+    .bubble.in { background: #F3F4F6; color: #1F2937; border-radius: 12px 12px 12px 2px; }
+    .bubble.out { background: #101828; color: #F5EFE1; border-radius: 12px 12px 2px 12px; float: right; }
+    .bubble.system { background: #FEF9EC; color: #B08B3E; border: 1px solid rgba(176,139,62,0.2); border-radius: 8px; font-size: 11px; display: block; width: 100%; text-align: center; }
+    .msg.out-wrap { text-align: right; }
+    .clearfix::after { content: ''; display: block; clear: both; }
+    .detail-footer {
+      padding: 12px 18px;
+      border-top: 1px solid rgba(27,26,23,0.08);
+      flex-shrink: 0;
+    }
+    .detail-actions { display: flex; gap: 8px; }
+    .action-btn {
+      flex: 1; padding: 8px;
+      border-radius: 6px; font-size: 12px; font-weight: 600;
+      cursor: pointer; border: none;
+      transition: all 0.15s;
+    }
+    .action-btn.primary { background: #101828; color: #F5EFE1; }
+    .action-btn.primary:hover { background: #1d2e47; }
+    .action-btn.secondary { background: #F3F4F6; color: #374151; }
+    .action-btn.secondary:hover { background: #E5E7EB; }
+
+    /* TENANTS VIEW */
+    .tenants-table { width: 100%; border-collapse: collapse; }
+    .tenants-table th {
+      text-align: left; font-size: 10px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: rgba(27,26,23,0.4); padding: 8px 12px;
+      border-bottom: 1px solid rgba(27,26,23,0.08);
+    }
+    .tenants-table td {
+      padding: 10px 12px; font-size: 13px; color: #101828;
+      border-bottom: 1px solid rgba(27,26,23,0.05);
+    }
+    .tenants-table tr:hover td { background: rgba(27,26,23,0.02); cursor: pointer; }
+    .tenant-unit { font-size: 11px; color: rgba(27,26,23,0.45); }
+    .tenant-status { font-size: 11px; }
+
+    /* PROPERTIES VIEW */
+    .prop-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+    .prop-card {
+      background: #fff; border-radius: 10px;
+      border: 1px solid rgba(27,26,23,0.08);
+      padding: 18px 20px;
+    }
+    .prop-name { font-size: 15px; font-weight: 700; color: #101828; margin-bottom: 4px; }
+    .prop-addr { font-size: 12px; color: rgba(27,26,23,0.5); margin-bottom: 12px; }
+    .prop-stats { display: flex; gap: 16px; }
+    .prop-stat { }
+    .prop-stat-num { font-size: 20px; font-weight: 700; color: #101828; }
+    .prop-stat-label { font-size: 10px; color: rgba(27,26,23,0.45); text-transform: uppercase; letter-spacing: 0.06em; }
+
+    /* VENDORS VIEW */
+    .vendor-group { margin-bottom: 20px; }
+    .vendor-group-title {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(27,26,23,0.4); margin-bottom: 8px;
+      padding-bottom: 6px; border-bottom: 1px solid rgba(27,26,23,0.08);
+    }
+    .vendor-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 8px 0; border-bottom: 1px solid rgba(27,26,23,0.04);
+    }
+    .vendor-name { font-size: 13px; font-weight: 600; color: #101828; }
+    .vendor-phone { font-size: 11px; color: rgba(27,26,23,0.5); }
+    .vendor-priority { font-size: 10px; color: #2DD4BF; font-weight: 700; }
+
+    /* DEMO BANNER */
+    .demo-banner {
+      background: #B08B3E; color: #fff;
+      text-align: center; padding: 7px 20px;
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.02em; flex-shrink: 0;
+    }
+    .demo-banner a { color: #fff; text-decoration: underline; }
+
+    /* VIEWS */
+    .view { display: none; }
+    .view.active { display: block; }
+  </style>
+</head>
+<body>
+
+<div class="demo-banner">
+  This is a live demo of the Aitha PM dashboard. &nbsp;·&nbsp; <a href="/aitha-pm">Learn more about Aitha PM →</a>
+</div>
+
+<div class="shell">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-logo">Bridge Point</div>
+      <div class="sidebar-sub">Property Management</div>
+      <div class="sidebar-live"><span class="live-dot"></span> Aitha PM · Live</div>
+    </div>
+    <div class="sidebar-nav">
+      <div class="nav-item active" onclick="switchView('incidents', this)">
+        <span>🔧</span> Incidents <span class="nav-badge">7</span>
+      </div>
+      <div class="nav-item" onclick="switchView('tenants', this)">
+        <span>👥</span> Tenants <span class="nav-badge teal">15</span>
+      </div>
+      <div class="nav-item" onclick="switchView('properties', this)">
+        <span>🏘️</span> Properties
+      </div>
+      <div class="nav-item" onclick="switchView('vendors', this)">
+        <span>🔨</span> Vendors
+      </div>
+    </div>
+    <div class="sidebar-footer">
+      <strong>Sarah Mitchell</strong>
+      Property Manager
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+    <div class="main-header">
+      <div>
+        <div class="main-title" id="view-title">Incidents</div>
+        <div class="main-subtitle" id="view-sub">Bridge Point Property Management · 3 properties</div>
+      </div>
+      <div class="header-stats">
+        <div class="hstat"><div class="hstat-num orange">7</div><div class="hstat-label">Open</div></div>
+        <div class="hstat"><div class="hstat-num teal">3</div><div class="hstat-label">Dispatched</div></div>
+        <div class="hstat"><div class="hstat-num brass">12</div><div class="hstat-label">Resolved</div></div>
+      </div>
+    </div>
+
+    <div class="filter-row" id="incident-filters">
+      <button class="filter-btn active" onclick="filterIncidents('all', this)">All</button>
+      <button class="filter-btn" onclick="filterIncidents('open', this)">Open</button>
+      <button class="filter-btn" onclick="filterIncidents('dispatched', this)">Dispatched</button>
+      <button class="filter-btn" onclick="filterIncidents('resolved', this)">Resolved</button>
+    </div>
+
+    <div class="main-body">
+
+      <!-- INCIDENTS VIEW -->
+      <div class="view active" id="view-incidents">
+
+        <div class="incident-card emergency" data-id="1" data-status="open" onclick="openDetail(1)">
+          <div class="inc-left">
+            <div class="inc-title">🚨 Riverside Flats Unit 3B — Gas smell reported</div>
+            <div class="inc-meta">Tenant: James Carter · Voicemail received 8 min ago · Safety Emergency</div>
+          </div>
+          <div class="inc-right">
+            <span class="badge badge-red">Emergency</span>
+            <span class="inc-time">8 min ago</span>
+          </div>
+        </div>
+
+        <div class="incident-card high" data-id="2" data-status="dispatched" onclick="openDetail(2)">
+          <div class="inc-left">
+            <div class="inc-title">🌡️ Oak Commons Unit 4B — AC not cooling, 84° inside</div>
+            <div class="inc-meta">Tenant: Marcus Webb · HVAC vendor dispatched · High priority</div>
+          </div>
+          <div class="inc-right">
+            <span class="badge badge-orange">Dispatched</span>
+            <span class="inc-time">2 hrs ago</span>
+          </div>
+        </div>
+
+        <div class="incident-card" data-id="3" data-status="open" onclick="openDetail(3)">
+          <div class="inc-left">
+            <div class="inc-title">💧 Riverside Flats Unit 1A — Water coming through ceiling</div>
+            <div class="inc-meta">Tenant: Priya Sharma · Plumber notified · Urgent</div>
+          </div>
+          <div class="inc-right">
+            <span class="badge badge-brass">Vendor Needed</span>
+            <span class="inc-time">3 hrs ago</span>
+          </div>
+        </div>
+
+        <div class="incident-card" data-id="4" data-status="dispatched" onclick="openDetail(4)">
+          <div class="inc-left">
+            <div class="inc-title">⚡ Maple Ridge Unit 7C — Power out in half the unit</div>
+            <div class="inc-meta">Tenant: Diana Ross · Self-fix attempted, electrician dispatched</div>
+          </div>
+          <div class="inc-right">
+            <span class="badge badge-orange">Dispatched</span>
+            <span class="inc-time">5 hrs ago</span>
+          </div>
+        </div>
+
+        <div class="incident-card" data-id="5" data-status="open" onclick="openDetail(5)">
+          <div class="inc-left">
+            <div class="inc-title">🚿 Oak Commons Unit 2A — Kitchen sink draining slow</div>
+            <div class="inc-meta">Tenant: Keisha Brown · Self-fix instructions sent · Awaiting response</div>
+          </div>
+          <div class="inc-right">
+            <span class="badge badge-teal">Self-Fix Sent</span>
+            <span class="inc-time">6 hrs ago</span>
+          </div>
+        </div>
+
+        <div class="incident-card" data-id="6" data-status="open" onclick="openDetail(6)">
+          <div class="inc-left">
+            <div class="inc-title">🏠 Maple Ridge — Vacancy inquiry, 2BR unit</div>
+            <div class="inc-meta">Prospect: Angela Reeves · Listings sent · Routine</div>
+          </div>
+          <div class="inc-right">
+            <span class="badge badge-teal">Listings Sent</span>
+            <span class="inc-time">Yesterday</span>
+          </div>
+        </div>
+
+        <div class="incident-card resolved" data-id="7" data-status="resolved" onclick="openDetail(7)">
+          <div class="inc-left">
+            <div class="inc-title">🔑 Riverside Flats Unit 5D — Lease renewal question</div>
+            <div class="inc-meta">Tenant: Daniel Rivera · Lease info sent · Resolved</div>
+          </div>
+          <div class="inc-right">
+            <span class="badge badge-green">Resolved</span>
+            <span class="inc-time">Yesterday</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- TENANTS VIEW -->
+      <div class="view" id="view-tenants">
+        <table class="tenants-table">
+          <thead>
+            <tr>
+              <th>Tenant</th>
+              <th>Property · Unit</th>
+              <th>Lease Ends</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr onclick="openDetail(1)"><td><strong>James Carter</strong></td><td><span class="tenant-unit">Riverside Flats · 3B</span></td><td>Mar 2025</td><td><span class="badge badge-red">Emergency open</span></td></tr>
+            <tr><td><strong>Priya Sharma</strong></td><td><span class="tenant-unit">Riverside Flats · 1A</span></td><td>Jun 2025</td><td><span class="badge badge-brass">Incident open</span></td></tr>
+            <tr><td><strong>Daniel Rivera</strong></td><td><span class="tenant-unit">Riverside Flats · 5D</span></td><td>Aug 2025</td><td><span class="badge badge-green">All clear</span></td></tr>
+            <tr><td><strong>Linda Park</strong></td><td><span class="tenant-unit">Riverside Flats · 2C</span></td><td>Nov 2025</td><td><span class="badge badge-green">All clear</span></td></tr>
+            <tr><td><strong>Marcus Webb</strong></td><td><span class="tenant-unit">Oak Commons · 4B</span></td><td>Apr 2025</td><td><span class="badge badge-orange">Vendor dispatched</span></td></tr>
+            <tr><td><strong>Keisha Brown</strong></td><td><span class="tenant-unit">Oak Commons · 2A</span></td><td>Jul 2025</td><td><span class="badge badge-teal">Self-fix pending</span></td></tr>
+            <tr><td><strong>Tom Nguyen</strong></td><td><span class="tenant-unit">Oak Commons · 1B</span></td><td>Sep 2025</td><td><span class="badge badge-green">All clear</span></td></tr>
+            <tr><td><strong>Carmen Lopez</strong></td><td><span class="tenant-unit">Oak Commons · 3A</span></td><td>Dec 2025</td><td><span class="badge badge-green">All clear</span></td></tr>
+            <tr><td><strong>Diana Ross</strong></td><td><span class="tenant-unit">Maple Ridge · 7C</span></td><td>Feb 2025</td><td><span class="badge badge-orange">Vendor dispatched</span></td></tr>
+            <tr><td><strong>Eric Johnson</strong></td><td><span class="tenant-unit">Maple Ridge · 2A</span></td><td>May 2025</td><td><span class="badge badge-green">All clear</span></td></tr>
+            <tr><td><strong>Fatima Al-Hassan</strong></td><td><span class="tenant-unit">Maple Ridge · 4B</span></td><td>Oct 2025</td><td><span class="badge badge-green">All clear</span></td></tr>
+            <tr><td><strong>George Kim</strong></td><td><span class="tenant-unit">Maple Ridge · 6D</span></td><td>Jan 2026</td><td><span class="badge badge-green">All clear</span></td></tr>
+            <tr><td><strong>Helen Tran</strong></td><td><span class="tenant-unit">Riverside Flats · 4A</span></td><td>Mar 2026</td><td><span class="badge badge-green">All clear</span></td></tr>
+            <tr><td><strong>Ivan Petrov</strong></td><td><span class="tenant-unit">Oak Commons · 5C</span></td><td>Jun 2026</td><td><span class="badge badge-green">All clear</span></td></tr>
+            <tr><td><strong>Julia Martinez</strong></td><td><span class="tenant-unit">Maple Ridge · 3B</span></td><td>Aug 2026</td><td><span class="badge badge-green">All clear</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- PROPERTIES VIEW -->
+      <div class="view" id="view-properties">
+        <div class="prop-grid">
+          <div class="prop-card">
+            <div class="prop-name">Riverside Flats</div>
+            <div class="prop-addr">1204 Riverside Dr, Wilson NC 27893</div>
+            <div class="prop-stats">
+              <div class="prop-stat"><div class="prop-stat-num">5</div><div class="prop-stat-label">Units</div></div>
+              <div class="prop-stat"><div class="prop-stat-num" style="color:#FF7A30">2</div><div class="prop-stat-label">Open Incidents</div></div>
+              <div class="prop-stat"><div class="prop-stat-num" style="color:#10B981">3</div><div class="prop-stat-label">All Clear</div></div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-name">Oak Commons</div>
+            <div class="prop-addr">887 Oak Street, Wilson NC 27896</div>
+            <div class="prop-stats">
+              <div class="prop-stat"><div class="prop-stat-num">5</div><div class="prop-stat-label">Units</div></div>
+              <div class="prop-stat"><div class="prop-stat-num" style="color:#FF7A30">2</div><div class="prop-stat-label">Open Incidents</div></div>
+              <div class="prop-stat"><div class="prop-stat-num" style="color:#10B981">3</div><div class="prop-stat-label">All Clear</div></div>
+            </div>
+          </div>
+          <div class="prop-card">
+            <div class="prop-name">Maple Ridge</div>
+            <div class="prop-addr">342 Maple Ridge Rd, Wilson NC 27893</div>
+            <div class="prop-stats">
+              <div class="prop-stat"><div class="prop-stat-num">5</div><div class="prop-stat-label">Units</div></div>
+              <div class="prop-stat"><div class="prop-stat-num" style="color:#FF7A30">3</div><div class="prop-stat-label">Open Incidents</div></div>
+              <div class="prop-stat"><div class="prop-stat-num" style="color:#10B981">2</div><div class="prop-stat-label">All Clear</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VENDORS VIEW -->
+      <div class="view" id="view-vendors">
+        <div class="vendor-group">
+          <div class="vendor-group-title">HVAC</div>
+          <div class="vendor-row"><div><div class="vendor-name">Wilson Heating & Air</div><div class="vendor-phone">(252) 291-4400</div></div><div class="vendor-priority">Priority 1</div></div>
+          <div class="vendor-row"><div><div class="vendor-name">TrueEast HVAC</div><div class="vendor-phone">(252) 294-5225</div></div><div class="vendor-priority">Priority 2</div></div>
+        </div>
+        <div class="vendor-group">
+          <div class="vendor-group-title">Plumbing</div>
+          <div class="vendor-row"><div><div class="vendor-name">JBM Plumbing LLC</div><div class="vendor-phone">(252) 363-4733</div></div><div class="vendor-priority">Priority 1</div></div>
+          <div class="vendor-row"><div><div class="vendor-name">Carolina Roots Plumbing</div><div class="vendor-phone">(919) 601-9236</div></div><div class="vendor-priority">Priority 2</div></div>
+        </div>
+        <div class="vendor-group">
+          <div class="vendor-group-title">Electrical</div>
+          <div class="vendor-row"><div><div class="vendor-name">Chandler Electric</div><div class="vendor-phone">(252) 955-0887</div></div><div class="vendor-priority">Priority 1</div></div>
+        </div>
+        <div class="vendor-group">
+          <div class="vendor-group-title">Handyman</div>
+          <div class="vendor-row"><div><div class="vendor-name">Joyners Renovations</div><div class="vendor-phone">(252) 289-4777</div></div><div class="vendor-priority">Priority 1</div></div>
+          <div class="vendor-row"><div><div class="vendor-name">PCG Home Improvement</div><div class="vendor-phone">(252) 908-4550</div></div><div class="vendor-priority">Priority 2</div></div>
+        </div>
+        <div class="vendor-group">
+          <div class="vendor-group-title">Roofing</div>
+          <div class="vendor-row"><div><div class="vendor-name">Alliance Roofing Inc</div><div class="vendor-phone">(252) 289-0672</div></div><div class="vendor-priority">Priority 1</div></div>
+        </div>
+        <div class="vendor-group">
+          <div class="vendor-group-title">Landscaping</div>
+          <div class="vendor-row"><div><div class="vendor-name">Down East Lawn</div><div class="vendor-phone">(252) 230-3251</div></div><div class="vendor-priority">Priority 1</div></div>
+          <div class="vendor-row"><div><div class="vendor-name">Superior Ground Works</div><div class="vendor-phone">(252) 360-7237</div></div><div class="vendor-priority">Priority 2</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- DETAIL PANEL -->
+  <div class="detail" id="detail-panel">
+    <div class="detail-header">
+      <button class="detail-close" onclick="closeDetail()">✕</button>
+      <div class="detail-type" id="d-type"></div>
+      <div class="detail-title" id="d-title"></div>
+      <div class="detail-meta" id="d-meta"></div>
+    </div>
+    <div class="detail-body" id="d-body"></div>
+    <div class="detail-footer">
+      <div class="detail-actions">
+        <button class="action-btn secondary" onclick="closeDetail()">Close</button>
+        <button class="action-btn primary">Dispatch Vendor</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const incidents = {
+    1: {
+      type: 'SAFETY EMERGENCY',
+      title: '🚨 Riverside Flats Unit 3B — Gas smell reported',
+      meta: 'James Carter · (252) 555-0142 · 8 minutes ago',
+      convo: [
+        { ts: 'Today, 11:47 AM — Voicemail received', msg: '🎙️ "Hey this is James in 3B, I woke up and I can smell gas pretty strong in my kitchen, I don\'t know if it\'s the stove or what but it\'s making me nervous."', type: 'in' },
+        { ts: '11:47 AM — Transcribed & triaged by Aitha PM', msg: null, type: 'system', label: 'Classified: SAFETY EMERGENCY · Aitha PM responded immediately' },
+        { ts: '11:47 AM', msg: 'James, please leave your unit right now and go outside. Do not turn any lights or switches on or off. Call 911 and your gas company immediately — this is a gas emergency. We have been notified and are calling you now.', type: 'out' },
+        { ts: '11:48 AM — Manager alerted', msg: null, type: 'system', label: '🚨 Sarah Mitchell notified to call James immediately' },
+        { ts: '11:51 AM', msg: 'Ok I\'m outside. Thank you. Fire dept is on the way', type: 'in' },
+      ]
+    },
+    2: {
+      type: 'HVAC · HIGH PRIORITY',
+      title: '🌡️ Oak Commons Unit 4B — AC not cooling',
+      meta: 'Marcus Webb · (919) 455-0101 · 2 hours ago',
+      convo: [
+        { ts: 'Today, 9:44 AM — Voicemail received', msg: '🎙️ "Hey it\'s Marcus in 4B, my AC is blowing warm air and it\'s like 84 degrees in here. Can someone come look at it today?"', type: 'in' },
+        { ts: '9:44 AM — Transcribed & triaged by Aitha PM', msg: null, type: 'system', label: 'Classified: VENDOR NEEDED · High priority HVAC' },
+        { ts: '9:44 AM', msg: 'Hi Marcus — we received your voicemail. I\'ve logged this as a priority HVAC issue for Unit 4B. Our HVAC vendor has been notified and will contact you today to schedule. We\'ll keep you posted.', type: 'out' },
+        { ts: '9:46 AM — Wilson Heating & Air dispatched', msg: null, type: 'system', label: 'Vendor notified · ETA 2–4 hours' },
+        { ts: '10:12 AM', msg: 'Ok thanks. Any idea how long?', type: 'in' },
+        { ts: '10:12 AM', msg: 'Our vendor typically responds within 2–4 hours for priority issues. You\'ll get a text when they\'re on their way.', type: 'out' },
+      ]
+    },
+    3: {
+      type: 'PLUMBING · URGENT',
+      title: '💧 Riverside Flats Unit 1A — Water through ceiling',
+      meta: 'Priya Sharma · (252) 555-0198 · 3 hours ago',
+      convo: [
+        { ts: 'Today, 8:55 AM — Voicemail received', msg: '🎙️ "This is Priya in 1A, there\'s water coming through my ceiling in the bathroom, it\'s dripping pretty fast. I don\'t know what to do."', type: 'in' },
+        { ts: '8:55 AM — Transcribed & triaged by Aitha PM', msg: null, type: 'system', label: 'Classified: VENDOR NEEDED · Urgent · Water intrusion' },
+        { ts: '8:55 AM', msg: 'Hi Priya — we received your voicemail about water coming through your ceiling. This needs immediate attention. Our plumber has been notified. Please put a bucket or towels down if you can. Someone will be in touch very shortly.', type: 'out' },
+        { ts: '8:57 AM — JBM Plumbing notified', msg: null, type: 'system', label: 'Vendor dispatched · Investigating unit above (2A)' },
+      ]
+    },
+    4: {
+      type: 'ELECTRICAL · SELF-FIX ATTEMPTED',
+      title: '⚡ Maple Ridge Unit 7C — Power out in half the unit',
+      meta: 'Diana Ross · (252) 555-0177 · 5 hours ago',
+      convo: [
+        { ts: 'Today, 6:45 AM — Voicemail received', msg: '🎙️ "Hi this is Diana in 7C, half the lights in my apartment went out this morning, like the bedroom and the bathroom work but the living room and kitchen don\'t."', type: 'in' },
+        { ts: '6:45 AM — Transcribed & triaged by Aitha PM', msg: null, type: 'system', label: 'Classified: SELF-FIX CHECK · Possible tripped breaker' },
+        { ts: '6:45 AM', msg: 'Hi Diana — this sounds like it could be a tripped circuit breaker, which you can reset yourself in about 2 minutes. Would you like to try that first?', type: 'out' },
+        { ts: '6:48 AM', msg: 'Sure I can try that', type: 'in' },
+        { ts: '6:48 AM', msg: 'Great! Here\'s how: 1) Find your breaker panel — usually a gray metal box in a closet or hallway. 2) Look for any switch that\'s in the middle position or flipped opposite to the others. 3) Push it firmly to OFF then back to ON. Let me know if that fixes it!', type: 'out' },
+        { ts: '7:02 AM', msg: 'It didn\'t work, the switch looks fine', type: 'in' },
+        { ts: '7:02 AM', msg: 'No problem at all — we\'ll get an electrician out to take a look. Management has been notified and will follow up shortly.', type: 'out' },
+        { ts: '7:04 AM — Chandler Electric dispatched', msg: null, type: 'system', label: 'Vendor dispatched · Scheduled this afternoon' },
+      ]
+    },
+    5: {
+      type: 'PLUMBING · SELF-FIX IN PROGRESS',
+      title: '🚿 Oak Commons Unit 2A — Kitchen sink draining slow',
+      meta: 'Keisha Brown · (252) 555-0163 · 6 hours ago',
+      convo: [
+        { ts: 'Today, 6:10 AM — Voicemail received', msg: '🎙️ "Hey it\'s Keisha in 2A, my kitchen sink is draining really slow, like almost not at all. Just wanted to let someone know."', type: 'in' },
+        { ts: '6:10 AM — Transcribed & triaged by Aitha PM', msg: null, type: 'system', label: 'Classified: SELF-FIX CHECK · Clogged drain' },
+        { ts: '6:10 AM', msg: 'Hi Keisha — a slow drain is often something you can clear yourself quickly. Would you like me to walk you through it?', type: 'out' },
+        { ts: '6:14 AM', msg: 'Yes please!', type: 'in' },
+        { ts: '6:14 AM', msg: 'Here are the steps: 1) Remove any visible debris from the drain opening. 2) Pour a kettle of boiling water down the drain slowly. 3) Follow with a mix of 1/2 cup baking soda and 1/2 cup white vinegar. 4) Cover and wait 15 minutes. 5) Flush with hot water. Let me know how it goes!', type: 'out' },
+        { ts: '6:14 AM — Awaiting tenant response', msg: null, type: 'system', label: 'Self-fix instructions sent · Standing by' },
+      ]
+    },
+    6: {
+      type: 'RENTAL INQUIRY',
+      title: '🏠 Maple Ridge — Vacancy inquiry, 2BR unit',
+      meta: 'Angela Reeves · (252) 555-0189 · Yesterday',
+      convo: [
+        { ts: 'Yesterday, 2:30 PM — Voicemail received', msg: '🎙️ "Hi I saw a sign on Maple Ridge Road about available units. I\'m looking for a 2 bedroom. Can someone give me more info or a number to call back?"', type: 'in' },
+        { ts: '2:30 PM — Transcribed & triaged by Aitha PM', msg: null, type: 'system', label: 'Classified: RENTAL INQUIRY' },
+        { ts: '2:30 PM', msg: 'Hi Angela — thanks for reaching out about Maple Ridge! We do have a 2BR unit available. Here\'s a link to current listings and floor plans: bridgepoint.com/rentals. Feel free to reply here with any questions or to schedule a showing.', type: 'out' },
+        { ts: '2:45 PM — Manager notified', msg: null, type: 'system', label: 'Sarah Mitchell alerted · Listings link sent' },
+        { ts: '3:12 PM', msg: 'Thank you! What\'s the rent and when is it available?', type: 'in' },
+        { ts: '3:12 PM', msg: 'Our property manager Sarah will follow up with full details and availability within one business day. She can also schedule a showing at a time that works for you.', type: 'out' },
+      ]
+    },
+    7: {
+      type: 'LEASE INQUIRY · RESOLVED',
+      title: '🔑 Riverside Flats Unit 5D — Lease renewal question',
+      meta: 'Daniel Rivera · (252) 555-0155 · Yesterday',
+      convo: [
+        { ts: 'Yesterday, 10:15 AM — Voicemail received', msg: '🎙️ "Hey this is Daniel in 5D, my lease is up in August and I wanted to know what the process is for renewing and if the rent is going to change."', type: 'in' },
+        { ts: '10:15 AM — Transcribed & triaged by Aitha PM', msg: null, type: 'system', label: 'Classified: QUESTION · Lease renewal' },
+        { ts: '10:15 AM', msg: 'Hi Daniel — great to hear you\'re thinking about renewing! Our standard renewal process starts 90 days before your lease end date. Your property manager will reach out in May with renewal terms. If you\'d like to discuss early, reply here and we\'ll get Sarah in touch with you.', type: 'out' },
+        { ts: '10:18 AM', msg: 'Perfect, that\'s all I needed. Thanks!', type: 'in' },
+        { ts: '10:18 AM', msg: 'You\'re welcome Daniel — we\'re glad to have you at Riverside Flats. We\'ll be in touch in May!', type: 'out' },
+        { ts: '10:18 AM — Resolved', msg: null, type: 'system', label: '✓ Resolved · No further action needed' },
+      ]
+    },
+  };
+
+  function switchView(view, el) {
+    document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+    el.classList.add('active');
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    document.getElementById('view-' + view).classList.add('active');
+    const titles = { incidents: 'Incidents', tenants: 'Tenants', properties: 'Properties', vendors: 'Vendors' };
+    document.getElementById('view-title').textContent = titles[view];
+    document.getElementById('incident-filters').style.display = view === 'incidents' ? 'flex' : 'none';
+    closeDetail();
+  }
+
+  function openDetail(id) {
+    const d = incidents[id];
+    if (!d) return;
+    document.querySelectorAll('.incident-card').forEach(c => c.classList.remove('active'));
+    const card = document.querySelector('[data-id="' + id + '"]');
+    if (card) card.classList.add('active');
+    document.getElementById('d-type').textContent = d.type;
+    document.getElementById('d-title').textContent = d.title;
+    document.getElementById('d-meta').textContent = d.meta;
+    let html = '<div class="convo-label">Conversation Thread</div>';
+    d.convo.forEach(m => {
+      if (m.type === 'system') {
+        html += `<div class="msg"><div class="bubble system">${m.label}</div></div>`;
+      } else if (m.type === 'out') {
+        html += `<div class="msg out-wrap"><div class="msg-ts">${m.ts}</div><div class="bubble out">${m.msg}</div><div class="clearfix"></div></div>`;
+      } else {
+        html += `<div class="msg"><div class="msg-ts">${m.ts}</div><div class="bubble in">${m.msg}</div></div>`;
+      }
+    });
+    document.getElementById('d-body').innerHTML = html;
+    document.getElementById('detail-panel').classList.add('open');
+    setTimeout(() => { const b = document.getElementById('d-body'); b.scrollTop = b.scrollHeight; }, 50);
+  }
+
+  function closeDetail() {
+    document.getElementById('detail-panel').classList.remove('open');
+    document.querySelectorAll('.incident-card').forEach(c => c.classList.remove('active'));
+  }
+
+  function filterIncidents(status, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.incident-card').forEach(card => {
+      if (status === 'all' || card.dataset.status === status) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
